@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاستخبارات الروسية | FSB - Lord Town RP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #8b0000;
+            --accent-gold: #c5a059;
+            --dark-bg: #090a0f;
+            --card-bg: #141923;
+            --hover-bg: #1d2535;
+            --text-color: #d1d5db;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(rgba(9, 10, 15, 0.88), rgba(9, 10, 15, 0.98)), 
+                        url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1000') center/cover;
+            text-align: center;
+            padding: 70px 20px;
+            border-bottom: 3px solid var(--primary-red);
+        }
+
+        .badge {
+            width: 130px;
+            filter: drop-shadow(0 0 12px rgba(197, 160, 89, 0.6));
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            color: #fff;
+            margin: 15px 0 5px;
+            font-weight: 900;
+        }
+
+        h3 {
+            color: var(--accent-gold);
+            margin-top: 0;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 15px auto;
+            color: #a0aec0;
+        }
+
+        /* Layout & Cards */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #fff;
+            margin: 50px 0 30px;
+            position: relative;
+            font-weight: 900;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 10px auto 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            border-right: 4px solid var(--accent-gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-right-color: var(--primary-red);
+            background: var(--hover-bg);
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-top: 0;
+            font-size: 1.3rem;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .card ul {
+            padding-right: 20px;
+            margin: 0;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+        }
+
+        /* Flow Process Step Box */
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .step-box {
+            background: var(--card-bg);
+            border: 1px solid #2a3447;
+            border-radius: 6px;
+            padding: 20px;
+            flex: 1 1 220px;
+            text-align: center;
+        }
+
+        .step-number {
+            background: var(--primary-red);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+        }
+
+        /* Protocol Warning Box */
+        .warning-box {
+            background: rgba(139, 0, 0, 0.15);
+            border: 1px solid var(--primary-red);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .warning-box h4 {
+            color: #ff4d4d;
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Buttons & Footer */
+        .cta-section {
+            text-align: center;
+            margin: 60px 0 40px;
+            background: #10141d;
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #232c3d;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin: 10px;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.4);
+        }
+
+        .btn:hover {
+            background: #b30000;
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #040507;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #151821;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Emblem_of_the_Federal_Security_Service.svg/512px-Emblem_of_the_Federal_Security_Service.svg.png" alt="FSB Badge" class="badge">
+        <h1>الاستخبارات الروسية - FSB</h1>
+        <h3>إدارة التحقيقات الجنائية والاستخباراتية | Lord Town RP</h3>
+        <p class="tagline">"العين الرقيبة، والحصن المنيع. حماية الأمن الفيدرالي وملاحقة التنظيمات الإجرامية."</p>
+    </header>
+
+    <div class="container">
+
+        <!-- قسم التحقيقات الاستخباراتية والجنائية -->
+        <h2 class="section-title">بروتوكول التحقيقات والتحريات</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>🔍 التحقيقات الاستخباراتية (Intelligence)</h3>
+                <ul>
+                    <li><strong>التجسس والاستطلاع:</strong> رصد تحركات العصابات والتنظيمات المشبوهة بدون كشف الهوية.</li>
+                    <li><strong>زرع العملاء (Undercover):</strong> اختراق الشبكات الإجرامية لجمع معلومات سرية.</li>
+                    <li><strong>تتبع الأموال:</strong> مراقبة الصفقات المالية الضخمة وعمليات غسيل الأموال في لورد تاون.</li>
+                    <li><strong>اختراق الاتصالات:</strong> مراقبة رومات التنسيق والتنصت الميداني المصرح به.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>⚖️ التحقيقات الجنائية (Criminal Investigation)</h3>
+                <ul>
+                    <li><strong>رفع البصلمات والأدلة:</strong> معاينة مسرح الجريمة وتوثيق الأدلة المادية.</li>
+                    <li><strong>التحقيق مع المشتبه بهم:</strong> إدارة جلسات استجوب صارمة وفقاً للائحة الحقوق والتهم.</li>
+                    <li><strong>تحليل الخيوط والجنايات:</strong> الربط بين الجرائم المنظمة وتحديد رؤوس الهرم الإجرامي.</li>
+                    <li><strong>إصدار مذكرات التفتيش والقبض:</strong> رفع التقارير للقضاء أو القيادة لإصدار أوامر المداهمة.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🚨 المداهمات والعمليات الخاصة</h3>
+                <ul>
+                    <li><strong>فرقة Alpha Group:</strong> تنفيذ الاقتحامات عالية الخطورة والمقرات الرئيسية.</li>
+                    <li><strong>محاصرة الأهداف:</strong> إغلاق المنافذ بالكامل والتنسيق عبر اللاسلكي الموحد.</li>
+                    <li><strong>السيطرة والتحفظ:</strong> تحييد التهديدات وحماية الأدلة والمستندات قبل إتلافها.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- خطوات سير خطة التحقيق -->
+        <h2 class="section-title">مراحل سير القضية الاستخباراتية</h2>
+        <div class="steps-container">
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <h4>جمع المعلومات</h4>
+                <p>مراقبة وتوثيق الأدلة، الصور، ومقاطع الفيديو السرية.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <h4>فتح الملف</h4>
+                <p>صياغة ملف قضية رسمية (Case File) واعتماده من القيادة.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">3</div>
+                <h4>إصدار الأوامر</h4>
+                <p>استخراج أمر تفتيش أو إلقاء قبض رسمي ضد الهدف.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">4</div>
+                <h4>التنفيذ والإحضار</h4>
+                <p>مداهمة الموقع وإحضار المتهم إلى غرفة التحقيق السرية.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-number">5</div>
+                <h4>المحاكمة والإغلاق</h4>
+                <p>تدوين الاعترافات، تطبيق العقوبات الفيدرالية، وإغلاق الملف.</p>
+            </div>
+        </div>
+
+        <!-- تحذير وبنود السرية -->
+        <div class="warning-box">
+            <h4>⚠️ تنبيه أمني مشدد (Top Secret Protocol)</h4>
+            <p>جميع ملفات التحقيق والتحريات الجنائية في جهاز الاستخبارات الروسية تعتبر مصنفة كـ <strong>"سرية للغاية"</strong>. يُمنع منعاً باتاً تسريب أي دليل أو اسم عميل خفي، وتعتبر الخيانة العظمى عقوبتها السجن الفيدرالي النهائي أو الفصل من القطاع.</p>
+        </div>
+
+        <!-- الأزرار والتفاعل -->
+        <div class="cta-section">
+            <h2>انضم إلى قسم التحقيقات أو ارفع بلاغاً سرياً</h2>
+            <p>لتسجيل قضية جديدة أو تقديم طلب انضمام لسلاح التحريات والتحقيق.</p>
+            <a href="#" class="btn">تقديم طلب توظيف</a>
+            <a href="#" class="btn" style="background: #232c3d;">رفع بلاغ استخباراتي</a>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 جميع الحقوق محفوظة لقطاع الاستخبارات الروسية - Lord Town Roleplay.
+    </footer>
+
+</body>
+</html>
