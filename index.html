@@ -1,185 +1,458 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHADOW ضد WAEL // غرفة الحرب</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  *{font-family:'Cairo', sans-serif}
- .mono{font-family:'JetBrains Mono', monospace}
-  body{background:#050507}
-.grid-bg{background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size:50px 50px}
-.glow-red{box-shadow:0 0 40px rgba(239,68,68,0.4), inset 0 0 20px rgba(239,68,68,0.1)}
-.glow-blue{box-shadow:0 0 40px rgba(59,130,246,0.4), inset 0 0 20px rgba(59,130,246,0.1)}
-.scan::before{content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, transparent, currentColor, transparent); animation:scan 3s linear infinite}
-  @keyframes scan{0%{top:0} 100%{top:100%}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم الخاصة - وائل & أنت</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* تخصيص التدرجات اللونية الخاصة باليوتيوب وتويتش */
+        .gaming-gradient {
+            background: linear-gradient(135deg, #9146ff 0%, #ff0055 50%, #ff0000 100%);
+        }
+        .gaming-border {
+            border-image: linear-gradient(to right, #9146ff, #ff0000) 1;
+        }
+    </style>
 </head>
-<body class="grid-bg text-white min-h-screen">
-<header class="border-b border-white/10 backdrop-blur-xl bg-black/50 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center gap-4">
-      <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-      <span class="font-black text-xl">غرفة_الحرب.exe</span>
-      <span class="mono text-[10px] bg-white/10 px-2 py-1 rounded">مباشر</span>
-    </div>
-    <button id="loginBtn" class="border border-white/20 px-5 py-2 text-xs hover:bg-white hover:text-black transition">[ تسجيل الدخول ]</button>
-  </div>
-</header>
+<body class="bg-[#0b0b0e] text-white font-sans min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
 
-<div class="max-w-7xl mx-auto px-6 pt-12 pb-8 text-center">
-  <h1 class="text-5xl md:text-7xl font-black tracking-tighter">
-    <span class="text-red-500">شادو</span> <span class="text-white/20">ضد</span> <span class="text-blue-500">وائل</span>
-  </h1>
-  <p class="mt-4 text-white/40 text-xs tracking-widest">بروتوكول السيطرة على اليوتيوب // 2026</p>
-  <div class="mt-6 flex justify-center gap-3 text-[10px]">
-    <span class="border border-white/10 px-3 py-1">المشتركين • المشاهدات • الفيديوهات • مباشر</span>
-    <span id="apiStatus" class="bg-red-500/20 border border-red-500/30 text-red-400 px-3 py-1 mono">API: غير متصل</span>
-  </div>
-</div>
+    <!-- شريط التنقل -->
+    <nav class="bg-[#121216] border-b border-purple-900/30 p-4 flex flex-wrap justify-between items-center px-6 shadow-xl gap-3">
+        <div class="text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-red-500 flex items-center gap-2">
+            <i class="fa-solid fa-gamepad"></i> اللوحة السرية المشتركة
+        </div>
+        <div class="flex flex-wrap gap-2 text-sm items-center">
+            <button onclick="switchTab('home')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">الرئيسية</button>
+            <button onclick="switchTab('schedule')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">الجدول</button>
+            <button onclick="switchTab('scenarios')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">السيناريوهات</button>
+            <button onclick="switchTab('todos')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">المهام</button>
+            <button onclick="switchTab('links')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">الروابط</button>
+            <button onclick="switchTab('ideas')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">الأفكار</button>
+            <button onclick="switchTab('changelog')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">التحديثات</button>
+            
+            <div class="flex gap-2 mr-auto">
+                <button onclick="checkWaelAccess()" class="text-purple-300 bg-purple-950/60 hover:bg-purple-900/80 px-3 py-1.5 rounded-lg border border-purple-500/40 font-semibold text-xs transition flex items-center gap-1">
+                    <i class="fa-solid fa-user-shield"></i> لوحة وائل
+                </button>
+                <button onclick="checkMyAccess()" class="text-red-300 bg-red-950/60 hover:bg-red-900/80 px-3 py-1.5 rounded-lg border border-red-500/40 font-semibold text-xs transition flex items-center gap-1">
+                    <i class="fa-solid fa-lock"></i> لوحتي
+                </button>
+            </div>
+        </div>
+    </nav>
 
-<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-6">
-  <div class="relative border border-red-500/30 bg-gradient-to-b from-red-950/20 to-black p-8 glow-red overflow-hidden scan">
-    <div class="absolute top-4 right-4 text-[9px] text-red-400 mono">اللاعب 01 // الفريق الأحمر</div>
-    <div class="mt-8">
-      <h2 class="text-4xl font-black">شادو</h2>
-      <p class="text-red-400 text-xs mt-1 mono">@shadow47q • الشذوذ</p>
-    </div>
-    <div class="mt-10 grid grid-cols-3 gap-4">
-      <div class="border border-white/10 bg-black/50 p-4">
-        <div class="text-[9px] text-white/40">المشتركين</div>
-        <div id="subs1" class="text-3xl font-bold mt-2 mono">--</div>
-        <div class="text-[9px] text-green-400 mt-1">▲ مباشر</div>
-      </div>
-      <div class="border border-white/10 bg-black/50 p-4">
-        <div class="text-[9px] text-white/40">المشاهدات</div>
-        <div id="views1" class="text-3xl font-bold mt-2 mono">--</div>
-      </div>
-      <div class="border border-white/10 bg-black/50 p-4">
-        <div class="text-[9px] text-white/40">الفيديوهات</div>
-        <div id="videos1" class="text-3xl font-bold mt-2 mono">--</div>
-      </div>
-    </div>
-  </div>
+    <!-- المحتوى الرئيسي -->
+    <main class="flex-grow container mx-auto p-4 md:p-6 max-w-5xl space-y-8">
 
-  <div class="relative border border-blue-500/30 bg-gradient-to-b from-blue-950/20 to-black p-8 glow-blue overflow-hidden scan">
-    <div class="absolute top-4 right-4 text-[9px] text-blue-400 mono">اللاعب 02 // الفريق الأزرق</div>
-    <div class="mt-8">
-      <h2 class="text-4xl font-black">وائل</h2>
-      <p class="text-blue-400 text-xs mt-1">الأرشيف الأزرق • الصاعد</p>
-    </div>
-    <div class="mt-10 grid grid-cols-3 gap-4">
-      <div class="border border-white/10 bg-black/50 p-4">
-        <div class="text-[9px] text-white/40">المشتركين</div>
-        <div id="subs2" class="text-3xl font-bold mt-2 mono">--</div>
-        <div class="text-[9px] text-green-400 mt-1">▲ مباشر</div>
-      </div>
-      <div class="border border-white/10 bg-black/50 p-4">
-        <div class="text-[9px] text-white/40">المشاهدات</div>
-        <div id="views2" class="text-3xl font-bold mt-2 mono">--</div>
-      </div>
-      <div class="border border-white/10 bg-black/50 p-4">
-        <div class="text-[9px] text-white/40">الفيديوهات</div>
-        <div id="videos2" class="text-3xl font-bold mt-2 mono">--</div>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- 1. الرئيسية: تويتش + فيديوهات يوتيوب -->
+        <section id="home-tab" class="tab-content space-y-8">
+            <div class="text-center space-y-3 py-4">
+                <h1 class="text-3xl md:text-4xl font-black text-transparent bg-clip-text gaming-gradient">نظرة عامة على القنوات</h1>
+                <p class="text-gray-400 text-sm">متابعة حية لبثوث تويتش وآخر إصدارات اليوتيوب بتصميم يجمع بين الأناقة والقوة.</p>
+            </div>
 
-<div class="max-w-7xl mx-auto px-6 mt-12">
-  <div class="flex items-center gap-3 mb-6">
-    <div class="h-px flex-1 bg-white/10"></div>
-    <span class="text-[10px] tracking-[0.3em] text-white/40">سيناريوهات المعركة // تصويت الجمهور</span>
-    <div class="h-px flex-1 bg-white/10"></div>
-  </div>
-  <div id="scenarios" class="grid md:grid-cols-3 gap-4"></div>
-</div>
+            <!-- بث تويتش -->
+            <div class="bg-[#121216] p-4 rounded-xl border border-purple-500/20 shadow-2xl space-y-3">
+                <h2 class="text-lg font-bold flex items-center gap-2 text-purple-400">
+                    <i class="fa-brands fa-twitch"></i> بث وائل المباشر على تويتش
+                </h2>
+                <div class="w-full aspect-video bg-black rounded-lg overflow-hidden border border-gray-800">
+                    <iframe src="https://player.twitch.tv/?channel=YOUR_TWITCH_USERNAME&parent=localhost&parent=github.io" 
+                        height="100%" width="100%" allowfullscreen></iframe>
+                </div>
+            </div>
 
-<div class="mt-16 border-t border-white/10 py-6 text-center text-[9px] text-white/20 mono">
-  صنع بواسطة SHADOW47Q // مدعوم بواسطة YOUTUBE API V3 // 2026
-</div>
+            <!-- آخر 3 فيديوهات يوتيوب -->
+            <div class="bg-[#121216] p-4 rounded-xl border border-red-500/20 shadow-2xl space-y-4">
+                <h2 class="text-lg font-bold flex items-center gap-2 text-red-500">
+                    <i class="fa-brands fa-youtube"></i> آخر 3 حلقات على قناتك في يوتيوب
+                </h2>
+                <div id="youtube-videos" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <p class="text-gray-400 text-sm">جاري تحميل أحدث الفيديوهات...</p>
+                </div>
+            </div>
+        </section>
 
-<div id="modal" class="fixed inset-0 bg-black/90 backdrop-blur-xl hidden z-[100] flex items-center justify-center p-6">
-  <div class="border border-white/20 bg-[#0a0a0a] p-8 w-full max-w-sm">
-    <h3 class="font-bold">رمز الدخول</h3>
-    <input id="codeInput" placeholder="ادخل الرمز" class="mt-6 w-full bg-black border border-white/20 p-3 text-sm outline-none focus:border-white mono">
-    <div id="adminPanel" class="hidden mt-6 space-y-3">
-      <input id="apiKeyInput" placeholder="مفتاح YOUTUBE API" class="w-full bg-black border border-white/10 p-2 text-xs mono">
-      <input id="scenarioInput" placeholder="سيناريو جديد... مثال: تحدي 24 ساعة" class="w-full bg-black border border-white/10 p-2 text-xs">
-      <button id="addScenario" class="w-full bg-white text-black py-2 text-xs font-bold">إضافة سيناريو</button>
-      <button id="saveKey" class="w-full border border-white/20 py-2 text-xs">حفظ المفتاح</button>
-    </div>
-    <div class="mt-4 flex gap-2">
-      <button id="submitCode" class="flex-1 bg-white text-black py-3 text-xs font-bold">فتح</button>
-      <button id="closeModal" class="flex-1 border border-white/20 py-3 text-xs">إغلاق</button>
-    </div>
-    <p class="mt-4 text-[9px] text-white/30 mono">الأحمر: SHADOW_RED // الأزرق: WAEL_BLUE</p>
-  </div>
-</div>
+        <!-- 2. الجدول الأسبوعي -->
+        <section id="schedule-tab" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">الجدول الأسبوعي</h2>
+            <div class="overflow-x-auto bg-[#121216] rounded-xl border border-purple-500/20 shadow-2xl">
+                <table class="w-full text-right border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-purple-950/40 text-purple-300 border-b border-gray-800">
+                            <th class="p-3">اليوم</th>
+                            <th class="p-3">الوقت</th>
+                            <th class="p-3">الفعالية</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-table-body" class="divide-y divide-gray-800 text-gray-300"></tbody>
+                </table>
+            </div>
+        </section>
 
-<script>
-const CHANNELS = { shadow: { handle: 'shadow47q' }, wael: { id: 'UCaf1ynzgPvAHEHO2hT6X27g' } };
-let YT_KEY = localStorage.getItem('yt_key') || '';
-const scenarios = JSON.parse(localStorage.getItem('scenarios') || '["من يوصل 100 ألف أول؟","آخر واحد يوقف رفع يخسر","معركة مونتاج 1 ضد 1"]');
-function updateApiStatus(){
-  const el = document.getElementById('apiStatus');
-  if(YT_KEY){ el.textContent='API: متصل'; el.className='bg-green-500/20 border border-green-500/30 text-green-400 px-3 py-1 mono'; }
-}
-async function fetchStats(){
-  if(!YT_KEY){ document.getElementById('subs1').textContent='لا يوجد API'; document.getElementById('subs2').textContent='لا يوجد API'; return; }
-  try{
-    let r1 = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&forHandle=${CHANNELS.shadow.handle}&key=${YT_KEY}`);
-    let d1 = await r1.json();
-    if(d1.items && d1.items[0]){
-      let s = d1.items[0].statistics;
-      document.getElementById('subs1').textContent = Number(s.subscriberCount).toLocaleString('ar-EG');
-      document.getElementById('views1').textContent = Number(s.viewCount).toLocaleString('ar-EG');
-      document.getElementById('videos1').textContent = s.videoCount;
-    }
-    let r2 = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNELS.wael.id}&key=${YT_KEY}`);
-    let d2 = await r2.json();
-    if(d2.items && d2.items[0]){
-      let s = d2.items[0].statistics;
-      document.getElementById('subs2').textContent = Number(s.subscriberCount).toLocaleString('ar-EG');
-      document.getElementById('views2').textContent = Number(s.viewCount).toLocaleString('ar-EG');
-      document.getElementById('videos2').textContent = s.videoCount;
-    }
-  }catch(e){ console.error(e); }
-}
-function renderScenarios(){
-  const c = document.getElementById('scenarios');
-  c.innerHTML = scenarios.map((t,i)=>`
-    <div class="border border-white/10 bg-white/[0.02] p-5 hover:bg-white/[0.05] transition">
-      <div class="flex justify-between"><span class="text-[9px] text-white/30 mono">سيناريو_0${i+1}</span><span class="text-[9px] border border-white/10 px-2 py-0.5">نشط</span></div>
-      <p class="mt-4 font-bold text-sm">${t}</p>
-      <div class="mt-6 flex gap-2">
-        <button class="flex-1 bg-white/10 hover:bg-red-500 py-2 text-[10px]">صوت للأحمر</button>
-        <button class="flex-1 bg-white/10 hover:bg-blue-500 py-2 text-[10px]">صوت للأزرق</button>
-      </div>
-    </div>
-  `).join('');
-}
-document.getElementById('loginBtn').onclick = ()=> document.getElementById('modal').classList.remove('hidden');
-document.getElementById('closeModal').onclick = ()=> document.getElementById('modal').classList.add('hidden');
-document.getElementById('submitCode').onclick = ()=>{
-  let code = document.getElementById('codeInput').value.trim();
-  if(code==='SHADOW_RED' || code==='WAEL_BLUE'){
-    document.getElementById('adminPanel').classList.remove('hidden');
-    document.getElementById('apiKeyInput').value = YT_KEY;
-  } else { alert('رمز خاطئ'); }
-};
-document.getElementById('saveKey').onclick = ()=>{
-  YT_KEY = document.getElementById('apiKeyInput').value.trim();
-  localStorage.setItem('yt_key', YT_KEY);
-  updateApiStatus(); fetchStats(); alert('تم الحفظ');
-};
-document.getElementById('addScenario').onclick = ()=>{
-  let t = document.getElementById('scenarioInput').value.trim();
-  if(t){ scenarios.push(t); localStorage.setItem('scenarios', JSON.stringify(scenarios)); renderScenarios(); document.getElementById('scenarioInput').value=''; }
-};
-updateApiStatus(); renderScenarios(); fetchStats(); setInterval(fetchStats, 30000);
-</script>
+        <!-- 3. السيناريوهات -->
+        <section id="scenarios-tab" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">أرشيف السيناريوهات</h2>
+            <div id="scenarios-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <!-- 4. المهام المشتركة -->
+        <section id="todos-tab" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">قائمة المهام المشتركة</h2>
+            <div id="todos-grid" class="space-y-3"></div>
+        </section>
+
+        <!-- 5. الروابط والأكواد -->
+        <section id="links-tab" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">مركز الروابط السريعة وأكواد البوت</h2>
+            <div id="links-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <!-- 6. الأفكار -->
+        <section id="ideas-tab" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">مفكرة الأفكار السريعة</h2>
+            <div id="ideas-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </section>
+
+        <!-- 7. سجل التحديثات -->
+        <section id="changelog-tab" class="tab-content hidden space-y-6">
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">سجل التحديثات والتعديلات</h2>
+            <div id="changelog-grid" class="space-y-3"></div>
+        </section>
+
+        <!-- 8. لوحة وائل -->
+        <section id="wael-tab" class="tab-content hidden space-y-6">
+            <div class="bg-[#121216] p-6 rounded-xl border border-purple-500/40 shadow-2xl space-y-6">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                    <h2 class="text-xl font-bold text-purple-400">لوحة تحكم وائل</h2>
+                    <button onclick="switchTab('home')" class="bg-red-600 hover:bg-red-700 text-xs px-3 py-1.5 rounded-lg font-bold transition">خروج</button>
+                </div>
+                <!-- إضافة جدول -->
+                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
+                    <h3 class="font-bold text-purple-300 text-sm">إضافة موعد للجدول</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                        <input type="text" id="wael-sched-day" placeholder="اليوم" class="bg-black/50 border border-gray-700 p-2 rounded text-white text-xs focus:border-purple-500 outline-none">
+                        <input type="text" id="wael-sched-time" placeholder="الوقت" class="bg-black/50 border border-gray-700 p-2 rounded text-white text-xs focus:border-purple-500 outline-none">
+                        <input type="text" id="wael-sched-desc" placeholder="الفعالية" class="bg-black/50 border border-gray-700 p-2 rounded text-white text-xs focus:border-purple-500 outline-none">
+                    </div>
+                    <button onclick="addScheduleItem('wael')" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs transition">إضافة للجدول</button>
+                </div>
+                <!-- إضافة مهمة -->
+                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
+                    <h3 class="font-bold text-purple-300 text-sm">إضافة مهمة جديدة</h3>
+                    <input type="text" id="wael-todo-text" placeholder="نص المهمة..." class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-purple-500 outline-none">
+                    <button onclick="addTodoItem('wael')" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs transition">إضافة مهمة</button>
+                </div>
+                <!-- إضافة رابط -->
+                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
+                    <h3 class="font-bold text-purple-300 text-sm">إضافة رابط أو كود مهم</h3>
+                    <input type="text" id="wael-link-title" placeholder="عنوان الرابط/الكود" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-purple-500 outline-none">
+                    <input type="text" id="wael-link-url" placeholder="الرابط أو النص (الكود)" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-purple-500 outline-none">
+                    <button onclick="addLinkItem('wael')" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs transition">حفظ الرابط</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. لوحتك الخاصة -->
+        <section id="admin-tab" class="tab-content hidden space-y-6">
+            <div class="bg-[#121216] p-6 rounded-xl border border-red-500/40 shadow-2xl space-y-6">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                    <h2 class="text-xl font-bold text-red-400">لوحتك الخاصة (الإدارة العليا)</h2>
+                    <button onclick="switchTab('home')" class="bg-red-600 hover:bg-red-700 text-xs px-3 py-1.5 rounded-lg font-bold transition">خروج</button>
+                </div>
+                <!-- إضافة سيناريو -->
+                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
+                    <h3 class="font-bold text-red-300 text-sm">إضافة سيناريو جديد</h3>
+                    <input type="text" id="admin-scen-title" placeholder="عنوان السيناريو" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-red-500 outline-none">
+                    <textarea id="admin-scen-desc" placeholder="التفاصيل..." class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs h-16 focus:border-red-500 outline-none"></textarea>
+                    <button onclick="addScenarioItem('admin')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded text-xs transition">حفظ السيناريو</button>
+                </div>
+                <!-- إضافة فكرة -->
+                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
+                    <h3 class="font-bold text-red-300 text-sm">تدوين فكرة سريعة</h3>
+                    <input type="text" id="admin-idea-title" placeholder="عنوان الفكرة" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-red-500 outline-none">
+                    <textarea id="admin-idea-desc" placeholder="تفاصيل الفكرة..." class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs h-16 focus:border-red-500 outline-none"></textarea>
+                    <button onclick="addIdeaItem('admin')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded text-xs transition">حفظ الفكرة</button>
+                </div>
+                <!-- إضافة تحديث -->
+                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
+                    <h3 class="font-bold text-red-300 text-sm">تسجيل تحديث أو تعديل جديد</h3>
+                    <input type="text" id="admin-changelog-text" placeholder="ما الذي تم تعديله؟" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-red-500 outline-none">
+                    <button onclick="addChangelogItem('admin')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded text-xs transition">نشر التحديث</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#121216] border-t border-purple-900/20 text-center py-4 text-gray-500 text-xs mt-8">
+        © 2026 لوحة العمل المشتركة - خاصة بي ووبوائل فقط
+    </footer>
+
+    <script>
+        // جلب آخر 3 فيديوهات من يوتيوب
+        async function fetchYouTubeVideos() {
+            const container = document.getElementById('youtube-videos');
+            const channelId = 'YOUR_YOUTUBE_CHANNEL_ID'; 
+
+            if(channelId === 'YOUR_YOUTUBE_CHANNEL_ID') {
+                container.innerHTML = `<p class="text-yellow-400 text-xs col-span-3">الرجاء وضع معرف قناتك الحقيقي (Channel ID) في الكود.</p>`;
+                return;
+            }
+
+            try {
+                let res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3D${channelId}`);
+                let data = await res.json();
+                
+                if (data && data.items) {
+                    container.innerHTML = '';
+                    let latestVideos = data.items.slice(0, 3);
+                    latestVideos.forEach(video => {
+                        container.innerHTML += `
+                            <a href="${video.link}" target="_blank" class="bg-black/40 rounded-lg overflow-hidden border border-gray-800 hover:border-red-500 transition block group shadow-lg">
+                                <div class="aspect-video bg-black overflow-hidden">
+                                    <img src="${video.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" alt="Video">
+                                </div>
+                                <div class="p-3 space-y-1">
+                                    <h3 class="font-bold text-xs line-clamp-2 text-gray-200 group-hover:text-red-400 transition">${video.title}</h3>
+                                    <p class="text-gray-500 text-[10px]">${new Date(video.pubDate).toLocaleDateString('ar-SA')}</p>
+                                </div>
+                            </a>
+                        `;
+                    });
+                }
+            } catch (e) {
+                container.innerHTML = `<p class="text-red-400 text-xs col-span-3">تعذر جلب الفيديوهات حالياً.</p>`;
+            }
+        }
+
+        // التهيئة والتخزين المحلي
+        if (!localStorage.getItem('wael_schedule')) {
+            localStorage.setItem('wael_schedule', JSON.stringify([{ day: "السبت", time: "8 م", desc: "بث مشترك" }]));
+        }
+        if (!localStorage.getItem('wael_scenarios')) {
+            localStorage.setItem('wael_scenarios', JSON.stringify([{ title: "سيناريو السطو", desc: "التفاصيل هنا..." }]));
+        }
+        if (!localStorage.getItem('wael_todos')) {
+            localStorage.setItem('wael_todos', JSON.stringify([{ text: "تحديث بوت ديسكورد", done: false }]));
+        }
+        if (!localStorage.getItem('wael_links')) {
+            localStorage.setItem('wael_links', JSON.stringify([{ title: "لوحة الاستضافة", url: "https://bot-hosting.net" }]));
+        }
+        if (!localStorage.getItem('wael_ideas')) {
+            localStorage.setItem('wael_ideas', JSON.stringify([{ title: "فكرة مقطع", desc: "تحدي المليون دولار" }]));
+        }
+        if (!localStorage.getItem('wael_changelog')) {
+            localStorage.setItem('wael_changelog', JSON.stringify([{ text: "تم تحديث ألوان الموقع بنجاح", date: "اليوم" }]));
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tabId + '-tab').classList.remove('hidden');
+            if(tabId === 'schedule') renderSchedule();
+            if(tabId === 'scenarios') renderScenarios();
+            if(tabId === 'todos') renderTodos();
+            if(tabId === 'links') renderLinks();
+            if(tabId === 'ideas') renderIdeas();
+            if(tabId === 'changelog') renderChangelog();
+        }
+
+        function checkWaelAccess() {
+            let pass = prompt("رمز وائل:");
+            if (pass === "wael123") switchTab('wael');
+            else if (pass !== null) alert("خطأ بالرمز!");
+        }
+
+        function checkMyAccess() {
+            let pass = prompt("رمزك الخاص:");
+            if (pass === "admin123") switchTab('admin');
+            else if (pass !== null) alert("خطأ بالرمز!");
+        }
+
+        // عرض العناصر
+        function renderSchedule() {
+            let schedule = JSON.parse(localStorage.getItem('wael_schedule')) || [];
+            let tbody = document.getElementById('schedule-table-body');
+            tbody.innerHTML = '';
+            schedule.forEach((item, index) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-purple-950/20 transition">
+                        <td class="p-3 font-semibold">${item.day}</td>
+                        <td class="p-3 text-purple-300">${item.time}</td>
+                        <td class="p-3 flex justify-between items-center">
+                            <span>${item.desc}</span>
+                            <button onclick="deleteItem('wael_schedule', ${index}, renderSchedule)" class="text-red-400 hover:text-red-500 text-xs"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function renderScenarios() {
+            let list = JSON.parse(localStorage.getItem('wael_scenarios')) || [];
+            let grid = document.getElementById('scenarios-grid');
+            grid.innerHTML = '';
+            list.forEach((item, index) => {
+                grid.innerHTML += `
+                    <div class="bg-[#121216] p-4 rounded-xl border border-purple-500/20 shadow-xl space-y-2 relative">
+                        <h3 class="text-base font-bold text-purple-300">${item.title}</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">${item.desc}</p>
+                        <button onclick="deleteItem('wael_scenarios', ${index}, renderScenarios)" class="absolute top-3 left-3 text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        function renderTodos() {
+            let list = JSON.parse(localStorage.getItem('wael_todos')) || [];
+            let grid = document.getElementById('todos-grid');
+            grid.innerHTML = '';
+            list.forEach((item, index) => {
+                grid.innerHTML += `
+                    <div class="bg-[#121216] p-3 rounded-lg border border-purple-500/20 flex justify-between items-center text-sm">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleTodo(${index})" class="w-4 h-4 accent-purple-600">
+                            <span class="${item.done ? 'line-through text-gray-500' : 'text-gray-200'}">${item.text}</span>
+                        </div>
+                        <button onclick="deleteItem('wael_todos', ${index}, renderTodos)" class="text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        function renderLinks() {
+            let list = JSON.parse(localStorage.getItem('wael_links')) || [];
+            let grid = document.getElementById('links-grid');
+            grid.innerHTML = '';
+            list.forEach((item, index) => {
+                grid.innerHTML += `
+                    <div class="bg-[#121216] p-4 rounded-xl border border-purple-500/20 flex justify-between items-center shadow-lg">
+                        <div>
+                            <h4 class="font-bold text-purple-300 text-sm">${item.title}</h4>
+                            <a href="${item.url}" target="_blank" class="text-blue-400 text-xs underline truncate max-w-xs block">${item.url}</a>
+                        </div>
+                        <button onclick="deleteItem('wael_links', ${index}, renderLinks)" class="text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        function renderIdeas() {
+            let list = JSON.parse(localStorage.getItem('wael_ideas')) || [];
+            let grid = document.getElementById('ideas-grid');
+            grid.innerHTML = '';
+            list.forEach((item, index) => {
+                grid.innerHTML += `
+                    <div class="bg-[#121216] p-4 rounded-xl border border-red-500/20 space-y-1 relative shadow-lg">
+                        <h4 class="font-bold text-red-300 text-sm">${item.title}</h4>
+                        <p class="text-gray-400 text-xs">${item.desc}</p>
+                        <button onclick="deleteItem('wael_ideas', ${index}, renderIdeas)" class="absolute top-3 left-3 text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        function renderChangelog() {
+            let list = JSON.parse(localStorage.getItem('wael_changelog')) || [];
+            let grid = document.getElementById('changelog-grid');
+            grid.innerHTML = '';
+            list.forEach((item, index) => {
+                grid.innerHTML += `
+                    <div class="bg-[#121216] p-3 rounded-lg border border-purple-500/20 flex justify-between items-center text-xs">
+                        <span class="text-gray-300"><i class="fa-solid fa-circle-check text-purple-400 ml-2"></i> ${item.text}</span>
+                        <button onclick="deleteItem('wael_changelog', ${index}, renderChangelog)" class="text-red-400"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteItem(key, index, renderFunc) {
+            let data = JSON.parse(localStorage.getItem(key)) || [];
+            data.splice(index, 1);
+            localStorage.setItem(key, JSON.stringify(data));
+            renderFunc();
+        }
+
+        function toggleTodo(index) {
+            let data = JSON.parse(localStorage.getItem('wael_todos')) || [];
+            data[index].done = !data[index].done;
+            localStorage.setItem('wael_todos', JSON.stringify(data));
+            renderTodos();
+        }
+
+        function addScheduleItem() {
+            let day = document.getElementById('wael-sched-day').value;
+            let time = document.getElementById('wael-sched-time').value;
+            let desc = document.getElementById('wael-sched-desc').value;
+            if(!day || !time || !desc) return alert("املأ الحقول!");
+            let data = JSON.parse(localStorage.getItem('wael_schedule')) || [];
+            data.push({ day, time, desc });
+            localStorage.setItem('wael_schedule', JSON.stringify(data));
+            alert("تمت الإضافة!");
+            document.getElementById('wael-sched-day').value = '';
+            document.getElementById('wael-sched-time').value = '';
+            document.getElementById('wael-sched-desc').value = '';
+        }
+
+        function addTodoItem() {
+            let text = document.getElementById('wael-todo-text').value;
+            if(!text) return alert("اكتب المهمة!");
+            let data = JSON.parse(localStorage.getItem('wael_todos')) || [];
+            data.push({ text, done: false });
+            localStorage.setItem('wael_todos', JSON.stringify(data));
+            alert("تمت الإضافة!");
+            document.getElementById('wael-todo-text').value = '';
+        }
+
+        function addLinkItem() {
+            let title = document.getElementById('wael-link-title').value;
+            let url = document.getElementById('wael-link-url').value;
+            if(!title || !url) return alert("املأ الحقول!");
+            let data = JSON.parse(localStorage.getItem('wael_links')) || [];
+            data.push({ title, url });
+            localStorage.setItem('wael_links', JSON.stringify(data));
+            alert("تم الحفظ!");
+            document.getElementById('wael-link-title').value = '';
+            document.getElementById('wael-link-url').value = '';
+        }
+
+        function addScenarioItem() {
+            let title = document.getElementById('admin-scen-title').value;
+            let desc = document.getElementById('admin-scen-desc').value;
+            if(!title || !desc) return alert("املأ الحقول!");
+            let data = JSON.parse(localStorage.getItem('wael_scenarios')) || [];
+            data.push({ title, desc });
+            localStorage.setItem('wael_scenarios', JSON.stringify(data));
+            alert("تم الحفظ!");
+            document.getElementById('admin-scen-title').value = '';
+            document.getElementById('admin-scen-desc').value = '';
+        }
+
+        function addIdeaItem() {
+            let title = document.getElementById('admin-idea-title').value;
+            let desc = document.getElementById('admin-idea-desc').value;
+            if(!title || !desc) return alert("املأ الحقول!");
+            let data = JSON.parse(localStorage.getItem('wael_ideas')) || .json || [];
+            data.push({ title, desc });
+            localStorage.setItem('wael_ideas', JSON.stringify(data));
+            alert("تم حفظ الفكرة!");
+            document.getElementById('admin-idea-title').value = '';
+            document.getElementById('admin-idea-desc').value = '';
+        }
+
+        function addChangelogItem() {
+            let text = document.getElementById('admin-changelog-text').value;
+            if(!text) return alert("اكتب تفاصيل التحديث!");
+            let data = JSON.parse(localStorage.getItem('wael_changelog')) || [];
+            data.push({ text });
+            localStorage.setItem('wael_changelog', JSON.stringify(data));
+            alert("تم نشر التحديث!");
+            document.getElementById('admin-changelog-text').value = '';
+        }
+
+        fetchYouTubeVideos();
+    </script>
 </body>
 </html>
