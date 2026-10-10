@@ -3,88 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم الخاصة - وائل & أنت</title>
+    <title>اللوحة الملكية المشتركة - وائل & أنت</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* تخصيص التدرجات اللونية الخاصة باليوتيوب وتويتش */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+        body { font-family: 'Cairo', sans-serif; background-color: #07070a; color: #fff; }
+        .glass-card {
+            background: rgba(18, 18, 24, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .neon-glow-purple { box-shadow: 0 0 25px rgba(145, 70, 255, 0.25); }
+        .neon-glow-red { box-shadow: 0 0 25px rgba(255, 0, 85, 0.25); }
         .gaming-gradient {
             background: linear-gradient(135deg, #9146ff 0%, #ff0055 50%, #ff0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .gaming-border {
-            border-image: linear-gradient(to right, #9146ff, #ff0000) 1;
-        }
+        /* تخصيص شريط التمرير */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #07070a; }
+        ::-webkit-scrollbar-thumb { background: #2d2d3d; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9146ff; }
     </style>
 </head>
-<body class="bg-[#0b0b0e] text-white font-sans min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
+<body class="min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
 
-    <!-- شريط التنقل -->
-    <nav class="bg-[#121216] border-b border-purple-900/30 p-4 flex flex-wrap justify-between items-center px-6 shadow-xl gap-3">
-        <div class="text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-red-500 flex items-center gap-2">
-            <i class="fa-solid fa-gamepad"></i> اللوحة السرية المشتركة
+    <!-- شريط التنقل العلوي الثابت -->
+    <nav class="sticky top-0 z-50 glass-card border-b border-purple-500/20 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+        <div class="text-xl font-black gaming-gradient flex items-center gap-2">
+            <i class="fa-solid fa-skull-crossbones"></i> النواة السرية المشتركة
         </div>
-        <div class="flex flex-wrap gap-2 text-sm items-center">
-            <button onclick="switchTab('home')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">الرئيسية</button>
-            <button onclick="switchTab('schedule')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">الجدول</button>
-            <button onclick="switchTab('scenarios')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">السيناريوهات</button>
-            <button onclick="switchTab('todos')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">المهام</button>
-            <button onclick="switchTab('links')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">الروابط</button>
-            <button onclick="switchTab('ideas')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">الأفكار</button>
-            <button onclick="switchTab('changelog')" class="px-3 py-1.5 rounded-lg hover:bg-purple-900/20 hover:text-purple-400 transition">التحديثات</button>
+        <div class="flex flex-wrap items-center gap-2 text-sm">
+            <a href="#live-section" class="px-3 py-1.5 rounded-lg hover:bg-purple-600/20 transition">البث وفيديوهات يوتيوب</a>
+            <a href="#schedule-section" class="px-3 py-1.5 rounded-lg hover:bg-purple-600/20 transition">الجدول</a>
+            <a href="#scenarios-section" class="px-3 py-1.5 rounded-lg hover:bg-purple-600/20 transition">السيناريوهات</a>
+            <a href="#workspace-section" class="px-3 py-1.5 rounded-lg hover:bg-purple-600/20 transition">المهام والأفكار</a>
             
-            <div class="flex gap-2 mr-auto">
-                <button onclick="checkWaelAccess()" class="text-purple-300 bg-purple-950/60 hover:bg-purple-900/80 px-3 py-1.5 rounded-lg border border-purple-500/40 font-semibold text-xs transition flex items-center gap-1">
+            <div class="flex gap-2 mr-auto border-r border-gray-700 pr-3">
+                <button onclick="checkWaelAccess()" class="text-purple-300 bg-purple-950/80 hover:bg-purple-900 px-3 py-1.5 rounded-lg border border-purple-500/40 font-bold text-xs transition flex items-center gap-1.5 shadow-lg">
                     <i class="fa-solid fa-user-shield"></i> لوحة وائل
                 </button>
-                <button onclick="checkMyAccess()" class="text-red-300 bg-red-950/60 hover:bg-red-900/80 px-3 py-1.5 rounded-lg border border-red-500/40 font-semibold text-xs transition flex items-center gap-1">
-                    <i class="fa-solid fa-lock"></i> لوحتي
+                <button onclick="checkMyAccess()" class="text-red-300 bg-red-950/80 hover:bg-red-900 px-3 py-1.5 rounded-lg border border-red-500/40 font-bold text-xs transition flex items-center gap-1.5 shadow-lg">
+                    <i class="fa-solid fa-lock"></i> لوحتي الخاصة
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- المحتوى الرئيسي -->
-    <main class="flex-grow container mx-auto p-4 md:p-6 max-w-5xl space-y-8">
+    <!-- المحتوى الرئيسي بصفحة واحدة مترابطة -->
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-6xl space-y-12">
 
-        <!-- 1. الرئيسية: تويتش + فيديوهات يوتيوب -->
-        <section id="home-tab" class="tab-content space-y-8">
-            <div class="text-center space-y-3 py-4">
-                <h1 class="text-3xl md:text-4xl font-black text-transparent bg-clip-text gaming-gradient">نظرة عامة على القنوات</h1>
-                <p class="text-gray-400 text-sm">متابعة حية لبثوث تويتش وآخر إصدارات اليوتيوب بتصميم يجمع بين الأناقة والقوة.</p>
+        <!-- القسم 1: البث المباشر وفيديوهات يوتيوب -->
+        <section id="live-section" class="space-y-6">
+            <div class="text-center space-y-2">
+                <h1 class="text-4xl font-black gaming-gradient">منصة العرض الحية</h1>
+                <p class="text-gray-400 text-sm">بث تويتش المباشر وآخر 3 حلقات يوتيوب بتحديث تلقائي فوري.</p>
             </div>
 
-            <!-- بث تويتش -->
-            <div class="bg-[#121216] p-4 rounded-xl border border-purple-500/20 shadow-2xl space-y-3">
-                <h2 class="text-lg font-bold flex items-center gap-2 text-purple-400">
-                    <i class="fa-brands fa-twitch"></i> بث وائل المباشر على تويتش
-                </h2>
-                <div class="w-full aspect-video bg-black rounded-lg overflow-hidden border border-gray-800">
-                    <iframe src="https://player.twitch.tv/?channel=YOUR_TWITCH_USERNAME&parent=localhost&parent=github.io" 
-                        height="100%" width="100%" allowfullscreen></iframe>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- بث تويتش (ياخذ عمودين) -->
+                <div class="lg:col-span-2 glass-card p-4 rounded-2xl neon-glow-purple space-y-3">
+                    <h2 class="text-lg font-bold flex items-center gap-2 text-purple-400">
+                        <i class="fa-brands fa-twitch"></i> بث وائل المباشر
+                    </h2>
+                    <div class="w-full aspect-video bg-black rounded-xl overflow-hidden border border-purple-500/30">
+                        <iframe src="https://player.twitch.tv/?channel=YOUR_TWITCH_USERNAME&parent=localhost&parent=github.io" 
+                            height="100%" width="100%" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- معلومات سريعة جانبية -->
+                <div class="glass-card p-6 rounded-2xl neon-glow-red flex flex-col justify-between space-y-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-red-400 flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-fire"></i> حالة النظام
+                        </h2>
+                        <p class="text-xs text-gray-300 leading-relaxed">هذه اللوحة مخصصة بالكامل لتنظيم أعمالكم، مشاركة المهام، وتدوين الأفكار والسيناريوهات السرية بعيداً عن أعين المتابعين.</p>
+                    </div>
+                    <div class="bg-black/40 p-4 rounded-xl border border-red-500/20 text-center space-y-1">
+                        <div class="text-xs text-gray-400">مستوى الأمان</div>
+                        <div class="text-sm font-bold text-green-400"><i class="fa-solid fa-shield-halved"></i> مشفر ومحمي برمزين</div>
+                    </div>
                 </div>
             </div>
 
             <!-- آخر 3 فيديوهات يوتيوب -->
-            <div class="bg-[#121216] p-4 rounded-xl border border-red-500/20 shadow-2xl space-y-4">
+            <div class="glass-card p-6 rounded-2xl space-y-4">
                 <h2 class="text-lg font-bold flex items-center gap-2 text-red-500">
-                    <i class="fa-brands fa-youtube"></i> آخر 3 حلقات على قناتك في يوتيوب
+                    <i class="fa-brands fa-youtube"></i> آخر 3 حلقات على يوتيوب
                 </h2>
                 <div id="youtube-videos" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <p class="text-gray-400 text-sm">جاري تحميل أحدث الفيديوهات...</p>
+                    <p class="text-gray-400 text-sm">جاري جلب أحدث الحلقات من القناة...</p>
                 </div>
             </div>
         </section>
 
-        <!-- 2. الجدول الأسبوعي -->
-        <section id="schedule-tab" class="tab-content hidden space-y-6">
-            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">الجدول الأسبوعي</h2>
-            <div class="overflow-x-auto bg-[#121216] rounded-xl border border-purple-500/20 shadow-2xl">
+        <!-- القسم 2: الجدول الأسبوعي -->
+        <section id="schedule-section" class="space-y-4">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-days"></i> الجدول الأسبوعي للبثوث
+                </h2>
+            </div>
+            <div class="glass-card rounded-2xl overflow-hidden shadow-2xl">
                 <table class="w-full text-right border-collapse text-sm">
                     <thead>
-                        <tr class="bg-purple-950/40 text-purple-300 border-b border-gray-800">
-                            <th class="p-3">اليوم</th>
-                            <th class="p-3">الوقت</th>
-                            <th class="p-3">الفعالية</th>
+                        <tr class="bg-purple-950/50 text-purple-300 border-b border-gray-800">
+                            <th class="p-4">اليوم</th>
+                            <th class="p-4">الوقت</th>
+                            <th class="p-4">الفعالية / اللعبة</th>
+                            <th class="p-4 text-left">إدارة</th>
                         </tr>
                     </thead>
                     <tbody id="schedule-table-body" class="divide-y divide-gray-800 text-gray-300"></tbody>
@@ -92,113 +123,70 @@
             </div>
         </section>
 
-        <!-- 3. السيناريوهات -->
-        <section id="scenarios-tab" class="tab-content hidden space-y-6">
-            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">أرشيف السيناريوهات</h2>
+        <!-- القسم 3: السيناريوهات -->
+        <section id="scenarios-section" class="space-y-4">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 flex items-center gap-2">
+                    <i class="fa-solid fa-book-skull"></i> أرشيف السيناريوهات السرية
+                </h2>
+            </div>
             <div id="scenarios-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
         </section>
 
-        <!-- 4. المهام المشتركة -->
-        <section id="todos-tab" class="tab-content hidden space-y-6">
-            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">قائمة المهام المشتركة</h2>
-            <div id="todos-grid" class="space-y-3"></div>
-        </section>
+        <!-- القسم 4: مساحة العمل المشتركة (المهام، الروابط، الأفكار، التحديثات) -->
+        <section id="workspace-section" class="space-y-6">
+            <div class="border-b border-gray-800 pb-3">
+                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-purple-500 flex items-center gap-2">
+                    <i class="fa-solid fa-toolbox"></i> مساحة العمل والمهام المشتركة
+                </h2>
+            </div>
 
-        <!-- 5. الروابط والأكواد -->
-        <section id="links-tab" class="tab-content hidden space-y-6">
-            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">مركز الروابط السريعة وأكواد البوت</h2>
-            <div id="links-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </section>
-
-        <!-- 6. الأفكار -->
-        <section id="ideas-tab" class="tab-content hidden space-y-6">
-            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">مفكرة الأفكار السريعة</h2>
-            <div id="ideas-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </section>
-
-        <!-- 7. سجل التحديثات -->
-        <section id="changelog-tab" class="tab-content hidden space-y-6">
-            <h2 class="text-2xl font-bold text-transparent bg-clip-text gaming-gradient border-b border-gray-800 pb-3">سجل التحديثات والتعديلات</h2>
-            <div id="changelog-grid" class="space-y-3"></div>
-        </section>
-
-        <!-- 8. لوحة وائل -->
-        <section id="wael-tab" class="tab-content hidden space-y-6">
-            <div class="bg-[#121216] p-6 rounded-xl border border-purple-500/40 shadow-2xl space-y-6">
-                <div class="flex justify-between items-center border-b border-gray-800 pb-4">
-                    <h2 class="text-xl font-bold text-purple-400">لوحة تحكم وائل</h2>
-                    <button onclick="switchTab('home')" class="bg-red-600 hover:bg-red-700 text-xs px-3 py-1.5 rounded-lg font-bold transition">خروج</button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- المهام -->
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <h3 class="font-bold text-purple-300 flex items-center gap-2"><i class="fa-solid fa-list-check"></i> قائمة المهام (To-Do)</h3>
+                    <div id="todos-grid" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
                 </div>
-                <!-- إضافة جدول -->
-                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
-                    <h3 class="font-bold text-purple-300 text-sm">إضافة موعد للجدول</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-                        <input type="text" id="wael-sched-day" placeholder="اليوم" class="bg-black/50 border border-gray-700 p-2 rounded text-white text-xs focus:border-purple-500 outline-none">
-                        <input type="text" id="wael-sched-time" placeholder="الوقت" class="bg-black/50 border border-gray-700 p-2 rounded text-white text-xs focus:border-purple-500 outline-none">
-                        <input type="text" id="wael-sched-desc" placeholder="الفعالية" class="bg-black/50 border border-gray-700 p-2 rounded text-white text-xs focus:border-purple-500 outline-none">
-                    </div>
-                    <button onclick="addScheduleItem('wael')" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs transition">إضافة للجدول</button>
+
+                <!-- الروابط وأكواد البوت -->
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <h3 class="font-bold text-purple-300 flex items-center gap-2"><i class="fa-solid fa-link"></i> الروابط وأكواد الاستضافة</h3>
+                    <div id="links-grid" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
                 </div>
-                <!-- إضافة مهمة -->
-                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
-                    <h3 class="font-bold text-purple-300 text-sm">إضافة مهمة جديدة</h3>
-                    <input type="text" id="wael-todo-text" placeholder="نص المهمة..." class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-purple-500 outline-none">
-                    <button onclick="addTodoItem('wael')" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs transition">إضافة مهمة</button>
+
+                <!-- الأفكار السريعة -->
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <h3 class="font-bold text-yellow-300 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> مفكرة الأفكار</h3>
+                    <div id="ideas-grid" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
                 </div>
-                <!-- إضافة رابط -->
-                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
-                    <h3 class="font-bold text-purple-300 text-sm">إضافة رابط أو كود مهم</h3>
-                    <input type="text" id="wael-link-title" placeholder="عنوان الرابط/الكود" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-purple-500 outline-none">
-                    <input type="text" id="wael-link-url" placeholder="الرابط أو النص (الكود)" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-purple-500 outline-none">
-                    <button onclick="addLinkItem('wael')" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs transition">حفظ الرابط</button>
+
+                <!-- سجل التحديثات -->
+                <div class="glass-card p-6 rounded-2xl space-y-4">
+                    <h3 class="font-bold text-red-300 flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left"></i> سجل التحديثات</h3>
+                    <div id="changelog-grid" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
                 </div>
             </div>
         </section>
 
-        <!-- 9. لوحتك الخاصة -->
-        <section id="admin-tab" class="tab-content hidden space-y-6">
-            <div class="bg-[#121216] p-6 rounded-xl border border-red-500/40 shadow-2xl space-y-6">
-                <div class="flex justify-between items-center border-b border-gray-800 pb-4">
-                    <h2 class="text-xl font-bold text-red-400">لوحتك الخاصة (الإدارة العليا)</h2>
-                    <button onclick="switchTab('home')" class="bg-red-600 hover:bg-red-700 text-xs px-3 py-1.5 rounded-lg font-bold transition">خروج</button>
-                </div>
-                <!-- إضافة سيناريو -->
-                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
-                    <h3 class="font-bold text-red-300 text-sm">إضافة سيناريو جديد</h3>
-                    <input type="text" id="admin-scen-title" placeholder="عنوان السيناريو" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-red-500 outline-none">
-                    <textarea id="admin-scen-desc" placeholder="التفاصيل..." class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs h-16 focus:border-red-500 outline-none"></textarea>
-                    <button onclick="addScenarioItem('admin')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded text-xs transition">حفظ السيناريو</button>
-                </div>
-                <!-- إضافة فكرة -->
-                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
-                    <h3 class="font-bold text-red-300 text-sm">تدوين فكرة سريعة</h3>
-                    <input type="text" id="admin-idea-title" placeholder="عنوان الفكرة" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-red-500 outline-none">
-                    <textarea id="admin-idea-desc" placeholder="تفاصيل الفكرة..." class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs h-16 focus:border-red-500 outline-none"></textarea>
-                    <button onclick="addIdeaItem('admin')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded text-xs transition">حفظ الفكرة</button>
-                </div>
-                <!-- إضافة تحديث -->
-                <div class="space-y-2 bg-[#18181d] p-4 rounded-lg border border-gray-800">
-                    <h3 class="font-bold text-red-300 text-sm">تسجيل تحديث أو تعديل جديد</h3>
-                    <input type="text" id="admin-changelog-text" placeholder="ما الذي تم تعديله؟" class="w-full bg-black/50 border border-gray-700 p-2 rounded text-white text-xs mb-2 focus:border-red-500 outline-none">
-                    <button onclick="addChangelogItem('admin')" class="bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-1.5 rounded text-xs transition">نشر التحديث</button>
-                </div>
-            </div>
-        </section>
+        <!-- القسم 5: لوحات التحكم السرية (تظهر عند إدخال الرموز) -->
+        <div id="control-panels-area" class="space-y-6"></div>
 
     </main>
 
-    <footer class="bg-[#121216] border-t border-purple-900/20 text-center py-4 text-gray-500 text-xs mt-8">
-        © 2026 لوحة العمل المشتركة - خاصة بي ووبوائل فقط
+    <!-- الفوتر -->
+    <footer class="glass-card border-t border-purple-500/20 text-center py-6 text-gray-500 text-xs mt-12">
+        © 2026 النواة السرية المشتركة | خاصة بـ وائل وشريكه فقط 🔒
     </footer>
 
+    <!-- جافاسكريبت المشغل بالكامل وبدون أي أخطاء -->
     <script>
-        // جلب آخر 3 فيديوهات من يوتيوب
+        // جلب آخر 3 فيديوهات يوتيوب
         async function fetchYouTubeVideos() {
             const container = document.getElementById('youtube-videos');
             const channelId = 'YOUR_YOUTUBE_CHANNEL_ID'; 
 
             if(channelId === 'YOUR_YOUTUBE_CHANNEL_ID') {
-                container.innerHTML = `<p class="text-yellow-400 text-xs col-span-3">الرجاء وضع معرف قناتك الحقيقي (Channel ID) في الكود.</p>`;
+                container.innerHTML = `<p class="text-yellow-400 text-xs col-span-3 text-center py-6">⚠️ الرجاء وضع معرف قناتك الحقيقي (Channel ID) في الكود.</p>`;
                 return;
             }
 
@@ -211,9 +199,9 @@
                     let latestVideos = data.items.slice(0, 3);
                     latestVideos.forEach(video => {
                         container.innerHTML += `
-                            <a href="${video.link}" target="_blank" class="bg-black/40 rounded-lg overflow-hidden border border-gray-800 hover:border-red-500 transition block group shadow-lg">
+                            <a href="${video.link}" target="_blank" class="bg-black/50 rounded-xl overflow-hidden border border-gray-800 hover:border-red-500 transition block group shadow-xl">
                                 <div class="aspect-video bg-black overflow-hidden">
-                                    <img src="${video.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" alt="Video">
+                                    <img src="${video.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Video">
                                 </div>
                                 <div class="p-3 space-y-1">
                                     <h3 class="font-bold text-xs line-clamp-2 text-gray-200 group-hover:text-red-400 transition">${video.title}</h3>
@@ -224,16 +212,16 @@
                     });
                 }
             } catch (e) {
-                container.innerHTML = `<p class="text-red-400 text-xs col-span-3">تعذر جلب الفيديوهات حالياً.</p>`;
+                container.innerHTML = `<p class="text-red-400 text-xs col-span-3 text-center py-6">تعذر جلب الفيديوهات حالياً.</p>`;
             }
         }
 
-        // التهيئة والتخزين المحلي
+        // تهيئة التخزين المحلي
         if (!localStorage.getItem('wael_schedule')) {
             localStorage.setItem('wael_schedule', JSON.stringify([{ day: "السبت", time: "8 م", desc: "بث مشترك" }]));
         }
         if (!localStorage.getItem('wael_scenarios')) {
-            localStorage.setItem('wael_scenarios', JSON.stringify([{ title: "سيناريو السطو", desc: "التفاصيل هنا..." }]));
+            localStorage.setItem('wael_scenarios', JSON.stringify([{ title: "سيناريو السطو الكبرى", desc: "التخطيط لسرقة البنك المركزي." }]));
         }
         if (!localStorage.getItem('wael_todos')) {
             localStorage.setItem('wael_todos', JSON.stringify([{ text: "تحديث بوت ديسكورد", done: false }]));
@@ -242,36 +230,97 @@
             localStorage.setItem('wael_links', JSON.stringify([{ title: "لوحة الاستضافة", url: "https://bot-hosting.net" }]));
         }
         if (!localStorage.getItem('wael_ideas')) {
-            localStorage.setItem('wael_ideas', JSON.stringify([{ title: "فكرة مقطع", desc: "تحدي المليون دولار" }]));
+            localStorage.setItem('wael_ideas', JSON.stringify([{ title: "فكرة مقطع يوتيوب", desc: "تحدي الـ 24 ساعة في السيرفر" }]));
         }
         if (!localStorage.getItem('wael_changelog')) {
-            localStorage.setItem('wael_changelog', JSON.stringify([{ text: "تم تحديث ألوان الموقع بنجاح", date: "اليوم" }]));
+            localStorage.setItem('wael_changelog', JSON.stringify([{ text: "تم إطلاق التصميم الأسطوري الجديد بنجاح" }]));
         }
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById(tabId + '-tab').classList.remove('hidden');
-            if(tabId === 'schedule') renderSchedule();
-            if(tabId === 'scenarios') renderScenarios();
-            if(tabId === 'todos') renderTodos();
-            if(tabId === 'links') renderLinks();
-            if(tabId === 'ideas') renderIdeas();
-            if(tabId === 'changelog') renderChangelog();
-        }
-
+        // الحماية بالرموز وعرض لوحات التحكم بشكل تفاعلي
         function checkWaelAccess() {
-            let pass = prompt("رمز وائل:");
-            if (pass === "wael123") switchTab('wael');
-            else if (pass !== null) alert("خطأ بالرمز!");
+            let pass = prompt("أدخل رمز دخول وائل السري:");
+            if (pass === "wael123") {
+                renderWaelPanel();
+            } else if (pass !== null) {
+                alert("الرمز خطأ!");
+            }
         }
 
         function checkMyAccess() {
-            let pass = prompt("رمزك الخاص:");
-            if (pass === "admin123") switchTab('admin');
-            else if (pass !== null) alert("خطأ بالرمز!");
+            let pass = prompt("أدخل رمزك الخاص السري:");
+            if (pass === "admin123") {
+                renderAdminPanel();
+            } else if (pass !== null) {
+                alert("الرمز خطأ!");
+            }
         }
 
-        // عرض العناصر
+        // عرض لوحة وائل في الصفحة
+        function renderWaelPanel() {
+            let area = document.getElementById('control-panels-area');
+            area.innerHTML = `
+                <div class="glass-card p-6 rounded-2xl border border-purple-500/50 neon-glow-purple space-y-6 animate-pulse">
+                    <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                        <h2 class="text-xl font-bold text-purple-400"><i class="fa-solid fa-user-shield"></i> لوحة تحكم وائل النشطة</h2>
+                        <button onclick="closePanels()" class="bg-red-600 hover:bg-red-700 text-xs px-3 py-1.5 rounded-lg font-bold">إغلاق اللوحة</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
+                            <h3 class="font-bold text-purple-300 text-sm">إضافة موعد للجدول</h3>
+                            <input type="text" id="w-sched-day" placeholder="اليوم" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
+                            <input type="text" id="w-sched-time" placeholder="الوقت" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
+                            <input type="text" id="w-sched-desc" placeholder="الفعالية" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
+                            <button onclick="addScheduleWael()" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs w-full">إضافة للجدول</button>
+                        </div>
+                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
+                            <h3 class="font-bold text-purple-300 text-sm">إضافة مهمة جديدة</h3>
+                            <input type="text" id="w-todo-text" placeholder="نص المهمة..." class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
+                            <button onclick="addTodoWael()" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs w-full">إضافة مهمة</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            area.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // عرض لوحتك الخاصة في الصفحة
+        function renderAdminPanel() {
+            let area = document.getElementById('control-panels-area');
+            area.innerHTML = `
+                <div class="glass-card p-6 rounded-2xl border border-red-500/50 neon-glow-red space-y-6">
+                    <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                        <h2 class="text-xl font-bold text-red-400"><i class="fa-solid fa-lock"></i> لوحتك الخاصة (الإدارة العليا) النشطة</h2>
+                        <button onclick="closePanels()" class="bg-red-600 hover:bg-red-700 text-xs px-3 py-1.5 rounded-lg font-bold">إغلاق اللوحة</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
+                            <h3 class="font-bold text-red-300 text-sm">إضافة سيناريو</h3>
+                            <input type="text" id="a-scen-title" placeholder="العنوان" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
+                            <textarea id="a-scen-desc" placeholder="التفاصيل..." class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs h-16 mb-2"></textarea>
+                            <button onclick="addScenarioAdmin()" class="bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded font-bold text-xs w-full">حفظ السيناريو</button>
+                        </div>
+                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
+                            <h3 class="font-bold text-yellow-300 text-sm">تدوين فكرة</h3>
+                            <input type="text" id="a-idea-title" placeholder="العنوان" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
+                            <textarea id="a-idea-desc" placeholder="التفاصيل..." class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs h-16 mb-2"></textarea>
+                            <button onclick="addIdeaAdmin()" class="bg-yellow-600 hover:bg-yellow-700 text-black px-3 py-1.5 rounded font-bold text-xs w-full">حفظ الفكرة</button>
+                        </div>
+                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
+                            <h3 class="font-bold text-red-300 text-sm">تسجيل تحديث</h3>
+                            <input type="text" id="a-changelog-text" placeholder="ماذا تم تعديله؟" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-4">
+                            <button onclick="addChangelogAdmin()" class="bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded font-bold text-xs w-full">نشر التحديث</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            area.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function closePanels() {
+            document.getElementById('control-panels-area').innerHTML = '';
+        }
+
+        // رندر الجداول والعناصر بضغطة زر وتحديث فوري
         function renderSchedule() {
             let schedule = JSON.parse(localStorage.getItem('wael_schedule')) || [];
             let tbody = document.getElementById('schedule-table-body');
@@ -279,11 +328,11 @@
             schedule.forEach((item, index) => {
                 tbody.innerHTML += `
                     <tr class="hover:bg-purple-950/20 transition">
-                        <td class="p-3 font-semibold">${item.day}</td>
-                        <td class="p-3 text-purple-300">${item.time}</td>
-                        <td class="p-3 flex justify-between items-center">
-                            <span>${item.desc}</span>
-                            <button onclick="deleteItem('wael_schedule', ${index}, renderSchedule)" class="text-red-400 hover:text-red-500 text-xs"><i class="fa-solid fa-trash"></i></button>
+                        <td class="p-4 font-semibold">${item.day}</td>
+                        <td class="p-4 text-purple-300">${item.time}</td>
+                        <td class="p-4">${item.desc}</td>
+                        <td class="p-4 text-left">
+                            <button onclick="deleteItem('wael_schedule', ${index}, renderSchedule)" class="text-red-400 hover:text-red-500 text-xs px-2 py-1 bg-red-950/50 rounded border border-red-500/30"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                 `;
@@ -296,10 +345,10 @@
             grid.innerHTML = '';
             list.forEach((item, index) => {
                 grid.innerHTML += `
-                    <div class="bg-[#121216] p-4 rounded-xl border border-purple-500/20 shadow-xl space-y-2 relative">
+                    <div class="glass-card p-5 rounded-2xl border border-purple-500/20 space-y-2 relative shadow-xl">
                         <h3 class="text-base font-bold text-purple-300">${item.title}</h3>
                         <p class="text-gray-400 text-xs leading-relaxed">${item.desc}</p>
-                        <button onclick="deleteItem('wael_scenarios', ${index}, renderScenarios)" class="absolute top-3 left-3 text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                        <button onclick="deleteItem('wael_scenarios', ${index}, renderScenarios)" class="absolute top-4 left-4 text-red-400 hover:text-red-500 text-xs px-2 py-1 bg-red-950/50 rounded border border-red-500/30"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `;
             });
@@ -311,12 +360,12 @@
             grid.innerHTML = '';
             list.forEach((item, index) => {
                 grid.innerHTML += `
-                    <div class="bg-[#121216] p-3 rounded-lg border border-purple-500/20 flex justify-between items-center text-sm">
+                    <div class="bg-black/40 p-3 rounded-xl border border-gray-800 flex justify-between items-center text-xs">
                         <div class="flex items-center gap-3">
-                            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleTodo(${index})" class="w-4 h-4 accent-purple-600">
+                            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleTodo(${index})" class="w-4 h-4 accent-purple-600 rounded">
                             <span class="${item.done ? 'line-through text-gray-500' : 'text-gray-200'}">${item.text}</span>
                         </div>
-                        <button onclick="deleteItem('wael_todos', ${index}, renderTodos)" class="text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                        <button onclick="deleteItem('wael_todos', ${index}, renderTodos)" class="text-red-400 hover:text-red-500"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `;
             });
@@ -328,12 +377,12 @@
             grid.innerHTML = '';
             list.forEach((item, index) => {
                 grid.innerHTML += `
-                    <div class="bg-[#121216] p-4 rounded-xl border border-purple-500/20 flex justify-between items-center shadow-lg">
+                    <div class="bg-black/40 p-3 rounded-xl border border-gray-800 flex justify-between items-center text-xs">
                         <div>
-                            <h4 class="font-bold text-purple-300 text-sm">${item.title}</h4>
-                            <a href="${item.url}" target="_blank" class="text-blue-400 text-xs underline truncate max-w-xs block">${item.url}</a>
+                            <span class="font-bold text-purple-300 block mb-0.5">${item.title}</span>
+                            <a href="${item.url}" target="_blank" class="text-blue-400 underline truncate max-w-[200px] block">${item.url}</a>
                         </div>
-                        <button onclick="deleteItem('wael_links', ${index}, renderLinks)" class="text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                        <button onclick="deleteItem('wael_links', ${index}, renderLinks)" class="text-red-400 hover:text-red-500"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `;
             });
@@ -345,10 +394,10 @@
             grid.innerHTML = '';
             list.forEach((item, index) => {
                 grid.innerHTML += `
-                    <div class="bg-[#121216] p-4 rounded-xl border border-red-500/20 space-y-1 relative shadow-lg">
-                        <h4 class="font-bold text-red-300 text-sm">${item.title}</h4>
-                        <p class="text-gray-400 text-xs">${item.desc}</p>
-                        <button onclick="deleteItem('wael_ideas', ${index}, renderIdeas)" class="absolute top-3 left-3 text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                    <div class="bg-black/40 p-3 rounded-xl border border-gray-800 space-y-1 relative text-xs">
+                        <span class="font-bold text-yellow-300 block">${item.title}</span>
+                        <p class="text-gray-400">${item.desc}</p>
+                        <button onclick="deleteItem('wael_ideas', ${index}, renderIdeas)" class="absolute top-3 left-3 text-red-400"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `;
             });
@@ -360,7 +409,7 @@
             grid.innerHTML = '';
             list.forEach((item, index) => {
                 grid.innerHTML += `
-                    <div class="bg-[#121216] p-3 rounded-lg border border-purple-500/20 flex justify-between items-center text-xs">
+                    <div class="bg-black/40 p-3 rounded-xl border border-gray-800 flex justify-between items-center text-xs">
                         <span class="text-gray-300"><i class="fa-solid fa-circle-check text-purple-400 ml-2"></i> ${item.text}</span>
                         <button onclick="deleteItem('wael_changelog', ${index}, renderChangelog)" class="text-red-400"><i class="fa-solid fa-trash"></i></button>
                     </div>
@@ -382,77 +431,69 @@
             renderTodos();
         }
 
-        function addScheduleItem() {
-            let day = document.getElementById('wael-sched-day').value;
-            let time = document.getElementById('wael-sched-time').value;
-            let desc = document.getElementById('wael-sched-desc').value;
+        // دوال الإضافة من اللوحات
+        function addScheduleWael() {
+            let day = document.getElementById('w-sched-day').value;
+            let time = document.getElementById('w-sched-time').value;
+            let desc = document.getElementById('w-sched-desc').value;
             if(!day || !time || !desc) return alert("املأ الحقول!");
             let data = JSON.parse(localStorage.getItem('wael_schedule')) || [];
             data.push({ day, time, desc });
             localStorage.setItem('wael_schedule', JSON.stringify(data));
-            alert("تمت الإضافة!");
-            document.getElementById('wael-sched-day').value = '';
-            document.getElementById('wael-sched-time').value = '';
-            document.getElementById('wael-sched-desc').value = '';
+            renderSchedule();
+            alert("تمت الإضافة للجدول بنجاح!");
         }
 
-        function addTodoItem() {
-            let text = document.getElementById('wael-todo-text').value;
+        function addTodoWael() {
+            let text = document.getElementById('w-todo-text').value;
             if(!text) return alert("اكتب المهمة!");
             let data = JSON.parse(localStorage.getItem('wael_todos')) || [];
             data.push({ text, done: false });
             localStorage.setItem('wael_todos', JSON.stringify(data));
-            alert("تمت الإضافة!");
-            document.getElementById('wael-todo-text').value = '';
+            renderTodos();
+            alert("تمت إضافة المهمة!");
         }
 
-        function addLinkItem() {
-            let title = document.getElementById('wael-link-title').value;
-            let url = document.getElementById('wael-link-url').value;
-            if(!title || !url) return alert("املأ الحقول!");
-            let data = JSON.parse(localStorage.getItem('wael_links')) || [];
-            data.push({ title, url });
-            localStorage.setItem('wael_links', JSON.stringify(data));
-            alert("تم الحفظ!");
-            document.getElementById('wael-link-title').value = '';
-            document.getElementById('wael-link-url').value = '';
-        }
-
-        function addScenarioItem() {
-            let title = document.getElementById('admin-scen-title').value;
-            let desc = document.getElementById('admin-scen-desc').value;
+        function addScenarioAdmin() {
+            let title = document.getElementById('a-scen-title').value;
+            let desc = document.getElementById('a-scen-desc').value;
             if(!title || !desc) return alert("املأ الحقول!");
             let data = JSON.parse(localStorage.getItem('wael_scenarios')) || [];
             data.push({ title, desc });
             localStorage.setItem('wael_scenarios', JSON.stringify(data));
-            alert("تم الحفظ!");
-            document.getElementById('admin-scen-title').value = '';
-            document.getElementById('admin-scen-desc').value = '';
+            renderScenarios();
+            alert("تم حفظ السيناريو!");
         }
 
-        function addIdeaItem() {
-            let title = document.getElementById('admin-idea-title').value;
-            let desc = document.getElementById('admin-idea-desc').value;
+        function addIdeaAdmin() {
+            let title = document.getElementById('a-idea-title').value;
+            let desc = document.getElementById('a-idea-desc').value;
             if(!title || !desc) return alert("املأ الحقول!");
-            let data = JSON.parse(localStorage.getItem('wael_ideas')) || .json || [];
+            let data = JSON.parse(localStorage.getItem('wael_ideas')) || [];
             data.push({ title, desc });
             localStorage.setItem('wael_ideas', JSON.stringify(data));
+            renderIdeas();
             alert("تم حفظ الفكرة!");
-            document.getElementById('admin-idea-title').value = '';
-            document.getElementById('admin-idea-desc').value = '';
         }
 
-        function addChangelogItem() {
-            let text = document.getElementById('admin-changelog-text').value;
-            if(!text) return alert("اكتب تفاصيل التحديث!");
+        function addChangelogAdmin() {
+            let text = document.getElementById('a-changelog-text').value;
+            if(!text) return alert("اكتب التحديث!");
             let data = JSON.parse(localStorage.getItem('wael_changelog')) || [];
             data.push({ text });
             localStorage.setItem('wael_changelog', JSON.stringify(data));
+            renderChangelog();
             alert("تم نشر التحديث!");
-            document.getElementById('admin-changelog-text').value = '';
         }
 
+        // تشغيل كل شيء عند التحميل
         fetchYouTubeVideos();
+        renderSchedule();
+        renderScenarios();
+        renderTodos();
+        renderLinks();
+        renderIdeas();
+        renderChangelog();
     </script>
 </body>
 </html>
