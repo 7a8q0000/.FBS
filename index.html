@@ -1,161 +1,104 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHADOW x WAEL - Studio Admin</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHADOW 47Q x W6_XL STUDIO</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
-body{background:#050505;color:#fff;min-height:100vh}
-#login{height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,#1a0a0a,#050505)}
-.loginBox{background:#111;border:1px solid #222;border-radius:18px;padding:32px;width:380px;text-align:center}
-.loginBox h1{color:#ff0033}.loginBox input{background:#181818;border:1px solid #333;color:#fff;padding:14px;border-radius:10px;width:100%;margin-top:12px;text-align:center;font-size:20px;letter-spacing:5px}
-.btn{padding:12px;border-radius:10px;border:none;width:100%;margin-top:12px;font-weight:800;cursor:pointer}.btn-red{background:#ff0033;color:#fff}
-#dash{display:none;flex-direction:row} aside{width:250px;background:#0f0f0f;border-left:1px solid #222;padding:20px;height:100vh;position:sticky;top:0}
-.main{flex:1;padding:22px;overflow:auto}.logo{font-weight:800;font-size:20px}.logo span{color:#ff0033}
-.menu a{display:block;padding:10px;border-radius:8px;color:#777;text-decoration:none;margin:5px 0}.menu a.active{background:#1a1a1a;color:#fff}
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
-.stat{background:#111;border:1px solid #222;border-radius:12px;padding:14px}.stat b{font-size:22px;display:block}
-.section{background:#111;border:1px solid #222;border-radius:12px;padding:16px;margin-bottom:14px}
-.progress{background:#222;height:10px;border-radius:10px;overflow:hidden;margin:6px 0}.bar{height:100%;background:linear-gradient(90deg,#ff0033,#ff6600);transition:.8s}
-table{width:100%;border-collapse:collapse;font-size:13px} th{color:#666;padding:8px;border-bottom:1px solid #222;text-align:right} td{padding:10px;border-bottom:1px solid #1a1a1a}
-input,textarea{background:#181818;border:1px solid #333;color:#fff;padding:9px;border-radius:7px;width:100%;margin-top:5px}
+body{background:#08080a;color:#fff}
+.header{height:64px;background:#141414;border:1px solid #222;border-radius:12px;margin:12px;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#ff0033,#8a0a1a);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-weight:800}
+.nav{display:flex;gap:16px}.nav a{color:#666;text-decoration:none;font-size:12px}.nav a.active{color:#ff3333;border-bottom:2px solid #ff3333}
+.admin-btn{background:#ff0033;color:#fff;border:none;padding:8px 14px;border-radius:8px;font-weight:800;cursor:pointer;font-size:12px}
+.main{display:grid;grid-template-columns:1.7fr.9fr;gap:14px;padding:0 12px 20px}
+.card{background:linear-gradient(180deg,#151515,#101010);border:1px solid #222;border-radius:14px;padding:16px;position:relative}
+.card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff0033,transparent);opacity:.5}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.progress{height:6px;background:#222;border-radius:10px;overflow:hidden;margin-top:8px}.bar{height:100%;background:#ff0033;width:0%}
+.inputBox{background:#1e1e1e;border:1px solid #333;color:#fff;padding:11px;border-radius:8px;width:100%;margin-top:8px}
+.btn-red{background:#c81e1e;color:#fff;border:none;border-radius:8px;padding:11px;width:100%;font-weight:800;cursor:pointer;margin-top:10px}
+#adminModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;z-index:1000}
+.modalBox{background:#111;border:1px solid #222;border-radius:16px;padding:24px;width:340px;text-align:center}
+#secret{display:none}
+@media(max-width:900px){.main{grid-template-columns:1fr}.nav{display:none}.stat-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
-<div id="login">
-<div class="loginBox">
-<h1>🔒 STUDIO</h1><p style="color:#888;font-size:13px">SHADOW x WAEL<br>دخول خاص للمسؤولين فقط</p>
-<input id="code" type="password" placeholder="••••••" maxlength="6">
-<button class="btn btn-red" onclick="login()">دخول</button>
-<p id="err" style="color:#ff0033;font-size:12px;margin-top:8px;display:none">الرمز خطأ!</p>
-<p style="color:#444;font-size:11px;margin-top:14px">شادو: 112233<br>وائل: 332211<br>تقدر تغيرهم داخل</p>
-</div>
+<div class="header">
+<div style="display:flex;align-items:center;gap:10px"><div class="logo-icon">S</div><div><b><span style="color:#ff0033">SHADOW</span> x WAEL</b><br><small style="color:#777;font-size:10px">youtube.com/@shadow47q • twitch.tv/w6_xl</small></div></div>
+<div class="nav"><a class="active">نظرة عامة</a><a>الفيديوهات</a><a>التحديات</a></div>
+<button class="admin-btn" onclick="openAdmin()">🔒 لوحة المسؤولين</button>
 </div>
 
-<div id="dash">
-<aside>
-<div class="logo">STUDIO <span>SHADOW x WAEL</span></div>
-<div class="menu">
-<a class="active">🏆 التحديات التلقائية</a>
-<a>📊 الاحصائيات المباشرة</a>
-<a>📅 جدول التصوير</a>
-<a>🎬 18 حلقة</a>
-<a>💡 بنك الافكار</a>
-</div>
-<div style="margin-top:20px;background:#1a0a0a;padding:10px;border-radius:8px;border:1px solid #331111">
-<b id="who" style="font-size:12px;color:#00ff88">● متصل</b><br>
-<button onclick="logout()" style="background:#222;color:#fff;border:none;padding:6px 10px;border-radius:6px;margin-top:6px;cursor:pointer;width:100%">خروج</button>
-<label style="font-size:11px;color:#666;display:block;margin-top:10px">غير رمزك:</label>
-<input id="newCode" placeholder="رمز جديد" style="font-size:14px">
-<button class="btn btn-red" style="padding:6px;font-size:12px" onclick="changeCode()">حفظ الرمز الجديد</button>
-</div>
-</aside>
+<div id="adminModal"><div class="modalBox">
+<h3>🔒 دخول المسؤولين</h3><p style="color:#666;font-size:12px">شادو و وائل فقط</p>
+<input id="code" type="password" placeholder="••••••" maxlength="6" style="background:#1e1e1e;border:1px solid #333;color:#fff;padding:12px;border-radius:8px;width:100%;margin-top:12px;text-align:center;letter-spacing:5px;font-size:18px">
+<button class="btn-red" onclick="login()">دخول</button>
+<button style="background:#222;color:#fff;border:none;padding:8px;width:100%;border-radius:8px;margin-top:6px;cursor:pointer" onclick="closeAdmin()">إلغاء</button>
+<p id="err" style="color:#ff3333;font-size:12px;display:none;margin-top:6px">الرمز خطأ!</p>
+</div></div>
 
 <div class="main">
-<h1>اهلا <span id="userName">شادو</span> 👋</h1><p style="color:#666;font-size:13px" id="dateNow"></p>
-
-<div class="section">
-<h2>⚙️ تفعيل التحديث التلقائي (مرة وحدة)</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-<input id="apiKey" placeholder="YouTube API Key">
-<input id="channelId" placeholder="Channel ID - UC...">
+<div>
+<h2>نظرة عامة على الأداء</h2><p style="color:#666;font-size:12px">مربوط تلقائياً • يتم التحديث كل 5 دقائق</p>
+<div class="stat-grid">
+<div class="card"><small>▶ يوتيوب مشتركين</small><br><b id="sub" style="font-size:30px">--</b><div id="subChange" style="color:#00ff88;font-size:11px">جاري التحميل...</div></div>
+<div class="card"><small>▶ إجمالي المشاهدات</small><br><b id="views" style="font-size:30px">--</b><div style="color:#888;font-size:11px" id="videoCount">-- فيديو</div></div>
+<div class="card"><small>👁 تويتش w6_xl</small><br><b style="font-size:24px">متصل</b><div style="color:#9146ff;font-size:11px">twitch.tv/w6_xl</div></div>
 </div>
-<button class="btn btn-red" style="margin-top:8px" onclick="saveConfig()">حفظ وتفعيل التلقائي</button>
+
+<div class="card" style="margin-top:14px"><h3>📊 آخر الفيديوهات - تقدم تلقائي</h3><div id="videos" style="margin-top:10px"></div></div>
+
+<div id="secret">
+<div class="card" style="margin-top:14px;border-color:#ff0033;background:#1a1010"><h3>🔐 إعدادات الربط التلقائي (مسؤولين فقط)</h3>
+<p style="color:#888;font-size:11px;margin-top:4px">Channel ID مربوط: UCQ_ZMlneyyFGqZZikkpQ2qw</p>
+<input id="api" class="inputBox" placeholder="الصق YouTube API Key الجديد هنا">
+<input id="goal" class="inputBox" placeholder="هدف المشاهدات لكل فيديو مثلا 10000">
+<button class="btn-red" onclick="save()">حفظ وتفعيل التحديث التلقائي</button>
 <p id="status" style="color:#00ff88;font-size:11px;margin-top:6px"></p>
 </div>
-
-<div class="stat-grid">
-<div class="stat"><small style="color:#888">📺 مشتركين يوتيوب (تلقائي)</small><b id="liveSubs">--</b><div class="progress"><div class="bar" id="subBar" style="width:30%"></div></div></div>
-<div class="stat"><small style="color:#888">👁️ اجمالي المشاهدات</small><b id="liveViews">--</b></div>
-<div class="stat"><small style="color:#888">🎯 تحدي اليوم</small><b id="todayGoal">10K مشاهدة</b><span style="font-size:11px;color:#ffaa00" id="todayProg">0%</span></div>
-<div class="stat"><small style="color:#888">💜 تويتش وائل</small><b>3,210</b><span style="font-size:11px;color:#888">حط اسم قناته</span></div>
-</div>
-
-<div class="section">
-<h2>🏆 التحديات - تتحدث تلقائي من يوتيوب</h2>
-<table id="videosTable"><tr><th>الفيديو</th><th>مشاهدات حية</th><th>الهدف</th><th>التقدم</th></tr></table>
-<div style="display:flex;gap:8px;margin-top:10px">
-<input id="goalViews" placeholder="هدف موحد مثلا 10000" style="flex:1">
-<button class="btn btn-red" style="width:auto;padding:9px 16px" onclick="setGoal()">تحديد الهدف</button>
-<button class="btn" style="background:#222;color:#fff;width:auto" onclick="fetchStats()">🔄 تحديث الان</button>
 </div>
 </div>
 
-<div class="section">
-<h2>📅 جدول التصوير</h2>
-<table><tr><th>اليوم</th><th>المهمة</th><th>المسؤول</th><th>حالة</th></tr>
-<tr><td>السبت</td><td>تصوير حلقة 1-2</td><td>شادو+وائل</td><td>قادم</td></tr>
-<tr><td>الجمعة</td><td>تنزيل + قص تيك توك</td><td>وائل</td><td>مونتاج</td></tr>
-</table>
-</div>
-
-<div class="section">
-<h2>🎬 السيناريو 18 حلقة</h2>
-<table><tr><th>#</th><th>العنوان</th><th>فكرة سريعة</th></tr>
-<tr><td>1</td><td>الوصول</td><td>مطار + نومة شارع</td></tr>
-<tr><td>18</td><td>المؤبد</td><td>كمين + محاكمة سينمائية</td></tr>
-</table>
-</div>
-
-</div>
+<div class="card"><h3>📈 الحالة</h3><p style="color:#666;font-size:12px;margin-top:6px">القناة: @shadow47q</p><p style="color:#666;font-size:12px">ID: UCQ_ZMl...2qw</p><p id="lastUpdate" style="color:#444;font-size:11px;margin-top:8px">آخر تحديث: --</p><div id="adminInfo" style="display:none;margin-top:12px;background:#1a0a0a;border:1px solid #331111;border-radius:8px;padding:10px"><b id="who" style="color:#00ff88;font-size:12px"></b><button style="background:#222;color:#fff;border:none;padding:6px;width:100%;border-radius:6px;margin-top:6px;cursor:pointer" onclick="logout()">خروج</button></div></div>
 </div>
 
 <script>
-document.getElementById('dateNow').innerText=new Date().toLocaleDateString('ar-SA');
-let codes={shadow:localStorage.getItem('code_shadow')||'112233',wael:localStorage.getItem('code_wael')||'332211'};
-let CONFIG=JSON.parse(localStorage.getItem('ytConfig')||'{}');
-let currentUser='';
-document.getElementById('apiKey').value=CONFIG.apiKey||'';document.getElementById('channelId').value=CONFIG.channelId||'';
-function login(){
- let v=document.getElementById('code').value;
- if(v===codes.shadow){currentUser='شادو';enter();}else if(v===codes.wael){currentUser='وائل';enter();}
- else{document.getElementById('err').style.display='block';}
-}
-function enter(){
- document.getElementById('login').style.display='none';document.getElementById('dash').style.display='flex';
- document.getElementById('userName').innerText=currentUser;document.getElementById('who').innerText='● متصل كـ '+currentUser;
- localStorage.setItem('logged','true');localStorage.setItem('lastUser',currentUser);
- if(CONFIG.apiKey) fetchStats();
-}
-function logout(){localStorage.removeItem('logged');location.reload();}
-function changeCode(){
- let n=document.getElementById('newCode').value;if(n.length<4)return alert('قصير');
- if(currentUser==='شادو'){localStorage.setItem('code_shadow',n);codes.shadow=n;}else{localStorage.setItem('code_wael',n);codes.wael=n;}
- alert('تم تغيير رمز '+currentUser+' الى: '+n);
-}
-function saveConfig(){
- CONFIG.apiKey=document.getElementById('apiKey').value;CONFIG.channelId=document.getElementById('channelId').value;
- localStorage.setItem('ytConfig',JSON.stringify(CONFIG));document.getElementById('status').innerText='✅ تم الحفظ - جاري الجلب...';fetchStats();
-}
-async function fetchStats(){
- if(!CONFIG.apiKey||!CONFIG.channelId)return;
+const CHANNEL_ID='UCQ_ZMlneyyFGqZZikkpQ2qw';
+let cfg=JSON.parse(localStorage.getItem('cfg')||'{}');
+cfg.channelId=CHANNEL_ID;
+let codes={s:localStorage.getItem('cs')||'112233',w:localStorage.getItem('cw')||'332211'};
+function openAdmin(){document.getElementById('adminModal').style.display='flex'}
+function closeAdmin(){document.getElementById('adminModal').style.display='none'}
+function login(){let v=document.getElementById('code').value;if(v===codes.s||v===codes.w){document.getElementById('secret').style.display='block';document.getElementById('adminInfo').style.display='block';document.getElementById('who').innerText='● متصل كـ '+(v===codes.s?'شادو':'وائل');closeAdmin();localStorage.setItem('logged','1')}else document.getElementById('err').style.display='block'}
+function logout(){localStorage.removeItem('logged');location.reload()}
+function save(){cfg.apiKey=document.getElementById('api').value;cfg.goal=document.getElementById('goal').value||10000;localStorage.setItem('cfg',JSON.stringify(cfg));fetchAll();document.getElementById('status').innerText='✅ تم الحفظ - يتم التحديث الآن'}
+async function fetchAll(){
+ if(!cfg.apiKey)return;
  try{
-  let ch=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CONFIG.channelId}&key=${CONFIG.apiKey}`).then(r=>r.json());
+  let ch=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${cfg.apiKey}`).then(r=>r.json());
+  if(!ch.items)return;
   let s=ch.items[0].statistics;
-  document.getElementById('liveSubs').innerText=parseInt(s.subscriberCount).toLocaleString();
-  document.getElementById('liveViews').innerText=parseInt(s.viewCount).toLocaleString();
-  document.getElementById('subBar').style.width=Math.min(100,(s.subscriberCount/20000)*100)+'%';
-  let search=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CONFIG.channelId}&maxResults=10&order=date&type=video&key=${CONFIG.apiKey}`).then(r=>r.json());
-  let ids=search.items.map(i=>i.id.videoId).join(',');
-  let vids=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet&id=${ids}&key=${CONFIG.apiKey}`).then(r=>r.json());
-  let table=document.getElementById('videosTable');table.innerHTML='<tr><th>الفيديو</th><th>مشاهدات حية</th><th>الهدف</th><th>التقدم</th></tr>';
-  let goal=parseInt(localStorage.getItem('globalGoal')||'10000');
-  vids.items.forEach(v=>{
-    let views=parseInt(v.statistics.viewCount);let perc=Math.min(100,Math.round((views/goal)*100));
-    let col=perc>=100?'#00ff88':'#ff0033';
-    table.innerHTML+=`<tr><td>${v.snippet.title.substring(0,30)}...</td><td>${views.toLocaleString()}</td><td>${goal.toLocaleString()}</td><td><div class='progress' style='width:90px'><div class='bar' style='width:${perc}%;background:${col}'></div></div>${perc}%</td></tr>`;
+  document.getElementById('sub').innerText=(parseInt(s.subscriberCount)/1000).toFixed(1)+'K';
+  document.getElementById('views').innerText=(parseInt(s.viewCount)/1000000).toFixed(2)+'M';
+  document.getElementById('videoCount').innerText=s.videoCount+' فيديو';
+  let sr=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=5&order=date&type=video&key=${cfg.apiKey}`).then(r=>r.json());
+  let ids=sr.items.map(i=>i.id.videoId).join(',');
+  let vd=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet&id=${ids}&key=${cfg.apiKey}`).then(r=>r.json());
+  let html='';vd.items.forEach(v=>{
+    let vw=parseInt(v.statistics.viewCount);let p=Math.min(100,Math.round((vw/(cfg.goal||10000))*100));
+    html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #1a1a1a"><div style="flex:1;overflow:hidden"><div style="font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${v.snippet.title}</div><div style="color:#666;font-size:10px">${vw.toLocaleString()} مشاهدة</div></div><div style="width:70px"><div class="progress"><div class="bar" style="width:${p}%"></div></div><small style="color:#888">${p}%</small></div></div>`;
   });
-  document.getElementById('todayProg').innerText=vids.items[0]?Math.round((parseInt(vids.items[0].statistics.viewCount)/goal)*100)+'%':'0%';
-  document.getElementById('status').innerText='✅ تحدث تلقائي - '+new Date().toLocaleTimeString('ar-SA');
- }catch(e){document.getElementById('status').innerText='❌ تأكد من API Key';}
+  document.getElementById('videos').innerHTML=html;
+  document.getElementById('lastUpdate').innerText='آخر تحديث: '+new Date().toLocaleTimeString('ar-SA');
+  document.getElementById('status').innerText='✅ تحدث تلقائي '+new Date().toLocaleTimeString('ar-SA');
+ }catch(e){document.getElementById('status').innerText='❌ تأكد من الـ API Key'}
 }
-function setGoal(){localStorage.setItem('globalGoal',document.getElementById('goalViews').value);fetchStats();}
-if(localStorage.getItem('logged')==='true'){currentUser=localStorage.getItem('lastUser')||'شادو';enter();}
-document.getElementById('code').addEventListener('keyup',e=>{if(e.key==='Enter')login();});
-setInterval(()=>{if(CONFIG.apiKey&&localStorage.getItem('logged'))fetchStats();},300000);
+document.getElementById('api').value=cfg.apiKey||'';
+document.getElementById('goal').value=cfg.goal||'';
+if(cfg.apiKey){fetchAll();setInterval(fetchAll,300000)}
+if(localStorage.getItem('logged')){document.getElementById('secret').style.display='block';document.getElementById('adminInfo').style.display='block'}
 </script>
 </body>
 </html>
