@@ -3,254 +3,284 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHADOW 47Q x W6_XL | ULTRA STUDIO</title>
+<title>SHADOW 47Q x W6_XL | ELITE STUDIO</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root {
-    --bg-deep: #050508;
-    --card-bg: rgba(14, 14, 20, 0.75);
-    --border-glow: rgba(255, 0, 60, 0.25);
+    --bg-deep: #030305;
+    --card-bg: rgba(12, 12, 18, 0.85);
     --primary-red: #ff003c;
     --primary-purple: #9146ff;
     --text-main: #f3f4f6;
     --text-muted: #9ca3af;
+    --glow-red: rgba(255, 0, 60, 0.3);
+    --glow-purple: rgba(145, 70, 255, 0.3);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
 body { background: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
-/* تأثير الخلفية الشبكية السيبرانية */
 body::before {
     content: '';
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: linear-gradient(rgba(255,0,60,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,60,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(255,0,60,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(145,70,255,0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
     z-index: -1;
 }
 
-/* الهيدر الأسطوري */
 .header {
-    height: 80px;
+    height: 85px;
     background: var(--card-bg);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 36px; position: sticky; top: 0; z-index: 100;
 }
 
-.brand { display: flex; align-items: center; gap: 14px; }
+.brand { display: flex; align-items: center; gap: 16px; }
 .logo-box {
-    width: 45px; height: 45px;
+    width: 50px; height: 50px;
     background: linear-gradient(135deg, var(--primary-red), #500a18);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 20px; color: #fff;
-    box-shadow: 0 0 20px rgba(255, 0, 60, 0.4);
+    font-weight: 900; font-size: 22px; color: #fff;
+    box-shadow: 0 0 25px var(--glow-red);
 }
 
-/* نظام الأزرار العلوي (Tabs) الجديد كلياً */
-.nav-tabs { display: flex; gap: 8px; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); }
+.nav-tabs { display: flex; gap: 6px; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); }
 .tab-btn {
     background: transparent; border: none; color: var(--text-muted);
-    padding: 10px 20px; border-radius: 10px; font-weight: 700; font-size: 13px;
+    padding: 10px 18px; border-radius: 12px; font-weight: 700; font-size: 13px;
     cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
 }
-.tab-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.tab-btn:hover { color: #fff; background: rgba(255,255,255,0.04); }
 .tab-btn.active {
-    background: linear-gradient(135deg, var(--primary-red), #b91c1c);
+    background: linear-gradient(135deg, var(--primary-red), #990024);
     color: #fff;
-    box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+    box-shadow: 0 0 20px var(--glow-red);
 }
 
 .admin-trigger {
-    background: linear-gradient(135deg, #1f1f2e, #111118);
+    background: linear-gradient(135deg, #181824, #0e0e14);
     color: #fff; border: 1px solid rgba(255,255,255,0.1);
-    padding: 10px 18px; border-radius: 12px; font-weight: 700; cursor: pointer;
+    padding: 11px 20px; border-radius: 14px; font-weight: 700; cursor: pointer;
     font-size: 13px; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
 }
-.admin-trigger:hover { border-color: var(--primary-red); box-shadow: 0 0 15px rgba(255,0,60,0.3); }
+.admin-trigger:hover { border-color: var(--primary-red); box-shadow: 0 0 20px var(--glow-red); }
 
-/* المحتوى الرئيسي */
-.main-container { max-width: 1400px; margin: 0 auto; width: 100%; padding: 32px; flex-grow: 1; }
+.main-container { max-width: 1400px; margin: 0 auto; width: 100%; padding: 36px; flex-grow: 1; }
 .tab-content { display: none; animation: fadeIn 0.4s ease forwards; }
 .tab-content.active { display: block; }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* الكاردات الفخمة */
 .glass-card {
     background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    padding: 24px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 22px;
+    padding: 28px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    transition: all 0.3s ease;
 }
-.glass-card:hover { border-color: rgba(255, 0, 60, 0.3); }
+.glass-card:hover { border-color: rgba(255, 0, 60, 0.35); box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255,0,60,0.1); }
 
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-.grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
 
-/* شريط التقدم */
 .progress-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; margin-top: 12px; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-red), #ff708f); width: 0%; border-radius: 10px; box-shadow: 0 0 10px var(--primary-red); }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-red), #ff708f); width: 0%; border-radius: 10px; box-shadow: 0 0 12px var(--primary-red); }
 
-/* الحقول والأزرار */
 .input-box {
-    background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
-    color: #fff; padding: 14px; border-radius: 12px; width: 100%; margin-top: 10px;
-    font-size: 14px; outline: none; transition: border-color 0.3s;
+    background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);
+    color: #fff; padding: 14px 16px; border-radius: 12px; width: 100%; margin-top: 10px;
+    font-size: 14px; outline: none; transition: all 0.3s;
 }
-.input-box:focus { border-color: var(--primary-red); box-shadow: 0 0 10px rgba(255,0,60,0.2); }
+.input-box:focus { border-color: var(--primary-red); box-shadow: 0 0 15px var(--glow-red); }
 
 .btn-action {
-    background: linear-gradient(135deg, var(--primary-red), #b91c1c);
+    background: linear-gradient(135deg, var(--primary-red), #990024);
     color: #fff; border: none; border-radius: 12px; padding: 14px; width: 100%;
     font-weight: 800; cursor: pointer; margin-top: 14px; transition: all 0.3s;
-    box-shadow: 0 4px 15px rgba(255,0,60,0.3);
+    box-shadow: 0 5px 20px var(--glow-red);
 }
-.btn-action:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,0,60,0.5); }
+.btn-action:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,0,60,0.5); }
 
-/* مودال الدخول */
 #adminModal {
-    display: none; position: fixed; inset: 0; background: rgba(3,3,5,0.85);
-    backdrop-filter: blur(12px); align-items: center; justify-content: center; z-index: 1000;
+    display: none; position: fixed; inset: 0; background: rgba(3,3,5,0.88);
+    backdrop-filter: blur(15px); align-items: center; justify-content: center; z-index: 1000;
 }
 .modal-box {
-    background: #0e0e14; border: 1px solid rgba(255,0,60,0.3); border-radius: 24px;
-    padding: 36px; width: 380px; text-align: center;
-    box-shadow: 0 0 40px rgba(255,0,60,0.2);
+    background: #0d0d12; border: 1px solid rgba(255,0,60,0.4); border-radius: 28px;
+    padding: 40px; width: 400px; text-align: center;
+    box-shadow: 0 0 50px rgba(255,0,60,0.25);
 }
 
 @media(max-width: 1024px) {
     .grid-2 { grid-template-columns: 1fr; }
-    .header { padding: 0 16px; height: auto; flex-direction: column; gap: 12px; padding-bottom: 12px; }
+    .header { padding: 0 16px; height: auto; flex-direction: column; gap: 14px; padding-bottom: 14px; }
     .nav-tabs { width: 100%; justify-content: center; overflow-x: auto; }
 }
 </style>
 </head>
 <body>
 
-<!-- الهيدر ونظام الأزرار -->
 <div class="header">
     <div class="brand">
         <div class="logo-box">S</div>
         <div>
-            <b style="font-size: 16px; letter-spacing: 0.5px;"><span style="color: var(--primary-red);">SHADOW</span> x WAEL</b><br>
+            <b style="font-size: 17px;"><span style="color: var(--primary-red);">SHADOW</span> x WAEL</b><br>
             <span style="color: var(--text-muted); font-size: 11px;"><i class="fa-brands fa-youtube" style="color:#ff0000"></i> @shadow47q • <i class="fa-brands fa-twitch" style="color:#9146ff"></i> w6_xl</span>
         </div>
     </div>
 
-    <!-- زر التبديل الاحترافي (Tabs) -->
-    <div class="nav-tabs">
+    <!-- أزرار التبديل -->
+    <div class="nav-tabs" id="navTabsContainer">
         <button class="tab-btn active" onclick="switchTab('overview', this)"><i class="fa-solid fa-chart-pie"></i> نظرة عامة</button>
+        <button class="tab-btn" onclick="switchTab('schedule', this)"><i class="fa-solid fa-calendar-days"></i> جدول القناة</button>
         <button class="tab-btn" onclick="switchTab('stream', this)"><i class="fa-brands fa-twitch"></i> بث تويتش</button>
-        <button class="tab-btn" onclick="switchTab('videos', this)"><i class="fa-solid fa-video"></i> الفيديوهات</button>
         <button class="tab-btn" onclick="switchTab('scenarios', this)"><i class="fa-solid fa-book-skull"></i> السيناريوهات</button>
+        <button class="tab-btn" onclick="switchTab('workspace', this)"><i class="fa-solid fa-toolbox"></i> مساحة العمل</button>
+        <!-- التبويب السري للمسؤولين يظهر بعد الدخول -->
+        <button class="tab-btn" id="adminTabBtn" style="display: none; background: linear-gradient(135deg, #9146ff, #500a8a); color: #fff;" onclick="switchTab('admin-panel', this)"><i class="fa-solid fa-user-shield"></i> لوحة الإدارة</button>
     </div>
 
-    <button class="admin-trigger" onclick="openAdmin()"><i class="fa-solid fa-lock-keyhole"></i> لوحة الإدارة</button>
+    <button class="admin-trigger" id="loginTriggerBtn" onclick="openAdmin()"><i class="fa-solid fa-lock-keyhole"></i> دخول المسؤولين</button>
 </div>
 
-<!-- نافذة تسجيل الدخول الفخمة -->
+<!-- مودال دخول الإدارة -->
 <div id="adminModal">
     <div class="modal-box">
-        <div style="font-size: 32px; color: var(--primary-red); margin-bottom: 12px;"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3 style="font-size: 20px; font-weight: 800;">بوابة المسؤولين</h3>
-        <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">خاص بـ شادو و وائل حصرياً</p>
-        <input id="code" type="password" placeholder="أدخل رمز المرور السرّي" class="input-box" style="text-align: center; letter-spacing: 4px; font-size: 16px;">
-        <button class="btn-action" onclick="login()">فك القفل الدخول</button>
+        <div style="font-size: 36px; color: var(--primary-red); margin-bottom: 12px;"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3 style="font-size: 22px; font-weight: 800;">بوابة المسؤولين</h3>
+        <p style="color: var(--text-muted); font-size: 12px; margin-top: 6px;">خاص بـ شادو و وائل فقط</p>
+        <input id="code" type="password" placeholder="أدخل رمز المرور السري" class="input-box" style="text-align: center; letter-spacing: 5px; font-size: 18px;">
+        <button class="btn-action" onclick="login()">دخول مشفر</button>
         <button style="background: transparent; color: var(--text-muted); border: none; padding: 10px; width: 100%; border-radius: 8px; margin-top: 8px; cursor: pointer;" onclick="closeAdmin()">إلغاء</button>
-        <p id="err" style="color: var(--primary-red); font-size: 12px; display: none; margin-top: 10px;"><i class="fa-solid fa-triangle-exclamation"></i> الرمز غير صحيح!</p>
+        <p id="err" style="color: var(--primary-red); font-size: 12px; display: none; margin-top: 10px;"><i class="fa-solid fa-triangle-exclamation"></i> الرمز خطأ!</p>
     </div>
 </div>
 
-<!-- المحتوى الرئيسي مقسم حسب الأزرار -->
 <div class="main-container">
 
-    <!-- 1. تبويب نظرة عامة -->
+    <!-- 1. نظرة عامة -->
     <div id="overview" class="tab-content active space-y-6">
         <div class="grid-3" style="margin-bottom: 24px;">
             <div class="glass-card">
                 <span style="color: var(--text-muted); font-size: 12px;"><i class="fa-brands fa-youtube" style="color:#ff0000"></i> المشتركون في يوتيوب</span>
-                <div id="sub" style="font-size: 36px; font-weight: 900; margin: 10px 0; color: #fff;">--</div>
+                <div id="sub" style="font-size: 38px; font-weight: 900; margin: 12px 0; color: #fff;">--</div>
                 <div id="subChange" style="color: #00ff88; font-size: 12px;"><i class="fa-solid fa-arrow-trend-up"></i> متصل بالمنصة</div>
             </div>
             <div class="glass-card">
                 <span style="color: var(--text-muted); font-size: 12px;"><i class="fa-solid fa-eye"></i> إجمالي المشاهدات</span>
-                <div id="views" style="font-size: 36px; font-weight: 900; margin: 10px 0; color: #fff;">--</div>
+                <div id="views" style="font-size: 38px; font-weight: 900; margin: 12px 0; color: #fff;">--</div>
                 <div style="color: var(--text-muted); font-size: 12px;" id="videoCount">-- فيديو منشور</div>
             </div>
-            <div class="glass-card" style="border-color: rgba(145, 70, 255, 0.3);">
+            <div class="glass-card" style="border-color: var(--glow-purple);">
                 <span style="color: var(--primary-purple); font-size: 12px;"><i class="fa-brands fa-twitch"></i> حالة تويتش (w6_xl)</span>
-                <div style="font-size: 28px; font-weight: 900; margin: 10px 0; color: #00ff88; display: flex; align-items: center; gap: 10px;">
-                    <span style="width: 12px; height: 12px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 10px #00ff88; display: inline-block;"></span> متصل بث حي
+                <div style="font-size: 26px; font-weight: 900; margin: 12px 0; color: #00ff88; display: flex; align-items: center; gap: 10px;">
+                    <span style="width: 12px; height: 12px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 12px #00ff88; display: inline-block;"></span> متصل بث حي
                 </div>
                 <div style="color: var(--text-muted); font-size: 12px;">قناة وائل الرسمية</div>
             </div>
         </div>
 
-        <div class="grid-2">
-            <div class="glass-card">
-                <h3 style="font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-fire" style="color: var(--primary-red);"></i> آخر الحلقات ونسبة التقدم</h3>
-                <div id="videos" style="display: flex; flex-direction: column; gap: 12px;"></div>
-            </div>
-            <div class="glass-card" id="adminPanelContainer" style="display: none; border-color: var(--primary-red);">
-                <h3 style="font-size: 18px; margin-bottom: 12px; color: var(--primary-red);"><i class="fa-solid fa-sliders"></i> إعدادات الربط التلقائي (خاص)</h3>
-                <p style="color: var(--text-muted); font-size: 11px; margin-bottom: 12px;">القناة المرتبطة: UCQ_ZMlneyyFGqZZikkpQ2qw</p>
-                <input id="api" class="input-box" placeholder="YouTube API Key">
-                <input id="goal" class="input-box" placeholder="هدف المشاهدات المستهدف لكل فيديو">
-                <button class="btn-action" onclick="saveConfig()">حفظ التحديثات</button>
-                <p id="status" style="color: #00ff88; font-size: 12px; margin-top: 10px;"></p>
-                <button style="background: rgba(255,255,255,0.05); color: #ff3333; border: 1px solid rgba(255,51,51,0.2); padding: 10px; width: 100%; border-radius: 10px; margin-top: 10px; cursor: pointer; font-weight: 700;" onclick="logout()">تسجيل خروج</button>
-            </div>
-            <div class="glass-card" id="welcomeAdminCard">
-                <h3 style="font-size: 18px; margin-bottom: 8px;">🔒 لوحة التحكم المغلقة</h3>
-                <p style="color: var(--text-muted); font-size: 13px; line-height: 1.6;">هذه اللوحة مرتبطة بشكل مشفر. لفتح إعدادات الربط وتعديل الأهداف، قم بالضغط على زر "لوحة الإدارة" في الأعلى وأدخل رمزك الخاص.</p>
-                <div style="margin-top: 20px; padding: 14px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid rgba(255,255,255,0.03);">
-                    <small style="color: var(--text-muted);">آخر مزامنة ناجحة:</small><br>
-                    <b id="lastUpdate" style="font-size: 13px; color: #00ff88;">جارٍ الاتصال...</b>
-                </div>
-            </div>
+        <div class="glass-card">
+            <h3 style="font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-fire" style="color: var(--primary-red);"></i> آخر الحلقات ونسبة التقدم</h3>
+            <div id="videos" style="display: flex; flex-direction: column; gap: 14px;"></div>
         </div>
     </div>
 
-    <!-- 2. تبويب بث تويتش -->
+    <!-- 2. جدول القناة -->
+    <div id="schedule" class="tab-content space-y-6">
+        <div class="glass-card">
+            <h3 style="font-size: 20px; margin-bottom: 20px; color: #fff;"><i class="fa-solid fa-calendar-days" style="color: var(--primary-red);"></i> جدول البثوث والحلقات الأسبوعي</h3>
+            <div id="scheduleList" style="display: flex; flex-direction: column; gap: 12px;"></div>
+        </div>
+    </div>
+
+    <!-- 3. بث تويتش -->
     <div id="stream" class="tab-content space-y-6">
         <div class="glass-card">
-            <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--primary-purple);"><i class="fa-brands fa-twitch"></i> بث وائل المباشر (Twitch Stream)</h3>
-            <div style="width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 14px; overflow: hidden; border: 1px solid rgba(145, 70, 255, 0.3);">
+            <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--primary-purple);"><i class="fa-brands fa-twitch"></i> بث وائل المباشر (w6_xl)</h3>
+            <div style="width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 16px; overflow: hidden; border: 1px solid rgba(145, 70, 255, 0.3);">
                 <iframe src="https://player.twitch.tv/?channel=w6_xl&parent=localhost&parent=github.io" height="100%" width="100%" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- 3. تبويب الفيديوهات -->
-    <div id="videos" class="tab-content space-y-6">
+    <!-- 4. السيناريوهات -->
+    <div id="scenarios" class="tab-content space-y-6">
         <div class="glass-card">
-            <h3 style="font-size: 20px; margin-bottom: 16px;"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> أرشيف حلقات اليوتيوب الكامل</h3>
-            <p style="color: var(--text-muted); font-size: 13px;">يتم سحب أحدث الحلقات مباشرة من قناة @shadow47q عبر خوادم يوتيوب.</p>
+            <h3 style="font-size: 20px; margin-bottom: 16px; color: #fff;"><i class="fa-solid fa-book-skull" style="color: var(--primary-red);"></i> أرشيف السيناريوهات السرية</h3>
+            <div id="scenariosList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
         </div>
     </div>
 
-    <!-- 4. تبويب السيناريوهات والمهام -->
-    <div id="scenarios" class="tab-content space-y-6">
-        <div class="glass-card">
-            <h3 style="font-size: 20px; margin-bottom: 16px;"><i class="fa-solid fa-book-skull"></i> مساحة العمل والأفكار المشتركة</h3>
-            <p style="color: var(--text-muted); font-size: 13px;">مساحة مخصصة لتدوين السيناريوهات والأفكار القادمة الخاصة ببثوثكم.</p>
+    <!-- 5. مساحة العمل -->
+    <div id="workspace" class="tab-content space-y-6">
+        <div class="grid-2">
+            <div class="glass-card space-y-4">
+                <h3 style="font-size: 18px; color: var(--primary-red);"><i class="fa-solid fa-list-check"></i> قائمة المهام المشتركة</h3>
+                <div id="tasksList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+                <div style="margin-top: 15px;">
+                    <input id="newTaskText" class="input-box" placeholder="أدخل مهمة جديدة...">
+                    <button class="btn-action" onclick="addTask()">إضافة مهمة</button>
+                </div>
+            </div>
+            <div class="glass-card space-y-4">
+                <h3 style="font-size: 18px; color: #ffcc00;"><i class="fa-solid fa-lightbulb"></i> مفكرة الأفكار السريعة</h3>
+                <div id="ideaslist" style="display: flex; flex-direction: column; gap: 10px;"></div>
+                <div style="margin-top: 15px;">
+                    <input id="newIdeaText" class="input-box" placeholder="تدوين فكرة سيناريو أو فيديو...">
+                    <button class="btn-action" style="background: linear-gradient(135deg, #b8860b, #ffd700); color: #000;" onclick="addIdea()">حفظ فكرة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. تبويب لوحة الإدارة (يظهر فقط عند تسجيل الدخول) -->
+    <div id="admin-panel" class="tab-content space-y-6">
+        <div class="glass-card border-red-500">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; margin-bottom: 20px;">
+                <h2 style="font-size: 22px; color: var(--primary-red);"><i class="fa-solid fa-user-shield"></i> لوحة تحكم المسؤولين المباشرة</h2>
+                <button onclick="logout()" style="background: #500; color: #fff; border: none; padding: 8px 16px; border-radius: 10px; cursor: pointer; font-weight: 700;">تسجيل خروج</button>
+            </div>
+
+            <div class="grid-2">
+                <!-- قسم تعديل الجدول -->
+                <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary-red);">📅 إدارة جدول البثوث</h3>
+                    <input id="schDay" class="input-box" placeholder="اليوم (مثال: الجمعة)">
+                    <input id="schTime" class="input-box" placeholder="الوقت (مثال: 9:00 مساءً)">
+                    <input id="schDesc" class="input-box" placeholder="الفعالية / المحتوى">
+                    <button class="btn-action" onclick="saveScheduleItem()">إضافة موعد للجدول</button>
+                </div>
+
+                <!-- قسم تعديل السيناريوهات -->
+                <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--primary-purple);">📖 إضافة سيناريو جديد</h3>
+                    <input id="scenTitle" class="input-box" placeholder="عنوان السيناريو">
+                    <input id="scenDesc" class="input-box" placeholder="تفاصيل وقصة السيناريو...">
+                    <button class="btn-action" style="background: linear-gradient(135deg, var(--primary-purple), #500a8a);" onclick="saveScenarioItem()">حفظ السيناريو</button>
+                </div>
+            </div>
+
+            <!-- إعدادات يوتيوب API -->
+            <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); margin-top: 20px;">
+                <h3 style="font-size: 16px; margin-bottom: 12px; color: #00ff88;"><i class="fa-solid fa-sliders"></i> إعدادات الربط التلقائي بيوتيوب</h3>
+                <p style="color: var(--text-muted); font-size: 11px; margin-bottom: 10px;">القناة المرتبطة: UCQ_ZMlneyyFGqZZikkpQ2qw</p>
+                <input id="api" class="input-box" placeholder="YouTube API Key">
+                <input id="goal" class="input-box" placeholder="هدف المشاهدات المستهدف لكل فيديو">
+                <button class="btn-action" style="background: #008855;" onclick="saveConfig()">حفظ إعدادات الربط</button>
+                <p id="status" style="color: #00ff88; font-size: 12px; margin-top: 10px;"></p>
+            </div>
         </div>
     </div>
 
@@ -262,11 +292,29 @@ let cfg = JSON.parse(localStorage.getItem('cfg') || '{}');
 cfg.channelId = CHANNEL_ID;
 let codes = { s: localStorage.getItem('cs') || '112233', w: localStorage.getItem('cw') || '332211' };
 
-// نظام التبويبات الحديث (Tabs Navigation)
+let scheduleData = JSON.parse(localStorage.getItem('schedule_data') || JSON.stringify([
+    { day: "السبت", time: "8:00 مساءً", desc: "بث مجمع وتحديات يوتيوب" },
+    { day: "الأربعاء", time: "10:00 مساءً", desc: "سيناريو شرطة وجرائم دسمة" }
+]));
+
+let scenariosData = JSON.parse(localStorage.getItem('scenarios_data') || JSON.stringify([
+    { title: "سيناريو السطو الكبرى", desc: "التخطيط لسرقة البنك المركزي بمشاركة المافيا بطريقة احترافية." },
+    { title: "سيناريو المطاردة الجبلية", desc: "الهروب من قطاع الطرق والشرطة في الجبال." }
+]));
+
+let tasksData = JSON.parse(localStorage.getItem('tasks_data') || JSON.stringify([
+    { text: "مونتاج حلقة السطو الكبرى", done: false },
+    { text: "تحديث بوت ديسكورد سيرفر ايكيا", done: true }
+]));
+
+let ideasData = JSON.parse(localStorage.getItem('ideas_data') || JSON.stringify([
+    { text: "تحدي النجاة في الجزيرة لمدة 24 ساعة" }
+]));
+
+// نظام التبويبات
 function switchTab(tabId, btnElement) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    
     document.getElementById(tabId).classList.add('active');
     btnElement.classList.add('active');
 }
@@ -277,11 +325,12 @@ function closeAdmin() { document.getElementById('adminModal').style.display = 'n
 function login() {
     let v = document.getElementById('code').value;
     if (v === codes.s || v === codes.w) {
-        document.getElementById('adminPanelContainer').style.display = 'block';
-        document.getElementById('welcomeAdminCard').style.display = 'none';
-        closeAdmin();
         localStorage.setItem('logged', '1');
-        alert('تم تسجيل الدخول بنجاح كـ ' + (v === codes.s ? 'شادو' : 'وائل'));
+        closeAdmin();
+        setupAdminUI();
+        // الانتقال تلقائياً إلى تبويب لوحة الإدارة الفاخر الجديد
+        switchTab('admin-panel', document.getElementById('adminTabBtn'));
+        alert('مرحباً بك، تم تسجيل الدخول بنجاح كـ ' + (v === codes.s ? 'شادو' : 'وائل'));
     } else {
         document.getElementById('err').style.display = 'block';
     }
@@ -292,12 +341,150 @@ function logout() {
     location.reload();
 }
 
+function setupAdminUI() {
+    if(localStorage.getItem('logged')) {
+        document.getElementById('adminTabBtn').style.display = 'flex';
+        document.getElementById('loginTriggerBtn').innerHTML = '<i class="fa-solid fa-user-check" style="color:#00ff88"></i> مسؤول متصل';
+    }
+}
+
 function saveConfig() {
     cfg.apiKey = document.getElementById('api').value;
     cfg.goal = document.getElementById('goal').value || 10000;
     localStorage.setItem('cfg', JSON.stringify(cfg));
     fetchAll();
     document.getElementById('status').innerText = '✅ تم الحفظ وتحديث البيانات بنجاح';
+}
+
+// جدول القناة
+function renderSchedule() {
+    let html = '';
+    let isLogged = localStorage.getItem('logged');
+    scheduleData.forEach((item, index) => {
+        html += `
+            <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="color: var(--primary-red); font-weight: 700; font-size: 14px;">${item.day} - ${item.time}</span>
+                    <div style="font-size: 15px; font-weight: 600; margin-top: 4px;">${item.desc}</div>
+                </div>
+                ${isLogged ? `<button onclick="deleteSchedule(${index})" style="background: rgba(255,0,60,0.2); color: #ff3333; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 12px;"><i class="fa-solid fa-trash"></i> حذف</button>` : ''}
+            </div>
+        `;
+    });
+    document.getElementById('scheduleList').innerHTML = html;
+}
+
+function saveScheduleItem() {
+    let day = document.getElementById('schDay').value;
+    let time = document.getElementById('schTime').value;
+    let desc = document.getElementById('schDesc').value;
+    if(!day || !time || !desc) return alert('املأ جميع الحقول!');
+    scheduleData.push({ day, time, desc });
+    localStorage.setItem('schedule_data', JSON.stringify(scheduleData));
+    document.getElementById('schDay').value = '';
+    document.getElementById('schTime').value = '';
+    document.getElementById('schDesc').value = '';
+    renderSchedule();
+    alert('✅ تمت إضافة الموعد للجدول بنجاح');
+}
+
+function deleteSchedule(index) {
+    scheduleData.splice(index, 1);
+    localStorage.setItem('schedule_data', JSON.stringify(scheduleData));
+    renderSchedule();
+}
+
+// السيناريوهات
+function renderScenarios() {
+    let html = '';
+    let isLogged = localStorage.getItem('logged');
+    scenariosData.forEach((item, index) => {
+        html += `
+            <div class="glass-card" style="position: relative;">
+                <h4 style="font-size: 16px; color: var(--primary-purple); margin-bottom: 6px;">${item.title}</h4>
+                <p style="color: var(--text-muted); font-size: 13px; line-height: 1.6;">${item.desc}</p>
+                ${isLogged ? `<button onclick="deleteScenario(${index})" style="position: absolute; top: 16px; left: 16px; background: rgba(255,0,60,0.2); color: #ff3333; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 11px;"><i class="fa-solid fa-trash"></i> حذف</button>` : ''}
+            </div>
+        `;
+    });
+    document.getElementById('scenariosList').innerHTML = html;
+}
+
+function saveScenarioItem() {
+    let title = document.getElementById('scenTitle').value;
+    let desc = document.getElementById('scenDesc').value;
+    if(!title || !desc) return alert('املأ جميع الحقول!');
+    scenariosData.push({ title, desc });
+    localStorage.setItem('scenarios_data', JSON.stringify(scenariosData));
+    document.getElementById('scenTitle').value = '';
+    document.getElementById('scenDesc').value = '';
+    renderScenarios();
+    alert('✅ تم حفظ السيناريو بنجاح');
+}
+
+function deleteScenario(index) {
+    scenariosData.splice(index, 1);
+    localStorage.setItem('scenarios_data', JSON.stringify(scenariosData));
+    renderScenarios();
+}
+
+// مساحة العمل
+function renderWorkspace() {
+    let isLogged = localStorage.getItem('logged');
+    let tasksHtml = '';
+    tasksData.forEach((t, i) => {
+        tasksHtml += `
+            <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                <span style="${t.done ? 'text-decoration: line-through; color: var(--text-muted);' : ''}">${t.text}</span>
+                <div style="display:flex; gap:6px;">
+                    <button onclick="toggleTask(${i})" style="background: ${t.done ? '#00ff88' : '#333'}; color: #000; border: none; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight:700;">${t.done ? 'منجز' : 'إنجاز'}</button>
+                    ${isLogged ? `<button onclick="deleteTask(${i})" style="background: #500; color: #fff; border: none; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 11px;"><i class="fa-solid fa-trash"></i></button>` : ''}
+                </div>
+            </div>
+        `;
+    });
+    document.getElementById('tasksList').innerHTML = tasksHtml;
+
+    let ideasHtml = '';
+    ideasData.forEach((id, i) => {
+        ideasHtml += `
+            <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.03); display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                <span>💡 ${id.text}</span>
+                ${isLogged ? `<button onclick="deleteIdea(${i})" style="background: #500; color: #fff; border: none; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 11px;"><i class="fa-solid fa-trash"></i></button>` : ''}
+            </div>
+        `;
+    });
+    document.getElementById('ideaslist').innerHTML = ideasHtml;
+}
+
+function addTask() {
+    let txt = document.getElementById('newTaskText').value;
+    if(!txt) return;
+    tasksData.push({ text: txt, done: false });
+    localStorage.setItem('tasks_data', JSON.stringify(tasksData));
+    document.getElementById('newTaskText').value = '';
+    renderWorkspace();
+}
+
+function toggleTask(i) {
+    tasksData[i].done = !tasksData[i].done;
+    localStorage.setItem('tasks_data', JSON.stringify(tasksData));
+    renderWorkspace();
+}
+
+function deleteTask(i) {
+    tasksData.splice(i, 1);
+    localStorage.setItem('tasks_data', JSON.stringify(tasksData));
+    renderWorkspace();
+}
+
+function addIdea() {
+    let txt = document.getElementById('newIdeaText').value;
+    if(!txt) return;
+    ideasData.push({ text: txt });
+    localStorage.setItem('ideas_data', JSON.stringify(ideasData));
+    document.getElementById('newIdeaText').value = '';
+    renderWorkspace();
 }
 
 async function fetchAll() {
@@ -332,19 +519,17 @@ async function fetchAll() {
             `;
         });
         document.getElementById('videos').innerHTML = html;
-        document.getElementById('lastUpdate').innerText = new Date().toLocaleTimeString('ar-SA');
-    } catch(e) {
-        console.error(e);
-    }
+    } catch(e) { console.error(e); }
 }
 
 document.getElementById('api').value = cfg.apiKey || '';
 document.getElementById('goal').value = cfg.goal || '';
 if(cfg.apiKey) { fetchAll(); setInterval(fetchAll, 300000); }
-if(localStorage.getItem('logged')) {
-    document.getElementById('adminPanelContainer').style.display = 'block';
-    document.getElementById('welcomeAdminCard').style.display = 'none';
-}
+
+setupAdminUI();
+renderSchedule();
+renderScenarios();
+renderWorkspace();
 </script>
 </body>
 </html>
