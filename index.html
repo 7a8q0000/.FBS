@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHADOW x WAEL STUDIO | النظام الاستخباراتي</title>
+    <title>SHADOW x WAEL STUDIO</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #060709;
-            --card-bg: rgba(14, 16, 23, 0.85);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --accent-red: #ff2a2a;
-            --accent-gold: #f1c40f;
-            --accent-blue: #00f0ff;
-            --accent-glow: rgba(255, 42, 42, 0.35);
+            --bg-color: #07080b;
+            --card-bg: #11131a;
+            --card-border: #1f2330;
+            --accent-red: #e74c3c;
+            --accent-glow: rgba(231, 76, 60, 0.35);
             --text-main: #ffffff;
             --text-muted: #8b93a5;
+            --accent-gold: #f1c40f;
+            --accent-blue: #00f0ff;
         }
 
         * {
@@ -27,504 +27,698 @@
 
         body {
             background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(255, 42, 42, 0.07) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.05) 0%, transparent 40%);
             color: var(--text-main);
-            padding: 25px;
+            padding: 20px;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 1350px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* شريط التنقل العلوي */
+        /* شريط التنقل العلوي مطابق للصورة */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
             border: 1px solid var(--card-border);
-            padding: 18px 30px;
-            border-radius: 16px;
+            padding: 15px 30px;
+            border-radius: 14px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .brand-icon {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: linear-gradient(135deg, var(--accent-red), #900);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px var(--accent-glow);
-            font-size: 20px;
+            box-shadow: 0 0 15px var(--accent-glow);
+            font-size: 18px;
         }
 
         .brand-title h1 {
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 900;
             letter-spacing: 1px;
-            background: linear-gradient(45deg, #fff, var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .brand-title p {
             font-size: 11px;
             color: var(--text-muted);
-            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 10px;
+            gap: 20px;
             list-style: none;
-            background: rgba(0,0,0,0.3);
-            padding: 6px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.04);
         }
 
         .nav-links button {
             background: transparent;
             color: var(--text-muted);
             border: none;
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Cairo', sans-serif;
+            padding: 6px 12px;
+            border-radius: 8px;
         }
 
         .nav-links button.active, .nav-links button:hover {
-            background: var(--accent-red);
-            color: #fff;
-            box-shadow: 0 0 15px var(--accent-glow);
+            color: var(--accent-red);
+            background: rgba(231, 76, 60, 0.08);
         }
 
         .user-menu {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .admin-badge {
-            background: rgba(46, 204, 113, 0.1);
-            color: #2ecc71;
-            border: 1px solid #2ecc71;
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 12px;
-            font-weight: 800;
-            box-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
+            font-weight: 700;
         }
 
         /* نظام التبويبات (الصفحات) */
-        .tab-content {
+        .tab-section {
             display: none;
         }
-
-        .tab-content.active {
+        .tab-section.active {
             display: block;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* تخطيط الصفحة */
-        .main-grid {
+        /* التخطيط الرئيسي للصورة */
+        .dashboard-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 25px;
         }
 
-        @media (max-width: 950px) {
-            .main-grid { grid-template-columns: 1fr; }
+        @media (max-width: 1000px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
         }
 
-        .panel {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--card-border);
-            border-radius: 18px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 25px;
-        }
-
-        .section-title {
-            font-size: 17px;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 18px;
+        .left-side {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            border-right: 4px solid var(--accent-red);
-            padding-right: 10px;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        /* البطاقات الإحصائية */
-        .stats-grid {
+        .section-header h2 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .section-header p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* البطاقات الثلاث العلوية */
+        .stats-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            margin-bottom: 25px;
         }
 
-        @media (max-width: 700px) {
-            .stats-grid { grid-template-columns: 1fr; }
+        @media (max-width: 750px) {
+            .stats-cards { grid-template-columns: 1fr; }
         }
 
         .stat-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
+            border-radius: 14px;
             padding: 22px;
             position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; width: 4px; height: 100%;
-            background: var(--accent-gold);
         }
 
         .stat-card h3 {
             font-size: 12px;
             color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        .stat-card .value {
+        .stat-card .number {
             font-size: 26px;
             font-weight: 900;
-            color: #fff;
+            margin-bottom: 6px;
         }
 
         .stat-card .trend {
-            font-size: 11px;
+            font-size: 12px;
             color: #2ecc71;
             font-weight: 700;
-            margin-top: 5px;
         }
 
-        /* الجداول الأسطورية */
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
+        /* قسم التحديات */
+        .challenges-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: right;
+        @media (max-width: 750px) {
+            .challenges-container { grid-template-columns: 1fr; }
         }
 
-        th, td {
-            padding: 14px 18px;
-            border-bottom: 1px solid var(--card-border);
-            font-size: 13px;
-        }
-
-        th {
-            background: rgba(0,0,0,0.4);
-            color: var(--accent-gold);
-            font-weight: 800;
-        }
-
-        tr:hover td {
-            background: rgba(255,255,255,0.02);
-        }
-
-        .badge-done { color: #2ecc71; font-weight: 800; }
-        .badge-prog { color: var(--accent-gold); font-weight: 800; }
-        .badge-wait { color: var(--accent-red); font-weight: 800; }
-
-        /* نموذج تسجيل الدخول للمسؤولين */
-        .login-box {
-            max-width: 450px;
-            margin: 40px auto;
-            text-align: center;
-        }
-
-        .login-box input {
-            width: 100%;
-            background: #040507;
+        .challenge-box {
+            background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 14px 18px;
-            border-radius: 12px;
-            color: #fff;
-            font-size: 15px;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .challenge-box h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .challenge-box .sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .progress-bg {
+            background: #1a1d26;
+            height: 6px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            background: var(--accent-red);
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .progress-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* الخط البياني السفلي */
+        .chart-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .chart-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
             margin-bottom: 15px;
+        }
+
+        .bars-area {
+            height: 65px;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 5px;
+        }
+
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, rgba(231, 76, 60, 0.1), var(--accent-red));
+            border-radius: 4px 4px 0 0;
+        }
+
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* صندوق تسجيل الدخول الأيمن (Secure Access) مطابق للصورة */
+        .secure-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            height: fit-content;
+        }
+
+        .secure-icon {
+            color: var(--accent-red);
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .secure-box h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .secure-box p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .field-group input {
+            width: 100%;
+            background: #060709;
+            border: 1px solid var(--card-border);
+            padding: 12px 15px;
+            border-radius: 10px;
+            color: #fff;
             outline: none;
+            font-size: 14px;
             transition: 0.3s;
         }
 
-        .login-box input:focus {
+        .field-group input:focus {
             border-color: var(--accent-red);
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        .cyber-btn {
+        .action-btn {
             width: 100%;
             background: var(--accent-red);
             color: #fff;
             border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 900;
-            font-size: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 5px 20px var(--accent-glow);
+            box-shadow: 0 5px 15px var(--accent-glow);
         }
 
-        .cyber-btn:hover {
-            background: #d91b1b;
+        .action-btn:hover {
+            background: #c0392b;
             transform: translateY(-2px);
-            box-shadow: 0 0 25px var(--accent-red);
         }
 
-        /* جدول التصوير المخصص */
-        .schedule-card {
-            background: rgba(255,255,255,0.02);
+        .secure-foot {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+
+        /* ---------------- لوحة المسؤولين الخاصة (Admin Dashboard Tab) ---------------- */
+        .admin-panel-container {
+            background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-radius: 16px;
+            padding: 30px;
         }
 
-        .schedule-info h4 {
+        .admin-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media(max-width: 800px) {
+            .admin-row { grid-template-columns: 1fr; }
+        }
+
+        .admin-card-box {
+            background: #0d0f14;
+            border: 1px solid var(--card-border);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .admin-card-box h4 {
+            color: var(--accent-gold);
             font-size: 15px;
             font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .admin-input {
+            width: 100%;
+            background: #07080b;
+            border: 1px solid var(--card-border);
             color: #fff;
-        }
-
-        .schedule-info p {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .schedule-time {
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-blue);
-            border: 1px solid var(--accent-blue);
-            padding: 5px 12px;
+            padding: 10px 14px;
             border-radius: 8px;
-            font-size: 12px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .save-changes-btn {
+            background: #2ecc71;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
             font-weight: 800;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .save-changes-btn:hover {
+            background: #27ae60;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- شريط التنقل العلوي مع الأزرار الشغالة -->
+        <!-- شريط التنقل العلوي -->
         <header class="navbar">
             <div class="brand">
                 <div class="brand-icon">⚡</div>
                 <div class="brand-title">
                     <h1>SHADOW x WAEL STUDIO</h1>
-                    <p>المقر العسكري الاستخباراتي</p>
+                    <p>استوديو شادو × وائل</p>
                 </div>
             </div>
             
-            <!-- أزرار التنقل بين التبويبات (تشتغل بالمللي) -->
+            <!-- أزرار التنقل العلوي (كلها شغالة وتنقلك بين التبويبات) -->
             <ul class="nav-links">
-                <li><button class="active" onclick="switchTab('home')">الرئيسية</button></li>
-                <li><button onclick="switchTab('adminPanel')">لوحة المسؤولين 🔒</button></li>
-                <li><button onclick="switchTab('schedule')">جدول التصوير 📅</button></li>
-                <li><button onclick="switchTab('ideas')">بنك الأفكار 💡</button></li>
+                <li><button class="active" onclick="openTab('overviewTab')">Overview</button></li>
+                <li><button onclick="openTab('analyticsTab')">Analytics</button></li>
+                <li><button onclick="openTab('challengesTab')">Challenges</button></li>
+                <li><button onclick="openTab('videosTab')">Videos</button></li>
+                <li><button onclick="openTab('adminPortalTab')" style="color: var(--accent-gold);">لوحة المسؤولين 🔐</button></li>
             </ul>
 
             <div class="user-menu">
-                <span class="admin-badge">مسؤول • متصل</span>
+                <span class="admin-badge">Admin • Online</span>
             </div>
         </header>
 
-        <!-- ================= 1. تبويب الرئيسية (Home) ================= -->
-        <div id="home" class="tab-content active">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>مشتركو اليوتيوب</h3>
-                    <div class="value">128.5K</div>
-                    <div class="trend">↗ +2.4K هذا الأسبوع</div>
-                </div>
-                <div class="stat-card" style="border-color: var(--accent-blue);">
-                    <h3>إجمالي المشاهدات</h3>
-                    <div class="value">3.2M</div>
-                    <div class="trend" style="color: var(--accent-blue);">↗ +189K هذا الأسبوع</div>
-                </div>
-                <div class="stat-card" style="border-color: var(--accent-red);">
-                    <h3>حالة إمبراطورية ريك تاون</h3>
-                    <div class="value" style="color: var(--accent-red);">المرحلة 1</div>
-                    <div class="trend" style="color: var(--accent-red);">نشط وعالي السرية</div>
-                </div>
-            </div>
-
-            <div class="panel">
-                <div class="section-title">أعلى المقاطع مشاهدة في القناة</div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>الترتيب</th>
-                                <th>عنوان الفيديو</th>
-                                <th>المشاهدات</th>
-                                <th>الحالة</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#1</td>
-                                <td>من استخبارات روسيا إلى عامل دواجن! (الحلقة 1)</td>
-                                <td>45,200 مشاهدة</td>
-                                <td><span class="badge-done">ناجح جداً 🔥</span></td>
-                            </tr>
-                            <tr>
-                                <td>#2</td>
-                                <td>تحدي الموت في كواليس سيرفر ريك تاون</td>
-                                <td>32,100 مشاهدة</td>
-                                <td><span class="badge-done">مرتفع</span></td>
-                            </tr>
-                            <tr>
-                                <td>#3</td>
-                                <td>أقوى مقلب تم تنفيذه في عسكر المدينة 💀</td>
-                                <td>28,400 مشاهدة</td>
-                                <td><span class="badge-done">ممتاز</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= 2. تبويب لوحة المسؤولين (Admin Panel) ================= -->
-        <div id="adminPanel" class="tab-content">
-            <div class="panel">
-                <div class="section-title">بوابة المسؤولين السرية (أدوات التحكم الحصرية)</div>
-                <div class="login-box">
-                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">هذا القسم خاص بالمسؤول الأساسي فقط لتعديل شفرات المافيا وإدارة الحلقات.</p>
-                    <div class="input-group">
-                        <input type="password" id="adminCode" placeholder="أدخل رمز المسؤول السري...">
-                    </div>
-                    <button class="cyber-btn" onclick="verifyAdmin()">فتح صلاحيات المسؤول الكاملة 🔓</button>
-                    <div id="adminControls" style="display:none; margin-top: 25px; text-align: right;">
-                        <h4 style="color: var(--accent-gold); margin-bottom: 10px;">✅ تم تفعيل صلاحيات المسؤول بنجاح!</h4>
-                        <p style="font-size: 13px; color: var(--text-muted);">أهلاً بك يا شادو. يمكنك الآن تعديل وإضافة الحلقات عبر لوحة القيادة.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= 3. تبويب جدول التصوير (Schedule) ================= -->
-        <div id="schedule" class="tab-content">
-            <div class="panel">
-                <div class="section-title">📅 جدول التصوير والمونتاج الأسبوعي</div>
+        <!-- ================= تبويب 1: نظرة عامة (Overview) ================= -->
+        <div id="overviewTab" class="tab-section active">
+            <div class="dashboard-grid">
                 
-                <div class="schedule-card">
-                    <div class="schedule-info">
-                        <h4>تصوير مشاهد الحلقة الثانية (بلاك نوار والروسي)</h4>
-                        <p>تجهيز السيرفر والمشاهد الميدانية لمزرعة الدواجن وتسليم الشحنات.</p>
+                <!-- الجانب الأيمن: الإحصائيات والتحديات والرسوم -->
+                <div class="left-side">
+                    <div class="section-header">
+                        <h2>Dashboard Overview</h2>
+                        <p>Gaming Channel Performance • Updated Live</p>
                     </div>
-                    <div class="schedule-time">الإثنين - 09:00 م</div>
+
+                    <!-- البطاقات الثلاث -->
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <h3>🔴 YouTube Subscribers</h3>
+                            <div class="number" id="displaySubs">128.5K</div>
+                            <div class="trend">↗ +2.4K this week</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>🔴 Total Views</h3>
+                            <div class="number" id="displayViews">3.2M</div>
+                            <div class="trend">↗ +189K this week</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>👁️ Avg. View Duration</h3>
+                            <div class="number">7:32</div>
+                            <div class="trend" style="color: var(--accent-red);">↗ +12% this month</div>
+                        </div>
+                    </div>
+
+                    <!-- قسم التحديات -->
+                    <div class="section-header" style="margin-top: 5px;">
+                        <h2>Challenge Progress</h2>
+                        <p>Active Gaming Challenges</p>
+                    </div>
+                    <div class="challenges-container">
+                        <div class="challenge-box">
+                            <h4>30-Day Upload Challenge</h4>
+                            <div class="sub">Goal: Upload 30 videos in 30 days • 8 days remaining</div>
+                            <div class="progress-bg"><div class="progress-fill" style="width: 73%;"></div></div>
+                            <div class="progress-details"><span>22/30 Days</span><span style="color: var(--accent-red); font-weight:700;">73%</span></div>
+                        </div>
+                        <div class="challenge-box">
+                            <h4>Collab Challenge with Community</h4>
+                            <div class="sub">5 collaborations pending • Rewards unlocked at 100%</div>
+                            <div class="progress-bg"><div class="progress-fill" style="width: 65%;"></div></div>
+                            <div class="progress-details"><span>13/20 Collabs</span><span style="color: var(--accent-red); font-weight:700;">65% Completed</span></div>
+                        </div>
+                    </div>
+
+                    <!-- الرسم البياني -->
+                    <div class="chart-box">
+                        <div class="chart-top">
+                            <span>Views Trend (Last 7 Days)</span>
+                            <span style="color: var(--accent-red); font-weight: 700;">Live</span>
+                        </div>
+                        <div class="bars-area">
+                            <div class="bar" style="height: 30%;"></div>
+                            <div class="bar" style="height: 45%;"></div>
+                            <div class="bar" style="height: 40%;"></div>
+                            <div class="bar" style="height: 60%;"></div>
+                            <div class="bar" style="height: 55%;"></div>
+                            <div class="bar" style="height: 80%;"></div>
+                            <div class="bar" style="height: 95%;"></div>
+                        </div>
+                        <div class="chart-labels">
+                            <span>Oct 6</span><span>12</span><span>14</span><span>16</span><span>18</span><span>19</span><span>20</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="schedule-card">
-                    <div class="schedule-info">
-                        <h4>مونتاج وصوتيات الحلقة الثانية</h4>
-                        <p>تركيب المؤثرات الصوتية المرعبة والموسيقى الحماسية.</p>
+                <!-- الجانب الأيسر: صندوق تسجيل الدخول السري (Secure Access) -->
+                <div>
+                    <div class="secure-box">
+                        <div class="secure-icon">🔒</div>
+                        <h3>Secure Access</h3>
+                        <p>Enter secret code to access admin controls</p>
+                        
+                        <div class="field-group">
+                            <label>Secret Code (رمز الدخول: 4747)</label>
+                            <input type="password" id="secretInput" placeholder="••••••">
+                        </div>
+
+                        <button class="action-btn" onclick="loginAdmin()">تسجيل الدخول ➔ Login</button>
+                        
+                        <div class="secure-foot">
+                            Protected by 2FA • Unauthorized access is monitored
+                        </div>
                     </div>
-                    <div class="schedule-time">الأربعاء - 04:00 م</div>
                 </div>
 
-                <div class="schedule-card" style="border-left: 4px solid var(--accent-red);">
-                    <div class="schedule-info">
-                        <h4>موعد نشر الحلقة الثانية على اليوتيوب</h4>
-                        <p>إطلاق الحلقة الرسمية على القناة مع الصورة المصغرة الخرافية.</p>
+            </div>
+        </div>
+
+        <!-- ================= تبويب 2: الإحصائيات (Analytics) ================= -->
+        <div id="analyticsTab" class="tab-section">
+            <div class="section-header">
+                <h2>Channel Analytics</h2>
+                <p>تحليلات القناة المعمقة وتفاصيل المشاهدات والجمهور</p>
+            </div>
+            <div style="background: var(--card-bg); border: 1px solid var(--card-border); padding: 30px; border-radius: 14px; margin-top: 15px;">
+                <h3 style="color: var(--accent-gold); margin-bottom: 10px;">📊 أداء تفاعل الجمهور</h3>
+                <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6;">هنا يتم عرض إحصائيات متقدمة لمعدل الاحتفاظ بالجمهور، نسبة النقر للظهور (CTR)، ومصادر الزيارات من بحث يوتيوب والاقتراحات.</p>
+            </div>
+        </div>
+
+        <!-- ================= تبويب 3: التحديات (Challenges) ================= -->
+        <div id="challengesTab" class="tab-section">
+            <div class="section-header">
+                <h2>Active Challenges</h2>
+                <p>قائمة التحديات المخصصة لسيرفر ريك تاون والقناة</p>
+            </div>
+            <div style="background: var(--card-bg); border: 1px solid var(--card-border); padding: 30px; border-radius: 14px; margin-top: 15px;">
+                <h3 style="color: var(--accent-red); margin-bottom: 10px;">⚡ تحديات المافيا الكبرى</h3>
+                <p style="color: var(--text-muted); font-size: 14px;">1. إنجاز 10 حلقات متتالية لقصة إيزاك وبلاك نوار.<br>2. تأسيس إمبراطورية الأسلحة الكاملة بالتعاون مع "الروسي".</p>
+            </div>
+        </div>
+
+        <!-- ================= تبويب 4: المقاطع والأداء (Videos) ================= -->
+        <div id="videosTab" class="tab-section">
+            <div class="section-header">
+                <h2>Top Performing Videos</h2>
+                <p>أعلى 3 مقاطع مشاهدة في تاريخ القناة</p>
+            </div>
+            <div style="background: var(--card-bg); border: 1px solid var(--card-border); padding: 25px; border-radius: 14px; margin-top: 15px;">
+                <div id="videosListContainer" style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="padding: 15px; background: #07080b; border-radius: 10px; border-left: 4px solid var(--accent-gold);">
+                        <h4 id="vTitle1" style="font-size: 15px; margin-bottom: 5px;">#1: من استخبارات روسيا إلى عامل دواجن! (الحلقة الأولى)</h4>
+                        <p id="vViews1" style="font-size: 13px; color: var(--accent-blue);">👁️ 45,200 مشاهدة</p>
                     </div>
-                    <div class="schedule-time" style="background: rgba(255,42,42,0.1); color: var(--accent-red); border-color: var(--accent-red);">الخميس - 08:00 م</div>
+                    <div style="padding: 15px; background: #07080b; border-radius: 10px; border-left: 4px solid var(--text-muted);">
+                        <h4 id="vTitle2" style="font-size: 15px; margin-bottom: 5px;">#2: تحدي الموت في كواليس سيرفر ريك تاون</h4>
+                        <p id="vViews2" style="font-size: 13px; color: var(--accent-blue);">👁️ 32,100 مشاهدة</p>
+                    </div>
+                    <div style="padding: 15px; background: #07080b; border-radius: 10px; border-left: 4px solid var(--accent-red);">
+                        <h4 id="vTitle3" style="font-size: 15px; margin-bottom: 5px;">#3: أقوى مقلب تم تنفيذه في عسكر المدينة 💀</h4>
+                        <p id="vViews3" style="font-size: 13px; color: var(--accent-blue);">👁️ 28,400 مشاهدة</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= 4. تبويب بنك الأفكار (Ideas) ================= -->
-        <div id="ideas" class="tab-content">
-            <div class="panel">
-                <div class="section-title">💡 بنك الأفكار الإبداعية للحلقات القادمة</div>
-                <textarea id="ideaInput" style="width: 100%; background: #040507; border: 1px solid var(--card-border); color: #fff; padding: 15px; border-radius: 12px; height: 140px; font-family: 'Cairo', sans-serif; font-size: 14px; outline: none;" placeholder="اكتب فكرة حماسية أو مقلب جديد..."></textarea>
-                <button class="cyber-btn" style="margin-top: 15px;" onclick="saveIdea()">حفظ الفكرة في السيرفر 💾</button>
-                <div id="savedMessage" style="color: #2ecc71; font-size: 13px; font-weight: 700; margin-top: 10px; display: none;">تم حفظ الفكرة بنجاح في ذاكرة المافيا! ✅</div>
+        <!-- ================= تبويب 5: لوحة المسؤولين الخاصة (Admin Portal - تفتح بعد تسجيل الدخول) ================= -->
+        <div id="adminPortalTab" class="tab-section">
+            <div class="section-header">
+                <h2>🔐 لوحة التحكم الشاملة للمسؤول (Admin Dashboard)</h2>
+                <p>من هنا يمكنك تعديل كل تفاصيل الموقع، الإحصائيات، وجداول التصوير بالكامل</p>
+            </div>
+
+            <div class="admin-panel-container" style="margin-top: 15px;">
+                <div class="admin-row">
+                    <!-- تعديل الإحصائيات (المشتركين والمشاهدات) -->
+                    <div class="admin-card-box">
+                        <h4>📊 تعديل إحصائيات القناة</h4>
+                        <label style="font-size: 12px; color: var(--text-muted);">عدد المشتركين:</label>
+                        <input type="text" id="inputSubs" class="admin-input" value="128.5K">
+                        
+                        <label style="font-size: 12px; color: var(--text-muted);">إجمالي المشاهدات:</label>
+                        <input type="text" id="inputViews" class="admin-input" value="3.2M">
+                        
+                        <button class="save-changes-btn" onclick="updateStats()">تحديث الإحصائيات فوراً ⚡</button>
+                    </div>
+
+                    <!-- ربط القناة وحفظ البيانات -->
+                    <div class="admin-card-box">
+                        <h4>🔗 ربط القناة وبيانات الاستوديو</h4>
+                        <label style="font-size: 12px; color: var(--text-muted);">رابط قناة اليوتيوب:</label>
+                        <input type="text" class="admin-input" value="https://youtube.com/@Shadow47Q">
+                        
+                        <label style="font-size: 12px; color: var(--text-muted);">مفتاح الربط (API Key):</label>
+                        <input type="password" class="admin-input" value="AIzaSy_MockKey_Shadow47Q">
+                        
+                        <button class="save-changes-btn" style="background: var(--accent-blue); color: #000;" onclick="alert('تم ربط القناة وحفظ الإعدادات بنجاح!')">حفظ إعدادات الربط 💾</button>
+                    </div>
+                </div>
+
+                <!-- تعديل أعلى 3 مقاطع -->
+                <div class="admin-card-box" style="margin-bottom: 20px;">
+                    <h4>🏆 تعديل أعلى 3 مقاطع في القناة</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label style="font-size: 11px; color: var(--text-muted);">عنوان المقطع الأول:</label>
+                            <input type="text" id="editV1Title" class="admin-input" value="من استخبارات روسيا إلى عامل دواجن! (الحلقة الأولى)">
+                        </div>
+                        <div>
+                            <label style="font-size: 11px; color: var(--text-muted);">مشاهدات المقطع الأول:</label>
+                            <input type="text" id="editV1Views" class="admin-input" value="👁️ 45,200 مشاهدة">
+                        </div>
+                    </div>
+                    <button class="save-changes-btn" onclick="updateVideos()">تحديث المقاطع في القناة 🚀</button>
+                </div>
+
+                <!-- تعديل جدول التصوير والأفكار -->
+                <div class="admin-card-box">
+                    <h4>📅 إدارة جدول التصوير والمهام</h4>
+                    <label style="font-size: 12px; color: var(--text-muted);">أضف ملاحظة أو مهمة تصوير جديدة:</label>
+                    <textarea class="admin-input" style="height: 80px; resize: vertical;" placeholder="اكتب تفاصيل الحلقة القادمة..."></textarea>
+                    <button class="save-changes-btn" onclick="alert('تمت الإضافة إلى جدول التصوير بنجاح!')">إضافة للجدول ➕</button>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <!-- كود JavaScript المشغل للأزرار والتبويبات -->
+    <!-- كود JavaScript للتحكم بالتبويبات وتسجيل الدخول -->
     <script>
-        // دالة تبديل التبويبات (تفتح لك صفحة مستقلة بدون ما تحس بلخبطة)
-        function switchTab(tabId) {
-            // إخفاء كل التبويبات
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
+        // دالة التنقل بين التبويبات العلوية
+        function openTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-section');
+            tabs.forEach(t => t.classList.remove('active'));
 
-            // إزالة الأكتيف من كل الأزرار
             const buttons = document.querySelectorAll('.nav-links button');
-            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons.forEach(b => b.classList.remove('active'));
 
-            // إظهار التبويب المطلوب فقط
             document.getElementById(tabId).classList.add('active');
-
-            // تفعيل الزر المضغوط
+            
+            // تحديد الزر المماثل في النافبار
             event.target.classList.add('active');
         }
 
-        // دالة التحقق من كود المسؤول
-        function verifyAdmin() {
-            const code = document.getElementById('adminCode').value;
+        // دالة تسجيل الدخول عبر صندوق Secure Access والانتقال تلقائياً للتبويب الثاني (لوحة المسؤولين)
+        function loginAdmin() {
+            const code = document.getElementById('secretInput').value;
             if (code === "4747" || code === "shadow" || code === "123") {
-                document.getElementById('adminControls').style.display = 'block';
-                alert('أهلاً بك يا شادو! تم منحك صلاحيات المسؤول الكاملة بنجاح.');
+                alert('أهلاً بك يا شادو! تم التحقق بنجاح، جاري نقلك إلى لوحة المسؤولين...');
+                
+                // إخفاء كل التبويبات وإظهار تبويب المسؤولين
+                const tabs = document.querySelectorAll('.tab-section');
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                document.getElementById('adminPortalTab').classList.add('active');
+
+                // تحديث الأزرار العلوية
+                const buttons = document.querySelectorAll('.nav-links button');
+                buttons.forEach(b => b.classList.remove('active'));
             } else {
-                alert('الرمز خاطئ يا صاحبي! حاول مرة أخرى.');
+                alert('الرمز السري غير صحيح! (جرب اكتب: 4747)');
             }
         }
 
-        // دالة حفظ الأفكار
-        function saveIdea() {
-            const idea = document.getElementById('ideaInput').value;
-            if (idea.trim() !== "") {
-                document.getElementById('savedMessage').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('savedMessage').style.display = 'none';
-                }, 3000);
-            } else {
-                alert('اكتب شي أول قبل ما تحفره!');
-            }
+        // دالة تحديث الإحصائيات (المشتركين والمشاهدات)
+        function updateStats() {
+            const newSubs = document.getElementById('inputSubs').value;
+            const newViews = document.getElementById('inputViews').value;
+
+            document.getElementById('displaySubs').innerText = newSubs;
+            document.getElementById('displayViews').innerText = newViews;
+
+            alert('تم تحديث إحصائيات القناة بنجاح في لوحة التحكم الرئيسية! 🔥');
+        }
+
+        // دالة تحديث المقاطع
+        function updateVideos() {
+            const t1 = document.getElementById('editV1Title').value;
+            const v1 = document.getElementById('editV1Views').value;
+
+            document.getElementById('vTitle1').innerText = "#1: " + t1;
+            document.getElementById('vViews1').innerText = v1;
+
+            alert('تم تحديث قائمة أعلى المقاطع بنجاح! 🚀');
         }
     </script>
 </body>
