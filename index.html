@@ -1,499 +1,161 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اللوحة الملكية المشتركة - وائل & أنت</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-        body { font-family: 'Cairo', sans-serif; background-color: #07070a; color: #fff; }
-        .glass-card {
-            background: rgba(18, 18, 24, 0.75);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-        .neon-glow-purple { box-shadow: 0 0 25px rgba(145, 70, 255, 0.25); }
-        .neon-glow-red { box-shadow: 0 0 25px rgba(255, 0, 85, 0.25); }
-        .gaming-gradient {
-            background: linear-gradient(135deg, #9146ff 0%, #ff0055 50%, #ff0000 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* تخصيص شريط التمرير */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #07070a; }
-        ::-webkit-scrollbar-thumb { background: #2d2d3d; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #9146ff; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHADOW x WAEL - Studio Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+body{background:#050505;color:#fff;min-height:100vh}
+#login{height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,#1a0a0a,#050505)}
+.loginBox{background:#111;border:1px solid #222;border-radius:18px;padding:32px;width:380px;text-align:center}
+.loginBox h1{color:#ff0033}.loginBox input{background:#181818;border:1px solid #333;color:#fff;padding:14px;border-radius:10px;width:100%;margin-top:12px;text-align:center;font-size:20px;letter-spacing:5px}
+.btn{padding:12px;border-radius:10px;border:none;width:100%;margin-top:12px;font-weight:800;cursor:pointer}.btn-red{background:#ff0033;color:#fff}
+#dash{display:none;flex-direction:row} aside{width:250px;background:#0f0f0f;border-left:1px solid #222;padding:20px;height:100vh;position:sticky;top:0}
+.main{flex:1;padding:22px;overflow:auto}.logo{font-weight:800;font-size:20px}.logo span{color:#ff0033}
+.menu a{display:block;padding:10px;border-radius:8px;color:#777;text-decoration:none;margin:5px 0}.menu a.active{background:#1a1a1a;color:#fff}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.stat{background:#111;border:1px solid #222;border-radius:12px;padding:14px}.stat b{font-size:22px;display:block}
+.section{background:#111;border:1px solid #222;border-radius:12px;padding:16px;margin-bottom:14px}
+.progress{background:#222;height:10px;border-radius:10px;overflow:hidden;margin:6px 0}.bar{height:100%;background:linear-gradient(90deg,#ff0033,#ff6600);transition:.8s}
+table{width:100%;border-collapse:collapse;font-size:13px} th{color:#666;padding:8px;border-bottom:1px solid #222;text-align:right} td{padding:10px;border-bottom:1px solid #1a1a1a}
+input,textarea{background:#181818;border:1px solid #333;color:#fff;padding:9px;border-radius:7px;width:100%;margin-top:5px}
+</style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
+<body>
 
-    <!-- شريط التنقل العلوي الثابت -->
-    <nav class="sticky top-0 z-50 glass-card border-b border-purple-500/20 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
-        <div class="text-xl font-black gaming-gradient flex items-center gap-2">
-            <i class="fa-solid fa-skull-crossbones"></i> النواة السرية المشتركة
-        </div>
-        <div class="flex flex-wrap items-center gap-2 text-sm">
-            <a href="#live-section" class="px-3 py-1.5 rounded-lg hover:bg-purple-600/20 transition">البث وفيديوهات يوتيوب</a>
-            <a href="#schedule-section" class="px-3 py-1.5 rounded-lg hover:bg-purple-600/20 transition">الجدول</a>
-            <a href="#scenarios-section" class="px-3 py-1.5 rounded-lg hover:bg-purple-600/20 transition">السيناريوهات</a>
-            <a href="#workspace-section" class="px-3 py-1.5 rounded-lg hover:bg-purple-600/20 transition">المهام والأفكار</a>
-            
-            <div class="flex gap-2 mr-auto border-r border-gray-700 pr-3">
-                <button onclick="checkWaelAccess()" class="text-purple-300 bg-purple-950/80 hover:bg-purple-900 px-3 py-1.5 rounded-lg border border-purple-500/40 font-bold text-xs transition flex items-center gap-1.5 shadow-lg">
-                    <i class="fa-solid fa-user-shield"></i> لوحة وائل
-                </button>
-                <button onclick="checkMyAccess()" class="text-red-300 bg-red-950/80 hover:bg-red-900 px-3 py-1.5 rounded-lg border border-red-500/40 font-bold text-xs transition flex items-center gap-1.5 shadow-lg">
-                    <i class="fa-solid fa-lock"></i> لوحتي الخاصة
-                </button>
-            </div>
-        </div>
-    </nav>
+<div id="login">
+<div class="loginBox">
+<h1>🔒 STUDIO</h1><p style="color:#888;font-size:13px">SHADOW x WAEL<br>دخول خاص للمسؤولين فقط</p>
+<input id="code" type="password" placeholder="••••••" maxlength="6">
+<button class="btn btn-red" onclick="login()">دخول</button>
+<p id="err" style="color:#ff0033;font-size:12px;margin-top:8px;display:none">الرمز خطأ!</p>
+<p style="color:#444;font-size:11px;margin-top:14px">شادو: 112233<br>وائل: 332211<br>تقدر تغيرهم داخل</p>
+</div>
+</div>
 
-    <!-- المحتوى الرئيسي بصفحة واحدة مترابطة -->
-    <main class="flex-grow container mx-auto px-4 py-8 max-w-6xl space-y-12">
+<div id="dash">
+<aside>
+<div class="logo">STUDIO <span>SHADOW x WAEL</span></div>
+<div class="menu">
+<a class="active">🏆 التحديات التلقائية</a>
+<a>📊 الاحصائيات المباشرة</a>
+<a>📅 جدول التصوير</a>
+<a>🎬 18 حلقة</a>
+<a>💡 بنك الافكار</a>
+</div>
+<div style="margin-top:20px;background:#1a0a0a;padding:10px;border-radius:8px;border:1px solid #331111">
+<b id="who" style="font-size:12px;color:#00ff88">● متصل</b><br>
+<button onclick="logout()" style="background:#222;color:#fff;border:none;padding:6px 10px;border-radius:6px;margin-top:6px;cursor:pointer;width:100%">خروج</button>
+<label style="font-size:11px;color:#666;display:block;margin-top:10px">غير رمزك:</label>
+<input id="newCode" placeholder="رمز جديد" style="font-size:14px">
+<button class="btn btn-red" style="padding:6px;font-size:12px" onclick="changeCode()">حفظ الرمز الجديد</button>
+</div>
+</aside>
 
-        <!-- القسم 1: البث المباشر وفيديوهات يوتيوب -->
-        <section id="live-section" class="space-y-6">
-            <div class="text-center space-y-2">
-                <h1 class="text-4xl font-black gaming-gradient">منصة العرض الحية</h1>
-                <p class="text-gray-400 text-sm">بث تويتش المباشر وآخر 3 حلقات يوتيوب بتحديث تلقائي فوري.</p>
-            </div>
+<div class="main">
+<h1>اهلا <span id="userName">شادو</span> 👋</h1><p style="color:#666;font-size:13px" id="dateNow"></p>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- بث تويتش (ياخذ عمودين) -->
-                <div class="lg:col-span-2 glass-card p-4 rounded-2xl neon-glow-purple space-y-3">
-                    <h2 class="text-lg font-bold flex items-center gap-2 text-purple-400">
-                        <i class="fa-brands fa-twitch"></i> بث وائل المباشر
-                    </h2>
-                    <div class="w-full aspect-video bg-black rounded-xl overflow-hidden border border-purple-500/30">
-                        <iframe src="https://player.twitch.tv/?channel=YOUR_TWITCH_USERNAME&parent=localhost&parent=github.io" 
-                            height="100%" width="100%" allowfullscreen></iframe>
-                    </div>
-                </div>
+<div class="section">
+<h2>⚙️ تفعيل التحديث التلقائي (مرة وحدة)</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<input id="apiKey" placeholder="YouTube API Key">
+<input id="channelId" placeholder="Channel ID - UC...">
+</div>
+<button class="btn btn-red" style="margin-top:8px" onclick="saveConfig()">حفظ وتفعيل التلقائي</button>
+<p id="status" style="color:#00ff88;font-size:11px;margin-top:6px"></p>
+</div>
 
-                <!-- معلومات سريعة جانبية -->
-                <div class="glass-card p-6 rounded-2xl neon-glow-red flex flex-col justify-between space-y-4">
-                    <div>
-                        <h2 class="text-lg font-bold text-red-400 flex items-center gap-2 mb-3">
-                            <i class="fa-solid fa-fire"></i> حالة النظام
-                        </h2>
-                        <p class="text-xs text-gray-300 leading-relaxed">هذه اللوحة مخصصة بالكامل لتنظيم أعمالكم، مشاركة المهام، وتدوين الأفكار والسيناريوهات السرية بعيداً عن أعين المتابعين.</p>
-                    </div>
-                    <div class="bg-black/40 p-4 rounded-xl border border-red-500/20 text-center space-y-1">
-                        <div class="text-xs text-gray-400">مستوى الأمان</div>
-                        <div class="text-sm font-bold text-green-400"><i class="fa-solid fa-shield-halved"></i> مشفر ومحمي برمزين</div>
-                    </div>
-                </div>
-            </div>
+<div class="stat-grid">
+<div class="stat"><small style="color:#888">📺 مشتركين يوتيوب (تلقائي)</small><b id="liveSubs">--</b><div class="progress"><div class="bar" id="subBar" style="width:30%"></div></div></div>
+<div class="stat"><small style="color:#888">👁️ اجمالي المشاهدات</small><b id="liveViews">--</b></div>
+<div class="stat"><small style="color:#888">🎯 تحدي اليوم</small><b id="todayGoal">10K مشاهدة</b><span style="font-size:11px;color:#ffaa00" id="todayProg">0%</span></div>
+<div class="stat"><small style="color:#888">💜 تويتش وائل</small><b>3,210</b><span style="font-size:11px;color:#888">حط اسم قناته</span></div>
+</div>
 
-            <!-- آخر 3 فيديوهات يوتيوب -->
-            <div class="glass-card p-6 rounded-2xl space-y-4">
-                <h2 class="text-lg font-bold flex items-center gap-2 text-red-500">
-                    <i class="fa-brands fa-youtube"></i> آخر 3 حلقات على يوتيوب
-                </h2>
-                <div id="youtube-videos" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <p class="text-gray-400 text-sm">جاري جلب أحدث الحلقات من القناة...</p>
-                </div>
-            </div>
-        </section>
+<div class="section">
+<h2>🏆 التحديات - تتحدث تلقائي من يوتيوب</h2>
+<table id="videosTable"><tr><th>الفيديو</th><th>مشاهدات حية</th><th>الهدف</th><th>التقدم</th></tr></table>
+<div style="display:flex;gap:8px;margin-top:10px">
+<input id="goalViews" placeholder="هدف موحد مثلا 10000" style="flex:1">
+<button class="btn btn-red" style="width:auto;padding:9px 16px" onclick="setGoal()">تحديد الهدف</button>
+<button class="btn" style="background:#222;color:#fff;width:auto" onclick="fetchStats()">🔄 تحديث الان</button>
+</div>
+</div>
 
-        <!-- القسم 2: الجدول الأسبوعي -->
-        <section id="schedule-section" class="space-y-4">
-            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
-                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400 flex items-center gap-2">
-                    <i class="fa-solid fa-calendar-days"></i> الجدول الأسبوعي للبثوث
-                </h2>
-            </div>
-            <div class="glass-card rounded-2xl overflow-hidden shadow-2xl">
-                <table class="w-full text-right border-collapse text-sm">
-                    <thead>
-                        <tr class="bg-purple-950/50 text-purple-300 border-b border-gray-800">
-                            <th class="p-4">اليوم</th>
-                            <th class="p-4">الوقت</th>
-                            <th class="p-4">الفعالية / اللعبة</th>
-                            <th class="p-4 text-left">إدارة</th>
-                        </tr>
-                    </thead>
-                    <tbody id="schedule-table-body" class="divide-y divide-gray-800 text-gray-300"></tbody>
-                </table>
-            </div>
-        </section>
+<div class="section">
+<h2>📅 جدول التصوير</h2>
+<table><tr><th>اليوم</th><th>المهمة</th><th>المسؤول</th><th>حالة</th></tr>
+<tr><td>السبت</td><td>تصوير حلقة 1-2</td><td>شادو+وائل</td><td>قادم</td></tr>
+<tr><td>الجمعة</td><td>تنزيل + قص تيك توك</td><td>وائل</td><td>مونتاج</td></tr>
+</table>
+</div>
 
-        <!-- القسم 3: السيناريوهات -->
-        <section id="scenarios-section" class="space-y-4">
-            <div class="flex justify-between items-center border-b border-gray-800 pb-3">
-                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 flex items-center gap-2">
-                    <i class="fa-solid fa-book-skull"></i> أرشيف السيناريوهات السرية
-                </h2>
-            </div>
-            <div id="scenarios-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </section>
+<div class="section">
+<h2>🎬 السيناريو 18 حلقة</h2>
+<table><tr><th>#</th><th>العنوان</th><th>فكرة سريعة</th></tr>
+<tr><td>1</td><td>الوصول</td><td>مطار + نومة شارع</td></tr>
+<tr><td>18</td><td>المؤبد</td><td>كمين + محاكمة سينمائية</td></tr>
+</table>
+</div>
 
-        <!-- القسم 4: مساحة العمل المشتركة (المهام، الروابط، الأفكار، التحديثات) -->
-        <section id="workspace-section" class="space-y-6">
-            <div class="border-b border-gray-800 pb-3">
-                <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-purple-500 flex items-center gap-2">
-                    <i class="fa-solid fa-toolbox"></i> مساحة العمل والمهام المشتركة
-                </h2>
-            </div>
+</div>
+</div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- المهام -->
-                <div class="glass-card p-6 rounded-2xl space-y-4">
-                    <h3 class="font-bold text-purple-300 flex items-center gap-2"><i class="fa-solid fa-list-check"></i> قائمة المهام (To-Do)</h3>
-                    <div id="todos-grid" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
-                </div>
-
-                <!-- الروابط وأكواد البوت -->
-                <div class="glass-card p-6 rounded-2xl space-y-4">
-                    <h3 class="font-bold text-purple-300 flex items-center gap-2"><i class="fa-solid fa-link"></i> الروابط وأكواد الاستضافة</h3>
-                    <div id="links-grid" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
-                </div>
-
-                <!-- الأفكار السريعة -->
-                <div class="glass-card p-6 rounded-2xl space-y-4">
-                    <h3 class="font-bold text-yellow-300 flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> مفكرة الأفكار</h3>
-                    <div id="ideas-grid" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
-                </div>
-
-                <!-- سجل التحديثات -->
-                <div class="glass-card p-6 rounded-2xl space-y-4">
-                    <h3 class="font-bold text-red-300 flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left"></i> سجل التحديثات</h3>
-                    <div id="changelog-grid" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- القسم 5: لوحات التحكم السرية (تظهر عند إدخال الرموز) -->
-        <div id="control-panels-area" class="space-y-6"></div>
-
-    </main>
-
-    <!-- الفوتر -->
-    <footer class="glass-card border-t border-purple-500/20 text-center py-6 text-gray-500 text-xs mt-12">
-        © 2026 النواة السرية المشتركة | خاصة بـ وائل وشريكه فقط 🔒
-    </footer>
-
-    <!-- جافاسكريبت المشغل بالكامل وبدون أي أخطاء -->
-    <script>
-        // جلب آخر 3 فيديوهات يوتيوب
-        async function fetchYouTubeVideos() {
-            const container = document.getElementById('youtube-videos');
-            const channelId = 'YOUR_YOUTUBE_CHANNEL_ID'; 
-
-            if(channelId === 'YOUR_YOUTUBE_CHANNEL_ID') {
-                container.innerHTML = `<p class="text-yellow-400 text-xs col-span-3 text-center py-6">⚠️ الرجاء وضع معرف قناتك الحقيقي (Channel ID) في الكود.</p>`;
-                return;
-            }
-
-            try {
-                let res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3D${channelId}`);
-                let data = await res.json();
-                
-                if (data && data.items) {
-                    container.innerHTML = '';
-                    let latestVideos = data.items.slice(0, 3);
-                    latestVideos.forEach(video => {
-                        container.innerHTML += `
-                            <a href="${video.link}" target="_blank" class="bg-black/50 rounded-xl overflow-hidden border border-gray-800 hover:border-red-500 transition block group shadow-xl">
-                                <div class="aspect-video bg-black overflow-hidden">
-                                    <img src="${video.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Video">
-                                </div>
-                                <div class="p-3 space-y-1">
-                                    <h3 class="font-bold text-xs line-clamp-2 text-gray-200 group-hover:text-red-400 transition">${video.title}</h3>
-                                    <p class="text-gray-500 text-[10px]">${new Date(video.pubDate).toLocaleDateString('ar-SA')}</p>
-                                </div>
-                            </a>
-                        `;
-                    });
-                }
-            } catch (e) {
-                container.innerHTML = `<p class="text-red-400 text-xs col-span-3 text-center py-6">تعذر جلب الفيديوهات حالياً.</p>`;
-            }
-        }
-
-        // تهيئة التخزين المحلي
-        if (!localStorage.getItem('wael_schedule')) {
-            localStorage.setItem('wael_schedule', JSON.stringify([{ day: "السبت", time: "8 م", desc: "بث مشترك" }]));
-        }
-        if (!localStorage.getItem('wael_scenarios')) {
-            localStorage.setItem('wael_scenarios', JSON.stringify([{ title: "سيناريو السطو الكبرى", desc: "التخطيط لسرقة البنك المركزي." }]));
-        }
-        if (!localStorage.getItem('wael_todos')) {
-            localStorage.setItem('wael_todos', JSON.stringify([{ text: "تحديث بوت ديسكورد", done: false }]));
-        }
-        if (!localStorage.getItem('wael_links')) {
-            localStorage.setItem('wael_links', JSON.stringify([{ title: "لوحة الاستضافة", url: "https://bot-hosting.net" }]));
-        }
-        if (!localStorage.getItem('wael_ideas')) {
-            localStorage.setItem('wael_ideas', JSON.stringify([{ title: "فكرة مقطع يوتيوب", desc: "تحدي الـ 24 ساعة في السيرفر" }]));
-        }
-        if (!localStorage.getItem('wael_changelog')) {
-            localStorage.setItem('wael_changelog', JSON.stringify([{ text: "تم إطلاق التصميم الأسطوري الجديد بنجاح" }]));
-        }
-
-        // الحماية بالرموز وعرض لوحات التحكم بشكل تفاعلي
-        function checkWaelAccess() {
-            let pass = prompt("أدخل رمز دخول وائل السري:");
-            if (pass === "wael123") {
-                renderWaelPanel();
-            } else if (pass !== null) {
-                alert("الرمز خطأ!");
-            }
-        }
-
-        function checkMyAccess() {
-            let pass = prompt("أدخل رمزك الخاص السري:");
-            if (pass === "admin123") {
-                renderAdminPanel();
-            } else if (pass !== null) {
-                alert("الرمز خطأ!");
-            }
-        }
-
-        // عرض لوحة وائل في الصفحة
-        function renderWaelPanel() {
-            let area = document.getElementById('control-panels-area');
-            area.innerHTML = `
-                <div class="glass-card p-6 rounded-2xl border border-purple-500/50 neon-glow-purple space-y-6 animate-pulse">
-                    <div class="flex justify-between items-center border-b border-gray-800 pb-4">
-                        <h2 class="text-xl font-bold text-purple-400"><i class="fa-solid fa-user-shield"></i> لوحة تحكم وائل النشطة</h2>
-                        <button onclick="closePanels()" class="bg-red-600 hover:bg-red-700 text-xs px-3 py-1.5 rounded-lg font-bold">إغلاق اللوحة</button>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
-                            <h3 class="font-bold text-purple-300 text-sm">إضافة موعد للجدول</h3>
-                            <input type="text" id="w-sched-day" placeholder="اليوم" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
-                            <input type="text" id="w-sched-time" placeholder="الوقت" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
-                            <input type="text" id="w-sched-desc" placeholder="الفعالية" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
-                            <button onclick="addScheduleWael()" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs w-full">إضافة للجدول</button>
-                        </div>
-                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
-                            <h3 class="font-bold text-purple-300 text-sm">إضافة مهمة جديدة</h3>
-                            <input type="text" id="w-todo-text" placeholder="نص المهمة..." class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
-                            <button onclick="addTodoWael()" class="bg-purple-600 hover:bg-purple-700 px-3 py-1.5 rounded font-bold text-xs w-full">إضافة مهمة</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            area.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // عرض لوحتك الخاصة في الصفحة
-        function renderAdminPanel() {
-            let area = document.getElementById('control-panels-area');
-            area.innerHTML = `
-                <div class="glass-card p-6 rounded-2xl border border-red-500/50 neon-glow-red space-y-6">
-                    <div class="flex justify-between items-center border-b border-gray-800 pb-4">
-                        <h2 class="text-xl font-bold text-red-400"><i class="fa-solid fa-lock"></i> لوحتك الخاصة (الإدارة العليا) النشطة</h2>
-                        <button onclick="closePanels()" class="bg-red-600 hover:bg-red-700 text-xs px-3 py-1.5 rounded-lg font-bold">إغلاق اللوحة</button>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
-                            <h3 class="font-bold text-red-300 text-sm">إضافة سيناريو</h3>
-                            <input type="text" id="a-scen-title" placeholder="العنوان" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
-                            <textarea id="a-scen-desc" placeholder="التفاصيل..." class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs h-16 mb-2"></textarea>
-                            <button onclick="addScenarioAdmin()" class="bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded font-bold text-xs w-full">حفظ السيناريو</button>
-                        </div>
-                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
-                            <h3 class="font-bold text-yellow-300 text-sm">تدوين فكرة</h3>
-                            <input type="text" id="a-idea-title" placeholder="العنوان" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-2">
-                            <textarea id="a-idea-desc" placeholder="التفاصيل..." class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs h-16 mb-2"></textarea>
-                            <button onclick="addIdeaAdmin()" class="bg-yellow-600 hover:bg-yellow-700 text-black px-3 py-1.5 rounded font-bold text-xs w-full">حفظ الفكرة</button>
-                        </div>
-                        <div class="space-y-2 bg-black/40 p-4 rounded-xl border border-gray-800">
-                            <h3 class="font-bold text-red-300 text-sm">تسجيل تحديث</h3>
-                            <input type="text" id="a-changelog-text" placeholder="ماذا تم تعديله؟" class="w-full bg-black/60 border border-gray-700 p-2 rounded text-white text-xs mb-4">
-                            <button onclick="addChangelogAdmin()" class="bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded font-bold text-xs w-full">نشر التحديث</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            area.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function closePanels() {
-            document.getElementById('control-panels-area').innerHTML = '';
-        }
-
-        // رندر الجداول والعناصر بضغطة زر وتحديث فوري
-        function renderSchedule() {
-            let schedule = JSON.parse(localStorage.getItem('wael_schedule')) || [];
-            let tbody = document.getElementById('schedule-table-body');
-            tbody.innerHTML = '';
-            schedule.forEach((item, index) => {
-                tbody.innerHTML += `
-                    <tr class="hover:bg-purple-950/20 transition">
-                        <td class="p-4 font-semibold">${item.day}</td>
-                        <td class="p-4 text-purple-300">${item.time}</td>
-                        <td class="p-4">${item.desc}</td>
-                        <td class="p-4 text-left">
-                            <button onclick="deleteItem('wael_schedule', ${index}, renderSchedule)" class="text-red-400 hover:text-red-500 text-xs px-2 py-1 bg-red-950/50 rounded border border-red-500/30"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                `;
-            });
-        }
-
-        function renderScenarios() {
-            let list = JSON.parse(localStorage.getItem('wael_scenarios')) || [];
-            let grid = document.getElementById('scenarios-grid');
-            grid.innerHTML = '';
-            list.forEach((item, index) => {
-                grid.innerHTML += `
-                    <div class="glass-card p-5 rounded-2xl border border-purple-500/20 space-y-2 relative shadow-xl">
-                        <h3 class="text-base font-bold text-purple-300">${item.title}</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">${item.desc}</p>
-                        <button onclick="deleteItem('wael_scenarios', ${index}, renderScenarios)" class="absolute top-4 left-4 text-red-400 hover:text-red-500 text-xs px-2 py-1 bg-red-950/50 rounded border border-red-500/30"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
-            });
-        }
-
-        function renderTodos() {
-            let list = JSON.parse(localStorage.getItem('wael_todos')) || [];
-            let grid = document.getElementById('todos-grid');
-            grid.innerHTML = '';
-            list.forEach((item, index) => {
-                grid.innerHTML += `
-                    <div class="bg-black/40 p-3 rounded-xl border border-gray-800 flex justify-between items-center text-xs">
-                        <div class="flex items-center gap-3">
-                            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleTodo(${index})" class="w-4 h-4 accent-purple-600 rounded">
-                            <span class="${item.done ? 'line-through text-gray-500' : 'text-gray-200'}">${item.text}</span>
-                        </div>
-                        <button onclick="deleteItem('wael_todos', ${index}, renderTodos)" class="text-red-400 hover:text-red-500"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
-            });
-        }
-
-        function renderLinks() {
-            let list = JSON.parse(localStorage.getItem('wael_links')) || [];
-            let grid = document.getElementById('links-grid');
-            grid.innerHTML = '';
-            list.forEach((item, index) => {
-                grid.innerHTML += `
-                    <div class="bg-black/40 p-3 rounded-xl border border-gray-800 flex justify-between items-center text-xs">
-                        <div>
-                            <span class="font-bold text-purple-300 block mb-0.5">${item.title}</span>
-                            <a href="${item.url}" target="_blank" class="text-blue-400 underline truncate max-w-[200px] block">${item.url}</a>
-                        </div>
-                        <button onclick="deleteItem('wael_links', ${index}, renderLinks)" class="text-red-400 hover:text-red-500"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
-            });
-        }
-
-        function renderIdeas() {
-            let list = JSON.parse(localStorage.getItem('wael_ideas')) || [];
-            let grid = document.getElementById('ideas-grid');
-            grid.innerHTML = '';
-            list.forEach((item, index) => {
-                grid.innerHTML += `
-                    <div class="bg-black/40 p-3 rounded-xl border border-gray-800 space-y-1 relative text-xs">
-                        <span class="font-bold text-yellow-300 block">${item.title}</span>
-                        <p class="text-gray-400">${item.desc}</p>
-                        <button onclick="deleteItem('wael_ideas', ${index}, renderIdeas)" class="absolute top-3 left-3 text-red-400"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
-            });
-        }
-
-        function renderChangelog() {
-            let list = JSON.parse(localStorage.getItem('wael_changelog')) || [];
-            let grid = document.getElementById('changelog-grid');
-            grid.innerHTML = '';
-            list.forEach((item, index) => {
-                grid.innerHTML += `
-                    <div class="bg-black/40 p-3 rounded-xl border border-gray-800 flex justify-between items-center text-xs">
-                        <span class="text-gray-300"><i class="fa-solid fa-circle-check text-purple-400 ml-2"></i> ${item.text}</span>
-                        <button onclick="deleteItem('wael_changelog', ${index}, renderChangelog)" class="text-red-400"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
-            });
-        }
-
-        function deleteItem(key, index, renderFunc) {
-            let data = JSON.parse(localStorage.getItem(key)) || [];
-            data.splice(index, 1);
-            localStorage.setItem(key, JSON.stringify(data));
-            renderFunc();
-        }
-
-        function toggleTodo(index) {
-            let data = JSON.parse(localStorage.getItem('wael_todos')) || [];
-            data[index].done = !data[index].done;
-            localStorage.setItem('wael_todos', JSON.stringify(data));
-            renderTodos();
-        }
-
-        // دوال الإضافة من اللوحات
-        function addScheduleWael() {
-            let day = document.getElementById('w-sched-day').value;
-            let time = document.getElementById('w-sched-time').value;
-            let desc = document.getElementById('w-sched-desc').value;
-            if(!day || !time || !desc) return alert("املأ الحقول!");
-            let data = JSON.parse(localStorage.getItem('wael_schedule')) || [];
-            data.push({ day, time, desc });
-            localStorage.setItem('wael_schedule', JSON.stringify(data));
-            renderSchedule();
-            alert("تمت الإضافة للجدول بنجاح!");
-        }
-
-        function addTodoWael() {
-            let text = document.getElementById('w-todo-text').value;
-            if(!text) return alert("اكتب المهمة!");
-            let data = JSON.parse(localStorage.getItem('wael_todos')) || [];
-            data.push({ text, done: false });
-            localStorage.setItem('wael_todos', JSON.stringify(data));
-            renderTodos();
-            alert("تمت إضافة المهمة!");
-        }
-
-        function addScenarioAdmin() {
-            let title = document.getElementById('a-scen-title').value;
-            let desc = document.getElementById('a-scen-desc').value;
-            if(!title || !desc) return alert("املأ الحقول!");
-            let data = JSON.parse(localStorage.getItem('wael_scenarios')) || [];
-            data.push({ title, desc });
-            localStorage.setItem('wael_scenarios', JSON.stringify(data));
-            renderScenarios();
-            alert("تم حفظ السيناريو!");
-        }
-
-        function addIdeaAdmin() {
-            let title = document.getElementById('a-idea-title').value;
-            let desc = document.getElementById('a-idea-desc').value;
-            if(!title || !desc) return alert("املأ الحقول!");
-            let data = JSON.parse(localStorage.getItem('wael_ideas')) || [];
-            data.push({ title, desc });
-            localStorage.setItem('wael_ideas', JSON.stringify(data));
-            renderIdeas();
-            alert("تم حفظ الفكرة!");
-        }
-
-        function addChangelogAdmin() {
-            let text = document.getElementById('a-changelog-text').value;
-            if(!text) return alert("اكتب التحديث!");
-            let data = JSON.parse(localStorage.getItem('wael_changelog')) || [];
-            data.push({ text });
-            localStorage.setItem('wael_changelog', JSON.stringify(data));
-            renderChangelog();
-            alert("تم نشر التحديث!");
-        }
-
-        // تشغيل كل شيء عند التحميل
-        fetchYouTubeVideos();
-        renderSchedule();
-        renderScenarios();
-        renderTodos();
-        renderLinks();
-        renderIdeas();
-        renderChangelog();
-    </script>
+<script>
+document.getElementById('dateNow').innerText=new Date().toLocaleDateString('ar-SA');
+let codes={shadow:localStorage.getItem('code_shadow')||'112233',wael:localStorage.getItem('code_wael')||'332211'};
+let CONFIG=JSON.parse(localStorage.getItem('ytConfig')||'{}');
+let currentUser='';
+document.getElementById('apiKey').value=CONFIG.apiKey||'';document.getElementById('channelId').value=CONFIG.channelId||'';
+function login(){
+ let v=document.getElementById('code').value;
+ if(v===codes.shadow){currentUser='شادو';enter();}else if(v===codes.wael){currentUser='وائل';enter();}
+ else{document.getElementById('err').style.display='block';}
+}
+function enter(){
+ document.getElementById('login').style.display='none';document.getElementById('dash').style.display='flex';
+ document.getElementById('userName').innerText=currentUser;document.getElementById('who').innerText='● متصل كـ '+currentUser;
+ localStorage.setItem('logged','true');localStorage.setItem('lastUser',currentUser);
+ if(CONFIG.apiKey) fetchStats();
+}
+function logout(){localStorage.removeItem('logged');location.reload();}
+function changeCode(){
+ let n=document.getElementById('newCode').value;if(n.length<4)return alert('قصير');
+ if(currentUser==='شادو'){localStorage.setItem('code_shadow',n);codes.shadow=n;}else{localStorage.setItem('code_wael',n);codes.wael=n;}
+ alert('تم تغيير رمز '+currentUser+' الى: '+n);
+}
+function saveConfig(){
+ CONFIG.apiKey=document.getElementById('apiKey').value;CONFIG.channelId=document.getElementById('channelId').value;
+ localStorage.setItem('ytConfig',JSON.stringify(CONFIG));document.getElementById('status').innerText='✅ تم الحفظ - جاري الجلب...';fetchStats();
+}
+async function fetchStats(){
+ if(!CONFIG.apiKey||!CONFIG.channelId)return;
+ try{
+  let ch=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CONFIG.channelId}&key=${CONFIG.apiKey}`).then(r=>r.json());
+  let s=ch.items[0].statistics;
+  document.getElementById('liveSubs').innerText=parseInt(s.subscriberCount).toLocaleString();
+  document.getElementById('liveViews').innerText=parseInt(s.viewCount).toLocaleString();
+  document.getElementById('subBar').style.width=Math.min(100,(s.subscriberCount/20000)*100)+'%';
+  let search=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CONFIG.channelId}&maxResults=10&order=date&type=video&key=${CONFIG.apiKey}`).then(r=>r.json());
+  let ids=search.items.map(i=>i.id.videoId).join(',');
+  let vids=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics,snippet&id=${ids}&key=${CONFIG.apiKey}`).then(r=>r.json());
+  let table=document.getElementById('videosTable');table.innerHTML='<tr><th>الفيديو</th><th>مشاهدات حية</th><th>الهدف</th><th>التقدم</th></tr>';
+  let goal=parseInt(localStorage.getItem('globalGoal')||'10000');
+  vids.items.forEach(v=>{
+    let views=parseInt(v.statistics.viewCount);let perc=Math.min(100,Math.round((views/goal)*100));
+    let col=perc>=100?'#00ff88':'#ff0033';
+    table.innerHTML+=`<tr><td>${v.snippet.title.substring(0,30)}...</td><td>${views.toLocaleString()}</td><td>${goal.toLocaleString()}</td><td><div class='progress' style='width:90px'><div class='bar' style='width:${perc}%;background:${col}'></div></div>${perc}%</td></tr>`;
+  });
+  document.getElementById('todayProg').innerText=vids.items[0]?Math.round((parseInt(vids.items[0].statistics.viewCount)/goal)*100)+'%':'0%';
+  document.getElementById('status').innerText='✅ تحدث تلقائي - '+new Date().toLocaleTimeString('ar-SA');
+ }catch(e){document.getElementById('status').innerText='❌ تأكد من API Key';}
+}
+function setGoal(){localStorage.setItem('globalGoal',document.getElementById('goalViews').value);fetchStats();}
+if(localStorage.getItem('logged')==='true'){currentUser=localStorage.getItem('lastUser')||'شادو';enter();}
+document.getElementById('code').addEventListener('keyup',e=>{if(e.key==='Enter')login();});
+setInterval(()=>{if(CONFIG.apiKey&&localStorage.getItem('logged'))fetchStats();},300000);
+</script>
 </body>
 </html>
