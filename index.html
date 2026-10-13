@@ -1,79 +1,174 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shadow47q - Live YouTube System</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow47q - Rick Town Full System</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@800;900&display=swap" rel="stylesheet">
-<style>body{font-family:'Tajawal',sans-serif;background:#0c0a18}.glow-card{background:linear-gradient(135deg,#1a1630,#15122a);border:1px solid rgba(168,85,247,.3)}</style>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Tajawal',sans-serif;background:#0a0a14}
+.card{background:linear-gradient(135deg,#1b1830,#121027);border:1px solid rgba(139,92,246,.25)}
+.tab-active{background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
+</style>
 </head>
-<body class="text-white p-6">
-<div class="max-w-7xl mx-auto">
-<div class="bg-[#13111f] border border-purple-900/30 rounded-2xl p-5 flex gap-4 items-center">
-<div class="flex-1 grid grid-cols-2 gap-3">
-<input id="apiKey" placeholder="حط YouTube API Key هنا (مجاني)" class="bg-[#1e1b30] border border-purple-900/30 rounded-xl px-4 py-3 text-sm">
-<input id="channel" value="@Shadow47q" placeholder="@Shadow47q أو Channel ID" class="bg-[#1e1b30] border border-purple-900/30 rounded-xl px-4 py-3 text-sm">
-</div>
-<button onclick="connect()" class="bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-3 rounded-xl font-black">ربط القناة 🔴</button>
-</div>
-<p class="text-xs text-gray-400 mt-3">كيف تجيب API Key مجاناً: ادخل console.cloud.google.com > فعل YouTube Data API v3 > Credentials > Create API Key - ثواني بس</p>
+<body class="text-white">
+<div class="max-w-[1400px] mx-auto p-3 md:p-6">
 
-<div class="grid grid-cols-4 gap-4 mt-8">
-<div class="glow-card rounded-2xl p-5"><p class="text-gray-400 text-xs">المشتركين الحقيقيين</p><p id="subs" class="text-3xl font-black mt-2">--</p><p class="text-[11px] text-purple-400 mt-1">LIVE من يوتيوب</p></div>
-<div class="glow-card rounded-2xl p-5"><p class="text-gray-400 text-xs">إجمالي المشاهدات</p><p id="views" class="text-3xl font-black mt-2">--</p><p class="text-[11px] text-purple-400 mt-1">LIVE</p></div>
-<div class="glow-card rounded-2xl p-5"><p class="text-gray-400 text-xs">عدد الفيديوهات</p><p id="count" class="text-3xl font-black mt-2">--</p><p class="text-[11px] text-purple-400 mt-1">LIVE</p></div>
-<div class="glow-card rounded-2xl p-5 bg-gradient-to-br from-purple-700 to-indigo-800"><p class="text-purple-200 text-xs">حالة الربط</p><p id="status" class="text-xl font-black mt-2">غير مربوط</p></div>
+<!-- Tabs -->
+<div class="flex gap-2 mb-5 overflow-x-auto">
+<button onclick="showTab('youtube')" id="btn-youtube" class="tab-active px-6 py-3 rounded-xl text-sm font-black whitespace-nowrap">📺 يوتيوب + التصوير</button>
+<button onclick="showTab('admins')" id="btn-admins" class="bg-[#1e1b33] px-6 py-3 rounded-xl text-sm font-bold whitespace-nowrap">👮 لوحة المسؤولين</button>
+<button onclick="showTab('schedule')" id="btn-schedule" class="bg-[#1e1b33] px-6 py-3 rounded-xl text-sm font-bold whitespace-nowrap">🗓️ جدولي كطالب</button>
 </div>
 
-<div class="mt-8 bg-[#15132a] rounded-2xl border border-purple-900/20 overflow-hidden">
-<div class="p-5 flex justify-between"><h3 class="font-black text-xl">فيديوهات Shadow47q الحقيقية</h3><span id="channelName" class="text-purple-400 text-sm"></span></div>
-<div id="videos" class="divide-y divide-purple-900/10"></div>
+<!-- YOUTUBE TAB -->
+<div id="tab-youtube">
+<div class="card rounded-2xl p-4 flex flex-col md:flex-row gap-3">
+<input id="apiKey" placeholder="YouTube API Key - مجاني من console.cloud.google.com" class="flex-1 bg-[#0f0e1f] border border-purple-900/30 rounded-xl px-4 py-3 text-sm">
+<input id="channel" value="@Shadow47q" class="flex-1 bg-[#0f0e1f] border border-purple-900/30 rounded-xl px-4 py-3 text-sm">
+<button onclick="connect()" class="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl px-8 py-3 font-black">🔴 ربط القناة</button>
 </div>
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+<div class="card rounded-2xl p-4"><p class="text-[11px] text-gray-400">المشتركين الحقيقيين</p><p id="subs" class="text-2xl md:text-3xl font-black mt-1">--</p><span class="text-[10px] bg-green-500/20 text-green-400 px-2 py-1 rounded-full">LIVE</span></div>
+<div class="card rounded-2xl p-4"><p class="text-[11px] text-gray-400">إجمالي المشاهدات</p><p id="views" class="text-2xl md:text-3xl font-black mt-1">--</p><span class="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">LIVE</span></div>
+<div class="card rounded-2xl p-4"><p class="text-[11px] text-gray-400">عدد الفيديوهات</p><p id="count" class="text-2xl md:text-3xl font-black mt-1">--</p><span class="text-[10px] bg-purple-500/20 px-2 py-1 rounded-full">LIVE</span></div>
+<div class="card rounded-2xl p-4 bg-gradient-to-br from-purple-700 to-indigo-800"><p class="text-[11px] text-purple-200">حالة الربط</p><p id="status" class="text-lg font-black mt-1">غير مربوط</p><p id="chName" class="text-[11px] mt-1">-</p></div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-5">
+<div class="card rounded-2xl p-5">
+<div class="flex justify-between items-center"><h3 class="font-black">🎬 جدول تصويري</h3><button onclick="addTask()" class="bg-purple-600 px-3 py-1.5 rounded-lg text-xs font-bold">+ إضافة</button></div>
+<div class="grid grid-cols-3 gap-2 mt-4 text-center">
+<div class="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-2.5"><p class="text-[10px] text-yellow-400">قيد التصوير</p><p id="c-film" class="text-xl font-black">0</p></div>
+<div class="bg-blue-500/10 border border-blue-500/20 rounded-xl p-2.5"><p class="text-[10px] text-blue-400">مونتاج</p><p id="c-edit" class="text-xl font-black">0</p></div>
+<div class="bg-green-500/10 border border-green-500/20 rounded-xl p-2.5"><p class="text-[10px] text-green-400">تم النشر</p><p id="c-pub" class="text-xl font-black">0</p></div>
+</div>
+<div id="tasks" class="mt-4 space-y-2 max-h-[400px] overflow-y-auto"></div>
+</div>
+<div class="lg:col-span-2 card rounded-2xl overflow-hidden">
+<div class="p-4 border-b border-purple-900/20 flex justify-between"><h3 class="font-black">فيديوهات Shadow47q الحقيقية من يوتيوب</h3><span class="text-[11px] text-gray-400">LIVE</span></div>
+<div id="videos" class="divide-y divide-purple-900/10 max-h-[550px] overflow-y-auto"></div>
+</div>
+</div>
+</div>
+
+<!-- ADMINS TAB -->
+<div id="tab-admins" class="hidden">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="card rounded-2xl p-5 h-fit">
+<h3 class="font-black text-lg">👮 إضافة مسؤول جديد</h3>
+<div class="mt-4 space-y-3">
+<input id="a-name" placeholder="الاسم - مثال: Shadow" class="w-full bg-[#0f0e1f] border border-purple-900/20 rounded-xl px-4 py-3 text-sm">
+<input id="a-discord" placeholder="ديسكورد - shadow#0001" class="w-full bg-[#0f0e1f] border rounded-xl px-4 py-3 text-sm">
+<select id="a-rank" class="w-full bg-[#0f0e1f] rounded-xl px-4 py-3 text-sm">
+<option>مالك السيرفر - Owner 👑</option>
+<option>مدير عام - Manager 🛡️</option>
+<option>ادمن - Admin 🔴</option>
+<option>مشرف - Moderator 🟢</option>
+<option>سبورت - Support 🔵</option>
+<option>مراقب - Helper ⚪</option>
+</select>
+<select id="a-status" class="w-full bg-[#0f0e1f] rounded-xl px-4 py-3 text-sm"><option>نشط ✅</option><option>إجازة 🌙</option><option>موقوف ⛔</option></select>
+<button onclick="addAdmin()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl py-3 font-black">إضافة للطاقم +</button>
+</div>
+<div class="mt-6 bg-[#0f0e1f] rounded-xl p-4 text-xs">
+<p class="font-bold">📊 إحصائيات الطاقم</p>
+<div class="mt-3 space-y-2"><div class="flex justify-between"><span>الإجمالي</span><span id="totalAdmins" class="font-black text-purple-400">0</span></div><div class="flex justify-between"><span>النشطين</span><span id="activeAdmins" class="font-black text-green-400">0</span></div><div class="flex justify-between"><span>الموقوفين</span><span id="bannedAdmins" class="font-black text-red-400">0</span></div></div>
+</div>
+</div>
+<div class="md:col-span-3 card rounded-2xl overflow-hidden">
+<div class="p-4 border-b border-purple-900/20 flex flex-col md:flex-row justify-between gap-3"><h3 class="font-black">طاقم إدارة Rick Town - RT</h3><div class="flex gap-2"><input id="searchAdmin" oninput="renderAdmins()" placeholder="بحث عن مسؤول..." class="bg-[#0f0e1f] rounded-full px-4 py-2 text-xs w-40 border border-purple-900/20"><select id="filterRank" onchange="renderAdmins()" class="bg-[#0f0e1f] rounded-full px-3 py-2 text-xs"><option value="all">كل الرتب</option><option>Owner</option><option>Manager</option><option>Admin</option></select></div></div>
+<div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-[#1a1833] text-[10px] text-gray-400"><tr><th class="p-3 text-right">المسؤول</th><th class="p-3">الرتبة</th><th class="p-3">ديسكورد</th><th class="p-3">الحالة</th><th class="p-3">تحذيرات</th><th class="p-3">إجراء</th></tr></thead><tbody id="adminTable"></tbody></table></div>
+</div>
+</div>
+</div>
+
+<!-- SCHEDULE TAB -->
+<div id="tab-schedule" class="hidden">
+<div class="card rounded-2xl p-6">
+<h3 class="font-black text-xl">🗓️ جدول Shadow47q كطالب ثانوي + يوتيوبر</h3>
+<div class="grid grid-cols-2 md:grid-cols-7 gap-3 mt-6 text-center">
+<div class="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-4"><p class="text-xs">السبت</p><p class="font-black mt-2">تصوير طويل RT</p><p class="text-[11px] mt-2 opacity-80">4 ساعات تصوير</p></div>
+<div class="bg-[#1e1b33] rounded-2xl p-4 opacity-70"><p class="text-xs text-gray-400">الأحد</p><p class="font-bold mt-2">دراسة</p><p class="text-[11px] mt-2 text-gray-400">Short واحد فقط</p></div>
+<div class="bg-[#1e1b33] rounded-2xl p-4 opacity-70"><p class="text-xs">الإثنين</p><p class="font-bold mt-2">دراسة</p><p class="text-[11px] mt-2">مونتاج</p></div>
+<div class="bg-[#1e1b33] rounded-2xl p-4 opacity-70"><p class="text-xs">الثلاثاء</p><p class="font-bold mt-2">دراسة</p><p class="text-[11px] mt-2">Short</p></div>
+<div class="bg-[#1e1b33] rounded-2xl p-4 opacity-70"><p class="text-xs">الأربعاء</p><p class="font-bold mt-2">دراسة</p><p class="text-[11px] mt-2">راحة</p></div>
+<div class="bg-[#1e1b33] rounded-2xl p-4 border border-green-500/30"><p class="text-xs text-green-400">الخميس</p><p class="font-bold mt-2">نشر</p><p class="text-[11px] mt-2 text-green-400">مقطع الأسبوع</p></div>
+<div class="bg-red-500/10 border border-red-500/30 rounded-2xl p-4"><p class="text-xs text-red-400">الجمعة</p><p class="font-black mt-2">بث مباشر RT</p><p class="text-[11px] mt-2 text-red-300">Event أسبوعي</p></div>
+</div>
+<div class="mt-8 bg-[#0f0e1f] rounded-xl p-4 text-xs text-gray-400">💡 نصيحة: كطالب ثانوي، خل جدول التصوير ثابت السبت فقط، وباقي الأسبوع Shorts سريعة 15 ثانية ما تاخذ وقت</div>
+</div>
+</div>
+
 </div>
 
 <script>
+function showTab(t){
+['youtube','admins','schedule'].forEach(x=>{
+document.getElementById('tab-'+x).classList.toggle('hidden',x!==t);
+document.getElementById('btn-'+x).className=x===t?'tab-active px-6 py-3 rounded-xl text-sm font-black whitespace-nowrap':'bg-[#1e1b33] px-6 py-3 rounded-xl text-sm font-bold whitespace-nowrap';
+});
+}
+
+// Tasks
+let tasks=JSON.parse(localStorage.getItem('shadow_tasks')||'[]');
+if(!tasks.length)tasks=[{id:1,t:'أول يوم عسكري في ريك تاون 👮‍♂️',s:'فكرة'},{id:2,t:'طرد لاعب يخرب المدينة 😂',s:'قيد التصوير'},{id:3,t:'أغلى سرقة 10 مليون في RT',s:'مونتاج'}];
+function saveTasks(){localStorage.setItem('shadow_tasks',JSON.stringify(tasks));renderTasks()}
+function addTask(){let t=prompt('عنوان المقطع:');if(!t)return;tasks.unshift({id:Date.now(),t,s:'فكرة'});saveTasks()}
+function changeTask(id,s){tasks.find(x=>x.id==id).s=s;saveTasks()}
+function delTask(id){tasks=tasks.filter(x=>x.id!=id);saveTasks()}
+function renderTasks(){
+let c=document.getElementById('tasks');if(!c)return;c.innerHTML='';
+tasks.forEach(x=>{
+let col={فكرة:'bg-gray-700','قيد التصوير':'bg-yellow-600','مونتاج':'bg-purple-600','تم النشر':'bg-green-600'}[x.s];
+let d=document.createElement('div');
+d.className='bg-[#0f0e1f] border border-purple-900/10 rounded-xl p-3 flex justify-between items-center';
+d.innerHTML=`<div><p class="text-xs font-bold">${x.t}</p></div><div class="flex gap-1"><select onchange="changeTask(${x.id},this.value)" class="text-[10px] ${col} rounded-full px-2 py-1"><option ${x.s=='فكرة'?'selected':''}>فكرة</option><option ${x.s=='قيد التصوير'?'selected':''}>قيد التصوير</option><option ${x.s=='مونتاج'?'selected':''}>مونتاج</option><option ${x.s=='تم النشر'?'selected':''}>تم النشر</option></select><button onclick="delTask(${x.id})" class="text-red-400 text-xs px-1">×</button></div>`;
+c.appendChild(d);
+});
+let cf=document.getElementById('c-film');if(cf){cf.innerText=tasks.filter(t=>t.s=='قيد التصوير').length;document.getElementById('c-edit').innerText=tasks.filter(t=>t.s=='مونتاج').length;document.getElementById('c-pub').innerText=tasks.filter(t=>t.s=='تم النشر').length}
+}
+renderTasks();
+
+// Admins
+let admins=JSON.parse(localStorage.getItem('rt_admins')||'[]');
+if(!admins.length)admins=[{id:1,name:'Shadow47q',discord:'shadow47q',rank:'مالك السيرفر - Owner 👑',status:'نشط ✅',warns:0},{id:2,name:'Rick',discord:'rick_admin',rank:'مدير عام - Manager 🛡️',status:'نشط ✅',warns:0}];
+function saveAdmins(){localStorage.setItem('rt_admins',JSON.stringify(admins));renderAdmins()}
+function addAdmin(){let n=document.getElementById('a-name').value;let d=document.getElementById('a-discord').value;let r=document.getElementById('a-rank').value;let s=document.getElementById('a-status').value;if(!n)return alert('اكتب اسم المسؤول');admins.unshift({id:Date.now(),name:n,discord:d,rank:r,status:s,warns:0});saveAdmins();document.getElementById('a-name').value='';document.getElementById('a-discord').value='';}
+function delAdmin(id){if(confirm('تحذف المسؤول؟')){admins=admins.filter(x=>x.id!=id);saveAdmins()}}
+function addWarn(id){let a=admins.find(x=>x.id==id);a.warns++;if(a.warns>=3){a.status='موقوف ⛔';alert('وصل 3 تحذيرات وتم إيقافه')}saveAdmins()}
+function renderAdmins(){
+let q=(document.getElementById('searchAdmin')?.value||'').toLowerCase();let f=document.getElementById('filterRank')?.value||'all';
+let tb=document.getElementById('adminTable');if(!tb)return;tb.innerHTML='';
+let filtered=admins.filter(a=>{if(q&&!a.name.toLowerCase().includes(q)&&!a.discord.toLowerCase().includes(q))return false;if(f!=='all'&&!a.rank.includes(f))return false;return true});
+filtered.forEach(a=>{
+let color=a.rank.includes('Owner')?'text-yellow-400':a.rank.includes('Manager')?'text-purple-400':a.rank.includes('Admin')?'text-red-400':'text-gray-300';
+let tr=document.createElement('tr');tr.className='border-b border-purple-900/10 hover:bg-[#1e1b33]';
+tr.innerHTML=`<td class="p-3 font-bold text-xs">${a.name}</td><td class="p-3 text-[11px] ${color}">${a.rank}</td><td class="p-3 text-[11px] text-gray-400">${a.discord}</td><td class="p-3 text-[11px]">${a.status}</td><td class="p-3"><span class="bg-red-500/20 text-red-400 px-2 py-1 rounded-full text-[10px]">${a.warns} تحذير</span> <button onclick="addWarn(${a.id})" class="text-[10px] bg-yellow-500/20 px-2 py-1 rounded-full">+ تحذير</button></td><td class="p-3"><button onclick="delAdmin(${a.id})" class="text-red-400 text-xs">حذف</button></td>`;
+tb.appendChild(tr);
+});
+document.getElementById('totalAdmins').innerText=admins.length;
+document.getElementById('activeAdmins').innerText=admins.filter(a=>a.status.includes('نشط')).length;
+let b=document.getElementById('bannedAdmins');if(b)b.innerText=admins.filter(a=>a.status.includes('موقوف')).length;
+}
+renderAdmins();
+
+// YouTube Live
 async function connect(){
-const key=document.getElementById('apiKey').value.trim();
-let channelInput=document.getElementById('channel').value.trim();
-if(!key){alert('حط API Key أول');return}
-localStorage.setItem('yt_key',key); localStorage.setItem('yt_channel',channelInput);
+let key=document.getElementById('apiKey').value.trim();let inp=document.getElementById('channel').value.trim();
+if(!key){alert('حط API Key');return}
+localStorage.setItem('yt_key',key);localStorage.setItem('yt_channel',inp);
 document.getElementById('status').innerText='جاري الربط...';
-
 try{
-let channelId=channelInput;
-if(channelInput.startsWith('@')){
-const res=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${channelInput}&key=${key}`);
-const data=await res.json();
-if(!data.items||!data.items[0]) throw new Error('القناة مو موجودة، جرب Channel ID');
-channelId=data.items[0].id.channelId;
+let cid=inp;if(inp.startsWith('@')){let r=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${inp}&key=${key}`);let d=await r.json();cid=d.items[0].id.channelId}
+let cr=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${cid}&key=${key}`);let cd=await cr.json();let s=cd.items[0].statistics;let sn=cd.items[0].snippet;
+document.getElementById('subs').innerText=Number(s.subscriberCount).toLocaleString();document.getElementById('views').innerText=Number(s.viewCount).toLocaleString();document.getElementById('count').innerText=s.videoCount;document.getElementById('chName').innerText=sn.title;document.getElementById('status').innerText='✅ LIVE';
+let vr=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${cid}&maxResults=15&order=date&type=video&key=${key}`);let vd=await vr.json();let list=document.getElementById('videos');list.innerHTML='';for(let it of vd.items){let vid=it.id.videoId;let dr=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${vid}&key=${key}`);let dd=await dr.json();let vs=dd.items[0]?.statistics||{};let div=document.createElement('div');div.className='p-3 flex gap-3 hover:bg-[#1e1b33] border-b border-purple-900/10';div.innerHTML=`<img src="${it.snippet.thumbnails.medium.url}" class="w-28 h-16 rounded-xl object-cover"><div class="flex-1"><p class="text-xs font-bold leading-tight">${it.snippet.title}</p><p class="text-[10px] text-gray-400 mt-1">👁️ ${Number(vs.viewCount||0).toLocaleString()} • 👍 ${Number(vs.likeCount||0).toLocaleString()} • ${new Date(it.snippet.publishedAt).toLocaleDateString('ar-EG')}</p></div>`;list.appendChild(div)}
+}catch(e){document.getElementById('status').innerText='❌ خطأ: '+e.message}
 }
-const chRes=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${channelId}&key=${key}`);
-const chData=await chRes.json();
-if(!chData.items[0]) throw new Error('Channel not found');
-const stats=chData.items[0].statistics;
-const snippet=chData.items[0].snippet;
-document.getElementById('subs').innerText=Number(stats.subscriberCount).toLocaleString();
-document.getElementById('views').innerText=Number(stats.viewCount).toLocaleString();
-document.getElementById('count').innerText=stats.videoCount;
-document.getElementById('channelName').innerText=snippet.title;
-document.getElementById('status').innerText='✅ مربوط LIVE';
-
-const vidRes=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=20&order=date&type=video&key=${key}`);
-const vidData=await vidRes.json();
-const list=document.getElementById('videos'); list.innerHTML='';
-for(let item of vidData.items){
-const vidId=item.id.videoId;
-const det=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${vidId}&key=${key}`);
-const detData=await det.json();
-const vstat=detData.items[0]?.statistics||{};
-const div=document.createElement('div');
-div.className='p-4 flex gap-4 hover:bg-[#1e1b30]';
-div.innerHTML=`<img src="${item.snippet.thumbnails.medium.url}" class="w-40 h-24 rounded-xl object-cover"><div class="flex-1"><p class="font-bold text-sm">${item.snippet.title}</p><p class="text-xs text-gray-400 mt-1">${new Date(item.snippet.publishedAt).toLocaleDateString('ar-EG')} • 👁️ ${Number(vstat.viewCount||0).toLocaleString()} • 👍 ${Number(vstat.likeCount||0).toLocaleString()} • 💬 ${Number(vstat.commentCount||0).toLocaleString()}</p><a href="https://youtube.com/watch?v=${vidId}" target="_blank" class="text-purple-400 text-xs underline mt-2 inline-block">فتح في يوتيوب</a></div>`;
-list.appendChild(div);
-}
-}catch(e){document.getElementById('status').innerText='❌ خطأ: '+e.message; alert(e.message)}
-}
-window.onload=()=>{const k=localStorage.getItem('yt_key');const c=localStorage.getItem('yt_channel');if(k){document.getElementById('apiKey').value=k}if(c){document.getElementById('channel').value=c}}
+window.onload=()=>{let k=localStorage.getItem('yt_key');let c=localStorage.getItem('yt_channel');if(k)document.getElementById('apiKey').value=k;if(c)document.getElementById('channel').value=c}
 </script>
 </body>
 </html>
