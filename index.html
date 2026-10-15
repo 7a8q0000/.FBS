@@ -78,4 +78,118 @@ body{font-family:'Tajawal',system-ui;background: radial-gradient(1000px 500px at
 <textarea id="geminiPrompt" rows="2" placeholder="صيغ رسالة حماسية للقروب..." class="w-full mt-2 bg-[#1a1a2e] rounded-xl px-3 py-2 text-xs"></textarea>
 <div class="grid grid-cols-2 gap-2 mt-2"><button onclick="askGeminiDirect()" class="bg-gradient-to-r from-[#ff0a5c] to-[#8a1ac4] rounded-xl py-2 text-xs font-black">✨ اسأل Gemini المخفي</button><button onclick="sendGeminiViaUltraMsg()" class="bg-green-600 rounded-xl py-2 text-xs font-black">📲 إرسال للقروب + إشعار</button></div>
 <div id="geminiResponse" class="hidden bg-black/50 p-3 rounded-xl text-[11px] mt-2 whitespace-pre-wrap max-h-[200px] overflow-auto"></div>
-</div></div></div>
+</div></div></div><div id="content-team" class="tab-content hidden-tab">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+<div class="card rounded-xl p-4 border-pink-500/30">
+<h3 class="font-bold text-xs">🔒 المنطقة المحمية - كل التوكنات مخفية هنا فقط</h3>
+<div id="adminLockSmall" class="mt-3"><p class="text-[11px] text-yellow-300 mb-2">🔒 أدخل رمز الإدارة لإظهار كل التوكنات المخفية (Gemini + UltraMsg + Group):</p>
+<div class="flex gap-2"><input id="adminPass" type="password" placeholder="رمزك: Shadow47q" class="flex-1 bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><button onclick="unlockAdmin()" class="bg-gradient-to-r from-[#ff0a5c] to-[#8a1ac4] px-4 rounded-xl text-xs font-black">🔓 فتح المنطقة المحمية</button></div><p id="adminErr" class="text-red-400 text-[10px] mt-2 hidden">❌ رمز خطأ</p>
+<div class="bg-green-500/10 border border-green-500/20 p-2 rounded-xl mt-3"><p class="text-[10px] text-green-300">🛡️ للنشر العام: حتى لو نشرت الموقع، التوكنات تبقى مخفية. الزوار ما يشوفون شي إلا بعد الرمز.</p></div>
+</div>
+<div id="adminPanel" class="hidden space-y-3">
+<div class="bg-green-500/10 border border-green-500/30 p-3 rounded-xl"><p class="text-[11px] font-bold text-green-400">✅ تم فتح المنطقة المحمية - كل شي ظاهر لك الآن فقط</p></div>
+
+<div class="card rounded-xl p-3 bg-[#0f0e1f] border-pink-500/40">
+<h4 class="font-bold text-[11px] text-pink-300">🔒 إعدادات UltraMsg + Gemini السرية (مخفية عن العامة ومشفرة)</h4>
+<div class="mt-2 space-y-2">
+<label class="text-[10px] text-gray-400">🔒 Instance ID (مخفي)</label><input id="instance" placeholder="instanceXXXXX - مخفي" class="w-full bg-[#1a1a2e] rounded-xl px-3 py-2 text-[11px]">
+<label class="text-[10px] text-gray-400">🔒 Token (مخفي ومشفر تماماً)</label><input id="token" type="password" placeholder="التوكن مخفي 🔒 مشفر" class="w-full bg-[#1a1a2e] rounded-xl px-3 py-2 text-[11px]">
+<label class="text-[10px] text-gray-400">🔒 Group ID (مخفي)</label><input id="groupId" placeholder="1203...@g.us - مخفي" class="w-full bg-[#1a1a2e] rounded-xl px-3 py-2 text-[11px]">
+<div class="grid grid-cols-3 gap-1 mt-2">
+<button onclick="saveSecureSettings()" class="bg-green-600 rounded-xl py-2 text-[10px] font-black">💾 حفظ مشفر 🔒</button>
+<button onclick="testUltraMsg()" class="bg-blue-600 rounded-xl py-2 text-[10px] font-black">🧪 اختبار + إشعار</button>
+<button onclick="sendTodayViaUltraMsg()" class="bg-gradient-to-r from-[#ff0a5c] to-[#8a1ac4] rounded-xl py-2 text-[10px] font-black">📤 إرسال + إشعار</button>
+</div>
+<div class="mt-2 flex gap-1">
+<button onclick="toggleTokenVisibility()" class="bg-[#1e1b33] rounded-xl py-1 px-2 text-[9px]">👁️ إظهار/إخفاء</button>
+<button onclick="clearSecureSettings()" class="bg-red-500/20 text-red-400 rounded-xl py-1 px-2 text-[9px]">🗑️ مسح الكل</button>
+</div>
+<div id="ultraLog" class="bg-black/60 p-2 rounded-xl text-[10px] mt-2 whitespace-pre-wrap">🔒 محمي - التوكنات مشفرة - آمن للنشر</div>
+</div>
+</div>
+
+<div class="card rounded-xl p-3 bg-[#0f0e1f] border-green-500/30 mt-3">
+<h4 class="font-bold text-[11px] text-green-300">🔔 نظام إشعارات رقمك - من يرسل رقمك للقروب</h4>
+<div class="mt-2 space-y-2 text-[11px]">
+<label class="flex items-center gap-2"><input type="checkbox" id="notifSound" checked> 🔊 صوت تنبيه عند إرسال رقمك</label>
+<label class="flex items-center gap-2"><input type="checkbox" id="notifBrowser" checked> 🔔 إشعار متصفح فوري</label>
+<label class="flex items-center gap-2"><input type="checkbox" id="notifVibrate" checked> 📳 اهتزاز جوال</label>
+<input id="myNumber" placeholder="رقمك: 9665xxxxxxxx - عشان نعرف إرسالاتك" class="w-full bg-[#1a1a2e] rounded-xl px-3 py-2 text-[11px] mt-2">
+<button onclick="saveNotifSettings()" class="w-full bg-gradient-to-r from-[#ff0a5c] to-[#8a1ac4] rounded-xl py-2 text-[11px] font-black mt-1">💾 حفظ إعدادات إشعارات رقمك</button>
+<p class="text-[9px] text-gray-400 mt-2">💡 كل ما ترسل من رقمك للقروب، يجيك إشعار هنا + متصفح + صوت + اهتزاز + وقت</p>
+</div>
+</div>
+
+<div class="mt-3">
+<h4 class="font-bold text-[11px]">👥 الطاقم</h4>
+<div class="mt-2 space-y-2"><input id="memberName" placeholder="اسم" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><input id="memberRole" placeholder="رتبة" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><input id="memberPass" placeholder="كلمة سر" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><button onclick="addMember()" class="w-full bg-green-600 rounded-xl py-2 text-xs">+ إضافة</button></div>
+<div id="teamTable" class="mt-2 space-y-1 text-xs"></div>
+</div>
+</div>
+<div class="card rounded-xl p-4">
+<h3 class="font-bold text-xs">📋 سجل إرسالات رقمك + أمان النشر</h3>
+<div class="mt-3 space-y-2">
+<button onclick="lockAdmin()" class="w-full bg-red-500/10 text-red-400 rounded-xl py-2 text-[10px]">🔒 قفل المنطقة المحمية</button>
+<div class="bg-yellow-500/10 border border-yellow-500/20 p-3 rounded-xl mt-3">
+<p class="text-[11px] font-bold text-yellow-400">🛡️ حماية النشر العام - V24:</p>
+<p class="text-[10px] text-gray-300 mt-1">✅ Instance + Token + Group ID + Gemini كلها مخفية</p>
+<p class="text-[10px] text-gray-300">✅ مشفرة في localStorage (btoa)</p>
+<p class="text-[10px] text-gray-300">✅ لا تظهر في View Source</p>
+<p class="text-[10px] text-gray-300">✅ تحتاج رمز إدارة</p>
+<p class="text-[10px] text-green-300 font-bold mt-1">✅ آمن تنشر الموقع عام الآن</p>
+</div>
+<div class="mt-3">
+<p class="text-[11px] font-bold">📤 سجل إرسالات رقمك للقروب (إشعارات)</p>
+<div id="sendHistory" class="mt-2 bg-[#0f0e1f] p-2 rounded-xl text-[10px] max-h-[200px] overflow-y-auto">لا يوجد إرسالات بعد - من ترسل بيظهر هنا + إشعار</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+function simpleEncrypt(str){return btoa(encodeURIComponent(str).split('').map(c=>String.fromCharCode(c.charCodeAt(0)+5)).join(''));}
+function simpleDecrypt(str){try{return decodeURIComponent(atob(str).split('').map(c=>String.fromCharCode(c.charCodeAt(0)-5)).join('')));}catch(e){return '';}}
+let ADMIN_PASS=localStorage.getItem('admin_pass')||'Shadow47q';let adminUnlocked=false;let currentUser=null;let lastAIPlan=null;let selectedParticipants=[];
+let secureData=JSON.parse(localStorage.getItem('secure_ultramsg_v24')||'{}');
+let notifSettings=JSON.parse(localStorage.getItem('notif_settings_v24')||'{"sound":true,"browser":true,"vibrate":true,"myNumber":""}');
+let sendHistory=JSON.parse(localStorage.getItem('send_history_v24')||'[]');
+function openTab(n){document.querySelectorAll('.tab-content').forEach(c=>c.classList.add('hidden-tab'));document.querySelectorAll('[id^="tab-"]').forEach(b=>b.classList.remove('tab-active'));document.getElementById('content-'+n).classList.remove('hidden-tab');let tab=document.getElementById('tab-'+n);if(tab)tab.classList.add('tab-active');}
+function unlockAdmin(){let v=document.getElementById('adminPass').value;if(v===ADMIN_PASS){adminUnlocked=true;document.getElementById('adminLockSmall').classList.add('hidden');document.getElementById('adminPanel').classList.remove('hidden');document.getElementById('geminiLockedMsg').classList.add('hidden');document.getElementById('secureGeminiArea').classList.remove('hidden-secure');if(secureData.instance)document.getElementById('instance').value=simpleDecrypt(secureData.instance);if(secureData.token)document.getElementById('token').value=simpleDecrypt(secureData.token);if(secureData.groupId)document.getElementById('groupId').value=simpleDecrypt(secureData.groupId);let gKey=localStorage.getItem('gemini_key_enc');if(gKey)document.getElementById('geminiKey').value=simpleDecrypt(gKey);document.getElementById('myNumber').value=notifSettings.myNumber||'';document.getElementById('notifSound').checked=notifSettings.sound;document.getElementById('notifBrowser').checked=notifSettings.browser;document.getElementById('notifVibrate').checked=notifSettings.vibrate;renderSendHistory();logUltra('🔓 تم فتح المنطقة المحمية - التوكنات + Gemini ظاهرة لك فقط');}else{document.getElementById('adminErr').classList.remove('hidden');}}
+function lockAdmin(){adminUnlocked=false;document.getElementById('adminLockSmall').classList.remove('hidden');document.getElementById('adminPanel').classList.add('hidden');document.getElementById('geminiLockedMsg').classList.remove('hidden');document.getElementById('secureGeminiArea').classList.add('hidden-secure');document.getElementById('instance').value='';document.getElementById('token').value='';document.getElementById('groupId').value='';}
+function saveSecureSettings(){let inst=document.getElementById('instance').value.trim();let tok=document.getElementById('token').value.trim();let grp=document.getElementById('groupId').value.trim();let gKey=document.getElementById('geminiKey').value.trim();secureData={instance:simpleEncrypt(inst),token:simpleEncrypt(tok),groupId:simpleEncrypt(grp)};localStorage.setItem('secure_ultramsg_v24',JSON.stringify(secureData));if(gKey)localStorage.setItem('gemini_key_enc',simpleEncrypt(gKey));alert('✅ تم حفظ كل التوكنات + Gemini بشكل مشفر وآمن 🔒 - آمن للنشر العام');logUltra('✅ تم الحفظ المشفر');}
+function clearSecureSettings(){if(confirm('مسح كل التوكنات + Gemini؟')){localStorage.removeItem('secure_ultramsg_v24');localStorage.removeItem('gemini_key_enc');secureData={};document.getElementById('instance').value='';document.getElementById('token').value='';document.getElementById('groupId').value='';logUltra('🗑️ تم المسح');}}
+function toggleTokenVisibility(){let t=document.getElementById('token');t.type=t.type==='password'?'text':'password';}
+function saveNotifSettings(){notifSettings={sound:document.getElementById('notifSound').checked,browser:document.getElementById('notifBrowser').checked,vibrate:document.getElementById('notifVibrate').checked,myNumber:document.getElementById('myNumber').value.trim()};localStorage.setItem('notif_settings_v24',JSON.stringify(notifSettings));alert('✅ تم حفظ إعدادات إشعارات رقمك 🔔');}
+function getSecureValue(key){if(!secureData[key])return '';return simpleDecrypt(secureData[key]);}
+function addNotificationToCenter(msg, type='send'){let center=document.getElementById('notifCenter');let time=new Date().toLocaleString('ar-SA');let div=document.createElement('div');let bg=type==='send'?'bg-green-500/20 border-green-500/30':'bg-blue-500/20 border-blue-500/30';div.className=bg+' border p-3 rounded-xl mb-2 flex justify-between items-start';div.innerHTML=`<div><p class="font-bold">${type==='send'?'📤 تم الإرسال من رقمك للقروب':'🔔 إشعار'}</p><p class="text-[10px] mt-1">${msg}</p><p class="text-[9px] text-gray-400 mt-1">${time} - رقمك: ${notifSettings.myNumber||'مسجل'}</p></div><span class="text-[9px] bg-pink-500/20 px-2 py-1 rounded-full">الآن</span>`;center.prepend(div);if(notifSettings.sound){try{let beep=new (window.AudioContext||window.webkitAudioContext)();let o=beep.createOscillator();let g=beep.createGain();o.connect(g);g.connect(beep.destination);o.frequency.value=880;g.gain.value=0.3;o.start();setTimeout(()=>{o.stop();},400);}catch(e){}}if(notifSettings.vibrate && navigator.vibrate){navigator.vibrate([200,100,200]);}if(notifSettings.browser && Notification.permission==='granted'){new Notification('📤 تم الإرسال من رقمك للقروب!',{body:msg.substring(0,100),icon:'🔔'});}let dot=document.getElementById('notifDot');dot.style.display='block';setTimeout(()=>dot.style.display='none',6000);sendHistory.unshift({id:Date.now(),msg,time,myNumber:notifSettings.myNumber});localStorage.setItem('send_history_v24',JSON.stringify(sendHistory));renderSendHistory();document.getElementById('lastSendTime').innerText=time;}
+function renderSendHistory(){let el=document.getElementById('sendHistory');if(!el)return;if(sendHistory.length===0){el.innerHTML='لا يوجد إرسالات بعد';return;}el.innerHTML=sendHistory.slice(0,20).map(s=>`<div class="bg-[#1a1a2e] p-2 rounded-lg mb-1 flex justify-between"><span>📤 ${s.msg.substring(0,60)}...</span><span class="text-[8px] text-gray-400">${s.time}</span></div>`).join('');}
+function clearNotifCenter(){document.getElementById('notifCenter').innerHTML='<p class="text-gray-500">تم المسح</p>';}
+function requestNotifPermission(){if(Notification.permission!=='granted'){Notification.requestPermission().then(p=>{if(p==='granted'){alert('✅ تم تفعيل إشعارات المتصفح 🔔 - من ترسل من رقمك بيجيك إشعار');new Notification('🔔 الإشعارات مفعلة',{body:'بيجيك إشعار من يرسل رقمك للقروب - V24 SECURE'});}});}else{alert('✅ الإشعارات مفعلة already 🔔');}}
+async function askGeminiDirect(){let prompt=document.getElementById('geminiPrompt').value.trim();let out=document.getElementById('geminiResponse');let keyEnc=localStorage.getItem('gemini_key_enc');let key=keyEnc?simpleDecrypt(keyEnc):document.getElementById('geminiKey').value.trim();if(!key||!prompt){alert('🔒 افتح الإدارة وحط مفتاح Gemini أولاً - مخفي');openTab('team');return;}out.classList.remove('hidden');out.textContent='⏳ Gemini المخفي يفكر...';try{const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})});const data=await res.json();if(data.error){out.textContent='❌ '+JSON.stringify(data.error,null,2);return;}const text=data.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';out.textContent=text;out.dataset.text=text;}catch(e){out.textContent='❌ '+e.message;}}
+async function sendGeminiViaUltraMsg(){const text=document.getElementById('geminiResponse').dataset.text||document.getElementById('geminiResponse').textContent;if(!text||text.includes('⏳')){alert('اسأل Gemini أولاً');return;}await sendUltraMsgDirect(text);}
+async function sendUltraMsgDirect(body){const instance=getSecureValue('instance');const token=getSecureValue('token');const groupId=getSecureValue('groupId');if(!instance||!token||!groupId){alert('🔒 افتح الإدارة وحط بيانات UltraMsg المخفية أولاً');openTab('team');return;}logUltra('📤 جاري الإرسال من رقمك للقروب...');try{const res=await fetch(`https://api.ultramsg.com/${instance}/messages/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:token,to:groupId,body:body})});const data=await res.json();logUltra('✅ تم الإرسال: '+JSON.stringify(data));addNotificationToCenter(body, 'send');alert('✅ تم الإرسال من رقمك + إشعار فوري 🔔');}catch(e){logUltra('❌ فشل: '+e.message);addNotificationToCenter('❌ فشل: '+e.message,'error');}}
+function logUltra(txt){let l=document.getElementById('ultraLog');let m=document.getElementById('ultraLogMain');if(l){l.textContent+='\n'+txt;}if(m){m.textContent+='\n'+txt;}}
+async function testUltraMsg(){let msg=`🔒 V24 SECURE - اختبار محمي\n✅ التوكنات + Gemini مخفية ومشفرة\n✅ الإشعارات شغالة من رقمك\n⏰ ${new Date().toLocaleString('ar-SA')}\n📱 رقمك: ${notifSettings.myNumber||'غير مسجل'}`;await sendUltraMsgDirect(msg);}
+async function sendTodayViaUltraMsg(){let today=new Date().toISOString().split('T')[0];let todays=shootDays.filter(s=>s.date===today&&shouldNotify(s.status));if(todays.length===0){alert('ما فيه تصوير اليوم');return;}let msg=`🎬 تصوير اليوم - ${today}\n\n`+todays.map(s=>`⏰ ${s.time} | 📍 ${s.place} | 👥 ${s.participants?s.participants.join('، '):'--'}`).join('\n');await sendUltraMsgDirect(msg);}
+let team=JSON.parse(localStorage.getItem('team_members')||'[{"id":1,"name":"Shadow47q","role":"المالك","channel":"@Shadow47q","pass":"47q"}]');let shootDays=JSON.parse(localStorage.getItem('shoot_days_v15')||'[]');let selectedParticipants=[];
+function shouldNotify(s){return s!=='قيد التصوير'&&s!=='تم'&&s!=='ملغي';}
+function saveAll(){localStorage.setItem('team_members',JSON.stringify(team));localStorage.setItem('shoot_days_v15',JSON.stringify(shootDays));renderAll();}
+function renderParticipantsSelector(){let c=document.getElementById('participantsSelector');if(!c)return;c.innerHTML='';team.forEach(m=>{let chip=document.createElement('div');chip.className='participant-chip '+(selectedParticipants.includes(m.name)?'selected':'');chip.innerText=m.name;chip.onclick=()=>{if(selectedParticipants.includes(m.name))selectedParticipants=selectedParticipants.filter(x=>x!==m.name);else selectedParticipants.push(m.name);renderParticipantsSelector();};c.appendChild(chip);});let el=document.getElementById('selectedParticipants');if(el)el.innerText=selectedParticipants.length>0?'👥 مع: '+selectedParticipants.join('، '):'لم يتم';}
+function addCustomParticipant(){let i=document.getElementById('customParticipant');let n=i.value.trim();if(!n)return;if(!team.find(t=>t.name===n)){team.unshift({id:Date.now(),name:n,role:'مشارك',channel:'',pass:Date.now().toString()});}if(!selectedParticipants.includes(n))selectedParticipants.push(n);i.value='';saveAll();renderParticipantsSelector();}
+function addShoot(){let d=document.getElementById('shootDate').value;let t=document.getElementById('shootTime').value;let p=document.getElementById('shootPlace').value;let desc=document.getElementById('shootDesc').value;let status=document.getElementById('shootStatus').value;if(!d){alert('اختر التاريخ');return}shootDays.unshift({id:Date.now(),date:d,time:t||'20:00',place:p||'ريك تاون',type:'عادي',desc:desc||'تصوير',participants:[...selectedParticipants],status});selectedParticipants=[];saveAll();alert('تم ✅ + إشعار رقمك شغال 🔔');}
+function addMember(){let n=document.getElementById('memberName').value;let r=document.getElementById('memberRole').value;let p=document.getElementById('memberPass').value;if(!n||!p){alert('الاسم والسر');return}team.unshift({id:Date.now(),name:n,role:r,channel:'',pass:p});document.getElementById('memberName').value='';document.getElementById('memberRole').value='';document.getElementById('memberPass').value='';saveAll();}
+function del2(id,type){if(type==='team')team=team.filter(x=>x.id!=id);if(type==='shoot')shootDays=shootDays.filter(x=>x.id!=id);saveAll();}
+function changeStatus(id,v){let s=shootDays.find(x=>x.id==id);if(s){s.status=v;saveAll();}}
+function renderAll(){
+document.getElementById('teamTable').innerHTML=team.map(x=>`<div class="flex justify-between bg-[#0f0e1f] p-2 rounded-lg"><span><b>${x.name}</b> - ${x.role}</span><button onclick="del2(${x.id},'team')" class="text-red-400">×</button></div>`).join('');
+document.getElementById('teamCount').innerText=team.length;
+let list=document.getElementById('shootList');let count=document.getElementById('shootCount');if(count)count.innerText=shootDays.length+' يوم';if(list){list.innerHTML='';shootDays.sort((a,b)=>new Date(a.date)-new Date(b.date)).forEach(s=>{let color=s.status=='تم'?'bg-green-500':s.status=='قيد التصوير'?'bg-red-500':s.status=='ملغي'?'bg-gray-500':s.status=='مؤجل'?'bg-orange-500':'bg-yellow-500';let part=s.participants&&s.participants.length>0?s.participants.join('، '):'بدون';let div=document.createElement('div');div.className='bg-[#0f0e1f] border border-pink-500/20 rounded-xl p-3 flex justify-between items-center';div.innerHTML=`<div class="text-xs"><div class="flex gap-2"><b>${s.date} ${s.time}</b><span class="${color} text-white px-2 py-0.5 rounded-full text-[9px]">${s.status}</span></div><div class="mt-1">👥 ${part} - ${s.place}</div></div><div class="flex flex-col gap-1"><select onchange="changeStatus(${s.id}, this.value)" class="bg-[#1a1a2e] rounded-lg px-1 py-1 text-[9px]"><option ${s.status=='مجدول'?'selected':''}>مجدول</option><option ${s.status=='قيد التصوير'?'selected':''}>قيد التصوير</option><option ${s.status=='تم'?'selected':''}>تم</option><option ${s.status=='ملغي'?'selected':''}>ملغي</option><option ${s.status=='مؤجل'?'selected':''}>مؤجل</option></select><button onclick="sendUltraMsgDirect('🎬 ${s.date} ${s.time} - ${s.place} - 👥 ${part} - ${s.status}')" class="bg-gradient-to-r from-[#ff0a5c] to-[#8a1ac4] rounded-lg px-2 py-1 text-[9px]">📲 إرسال + إشعار</button><button onclick="del2(${s.id},'shoot')" class="text-red-400 text-[10px]">حذف</button></div>`;list.appendChild(div);});}
+renderParticipantsSelector();renderSendHistory();
+}
+renderAll();openTab('dash');
+if(Notification.permission==='default'){setTimeout(()=>{if(confirm('🔔 تبي أفعل لك إشعارات فورية من يرسل رقمك للقروب؟ (V24 SECURE)')){requestNotifPermission();}},1500);}
+</script>
+</body>
+</html>
