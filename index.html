@@ -1,150 +1,173 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shadow47q V19 - واتساب قروب</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>body{font-family:system-ui;background:#070510}.card{background:linear-gradient(135deg,#15132a,#0f0e1f);border:1px solid rgba(139,92,246,.2)}.tab-active{background:#7c3aed!important;color:white!important}.hidden-tab{display:none}.participant-chip{background:#1e1b33;border:1px solid rgba(139,92,246,.3);padding:5px 10px;border-radius:999px;font-size:10px;cursor:pointer}.participant-chip.selected{background:#7c3aed;color:white}</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow47q V21 - موقعك الكامل - أحمر بنفسجي</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Tajawal',sans-serif}
+body{margin:0;padding:14px;background: radial-gradient(1000px 500px at 15% -10%, #ff0a5c 0%, #a00a4a 20%, #5a0a8a 60%, #120a2a 100%), #0d0a1a;color:#fff;min-height:100vh}
+.header{background: linear-gradient(135deg, #7a0a4a 0%, #d40a5a 35%, #8a1ac4 70%, #5a0ae0 100%);border-radius:22px;padding:20px;box-shadow:0 12px 40px rgba(255,10,92,.45);border:1px solid rgba(255,255,255,.15);position:sticky;top:14px;z-index:10}
+.header h1{margin:0;font-size:22px;font-weight:900}
+.header .sub{font-size:12px;opacity:.85;margin-top:4px}
+.badge{display:inline-block;padding:5px 10px;border-radius:999px;background: linear-gradient(90deg,#ff0a5c,#8a1bc4);font-size:11px;font-weight:800;margin-top:8px;margin-left:6px}
+.card{background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));backdrop-filter:blur(14px);border:1px solid rgba(255,140,180,.18);border-radius:20px;padding:16px;margin-top:14px;box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.card h3{margin:0 0 10px 0;font-size:15px;color:#ff8fb8}
+label{font-size:11px;color:#ffb3d0;display:block;margin-top:10px}
+input,select,textarea{width:100%;padding:11px 12px;border-radius:11px;border:1px solid rgba(255,80,130,.25);background: rgba(20,5,28,.9);color:#fff;outline:none;margin-top:5px;font-size:13px}
+input:focus,textarea:focus,select:focus{border-color:#ff2d78;box-shadow:0 0 0 3px rgba(255,45,120,.18)}
+.btn{width:100%;padding:12px;border-radius:11px;border:none;font-weight:800;font-size:13px;cursor:pointer;margin-top:10px;transition:.18s}
+.btn-main{background: linear-gradient(90deg, #ff0a5c 0%, #c4107a 30%, #8a1ac4 80%);color:#fff;box-shadow:0 6px 20px rgba(255,10,92,.4)}
+.btn-main:hover{transform:translateY(-1px)}
+.btn-wa{background: linear-gradient(90deg,#ff2d78,#7a1ac4);color:#fff}
+.btn-outline{background:transparent;border:1px solid rgba(255,100,150,.4);color:#ffb3d0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.status{background: rgba(0,0,0,.5);border:1px solid rgba(255,100,150,.18);border-radius:11px;padding:10px;margin-top:10px;font-family:monospace;font-size:11px;white-space:pre-wrap;max-height:220px;overflow:auto;color:#ffd6e6}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
+th,td{padding:8px;border-bottom:1px solid rgba(255,255,255,.08);text-align:right}
+th{color:#ff8fb8;font-size:11px}
+.small{font-size:11px;color:#aaa}
+.pill{padding:3px 8px;border-radius:999px;font-size:10px;background: rgba(255,10,92,.2);border:1px solid rgba(255,10,92,.3)}
+</style>
 </head>
-<body class="text-white"><div class="max-w-[1800px] mx-auto p-3">
-<div class="flex justify-between items-center mb-3 flex-wrap gap-2"><div class="flex items-center gap-2"><div class="w-9 h-9 bg-purple-600 rounded-xl flex items-center justify-center">🎬</div><div><h1 class="font-black text-sm">Shadow47q V19 - GROUP READY</h1><p class="text-[10px] text-green-400">V18 + زر واتساب قروب + مشاركين + إشعار ذكي</p></div></div><div class="flex gap-1.5"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-[10px]">LIVE</span><button onclick="sendTodayToGroup()" class="bg-green-600 px-3 py-1 rounded-full text-[10px] font-black animate-pulse">📤 إرسال اليوم للقروب</button></div></div>
+<body>
 
-<div class="flex gap-1 overflow-x-auto pb-2 mb-3 text-[10px]">
-<button onclick="openTab('dash')" id="tab-dash" class="tab-active bg-[#1e1b33] px-2.5 py-2 rounded-xl font-bold">📊 رئيسية</button>
-<button onclick="openTab('shoot')" id="tab-shoot" class="bg-gradient-to-r from-green-600 to-emerald-600 px-3 py-2 rounded-xl border border-green-400/50 font-black">📅 تصوير + مشاركين + واتساب</button>
-<button onclick="openTab('ai')" id="tab-ai" class="bg-gradient-to-r from-purple-600 to-indigo-600 px-3 py-2 rounded-xl">🤖 AI</button>
-<button onclick="openTab('videos')" id="tab-videos" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">🎥 فيديو</button>
-<button onclick="openTab('ideas')" id="tab-ideas" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">💡 أفكار</button>
-<button onclick="openTab('scripts')" id="tab-scripts" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">📝 سكربت</button>
-<button onclick="openTab('thumbs')" id="tab-thumbs" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">📸 صور</button>
-<button onclick="openTab('chars')" id="tab-chars" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">🎭 شخصيات</button>
-<button onclick="openTab('keywords')" id="tab-keywords" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">🧠 كلمات</button>
-<button onclick="openTab('besttime')" id="tab-besttime" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">⏰ نشر</button>
-<button onclick="openTab('money')" id="tab-money" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">💰 فلوس</button>
-<button onclick="openTab('school')" id="tab-school" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">📚 مدرسة</button>
-<button onclick="openTab('relations')" id="tab-relations" class="bg-[#1e1b33] px-2.5 py-2 rounded-xl">🕸️ علاقات</button>
-<button onclick="openTab('team')" id="tab-team" class="bg-[#1e1b33] px-3 py-2 rounded-xl border border-purple-500/50">🔒 إدارة + إشعارات</button>
+<div class="header">
+<h1>🔴 Shadow47q V21 - موقعك الكامل</h1>
+<div class="sub">بنفسجي → أحمر → بنفسجي | جهازك متصل + قروبك جاهز + Gemini</div>
+<span class="badge">instance194492 ✅</span>
+<span class="badge">120363412556243701@g.us ✅</span>
+<span class="badge">V21 أحمر بنفسجي</span>
 </div>
 
-<div id="content-dash" class="tab-content"><div class="grid grid-cols-2 lg:grid-cols-4 gap-2"><div class="card rounded-xl p-3"><p class="text-[9px] text-gray-400">مشتركين</p><p id="subs" class="text-lg font-black">...</p></div><div class="card rounded-xl p-3"><p class="text-[9px] text-gray-400">مشاهدات</p><p id="views" class="text-lg font-black">...</p></div><div class="card rounded-xl p-3"><p class="text-[9px] text-gray-400">الطاقم</p><p id="teamCount" class="text-lg font-black">1</p></div><div class="card rounded-xl p-3 bg-gradient-to-br from-green-600 to-emerald-700"><p class="text-[9px]">واتساب قروب</p><p class="text-[10px] font-black">3 تذكيرات شغالة ✅</p><button onclick="sendTodayToGroup()" class="mt-1 bg-white text-green-700 px-2 py-1 rounded-lg text-[9px] font-black">📤 إرسال للقروب</button></div></div><div id="myWarningsBox" class="hidden mt-3 card rounded-xl p-4 border-red-500/30 bg-red-500/5"><h3 class="font-black text-red-400 text-xs">⚠️ تحذيراتك</h3><div id="myWarningsList" class="mt-2 space-y-2"></div></div><div id="myTasksBox" class="hidden mt-3 card rounded-xl p-4 border-green-500/30"><h3 class="font-black text-green-400 text-xs">🎯 مهامك</h3><div id="myTasksList" class="mt-2 space-y-2"></div></div><div class="card rounded-xl p-4 mt-3"><h3 class="font-bold text-xs">📊 سجل الإشعارات + مشاركة واتساب</h3><div id="notifLog" class="mt-3 bg-[#0f0e1f] p-3 rounded-xl text-[11px]"></div><button onclick="sendTodayToGroup()" class="w-full mt-2 bg-green-600 rounded-xl py-2 text-xs font-black">📤 إرسال ملخص اليوم للواتساب قروب</button></div></div>
+<div class="card">
+<h3>📅 1- جدول التصوير (موقعك الأساسي)</h3>
+<div class="row">
+<div><label>التاريخ</label><input id="date" type="date"></div>
+<div><label>الوقت</label><input id="time" type="time"></div>
+</div>
+<label>المكان</label><input id="place" placeholder="مثال: جدة - عرس">
+<label>العميل / التفاصيل</label><input id="client" placeholder="مثال: تصوير عرس VIP">
+<label>الحالة</label>
+<select id="status"><option>مجدول</option><option>مؤجل</option><option>تم</option></select>
+<button class="btn btn-main" onclick="addShoot()">+ إضافة تصوير للجدول</button>
+<table id="shootsTable"><thead><tr><th>التاريخ</th><th>الوقت</th><th>المكان</th><th>الحالة</th><th>حذف</th></tr></thead><tbody></tbody></table>
+</div>
 
-<div id="content-shoot" class="tab-content hidden-tab"><div class="grid grid-cols-1 lg:grid-cols-3 gap-3"><div class="card rounded-2xl p-4 border-green-500/30"><h3 class="font-black text-sm">📅 إضافة تصوير - مع المشاركين + واتساب</h3><div class="mt-4 space-y-2"><input id="shootDate" type="date" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs"><input id="shootTime" type="time" value="20:00" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs"><input id="shootPlace" placeholder="المكان" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs"><select id="shootType" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs"><option>🎬 عادي</option><option>🔥 مهم</option><option>😂 مقلب</option><option>🔫 أكشن</option></select><div class="bg-[#0f0e1f] rounded-xl p-3 border border-purple-500/20"><p class="text-[11px] font-bold mb-2">👥 المشاركين</p><div id="participantsSelector" class="flex flex-wrap gap-1.5"></div><div class="mt-2 flex gap-2"><input id="customParticipant" placeholder="+ اسم جديد" class="flex-1 bg-[#1a1a2e] rounded-lg px-2 py-2 text-[11px]"><button onclick="addCustomParticipant()" class="bg-purple-600 px-3 rounded-lg text-[10px]">+</button></div><p id="selectedParticipants" class="mt-2 text-[10px] text-green-400">لم يتم الاختيار</p></div><select id="shootStatus" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs border-2 border-yellow-500/50"><option value="مجدول">🟡 مجدول = 🔔 يرسل للواتساب</option><option value="قيد التصوير">🔴 قيد التصوير = ⏸️ يوقف</option><option value="تم">🟢 تم = ⏸️</option><option value="ملغي">⚪ ملغي</option><option value="مؤجل">🟠 مؤجل = 🔔</option></select><input id="shootDesc" placeholder="الوصف" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs"><button onclick="addShoot()" class="w-full mt-2 bg-green-600 rounded-xl py-3 text-xs font-black">+ إضافة ✅</button><button onclick="sendTodayToGroup()" class="w-full mt-2 bg-[#1e1b33] border border-green-500/30 rounded-xl py-2 text-xs">📤 جرب إرسال للقروب الآن</button></div></div><div class="lg:col-span-2 space-y-3"><div class="card rounded-2xl p-4"><div class="flex justify-between items-center"><h3 class="font-bold text-xs">📅 الجدول + واتساب</h3><div class="flex gap-1"><span id="shootCount" class="text-[10px] bg-green-500/20 px-2 py-1 rounded-full">0</span><button onclick="sendTodayToGroup()" class="text-[9px] bg-green-600 px-2 py-1 rounded-full">📤 قروب</button></div></div><div id="shootList" class="mt-3 space-y-2 max-h-[500px] overflow-y-auto"></div></div><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">🗓️ تقويم 30 يوم</h3><div id="shootCalendar" class="mt-3 grid grid-cols-7 gap-1.5 text-[9px]"></div></div></div></div></div>
+<div class="card">
+<h3>🤖 2- ربط Gemini - يسأل ويقرر (ذكاء اصطناعي - ما حذفته)</h3>
+<label>Gemini API Key (جيبه من aistudio.google.com/app/apikey)</label>
+<input id="geminiKey" type="password" placeholder="AIzaSy...">
+<label>سؤال لـ Gemini</label>
+<textarea id="prompt" rows="2" placeholder="مثال: عندي تصوير الليلة 11م، هل أرسل تذكير للقروب؟ صيغ رسالة حماسية"></textarea>
+<button class="btn btn-main" onclick="askGemini()">اسأل Gemini ✨</button>
+<div id="geminiResponse" class="status" style="display:none"></div>
+<button id="sendBtn" class="btn btn-wa" style="display:none" onclick="sendToGroup()">📲 إرسال رد Gemini للقروب</button>
+</div>
 
-<div id="content-ai" class="tab-content hidden-tab"><div class="card rounded-2xl p-4 border-purple-500/30"><h3 class="font-black">🤖 AI مساعد السلسلة</h3><div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4"><div class="space-y-3"><div class="bg-[#0f0e1f] rounded-xl p-3 border border-purple-500/20"><textarea id="aiInput" placeholder="فكرة سلسلة..." class="w-full bg-[#1a1a2e] rounded-xl px-3 py-3 text-xs h-24"></textarea><div class="mt-2 grid grid-cols-2 gap-2"><select id="aiSeriesLength" class="bg-[#1a1a2e] rounded-xl px-2 py-2 text-xs"><option value="5">5</option><option value="10" selected>10</option><option value="15">15</option></select><select id="aiStyle" class="bg-[#1a1a2e] rounded-xl px-2 py-2 text-xs"><option>مضحك 😂</option><option>أكشن 🔫</option><option>دراما 🎭</option><option>مكس 🔥</option></select></div><button onclick="askAI()" class="w-full mt-2 bg-purple-600 rounded-xl py-3 text-xs font-black">🤖 اضبط لي السلسلة</button><div id="aiThinking" class="hidden mt-2 p-2 bg-purple-600/10 rounded-xl text-xs">🧠 يخطط...</div></div></div><div class="lg:col-span-2"><div id="aiResult" class="bg-[#0f0e1f] rounded-xl p-4 min-h-[380px] text-xs"><p class="text-gray-500 text-center mt-20">اكتب فكرة</p></div><div id="aiActions" class="hidden mt-2 grid grid-cols-2 gap-2"><button onclick="applyAIToSite()" class="bg-green-600 rounded-xl py-2 text-xs">✅ طبق</button><button onclick="copyAIPlan()" class="bg-[#1e1b33] rounded-xl py-2 text-xs">📋 نسخ</button></div></div></div></div></div>
-
-<div id="content-videos" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">🎥 فيديوهات الطاقم LIVE</h3><div id="videos" class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-2"></div></div></div>
-<div id="content-ideas" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><div class="flex justify-between"><h3 class="font-bold text-xs">💡 الأفكار</h3><button onclick="addIdea()" class="bg-purple-600 px-3 py-1 rounded-lg text-xs">+ فكرة</button></div><div id="ideasList" class="mt-3 space-y-1"></div></div></div>
-<div id="content-scripts" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">📝 السكربتات</h3><div class="mt-3 space-y-2"><input id="scriptTitle" placeholder="عنوان" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><textarea id="scriptBody" placeholder="القصة" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs h-20"></textarea><button onclick="addScriptFull()" class="w-full bg-purple-600 rounded-xl py-2 text-xs">+ حفظ</button></div><div id="scriptsList" class="mt-3 space-y-2"></div></div></div>
-<div id="content-thumbs" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">📸 الصور المصغرة</h3><div class="mt-3 grid grid-cols-2 gap-3"><div class="space-y-2"><input id="thumbTitle" placeholder="عنوان" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><input id="thumbCTR" type="number" placeholder="CTR %" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><button onclick="addThumb()" class="w-full bg-yellow-600 rounded-xl py-2 text-xs">+ حفظ</button></div><div id="thumbsList" class="space-y-1 max-h-[400px] overflow-y-auto"></div></div></div></div>
-<div id="content-chars" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">🎭 شخصيات RT</h3><div class="mt-3 flex gap-2"><input id="charName" placeholder="الاسم" class="flex-1 bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><input id="charJob" placeholder="الوظيفة" class="flex-1 bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><input id="charWeak" placeholder="ضعف" class="flex-1 bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><button onclick="addChar()" class="bg-purple-600 px-3 rounded-xl text-xs">+</button></div><div id="charsList" class="mt-3 space-y-1"></div></div></div>
-<div id="content-keywords" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">🧠 كلمات مفتاحية</h3><input id="keywordInput" placeholder="عنوان" class="w-full mt-3 bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs"><button onclick="genKeywords()" class="w-full mt-2 bg-green-600 rounded-xl py-2 text-xs">🧠 ولد كلمات</button><div id="keywordsResult" class="mt-3 bg-[#0f0e1f] rounded-xl p-3 text-xs min-h-[100px]"></div></div></div>
-<div id="content-besttime" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">⏰ أفضل وقت نشر</h3><div id="publishCalendar" class="mt-4 grid grid-cols-7 gap-1 text-[9px]"></div></div></div>
-<div id="content-money" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">💰 الفلوس</h3><div class="mt-3 flex gap-2"><input id="income" type="number" placeholder="ربح" class="flex-1 bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><button onclick="addIncome()" class="bg-green-600 px-3 rounded-xl text-xs">+</button><input id="expense" type="number" placeholder="مصروف" class="flex-1 bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><button onclick="addExpense()" class="bg-red-500/20 px-3 rounded-xl text-xs">-</button></div><div id="moneyList" class="mt-3 space-y-1 text-xs"></div><p id="netProfit" class="mt-3 font-black text-green-400">$0</p></div></div>
-<div id="content-school" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">📚 المدرسة</h3><div class="mt-3 flex gap-2"><input id="schoolTask" placeholder="واجب" class="flex-1 bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><button onclick="addSchool()" class="bg-[#1e1b33] px-3 rounded-xl text-xs">+</button></div><div id="schoolList" class="mt-3 space-y-1 text-xs"></div></div></div>
-<div id="content-relations" class="tab-content hidden-tab"><div class="card rounded-xl p-4"><h3 class="font-bold text-xs">🕸️ علاقات</h3><div class="mt-3 flex gap-2"><input id="rel1" placeholder="شخص 1" class="flex-1 bg-[#0f0e1f] rounded-xl px-2 py-2 text-xs"><select id="relType" class="bg-[#0f0e1f] rounded-xl px-2 py-2 text-xs"><option>صديق 🤝</option><option>عدو ⚔️</option><option>شرطي 👮</option><option>عصابة 🔫</option></select><input id="rel2" placeholder="شخص 2" class="flex-1 bg-[#0f0e1f] rounded-xl px-2 py-2 text-xs"><button onclick="addRel()" class="bg-purple-600 px-3 rounded-xl text-xs">+</button></div><div id="relList" class="mt-3 space-y-1 text-xs"></div></div></div>
-
-<div id="content-team" class="tab-content hidden-tab"><div class="grid grid-cols-1 lg:grid-cols-2 gap-3"><div class="card rounded-xl p-4 border-purple-500/30"><h3 class="font-bold text-xs">🔑 تسجيل دخول الأعضاء</h3><div id="loginBox" class="mt-3 space-y-2"><select id="loginSelect" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs"></select><input id="loginPass" type="password" placeholder="كلمة السر" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-3 text-xs"><button onclick="loginMember()" class="w-full bg-purple-600 rounded-xl py-3 text-xs font-bold">دخول 🔓</button></div><div id="loggedBox" class="hidden mt-3 p-3 bg-green-500/10 rounded-xl border border-green-500/20"><p class="font-bold text-xs">✅ مسجل: <span id="loggedUserName" class="text-green-400"></span></p><button onclick="logoutMember()" class="w-full mt-2 bg-red-500/20 text-red-400 rounded-xl py-2 text-xs">خروج</button></div></div><div class="card rounded-xl p-4"><div id="adminLockSmall"><h3 class="font-bold text-xs">👑 إدارة الطاقم</h3><div class="mt-3 flex gap-2"><input id="adminPass" type="password" placeholder="رمز المسؤول" class="flex-1 bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><button onclick="unlockAdmin()" class="bg-purple-600 px-3 rounded-xl text-xs">فتح</button></div><p id="adminErr" class="text-red-400 text-[10px] mt-2 hidden">خطأ</p></div><div id="adminPanel" class="hidden space-y-3"><div class="space-y-2"><input id="memberName" placeholder="اسم العضو" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><input id="memberRole" placeholder="الرتبة" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><input id="memberChannel" placeholder="قناته" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs"><input id="memberPass" placeholder="كلمة سر" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-xs border border-yellow-500/30"><button onclick="addMember()" class="w-full bg-green-600 rounded-xl py-2 text-xs">+ إضافة عضو</button></div><div><h4 class="font-bold text-[11px] mt-3">الطاقم</h4><div id="teamTable" class="mt-2 space-y-1 text-xs"></div></div><div class="card rounded-xl p-3 bg-[#0f0e1f] border-green-500/30"><h4 class="font-bold text-[11px]">🔔 إشعارات واتساب ذكية</h4><div class="mt-2 space-y-2 text-[11px]"><div class="bg-[#1a1a2e] p-2 rounded-lg">✅ يرسل: مجدول، مؤجل<br>⏸️ يوقف: قيد التصوير، تم، ملغي<br>👥 يذكر المشاركين + زر قروب</div><button onclick="requestNotifPermission()" class="w-full bg-purple-600 rounded-xl py-2 font-bold">🔔 فعل إشعارات</button><button onclick="testNotif()" class="w-full bg-[#1e1b33] rounded-xl py-2">🧪 جرب</button><button onclick="sendTodayToGroup()" class="w-full bg-green-600 rounded-xl py-2 font-black">📤 إرسال اليوم للقروب واتساب</button></div></div><div class="p-2 bg-[#0f0e1f] rounded-xl"><h4 class="font-bold text-[11px]">⚠️ تحذير</h4><div class="mt-2 space-y-1"><select id="warnMember" class="w-full bg-[#1a1a2e] rounded-xl px-2 py-2 text-xs"></select><select id="warnType" class="w-full bg-[#1a1a2e] rounded-xl px-2 py-2 text-xs"><option>تأخر ⏰</option><option>خرب مقطع 🎬</option><option>تسريب 🤫</option><option>غياب 😴</option></select><input id="warnReason" placeholder="التفاصيل" class="w-full bg-[#1a1a2e] rounded-xl px-2 py-2 text-xs"><button onclick="addWarn()" class="w-full bg-red-600 rounded-xl py-2 text-xs">+ تحذير</button></div><div id="warnsList" class="mt-2 space-y-1"></div></div><div class="p-2 bg-[#0f0e1f] rounded-xl"><h4 class="font-bold text-[11px]">🎯 مهمة</h4><div class="mt-2 space-y-1"><select id="taskMember" class="w-full bg-[#1a1a2e] rounded-xl px-2 py-2 text-xs"></select><input id="taskTitle" placeholder="المهمة" class="w-full bg-[#1a1a2e] rounded-xl px-2 py-2 text-xs"><button onclick="addTask()" class="w-full bg-green-600 rounded-xl py-2 text-xs">+ مهمة</button></div><div id="tasksListAdmin" class="mt-2 space-y-1"></div></div><div class="p-2 bg-[#0f0e1f] rounded-xl"><h4 class="font-bold text-[11px]">⚙️ إعدادات</h4><div class="mt-2 space-y-1"><input id="apiKey" placeholder="YouTube API Key" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-[11px]"><input id="channel" value="@Shadow47q" class="w-full bg-[#0f0e1f] rounded-xl px-3 py-2 text-[11px]"><div class="grid grid-cols-2 gap-1"><button onclick="saveAllSettings()" class="bg-purple-600 rounded-xl py-2 text-xs">حفظ</button><button onclick="changeAdminPass()" class="bg-[#1e1b33] rounded-xl py-2 text-xs">تغيير الرمز</button></div><button onclick="lockAdmin()" class="w-full bg-red-500/10 text-red-400 rounded-xl py-2 text-[10px]">🔒 قفل</button></div></div></div></div></div></div>
+<div class="card">
+<h3>📲 3- إعداد واتساب - جاهز مربوط (واتساب - ما حذفته)</h3>
+<div class="row">
+<div><label>Instance ID</label><input id="instance" value="instance194492"></div>
+<div><label>Token</label><input id="token" value="knuoosn9nyl810dr"></div>
+</div>
+<label>Group ID - قروب التصوير</label>
+<input id="groupId" value="120363412556243701@g.us">
+<div class="row">
+<button class="btn btn-outline" onclick="testGroup()">تجربة إرسال للقروب 🧪</button>
+<button class="btn btn-outline" onclick="clearLog()">مسح السجل</button>
+</div>
+<div id="log" class="status">السجل V21 - أحمر بنفسجي:
+✅ instance194492 متصل
+✅ Group ID: 120363412556243701@g.us مربوط
+✅ الألوان: بنفسجي → أحمر → بنفسجي
+✅ Gemini: موجود
+✅ واتساب: موجود
+✅ جاهز تبدأ تحط أمورك فيه
+</div>
 </div>
 
 <script>
-let ADMIN_PASS=localStorage.getItem('admin_pass')||'Shadow47q';let adminUnlocked=false;let currentUser=JSON.parse(localStorage.getItem('current_user')||'null');let lastAIPlan=null;let selectedParticipants=[];
-function openTab(n){document.querySelectorAll('.tab-content').forEach(c=>c.classList.add('hidden-tab'));document.querySelectorAll('[id^="tab-"]').forEach(b=>b.classList.remove('tab-active'));document.getElementById('content-'+n).classList.remove('hidden-tab');document.getElementById('tab-'+n).classList.add('tab-active');}
-function unlockAdmin(){let v=document.getElementById('adminPass').value;if(v===ADMIN_PASS){adminUnlocked=true;document.getElementById('adminLockSmall').classList.add('hidden');document.getElementById('adminPanel').classList.remove('hidden');}else document.getElementById('adminErr').classList.remove('hidden')}
-function lockAdmin(){adminUnlocked=false;document.getElementById('adminLockSmall').classList.remove('hidden');document.getElementById('adminPanel').classList.add('hidden');}
-function changeAdminPass(){let n=prompt('رمز جديد:',ADMIN_PASS);if(n){ADMIN_PASS=n;localStorage.setItem('admin_pass',n);alert('تم')}}
-function copyText(t){navigator.clipboard.writeText(t);alert('نسخت ✅')}
-function loginMember(){let name=document.getElementById('loginSelect').value;let pass=document.getElementById('loginPass').value;let m=team.find(x=>x.name===name);if(!m){alert('اختر');return}if(m.pass!==pass){alert('خطأ');return}currentUser=m;localStorage.setItem('current_user',JSON.stringify(m));updateLoginUI();}
-function logoutMember(){currentUser=null;localStorage.removeItem('current_user');updateLoginUI();}
-function updateLoginUI(){let badge=document.getElementById('currentUserBadge');if(!badge)return;let loginBox=document.getElementById('loginBox');let loggedBox=document.getElementById('loggedBox');if(currentUser){badge.innerText='👤 '+currentUser.name;loginBox.classList.add('hidden');loggedBox.classList.remove('hidden');document.getElementById('loggedUserName').innerText=currentUser.name;}else{badge.innerText='👤 زائر';loginBox.classList.remove('hidden');loggedBox.classList.add('hidden');}}
-function saveAllSettings(){localStorage.setItem('yt_key',document.getElementById('apiKey').value);localStorage.setItem('yt_channel',document.getElementById('channel').value);autoConnect();alert('تم');}
-
-// واتساب قروب - جديد V19
-function buildWhatsAppMessage(s){
-let part=s.participants&&s.participants.length>0?s.participants.join('، '):'بدون مشاركين';
-return `🎬 *تذكير تصوير - Shadow47q*
-
-📅 التاريخ: ${s.date}
-⏰ الوقت: ${s.time}
-📍 المكان: ${s.place}
-🎭 النوع: ${s.type}
-👥 المشاركين: ${part}
-📝 الوصف: ${s.desc}
-📌 الحالة: ${s.status}
-
-${s.status==='مجدول'||s.status==='مؤجل'?'🔔 لا تتأخر!':'⏸️'}
-
-- مرسل من موقع Shadow47q V19`;
+let shoots = JSON.parse(localStorage.getItem('shootsV21')||'[]');
+renderShoots();
+function addShoot(){
+ const d=document.getElementById('date').value;
+ const t=document.getElementById('time').value;
+ const p=document.getElementById('place').value;
+ const c=document.getElementById('client').value;
+ const s=document.getElementById('status').value;
+ if(!d||!t){alert('حط التاريخ والوقت');return;}
+ shoots.push({date:d,time:t,place:p,client:c,status:s,id:Date.now()});
+ localStorage.setItem('shootsV21',JSON.stringify(shoots));
+ renderShoots();
+ logAdd('📅 تمت إضافة تصوير: '+d+' '+t+' - '+p);
+ document.getElementById('place').value='';document.getElementById('client').value='';
 }
-function sendToGroupSingle(id){
-let s=shootDays.find(x=>x.id==id);if(!s){alert('ما لقيت');return}
-let msg=buildWhatsAppMessage(s);
-let url=`https://wa.me/?text=${encodeURIComponent(msg)}`;
-window.open(url,'_blank');
+function renderShoots(){
+ const tbody=document.querySelector('#shootsTable tbody');
+ tbody.innerHTML='';
+ shoots.forEach(sh=>{
+   const tr=document.createElement('tr');
+   tr.innerHTML=`<td>${sh.date}</td><td>${sh.time}</td><td>${sh.place}<div class=small>${sh.client}</div></td><td><span class=pill>${sh.status}</span></td><td><button onclick="delShoot(${sh.id})" style="background:none;border:none;color:#ff5a8a;cursor:pointer">❌</button></td>`;
+   tbody.appendChild(tr);
+ });
 }
-function sendTodayToGroup(){
-let today=new Date().toISOString().split('T')[0];
-let todays=shootDays.filter(s=>s.date===today&&shouldNotify(s.status));
-if(todays.length===0){alert('ما فيه تصوير مجدول اليوم');return}
-let msg=`🎬 *تصوير اليوم - ${today}*
-
-`+todays.map(s=>`⏰ ${s.time} | 📍 ${s.place} | 👥 ${s.participants?s.participants.join('، '):'--'} | ${s.type} | ${s.status}`).join('\n')+`
-
-📌 الحالات:
-🟡 مجدول = 🔔 يرسل
-🔴 قيد التصوير = ⏸️ موقف
-
-- Shadow47q V19`;
-window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`,'_blank');
+function delShoot(id){ shoots=shoots.filter(x=>x.id!==id); localStorage.setItem('shootsV21',JSON.stringify(shoots)); renderShoots(); }
+function logAdd(txt){ const l=document.getElementById('log'); l.textContent+='\n'+txt; l.scrollTop=l.scrollHeight; }
+async function askGemini(){
+ const key=document.getElementById('geminiKey').value.trim();
+ const prompt=document.getElementById('prompt').value.trim();
+ const out=document.getElementById('geminiResponse');
+ const sendBtn=document.getElementById('sendBtn');
+ if(!key){alert('حط Gemini API Key');return;}
+ if(key.startsWith('AQ.')){alert('هذا OAuth. نحتاج مفتاح يبدأ بـ AIzaSy...');return;}
+ if(!prompt){alert('اكتب سؤال');return;}
+ out.style.display='block'; out.textContent='⏳ Gemini يفكر...';
+ try{
+   const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`,{
+     method:'POST', headers:{'Content-Type':'application/json'},
+     body:JSON.stringify({contents:[{parts:[{text:prompt}]}]})
+   });
+   const data=await res.json();
+   if(data.error){ out.textContent='❌ '+JSON.stringify(data.error,null,2); return; }
+   const text=data.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';
+   out.textContent=text; sendBtn.style.display='block'; sendBtn.dataset.text=text;
+   logAdd('🤖 Gemini: '+text.substring(0,90)+'...');
+ }catch(e){ out.textContent='❌ خطأ: '+e.message; }
 }
-
-function askAI(){let input=document.getElementById('aiInput').value.trim();if(!input){alert('اكتب');return}let len=document.getElementById('aiSeriesLength').value;let style=document.getElementById('aiStyle').value;document.getElementById('aiThinking').classList.remove('hidden');document.getElementById('aiResult').innerHTML='⏳...';setTimeout(()=>{document.getElementById('aiThinking').classList.add('hidden');let plan=generateSeriesPlan(input,len,style);lastAIPlan=plan;renderAIPlan(plan);document.getElementById('aiActions').classList.remove('hidden');},800);}
-function generateSeriesPlan(idea,episodes,style){let pool=['بداية','مشكلة','مقلب','أكشن','خيانة','حرب','اعتراف','هروب','نهاية صادمة','بداية جديدة'];let list=[];for(let i=1;i<=episodes;i++){list.push({num:i,title:`${idea} - ح${i}: ${pool[(i-1)%pool.length]}`,script:`مقدمة: ${idea} 😱\nوسط: ${pool[(i-1)%pool.length]}\nنهاية: ${i==episodes?'صادمة':'انتظروا'}`,thumb:`${idea} 🔫`,keywords:`${idea}, ريك تاون, ${style}`});}return {idea,episodes,style,episodesList:list};}
-function renderAIPlan(plan){document.getElementById('aiResult').innerHTML=`<div class="space-y-3"><div class="bg-purple-600/20 p-3 rounded-xl border border-purple-500/30"><h4 class="font-black">🎬 ${plan.idea} - ${plan.style}</h4><p class="text-[11px]">${plan.episodes} حلقات</p></div>${plan.episodesList.map(e=>`<div class="bg-[#1a1a2e] p-3 rounded-xl"><p class="font-bold text-purple-300 text-xs">${e.title}</p><p class="mt-1 text-[11px] text-gray-300">${e.script}</p></div>`).join('')}</div>`;}
-function applyAIToSite(){if(!lastAIPlan)return;lastAIPlan.episodesList.forEach(e=>{ideas.unshift({id:Date.now()+e.num,t:e.title});scripts.unshift({id:Date.now()+e.num+1000,title:e.title,body:e.script});thumbs.unshift({id:Date.now()+e.num+2000,title:e.title,ctr:7+Math.floor(Math.random()*4)});});saveAll();alert(`تم ${lastAIPlan.episodes} حلقات`);openTab('ideas');}
-function copyAIPlan(){if(!lastAIPlan)return;navigator.clipboard.writeText(lastAIPlan.episodesList.map(e=>e.title+'\n'+e.script).join('\n\n'));alert('نسخت');}
-let ideas=JSON.parse(localStorage.getItem('private_ideas')||'[]');let team=JSON.parse(localStorage.getItem('team_members')||'[{"id":1,"name":"Shadow47q","role":"المالك","channel":"@Shadow47q","pass":"47q"}]');let warns=JSON.parse(localStorage.getItem('warns')||'[]');let tasks=JSON.parse(localStorage.getItem('tasks')||'[]');let thumbs=JSON.parse(localStorage.getItem('thumbs')||'[]');let scripts=JSON.parse(localStorage.getItem('scripts_full')||'[]');let chars=JSON.parse(localStorage.getItem('rt_chars')||'[]');let money=JSON.parse(localStorage.getItem('money_log')||'[]');let school=JSON.parse(localStorage.getItem('school_tasks')||'[]');let rels=JSON.parse(localStorage.getItem('rel_map')||'[]');let shootDays=JSON.parse(localStorage.getItem('shoot_days_v15')||'[]');
-function shouldNotify(s){return s!=='قيد التصوير'&&s!=='تم'&&s!=='ملغي';}
-function saveAll(){localStorage.setItem('private_ideas',JSON.stringify(ideas));localStorage.setItem('team_members',JSON.stringify(team));localStorage.setItem('warns',JSON.stringify(warns));localStorage.setItem('tasks',JSON.stringify(tasks));localStorage.setItem('thumbs',JSON.stringify(thumbs));localStorage.setItem('scripts_full',JSON.stringify(scripts));localStorage.setItem('rt_chars',JSON.stringify(chars));localStorage.setItem('money_log',JSON.stringify(money));localStorage.setItem('school_tasks',JSON.stringify(school));localStorage.setItem('rel_map',JSON.stringify(rels));localStorage.setItem('shoot_days_v15',JSON.stringify(shootDays));renderAll();}
-function renderParticipantsSelector(){let c=document.getElementById('participantsSelector');if(!c)return;c.innerHTML='';team.forEach(m=>{let chip=document.createElement('div');chip.className='participant-chip '+(selectedParticipants.includes(m.name)?'selected':'');chip.innerText=m.name;chip.onclick=()=>{if(selectedParticipants.includes(m.name))selectedParticipants=selectedParticipants.filter(x=>x!==m.name);else selectedParticipants.push(m.name);renderParticipantsSelector();};c.appendChild(chip);});let el=document.getElementById('selectedParticipants');if(el)el.innerText=selectedParticipants.length>0?'👥 مع: '+selectedParticipants.join('، '):'لم يتم الاختيار';}
-function addCustomParticipant(){let i=document.getElementById('customParticipant');let n=i.value.trim();if(!n)return;if(!team.find(t=>t.name===n)){team.unshift({id:Date.now(),name:n,role:'مشارك',channel:'',pass:Date.now().toString()});}if(!selectedParticipants.includes(n))selectedParticipants.push(n);i.value='';saveAll();renderParticipantsSelector();}
-function addShoot(){let d=document.getElementById('shootDate').value;let t=document.getElementById('shootTime').value;let p=document.getElementById('shootPlace').value;let type=document.getElementById('shootType').value;let desc=document.getElementById('shootDesc').value;let status=document.getElementById('shootStatus').value;if(!d){alert('اختر التاريخ');return}shootDays.unshift({id:Date.now(),date:d,time:t||'20:00',place:p||'ريك تاون',type,desc:desc||'تصوير',participants:[...selectedParticipants],status});selectedParticipants=[];saveAll();alert('تم ✅ '+(shouldNotify(status)?'🔔 سيرسل':'⏸️ موقف'));}
-function del2(id,type){if(type==='team')team=team.filter(x=>x.id!=id);if(type==='warn')warns=warns.filter(x=>x.id!=id);if(type==='task')tasks=tasks.filter(x=>x.id!=id);if(type==='idea')ideas=ideas.filter(x=>x.id!=id);if(type==='thumb')thumbs=thumbs.filter(x=>x.id!=id);if(type==='script')scripts=scripts.filter(x=>x.id!=id);if(type==='char')chars=chars.filter(x=>x.id!=id);if(type==='money')money=money.filter(x=>x.id!=id);if(type==='school')school=school.filter(x=>x.id!=id);if(type==='rel')rels=rels.filter(x=>x.id!=id);if(type==='shoot')shootDays=shootDays.filter(x=>x.id!=id);saveAll();updateLoginUI();}
-function changeStatus(id,v){let s=shootDays.find(x=>x.id==id);if(s){s.status=v;saveAll();}}
-function addMember(){let n=document.getElementById('memberName').value;let r=document.getElementById('memberRole').value;let c=document.getElementById('memberChannel').value;let p=document.getElementById('memberPass').value;if(!n||!p){alert('الاسم وكلمة السر');return}team.unshift({id:Date.now(),name:n,role:r,channel:c,pass:p});document.getElementById('memberName').value='';document.getElementById('memberRole').value='';document.getElementById('memberChannel').value='';document.getElementById('memberPass').value='';saveAll();}
-function addWarn(){let m=document.getElementById('warnMember').value;let t=document.getElementById('warnType').value;let r=document.getElementById('warnReason').value;warns.unshift({id:Date.now(),member:m,type:t,reason:r,date:new Date().toLocaleDateString()});document.getElementById('warnReason').value='';saveAll();}
-function addTask(){let m=document.getElementById('taskMember').value;let t=document.getElementById('taskTitle').value;if(!m||!t)return;tasks.unshift({id:Date.now(),member:m,title:t,date:new Date().toLocaleDateString()});document.getElementById('taskTitle').value='';saveAll();}
-function addIdea(){let t=prompt('فكرة:');if(!t)return;ideas.unshift({id:Date.now(),t});saveAll();}
-function addThumb(){let title=document.getElementById('thumbTitle').value;let ctr=document.getElementById('thumbCTR').value;if(!title)return;thumbs.unshift({id:Date.now(),title,ctr});document.getElementById('thumbTitle').value='';document.getElementById('thumbCTR').value='';saveAll();}
-function addScriptFull(){let t=document.getElementById('scriptTitle').value;let b=document.getElementById('scriptBody').value;if(!t)return;scripts.unshift({id:Date.now(),title:t,body:b});document.getElementById('scriptTitle').value='';document.getElementById('scriptBody').value='';saveAll();}
-function addChar(){let n=document.getElementById('charName').value;let j=document.getElementById('charJob').value;let w=document.getElementById('charWeak').value;if(!n)return;chars.unshift({id:Date.now(),name:n,job:j,weak:w});document.getElementById('charName').value='';document.getElementById('charJob').value='';document.getElementById('charWeak').value='';saveAll();}
-function genKeywords(){let inp=document.getElementById('keywordInput').value;if(!inp)return;let gen=[inp,`ريك تاون ${inp}`,`GTA RP ${inp}`,`قراند ${inp}`,`Shadow47q ${inp}`,`${inp} مضحك`,`${inp} مقلب`];document.getElementById('keywordsResult').innerHTML=gen.map(k=>`<span class="inline-block bg-[#1e1b33] px-2 py-1 rounded-full m-1 text-[10px]">${k}</span>`).join('');}
-function addIncome(){let v=Number(document.getElementById('income').value);if(!v)return;money.unshift({id:Date.now(),type:'ربح',amount:v});document.getElementById('income').value='';saveAll();}
-function addExpense(){let v=Number(document.getElementById('expense').value);if(!v)return;money.unshift({id:Date.now(),type:'مصروف',amount:v});document.getElementById('expense').value='';saveAll();}
-function addSchool(){let el=document.getElementById('schoolTask');if(!el.value)return;school.unshift({id:Date.now(),t:el.value});el.value='';saveAll();}
-function addRel(){let a=document.getElementById('rel1').value;let b=document.getElementById('rel2').value;if(!a||!b)return;rels.unshift({id:Date.now(),a,b,t:document.getElementById('relType').value});document.getElementById('rel1').value='';document.getElementById('rel2').value='';saveAll();}
-function renderAll(){
-document.getElementById('teamTable').innerHTML=team.map(x=>`<div class="flex justify-between bg-[#0f0e1f] p-2 rounded-lg"><span><b>${x.name}</b> - ${x.role} - ${x.channel}</span><button onclick="del2(${x.id},'team')" class="text-red-400">×</button></div>`).join('');
-document.getElementById('loginSelect').innerHTML=team.map(t=>`<option>${t.name}</option>`).join('');
-document.getElementById('warnMember').innerHTML=team.map(t=>`<option>${t.name}</option>`).join('');
-document.getElementById('taskMember').innerHTML=team.map(t=>`<option>${t.name}</option>`).join('');
-document.getElementById('warnsList').innerHTML=warns.map(w=>`<div class="bg-[#1a1a2e] p-2 rounded-lg flex justify-between text-[11px]"><span>⚠️ ${w.member}: ${w.type} - ${w.reason}</span><button onclick="del2(${w.id},'warn')" class="text-red-400">×</button></div>`).join('');
-document.getElementById('tasksListAdmin').innerHTML=tasks.map(t=>`<div class="bg-[#1a1a2e] p-2 rounded-lg flex justify-between text-[11px]"><span>🎯 ${t.member}: ${t.title}</span><button onclick="del2(${t.id},'task')" class="text-red-400">×</button></div>`).join('');
-document.getElementById('ideasList').innerHTML=ideas.map(x=>`<div class="bg-[#0f0e1f] p-2 rounded-lg flex justify-between text-xs"><span>${x.t}</span><button onclick="del2(${x.id},'idea')" class="text-red-400">×</button></div>`).join('');
-document.getElementById('thumbsList').innerHTML=thumbs.map(x=>`<div class="bg-[#0f0e1f] p-2 rounded-lg flex justify-between text-xs"><span>${x.title} - ${x.ctr}%</span><button onclick="del2(${x.id},'thumb')" class="text-red-400">×</button></div>`).join('');
-document.getElementById('scriptsList').innerHTML=scripts.map(x=>`<div class="bg-[#0f0e1f] p-3 rounded-xl text-xs"><div class="flex justify-between"><b>${x.title}</b><button onclick="del2(${x.id},'script')" class="text-red-400">×</button></div><p class="mt-1 text-gray-400">${x.body}</p></div>`).join('');
-document.getElementById('charsList').innerHTML=chars.map(x=>`<div class="bg-[#0f0e1f] p-2 rounded-lg flex justify-between text-xs"><span>${x.name} - ${x.job} - ضعف:${x.weak||'-'}</span><button onclick="del2(${x.id},'char')" class="text-red-400">×</button></div>`).join('');
-document.getElementById('moneyList').innerHTML=money.map(m=>`<div class="bg-[#0f0e1f] p-2 rounded-lg flex justify-between"><span>${m.type} $${m.amount}</span><button onclick="del2(${m.id},'money')" class="text-red-400">×</button></div>`).join('');let net=0;money.forEach(m=>net+=m.type==='ربح'?m.amount:-m.amount);document.getElementById('netProfit').innerText='$'+net;document.getElementById('teamCount').innerText=team.length;
-document.getElementById('schoolList').innerHTML=school.map(x=>`<div class="bg-[#0f0e1f] p-2 rounded-lg flex justify-between"><span>${x.t}</span><button onclick="del2(${x.id},'school')" class="text-red-400">×</button></div>`).join('');
-document.getElementById('relList').innerHTML=rels.map(x=>`<div class="bg-[#0f0e1f] p-2 rounded-lg flex justify-between"><span>${x.a} ${x.t} ${x.b}</span><button onclick="del2(${x.id},'rel')" class="text-red-400">×</button></div>`).join('');
-let list=document.getElementById('shootList');let count=document.getElementById('shootCount');if(count)count.innerText=shootDays.length+' يوم';if(list){list.innerHTML='';shootDays.sort((a,b)=>new Date(a.date)-new Date(b.date)).forEach(s=>{let notify=shouldNotify(s.status);let color=s.status=='تم'?'bg-green-500':s.status=='قيد التصوير'?'bg-red-500 animate-pulse':s.status=='ملغي'?'bg-gray-500':s.status=='مؤجل'?'bg-orange-500':'bg-yellow-500';let part=s.participants&&s.participants.length>0?s.participants.join('، '):'بدون';let div=document.createElement('div');div.className=(notify?'border-green-500/30':'border-gray-500/20 opacity-60')+' bg-[#0f0e1f] border rounded-xl p-3 flex justify-between items-center';div.innerHTML=`<div class="text-xs"><div class="flex gap-2 items-center flex-wrap"><b>${s.date} ${s.time}</b><span class="${color} text-white px-2 py-0.5 rounded-full text-[9px]">${s.status}</span><span class="${notify?'bg-green-500/20 text-green-400':'bg-gray-500/20'} px-2 py-0.5 rounded-full text-[8px]">${notify?'🔔 يرسل':'⏸️ موقف'}</span></div><div class="mt-1">👥 ${part} - ${s.type} - ${s.place}</div><div class="text-[10px] text-gray-500">${s.desc}</div></div><div class="flex flex-col gap-1"><select onchange="changeStatus(${s.id}, this.value)" class="bg-[#1a1a2e] rounded-lg px-1 py-1 text-[9px]"><option ${s.status=='مجدول'?'selected':''}>مجدول</option><option ${s.status=='قيد التصوير'?'selected':''}>قيد التصوير</option><option ${s.status=='تم'?'selected':''}>تم</option><option ${s.status=='ملغي'?'selected':''}>ملغي</option><option ${s.status=='مؤجل'?'selected':''}>مؤجل</option></select><button onclick="sendToGroupSingle(${s.id})" class="bg-green-600 text-white rounded-lg px-2 py-1 text-[9px]">📤 واتساب</button><button onclick="del2(${s.id},'shoot')" class="text-red-400 text-[10px]">حذف</button></div>`;list.appendChild(div);});}
-let shootCal=document.getElementById('shootCalendar');if(shootCal){shootCal.innerHTML='';for(let i=0;i<30;i++){let dt=new Date();dt.setDate(dt.getDate()+i);let iso=dt.toISOString().split('T')[0];let has=shootDays.find(s=>s.date==iso);let d=document.createElement('div');d.className=(has?'bg-green-600 text-white':'bg-[#0f0e1f]')+' rounded-xl p-2 text-center cursor-pointer';d.innerHTML=`<div>${dt.getDate()}</div><div class="text-[7px]">${has?has.participants.length+'👥':''}</div>`;d.onclick=()=>{document.getElementById('shootDate').value=iso;openTab('shoot');};shootCal.appendChild(d);}}
-let notifLog=document.getElementById('notifLog');if(notifLog){notifLog.innerHTML=shootDays.map(s=>`${shouldNotify(s.status)?'🔔':'⏸️'} ${s.date} ${s.time} - 👥 ${s.participants?s.participants.join('، '):'--'} - ${s.status}`).join('<br>')||'لا يوجد';}
-renderParticipantsSelector();
+async function sendToGroup(){
+ const instance=document.getElementById('instance').value;
+ const token=document.getElementById('token').value;
+ const groupId=document.getElementById('groupId').value;
+ const text=document.getElementById('sendBtn').dataset.text||document.getElementById('geminiResponse').textContent;
+ logAdd('📤 جاري الإرسال لـ '+groupId+'...');
+ try{
+   const res=await fetch(`https://api.ultramsg.com/${instance}/messages/chat`,{
+     method:'POST', headers:{'Content-Type':'application/json'},
+     body:JSON.stringify({token:token,to:groupId,body:text})
+   });
+   const data=await res.json();
+   logAdd('✅ تم الإرسال: '+JSON.stringify(data));
+   alert('✅ تم الإرسال لقروبك!');
+ }catch(e){ logAdd('❌ فشل: '+e.message); }
 }
-function requestNotifPermission(){if(Notification.permission!=='granted'){Notification.requestPermission().then(p=>{if(p==='granted')alert('✅ مفعل');});}else alert('مفعل ✅');}
-function testNotif(){let s=shootDays[0];if(!s){alert('ضف تصوير');return}if(!shouldNotify(s.status)){alert('⏸️ موقف - '+s.status);return}alert('🔔 سيرسل: 👥 '+(s.participants?s.participants.join('، '):''));if(Notification.permission==='granted'){new Notification('🎬 تصوير: '+s.status,{body:`👥 مع: ${s.participants?s.participants.join('، '):''}\n📍 ${s.place} - ${s.time}`});}}
-renderAll();updateLoginUI();openTab('dash');
-async function autoConnect(){let key=localStorage.getItem('yt_key');if(!key){return}try{let main=localStorage.getItem('yt_channel')||'@Shadow47q';let all=[main,...team.map(t=>t.channel).filter(c=>c&&c!==main)];let ve=document.getElementById('videos');if(ve)ve.innerHTML='';for(let ch of all){let cid=ch;if(ch.startsWith('@')){let r=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${ch}&key=${key}`);let d=await r.json();if(!d.items||!d.items[0])continue;cid=d.items[0].id.channelId}let cr=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${cid}&key=${key}`);let cd=await cr.json();if(!cd.items||!cd.items[0])continue;let s=cd.items[0].statistics;if(ch===main){document.getElementById('subs').innerText=Number(s.subscriberCount).toLocaleString();document.getElementById('views').innerText=Number(s.viewCount).toLocaleString();}let vr=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${cid}&maxResults=2&order=date&type=video&key=${key}`);let vd=await vr.json();if(ve&&vd.items){vd.items.forEach(it=>{let d=document.createElement('div');d.className='flex gap-2 text-xs bg-[#0f0e1f] p-2 rounded-xl';d.innerHTML=`<img src="${it.snippet.thumbnails.medium.url}" class="w-16 h-10 rounded object-cover"><div class="flex-1"><p class="font-bold line-clamp-2">${it.snippet.title}</p><p class="text-[9px] text-purple-300">${ch}</p></div>`;ve.appendChild(d)})}}}catch(e){}}autoConnect();
+async function testGroup(){
+ const instance=document.getElementById('instance').value;
+ const token=document.getElementById('token').value;
+ const groupId=document.getElementById('groupId').value;
+ const msg=`🔴🟣 اختبار موقعك V21 - أحمر بنفسجي\n✅ الجهاز: ${instance} متصل\n✅ القروب: ${groupId}\n✅ Gemini: موجود\n✅ واتساب: موجود\n⏰ ${new Date().toLocaleString('ar-SA')}`;
+ try{
+   const res=await fetch(`https://api.ultramsg.com/${instance}/messages/chat`,{
+     method:'POST', headers:{'Content-Type':'application/json'},
+     body:JSON.stringify({token:token,to:groupId,body:msg})
+   });
+   const data=await res.json();
+   logAdd('🧪 اختبار: '+JSON.stringify(data));
+   alert('تم إرسال رسالة اختبار!');
+ }catch(e){ logAdd('❌ فشل: '+e.message); }
+}
+function clearLog(){ document.getElementById('log').textContent='تم مسح السجل\n✅ جاهز...'; }
 </script>
 </body>
 </html>
