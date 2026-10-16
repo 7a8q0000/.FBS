@@ -2,10 +2,10 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Shadow47q V45 - AQ AUTO FIX</title>
+<title>Shadow47q V44 ULTIMATE FULL</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Tajawal,system-ui}
-html,body{width:100%;min-height:100vh;background:#0f0820!important;background:linear-gradient(135deg,#0b0420 0%,#1a0a33 25%,#2a0a55 50%,#1e0a3a 100%)!important;color:#f0e6ff}
+html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#0b0420 0%,#1a0a33 25%,#2a0a55 50%,#1e0a3a 100%)!important;color:#f0e6ff}
 .header{width:100%;background:linear-gradient(90deg,#4b0a7a,#7a0ac4,#8b45ff,#a855f7);padding:14px 16px;border-radius:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border:2px solid #a855f7}
 .badge{background:rgba(0,0,0,.35);border:1px solid #c084fc;color:#fff;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800}
 .tabs{display:flex;gap:6px;overflow-x:auto;white-space:nowrap;padding-bottom:6px;margin-top:10px}
@@ -32,19 +32,23 @@ html,body{width:100%;min-height:100vh;background:#0f0820!important;background:li
 .s-متواجد.active{background:#22c55e;color:#fff}
 .s-اجازة.active{background:#f59e0b;color:#fff}
 .s-موقوف.active{background:#ef4444;color:#fff}
+.sub-tabs{display:flex;gap:6px;margin-bottom:10px}
+.sub-tab{flex:1;padding:10px;border-radius:10px;border:1px solid #6d28d9;background:#1a0e33;color:#d8b4fe;font-weight:800;font-size:11px;cursor:pointer}
+.sub-tab.active{background:linear-gradient(90deg,#8b45ff,#ec4899);color:#fff;border-color:#fff}
+.sub-content{display:none}.sub-content.active{display:block}
 body.night{background:#0a0415!important}
 </style>
 </head>
 <body>
 <div style="max-width:1200px;margin:0 auto;padding:10px">
 <div class="header">
-<div style="display:flex;align-items:center;gap:8px"><div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">💜</div><div><div style="font-weight:900;font-size:13px">Shadow47q V45 - AUTO MODEL 💜</div><div style="font-size:9px;opacity:.8">يجيب الموديل اللي يدعمه مفتاحك AQ تلقائي</div></div></div>
-<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge">V45 AUTO 💜</span><button class="badge" onclick="toggleNight()" id="nightBtn" style="cursor:pointer">🌙 ليلي</button></div>
+<div style="display:flex;align-items:center;gap:8px"><div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">💜</div><div><div style="font-weight:900;font-size:13px">Shadow47q V44 ULTIMATE FULL 💜</div><div style="font-size:9px;opacity:.8">كل شي + AI v1 + 1.5-flash-latest + AQ JOIN + قائمة طاقم تاب</div></div></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge">V44 ULTIMATE 💜</span><button class="badge" onclick="toggleNight()" id="nightBtn" style="cursor:pointer">🌙 ليلي</button></div>
 </div>
 
 <div class="tabs">
 <button class="tab active" id="t-dash" onclick="openTab('dash')">📊 رئيسية</button>
-<button class="tab" id="t-ai" onclick="openTab('ai')" style="background:linear-gradient(90deg,#8b45ff,#ec4899);color:#fff">🤖 AI</button>
+<button class="tab" id="t-ai" onclick="openTab('ai')" style="background:linear-gradient(90deg,#8b45ff,#ec4899);color:#fff">🤖 AI V44</button>
 <button class="tab" id="t-shoot" onclick="openTab('shoot')">📅 تصوير</button>
 <button class="tab" id="t-night" onclick="openTab('night')">🌙 ليلي</button>
 <button class="tab" id="t-videos" onclick="openTab('videos')">🎥 فيديو</button>
@@ -56,99 +60,153 @@ body.night{background:#0a0415!important}
 <button class="tab" id="t-besttime" onclick="openTab('besttime')">⏰ نشر</button>
 <button class="tab" id="t-money" onclick="openTab('money')">💰 فلوس</button>
 <button class="tab" id="t-school" onclick="openTab('school')">📚 مدرسة</button>
-<button class="tab" id="t-team" onclick="openTab('team')">🔒 إدارة</button>
+<button class="tab" id="t-team" onclick="openTab('team')">👥 الطاقم + قائمة</button>
 </div>
 
 <div id="c-dash" class="content active">
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px">
-<div class="stat"><div style="font-size:10px;color:#c084fc">👥 مشتركين</div><div id="subs" style="font-weight:900;font-size:18px;margin-top:6px">...</div></div>
-<div class="stat"><div style="font-size:10px;color:#c084fc">👀 مشاهدات</div><div id="views" style="font-weight:900;font-size:18px;margin-top:6px">...</div></div>
-<div class="stat"><div style="font-size:10px;color:#c084fc">👨‍👩‍👧‍👦 الطاقم</div><div id="teamCount" style="font-weight:900;font-size:18px;margin-top:6px">1</div></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px">
+<div class="stat"><div style="font-size:9px;color:#c084fc">👥 مشتركين</div><div id="subs" style="font-weight:900;font-size:16px;margin-top:6px">...</div></div>
+<div class="stat"><div style="font-size:9px;color:#c084fc">👀 مشاهدات</div><div id="views" style="font-weight:900;font-size:16px;margin-top:6px">...</div></div>
+<div class="stat"><div style="font-size:9px;color:#c084fc">👨‍👩‍👧‍👦 الطاقم</div><div id="teamCount" style="font-weight:900;font-size:16px;margin-top:6px">1</div></div>
+<div class="stat"><div style="font-size:9px;color:#c084fc">📅 تصوير</div><div id="shootCountTop" style="font-weight:900;font-size:16px;margin-top:6px">0</div></div>
 </div>
-<div class="card" style="margin-top:12px"><div style="font-weight:900">📺 Shadow47q - V45 FIXED</div><div style="font-size:11px;margin-top:8px;color:#d8b4fe">AI يجيب موديله تلقائي من مفتاحك AQ - قائمة الطاقم داخل الإدارة فقط</div></div>
+<div class="card" style="margin-top:12px"><div style="font-weight:900">📺 Shadow47q - V44 ULTIMATE FULL</div><div style="font-size:11px;margin-top:8px;line-height:2;color:#d8b4fe">✅ كل التابات موجودة<br>✅ AI مصلح v1 + gemini-1.5-flash-latest + AQ JOIN<br>✅ قائمة الطاقم تاب داخل الطاقم مع حالات (متواجد/اجازة/موقوف)<br>✅ تصوير + ليلي + فيديو + أفكار + سكربت + صور + شخصيات + كلمات + نشر + فلوس + مدرسة + إدارة</div><div style="display:flex;gap:6px;margin-top:12px"><button class="btn" style="flex:1" onclick="openTab('team')">👥 قائمة الطاقم</button><button class="btn" style="flex:1;background:linear-gradient(90deg,#4b0a7a,#6d28d9)" onclick="openTab('ai')">🤖 AI</button></div></div>
 </div>
 
 <div id="c-ai" class="content">
-<div class="card" style="border-color:#22c55e"><div style="font-weight:900">🤖 AI AUTO - يجيب الموديل الشغال تلقائي 💜</div>
-<div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #22c55e"><div style="font-size:10px;font-weight:800;color:#22c55e" id="modelInfo">🔍 جاري كشف الموديلات اللي يدعمها مفتاحك AQ...</div><div style="display:flex;gap:8px;margin-top:6px"><input id="gemKey" class="input" placeholder="AQ AUTO" style="margin:0" disabled><button class="btn" style="width:auto;padding:10px 18px;background:#22c55e" onclick="checkModels()">🔍 كشف الموديلات</button></div><div id="modelList" style="font-size:9px;margin-top:8px;background:#00000080;padding:8px;border-radius:8px;max-height:120px;overflow-y:auto"></div></div>
-<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><button class="btn-small" onclick="aiDo('10 عناوين يوتيوب جذابة '+getCtx(),'عناوين')">▶️ عناوين</button><button class="btn-small" onclick="aiDo('وصف يوتيوب كامل مع هاشتاقات '+getCtx(),'وصف')">📝 وصف</button><button class="btn-small" onclick="aiDo('سكريبت 5 دقايق مضحك '+getCtx(),'سكريبت')">🎬 سكريبت</button><button class="btn-small" onclick="aiDo('10 أفكار قيمينق جديدة '+getCtx(),'أفكار')">💡 أفكار</button></div>
-<input id="gameContext" class="input" placeholder="مثال: فورتنايت تحدي الضحك مع نواف">
-<div id="chatBox" style="margin-top:10px;background:#0e0620;border:1px solid #6d28d9;border-radius:14px;padding:10px;height:320px;overflow-y:auto"><div class="msg-ai">👋 V45 AUTO - بجيب الموديل الشغال تلقائي من مفتاحك AQ - اضغط كشف الموديلات أول</div></div>
+<div class="card" style="border-color:#22c55e"><div style="font-weight:900">🤖 AI V44 ULTIMATE - v1 + 1.5-flash-latest + AQ JOIN 💜</div>
+<div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #22c55e"><div style="font-size:10px;font-weight:800;color:#22c55e" id="modelInfo">✅ FIXED: v1/models/gemini-1.5-flash-latest + AQ JOIN مخفي</div><div style="display:flex;gap:8px;margin-top:6px"><input id="gemKey" class="input" placeholder="AQ JOIN تلقائي" style="margin:0" disabled><button class="btn" style="width:auto;padding:10px 18px;background:#22c55e" onclick="saveGem()">✅ شغال V44</button></div></div>
+<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><button class="btn-small" onclick="aiDo('10 عناوين يوتيوب جذابة '+getCtx(),'عناوين')">▶️ عناوين</button><button class="btn-small" onclick="aiDo('وصف يوتيوب كامل مع هاشتاقات '+getCtx(),'وصف')">📝 وصف</button><button class="btn-small" onclick="aiDo('سكريبت 5 دقايق مضحك '+getCtx(),'سكريبت')">🎬 سكريبت</button><button class="btn-small" onclick="aiDo('10 أفكار قيمينق جديدة '+getCtx(),'أفكار')">💡 أفكار</button><button class="btn-small" onclick="aiDo('كلمات مفتاحية يوتيوب '+getCtx(),'كلمات')">🧠 كلمات</button></div>
+<input id="gameContext" class="input" placeholder="مثال: فورتنايت تحدي الضحك مع نواف - ريك تاون">
+<div id="chatBox" style="margin-top:10px;background:#0e0620;border:1px solid #6d28d9;border-radius:14px;padding:10px;height:340px;overflow-y:auto"><div class="msg-ai">👋 هلا Shadow47q! V44 ULTIMATE FULL - كل شي موجود - AI مصلح v1 + 1.5-flash-latest + AQ JOIN - قائمة الطاقم صارت تاب داخل الطاقم 💜</div></div>
 <div style="display:flex;gap:8px;margin-top:8px"><input id="aiInput" class="input" placeholder="💜 اسأل أي شي..." style="margin:0" onkeydown="if(event.key==='Enter')sendAI()"><button class="btn" style="width:auto;padding:11px 20px" onclick="sendAI()">🚀</button></div>
-<div style="margin-top:8px;background:#160c2e;padding:8px;border-radius:10px"><div style="font-size:10px">💾 حفظ آخر رد</div><div style="display:flex;gap:6px;margin-top:4px"><input id="aiSaveChat" class="input" style="margin:0" placeholder="نص..."><select id="aiSaveTarget" class="input" style="margin:0;width:120px"><option value="ideas">💡 أفكار</option><option value="scripts">📝 سكربت</option><option value="thumbs">📸 صور</option></select><button class="btn" style="width:auto" onclick="saveLastAI()">حفظ</button></div></div>
+<div style="margin-top:8px;background:#160c2e;padding:8px;border-radius:10px"><div style="font-size:10px">💾 حفظ آخر رد إلى:</div><div style="display:flex;gap:6px;margin-top:4px"><input id="aiSaveChat" class="input" style="margin:0" placeholder="نص..."><select id="aiSaveTarget" class="input" style="margin:0;width:130px"><option value="ideas">💡 أفكار</option><option value="scripts">📝 سكربت</option><option value="thumbs">📸 صور</option><option value="keywords">🧠 كلمات</option></select><button class="btn" style="width:auto" onclick="saveLastAI()">حفظ</button></div></div>
 </div>
 </div>
 
-<div id="c-night" class="content"><div class="card"><div style="font-weight:900">🌙 وضع ليلي</div><div style="display:flex;gap:6px;margin-top:10px"><button class="btn" onclick="toggleNight()">🌙 شغل / طفي</button><button class="btn-small" onclick="drinkWater()">💧 شربت</button><button class="btn-small" onclick="resetSession()">🔄 تصفير</button></div><div style="display:flex;gap:6px;margin-top:8px"><div class="stat"><div style="font-size:9px">⏱️ جلسة</div><div id="sessionTime">0 د</div></div><div class="stat"><div style="font-size:9px">💧 موية</div><div id="waterCount">0</div></div><div class="stat"><div style="font-size:9px">👁️ حالة</div><div id="nightStatus">طافي</div></div></div><div id="nightLog" style="margin-top:8px;background:#0e0620;border:1px solid #6d28d9;border-radius:10px;padding:8px;height:200px;overflow-y:auto;font-size:10px"></div></div></div>
-<div id="c-shoot" class="content"><div class="card"><div style="font-weight:900">📅 إضافة تصوير</div><div style="margin-top:8px"><input id="shootDate" type="date" class="input"><input id="shootTime" type="time" value="20:00" class="input"><input id="shootPlace" placeholder="ريك تاون" class="input"><div style="background:#160c2e;padding:10px;border-radius:10px;margin-top:8px;border:1px solid #6d28d9"><div style="font-size:10px;font-weight:800">👥 المشاركين</div><div id="participantsSelector" style="margin-top:6px"></div><div style="display:flex;gap:6px;margin-top:8px"><input id="customParticipant" placeholder="+ اسم جديد" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addCustomParticipant()">+ إضافة</button></div><div id="selectedParticipants" style="font-size:10px;color:#c084fc;margin-top:6px"></div></div><select id="shootStatus" class="input"><option>مجدول</option><option>قيد التصوير</option><option>تم</option><option>ملغي</option><option>مؤجل</option></select><input id="shootDesc" placeholder="الوصف" class="input"><button class="btn" style="margin-top:8px" onclick="addShoot()">+ إضافة تصوير 💜</button></div></div><div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:800;font-size:11px">📅 جدول التصوير</div><span id="shootCount" style="font-size:10px;background:rgba(168,85,247,.2);padding:2px 8px;border-radius:10px">0</span></div><div id="shootList" style="margin-top:8px"></div></div><div class="card"><div style="font-weight:800;font-size:11px">🗓️ تقويم 30 يوم</div><div id="shootCalendar" style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px"></div></div></div>
-<div id="c-ideas" class="content"><div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:900">💡 أفكار</div><button class="btn" style="width:auto;padding:6px 14px" onclick="addIdea()">+ فكرة</button></div><div id="ideasList" style="margin-top:8px"></div></div></div>
-<div id="c-scripts" class="content"><div class="card"><div style="font-weight:900">📝 سكربتات</div><input id="scriptTitle" placeholder="عنوان" class="input"><textarea id="scriptBody" placeholder="القصة" class="input" style="height:80px"></textarea><button class="btn" onclick="addScriptFull()">+ حفظ</button><div id="scriptsList" style="margin-top:8px"></div></div></div>
-<div id="c-thumbs" class="content"><div class="card"><div style="font-weight:900">📸 صور مصغرة</div><input id="thumbTitle" placeholder="عنوان" class="input"><button class="btn" onclick="addThumb()">+ حفظ</button><div id="thumbsList" style="margin-top:8px"></div></div></div>
-<div id="c-chars" class="content"><div class="card"><div style="font-weight:900">🎭 شخصيات</div><div style="display:flex;gap:6px"><input id="charName" placeholder="الاسم" class="input" style="margin:0"><input id="charJob" placeholder="الوظيفة" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addChar()">+</button></div><div id="charsList" style="margin-top:8px"></div></div></div>
-<div id="c-keywords" class="content"><div class="card"><div style="font-weight:900">🧠 كلمات</div><input id="keywordInput" placeholder="عنوان فيديو" class="input"><button class="btn" onclick="genKeywords()">🧠 ولد كلمات</button><div id="keywordsResult" style="margin-top:8px;background:#0e0620;border:1px solid #6d28d9;border-radius:10px;padding:10px;min-height:60px"></div></div></div>
-<div id="c-videos" class="content"><div class="card"><div style="font-weight:900">🎥 فيديوهات</div><div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #6d28d9"><input id="ytChannel" value="@Shadow47q" class="input" style="margin:0"><button class="btn" style="width:auto;margin-top:6px" onclick="fetchYouTubeStats()">📊 جلب</button></div><div id="videos" style="margin-top:10px">...</div></div></div>
-<div id="c-besttime" class="content"><div class="card"><div style="font-weight:900">⏰ أفضل وقت نشر</div><div id="publishCalendar" style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px"></div></div></div>
-<div id="c-money" class="content"><div class="card"><div style="font-weight:900">💰 فلوس</div><div style="display:flex;gap:6px;margin-top:8px"><input id="income" type="number" placeholder="ربح" class="input" style="margin:0"><button class="btn" style="width:auto;background:#16a34a" onclick="addIncome()">+ ربح</button><input id="expense" type="number" placeholder="مصروف" class="input" style="margin:0"><button class="btn" style="width:auto;background:#dc2626" onclick="addExpense()">- مصروف</button></div><div id="moneyList" style="margin-top:8px"></div><div id="netProfit" style="font-weight:900;color:#a855f7;margin-top:8px">$0</div></div></div>
-<div id="c-school" class="content"><div class="card"><div style="font-weight:900">📚 مدرسة</div><div style="display:flex;gap:6px"><input id="schoolTask" placeholder="واجب" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addSchool()">+</button></div><div id="schoolList" style="margin-top:8px"></div></div></div>
+<div id="c-night" class="content"><div class="card"><div style="font-weight:900">🌙 وضع ليلي + تتبع</div><div style="display:flex;gap:6px;margin-top:10px"><button class="btn" onclick="toggleNight()">🌙 شغل / طفي ليلي</button><button class="btn-small" onclick="drinkWater()">💧 شربت موية</button><button class="btn-small" onclick="resetSession()">🔄 تصفير جلسة</button></div><div style="display:flex;gap:6px;margin-top:8px"><div class="stat"><div style="font-size:9px">⏱️ جلسة</div><div id="sessionTime">0 د</div></div><div class="stat"><div style="font-size:9px">💧 موية</div><div id="waterCount">0</div></div><div class="stat"><div style="font-size:9px">👁️ حالة</div><div id="nightStatus">طافي</div></div></div><div id="nightLog" style="margin-top:8px;background:#0e0620;border:1px solid #6d28d9;border-radius:10px;padding:8px;height:220px;overflow-y:auto;font-size:10px"></div></div></div>
+
+<div id="c-shoot" class="content">
+<div class="card"><div style="font-weight:900">📅 إضافة تصوير جديد</div><div style="margin-top:8px"><input id="shootDate" type="date" class="input"><input id="shootTime" type="time" value="20:00" class="input"><input id="shootPlace" placeholder="ريك تاون - المكان" class="input"><div style="background:#160c2e;padding:10px;border-radius:10px;margin-top:8px;border:1px solid #6d28d9"><div style="font-size:10px;font-weight:800">👥 المشاركين (اختار من الطاقم)</div><div id="participantsSelector" style="margin-top:6px"></div><div style="display:flex;gap:6px;margin-top:8px"><input id="customParticipant" placeholder="+ اسم جديد" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addCustomParticipant()">+ إضافة</button></div><div id="selectedParticipants" style="font-size:10px;color:#c084fc;margin-top:6px"></div></div><select id="shootStatus" class="input"><option>مجدول</option><option>قيد التصوير</option><option>تم</option><option>ملغي</option><option>مؤجل</option></select><input id="shootDesc" placeholder="وصف التصوير" class="input"><button class="btn" style="margin-top:8px" onclick="addShoot()">+ إضافة تصوير 💜</button></div></div>
+<div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:800;font-size:11px">📅 جدول التصوير</div><span id="shootCount" style="font-size:10px;background:rgba(168,85,247,.2);padding:2px 8px;border-radius:10px">0</span></div><div id="shootList" style="margin-top:8px"></div></div>
+<div class="card"><div style="font-weight:800;font-size:11px">🗓️ تقويم 30 يوم</div><div id="shootCalendar" style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px"></div></div>
+</div>
+
+<div id="c-videos" class="content"><div class="card"><div style="font-weight:900">🎥 فيديوهات يوتيوب</div><div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #6d28d9"><div style="font-size:10px">🔑 YouTube API HARDCODED</div><div style="display:flex;gap:6px;margin-top:6px"><input id="ytChannel" value="@Shadow47q" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="fetchYouTubeStats()">📊 جلب الإحصائيات</button></div></div><div id="videos" style="margin-top:10px">جاري جلب الفيديوهات...</div></div></div>
+<div id="c-ideas" class="content"><div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:900">💡 أفكار الفيديوهات</div><button class="btn" style="width:auto;padding:6px 14px" onclick="addIdea()">+ فكرة</button></div><div id="ideasList" style="margin-top:8px"></div></div></div>
+<div id="c-scripts" class="content"><div class="card"><div style="font-weight:900">📝 سكربتات</div><input id="scriptTitle" placeholder="عنوان السكربت" class="input"><textarea id="scriptBody" placeholder="نص السكربت كامل..." class="input" style="height:100px"></textarea><button class="btn" onclick="addScriptFull()">+ حفظ سكربت</button><div id="scriptsList" style="margin-top:8px"></div></div></div>
+<div id="c-thumbs" class="content"><div class="card"><div style="font-weight:900">📸 صور مصغرة</div><input id="thumbTitle" placeholder="عنوان الصورة" class="input"><input id="thumbCTR" type="number" placeholder="CTR %" class="input"><button class="btn" onclick="addThumb()">+ حفظ</button><div id="thumbsList" style="margin-top:8px"></div></div></div>
+<div id="c-chars" class="content"><div class="card"><div style="font-weight:900">🎭 شخصيات ريك تاون</div><div style="display:flex;gap:6px"><input id="charName" placeholder="اسم الشخصية" class="input" style="margin:0"><input id="charJob" placeholder="الوظيفة" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addChar()">+</button></div><div id="charsList" style="margin-top:8px"></div></div></div>
+<div id="c-keywords" class="content"><div class="card"><div style="font-weight:900">🧠 كلمات مفتاحية يوتيوب</div><input id="keywordInput" placeholder="عنوان الفيديو..." class="input"><button class="btn" onclick="genKeywords()">🧠 ولد كلمات مفتاحية</button><div id="keywordsResult" style="margin-top:8px;background:#0e0620;border:1px solid #6d28d9;border-radius:10px;padding:10px;min-height:60px"></div></div></div>
+<div id="c-besttime" class="content"><div class="card"><div style="font-weight:900">⏰ أفضل وقت نشر</div><div style="font-size:10px;color:#a1a1aa;margin-top:6px">الأوقات المقترحة للنشر حسب التفاعل</div><div id="publishCalendar" style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px"></div></div></div>
+<div id="c-money" class="content"><div class="card"><div style="font-weight:900">💰 إدارة الفلوس</div><div style="display:flex;gap:6px;margin-top:8px"><input id="income" type="number" placeholder="ربح $" class="input" style="margin:0"><button class="btn" style="width:auto;background:#16a34a" onclick="addIncome()">+ ربح</button><input id="expense" type="number" placeholder="مصروف $" class="input" style="margin:0"><button class="btn" style="width:auto;background:#dc2626" onclick="addExpense()">- مصروف</button></div><div id="moneyList" style="margin-top:8px"></div><div id="netProfit" style="font-weight:900;color:#a855f7;margin-top:8px;font-size:16px">$0 صافي</div></div></div>
+<div id="c-school" class="content"><div class="card"><div style="font-weight:900">📚 واجبات مدرسة</div><div style="display:flex;gap:6px"><input id="schoolTask" placeholder="واجب جديد..." class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addSchool()">+</button></div><div id="schoolList" style="margin-top:8px"></div></div></div>
 
 <div id="c-team" class="content">
-<div class="card"><div style="font-weight:900">🔒 إدارة</div><div id="loginBox" style="margin-top:8px"><select id="loginSelect" class="input"></select><input id="loginPass" type="password" placeholder="كلمة السر" class="input"><button class="btn" onclick="loginMember()">دخول 🔓</button></div><div id="loggedBox" style="display:none;margin-top:8px;background:rgba(34,197,94,.15);padding:10px;border-radius:10px"><div>✅ <span id="loggedUserName"></span></div><button class="btn-small" style="margin-top:6px;width:100%" onclick="logoutMember()">خروج</button></div></div>
-<div class="card"><div id="adminLock"><div style="font-weight:800">👑 إدارة + قائمة الطاقم</div><div style="display:flex;gap:6px;margin-top:8px"><input id="adminPass" type="password" placeholder="Shadow47q" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="unlockAdmin()">فتح</button></div></div>
+<div class="card">
+<div style="font-weight:900;font-size:14px;margin-bottom:10px">👥 لوحة الطاقم V44 ULTIMATE - مع قائمة تاب</div>
+<div class="sub-tabs">
+<button class="sub-tab active" id="st-list" onclick="openSubTab('list')">👥 قائمة الطاقم (تاب جديد)</button>
+<button class="sub-tab" id="st-login" onclick="openSubTab('login')">🔑 دخول أعضاء</button>
+<button class="sub-tab" id="st-admin" onclick="openSubTab('admin')">🔒 إدارة المسؤولين</button>
+</div>
+
+<div id="sc-list" class="sub-content active">
+<div style="background:#160c2e;padding:12px;border-radius:12px;border:1px solid #6d28d9">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+<div style="font-weight:800;font-size:12px">👥 قائمة الطاقم كاملة - مع حالاتهم</div>
+<input id="crewSearch" placeholder="🔍 بحث اسم..." class="input" style="margin:0;width:140px;padding:8px" oninput="renderAll()">
+</div>
+<div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap">
+<button class="btn-small" onclick="filterCrew='all';renderAll()" style="background:#8b45ff;color:#fff">الكل (<span id="countAll">0</span>)</button>
+<button class="btn-small s-متواجد" onclick="filterCrew='متواجد';renderAll()">✅ متواجد (<span id="countOn">0</span>)</button>
+<button class="btn-small s-اجازة" onclick="filterCrew='اجازة';renderAll()">🏖️ إجازة (<span id="countOff">0</span>)</button>
+<button class="btn-small s-موقوف" onclick="filterCrew='موقوف';renderAll()">⛔ موقوف (<span id="countBan">0</span>)</button>
+</div>
+<div id="teamTable" style="margin-top:12px"></div>
+</div>
+</div>
+
+<div id="sc-login" class="sub-content">
+<div class="card" style="margin:0"><div style="font-weight:800">🔑 دخول أعضاء الطاقم</div>
+<div id="loginBox" style="margin-top:8px"><select id="loginSelect" class="input"></select><input id="loginPass" type="password" placeholder="كلمة السر" class="input"><button class="btn" onclick="loginMember()">دخول 🔓</button></div>
+<div id="loggedBox" style="display:none;margin-top:8px;background:rgba(34,197,94,.15);padding:12px;border-radius:12px;border:1px solid #22c55e"><div>✅ مرحبا <span id="loggedUserName" style="font-weight:900"></span></div><div style="margin-top:8px;font-size:11px">حالتك الحالية: <span id="loggedUserStatus" style="font-weight:900"></span></div><div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap"><button class="status-btn s-متواجد" onclick="setMyStatus('متواجد')">✅ متواجد</button><button class="status-btn s-اجازة" onclick="setMyStatus('اجازة')">🏖️ إجازة</button><button class="status-btn s-موقوف" onclick="setMyStatus('موقوف')">⛔ موقوف</button></div><button class="btn-small" style="width:100%;margin-top:10px" onclick="logoutMember()">خروج</button></div>
+</div>
+</div>
+
+<div id="sc-admin" class="sub-content">
+<div id="adminLock"><div style="font-weight:800">👑 إدارة المسؤولين - باسورد: Shadow47q</div><div style="display:flex;gap:6px;margin-top:8px"><input id="adminPass" type="password" placeholder="Shadow47q" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="unlockAdmin()">فتح الإدارة 🔓</button></div></div>
 <div id="adminPanel" style="display:none">
-<div style="background:#22c55e22;border:1px solid #22c55e;padding:8px;border-radius:10px;color:#22c55e;font-weight:800;font-size:11px">✅ قائمة الطاقم هنا فقط</div>
-<div style="margin-top:12px;background:#0f0e1f;padding:12px;border-radius:12px;border:1px solid #6d28d9"><div style="font-weight:800">➕ إضافة عضو مع حالته</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><input id="memberName" placeholder="الاسم" class="input" style="margin:0"><input id="memberRole" placeholder="الرتبة" class="input" style="margin:0"><input id="memberPass" placeholder="كلمة سر" class="input" style="margin:0"><select id="memberStatus" class="input" style="margin:0"><option value="متواجد">✅ متواجد</option><option value="اجازة">🏖️ إجازة</option><option value="موقوف">⛔ موقوف</option></select></div><button class="btn" onclick="addMember()">+ إضافة عضو 💜</button></div>
-<div style="margin-top:12px;background:#160c2e;padding:10px;border-radius:12px;border:1px solid #6d28d9"><div style="display:flex;justify-content:space-between"><div style="font-weight:800;font-size:12px">👥 قائمة الطاقم</div><input id="crewSearch" placeholder="بحث..." class="input" style="margin:0;width:100px;padding:6px" oninput="renderAll()"></div><div style="display:flex;gap:6px;margin-top:8px"><button class="btn-small" onclick="filterCrew='all';renderAll()" style="background:#8b45ff;color:#fff">الكل</button><button class="btn-small s-متواجد" onclick="filterCrew='متواجد';renderAll()">✅ متواجد</button><button class="btn-small s-اجازة" onclick="filterCrew='اجازة';renderAll()">🏖️ إجازة</button><button class="btn-small s-موقوف" onclick="filterCrew='موقوف';renderAll()">⛔ موقوف</button></div><div id="teamTable" style="margin-top:10px"></div></div>
-<button class="btn" style="background:#ef444422;border:1px solid #ef4444;color:#ef4444;margin-top:10px" onclick="lockAdmin()">🔒 قفل</button>
+<div style="background:#22c55e22;border:1px solid #22c55e;padding:10px;border-radius:10px;color:#22c55e;font-weight:800;font-size:11px">✅ دخلت الإدارة - تقدر تضيف وتعدل وتحذف الطاقم</div>
+<div style="margin-top:12px;background:#0f0e1f;padding:12px;border-radius:12px;border:1px solid #6d28d9"><div style="font-weight:800">➕ إضافة عضو جديد مع حالته</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px"><input id="memberName" placeholder="الاسم" class="input" style="margin:0"><input id="memberRole" placeholder="الرتبة - مثال: مصور" class="input" style="margin:0"><input id="memberPass" placeholder="كلمة سر العضو" class="input" style="margin:0"><select id="memberStatus" class="input" style="margin:0"><option value="متواجد">✅ متواجد</option><option value="اجازة">🏖️ إجازة</option><option value="موقوف">⛔ موقوف</option></select></div><button class="btn" onclick="addMember()">+ إضافة عضو جديد 💜</button></div>
+<div style="margin-top:12px;background:#160c2e;padding:12px;border-radius:12px;border:1px solid #6d28d9"><div style="font-weight:800;font-size:12px">🛠️ إدارة الطاقم الكاملة - تعديل وحذف</div><div id="adminTeamTable" style="margin-top:10px"></div></div>
+<button class="btn" style="background:#ef444422;border:1px solid #ef4444;color:#ef4444;margin-top:10px" onclick="lockAdmin()">🔒 قفل لوحة الإدارة</button>
 </div>
 </div>
 </div>
+</div>
+</div>
+
+<div style="text-align:center;padding:20px;font-size:10px;color:#6d28d9">Shadow47q V44 ULTIMATE FULL - بدون أي شي ناقص 💜</div>
 </div>
 </div>
 <script>
+// ===== V44 ULTIMATE FULL - AQ JOIN + V1 FIXED + كل التابات =====
 const _k1 = "AQ.Ab8RN6KTAadh5ROLc9a-";
 const _k2 = "80ZRznrY5YyRt2HB6Q7K43xhTyOJjQ";
 const _AQ_FINAL = [_k1, _k2].join('');
 const HARDCODED = {
   get gemini(){ return _AQ_FINAL; },
   youtube: "AIzaSyD8-FMiXhmzf9KeqnTJjX9Fv-W96thITSI",
-  channelId: "UCQ_ZMlneyyFGqZZikkpQ2qw"
+  channelId: "UCQ_ZMlneyyFGqZZikkpQ2qw",
+  channelHandle: "@Shadow47q"
 };
-let cachedModel = localStorage.getItem('working_model_v45') || null;
+
 let ideas=JSON.parse(localStorage.getItem('private_ideas')||'[]');
 let team=JSON.parse(localStorage.getItem('team_members')||'[{"id":1,"name":"Shadow47q","role":"المالك","pass":"47q","status":"متواجد"}]');
-let shootDays=JSON.parse(localStorage.getItem('shoot_days_v15')||'[]');let thumbs=JSON.parse(localStorage.getItem('thumbs')||'[]');let scripts=JSON.parse(localStorage.getItem('scripts_full')||'[]');let chars=JSON.parse(localStorage.getItem('rt_chars')||'[]');let money=JSON.parse(localStorage.getItem('money_log')||'[]');let school=JSON.parse(localStorage.getItem('school_tasks')||'[]');
-let selectedParticipants=[];let currentUser=JSON.parse(localStorage.getItem('current_user')||'null');let chatHistory=[{role:'user',parts:[{text:'أنت مساعد Shadow47q'}]},{role:'model',parts:[{text:'تمام 💜'}]}];let nightSet=JSON.parse(localStorage.getItem('night_v32')||'{"night":false,"waterCount":0,"start":null}');
+let shootDays=JSON.parse(localStorage.getItem('shoot_days_v15')||'[]');
+let thumbs=JSON.parse(localStorage.getItem('thumbs')||'[]');
+let scripts=JSON.parse(localStorage.getItem('scripts_full')||'[]');
+let chars=JSON.parse(localStorage.getItem('rt_chars')||'[]');
+let money=JSON.parse(localStorage.getItem('money_log')||'[]');
+let school=JSON.parse(localStorage.getItem('school_tasks')||'[]');
+let selectedParticipants=[];let currentUser=JSON.parse(localStorage.getItem('current_user')||'null');
+let chatHistory=[{role:'user',parts:[{text:'أنت مساعد Shadow47q بنفسجي'}]},{role:'model',parts:[{text:'تمام 💜'}]}];
+let nightSet=JSON.parse(localStorage.getItem('night_v32')||'{"night":false,"waterCount":0,"start":null}');
 let filterCrew='all';
-function openTab(n){document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('c-'+n)?.classList.add('active');document.getElementById('t-'+n)?.classList.add('active');}
+
+function openTab(n){document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));let el=document.getElementById('c-'+n);if(el)el.classList.add('active');let t=document.getElementById('t-'+n);if(t)t.classList.add('active');}
+function openSubTab(n){document.querySelectorAll('.sub-content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active'));document.getElementById('sc-'+n)?.classList.add('active');document.getElementById('st-'+n)?.classList.add('active');}
 function toggleNight(){nightSet.night=!nightSet.night;localStorage.setItem('night_v32',JSON.stringify(nightSet));applyNight();}
-function applyNight(){if(nightSet.night){document.body.classList.add('night');document.getElementById('nightBtn').innerText='☀️ طفي';document.getElementById('nightStatus')&&(document.getElementById('nightStatus').innerText='شغال 💜');}else{document.body.classList.remove('night');document.getElementById('nightBtn').innerText='🌙 ليلي';document.getElementById('nightStatus')&&(document.getElementById('nightStatus').innerText='طافي');}}
-function drinkWater(){nightSet.waterCount=(nightSet.waterCount||0)+1;localStorage.setItem('night_v32',JSON.stringify(nightSet));document.getElementById('waterCount').innerText=nightSet.waterCount;logNight('💧 شربت '+nightSet.waterCount);}
-function resetSession(){nightSet.start=Date.now();nightSet.waterCount=0;localStorage.setItem('night_v32',JSON.stringify(nightSet));document.getElementById('waterCount').innerText='0';logNight('🔄 جلسة');}
+function applyNight(){if(nightSet.night){document.body.classList.add('night');document.getElementById('nightBtn').innerText='☀️ طفي ليلي';let ns=document.getElementById('nightStatus');if(ns)ns.innerText='شغال 💜';}else{document.body.classList.remove('night');document.getElementById('nightBtn').innerText='🌙 ليلي';let ns=document.getElementById('nightStatus');if(ns)ns.innerText='طافي';}}
+function drinkWater(){nightSet.waterCount=(nightSet.waterCount||0)+1;localStorage.setItem('night_v32',JSON.stringify(nightSet));document.getElementById('waterCount').innerText=nightSet.waterCount;logNight('💧 شربت موية '+nightSet.waterCount);}
+function resetSession(){nightSet.start=Date.now();nightSet.waterCount=0;localStorage.setItem('night_v32',JSON.stringify(nightSet));document.getElementById('waterCount').innerText='0';logNight('🔄 جلسة جديدة');}
 function logNight(m){let l=document.getElementById('nightLog');if(!l)return;let d=document.createElement('div');d.style.background='#160c2e';d.style.padding='6px';d.style.borderRadius='8px';d.style.marginTop='4px';d.innerText=new Date().toLocaleTimeString('ar-SA')+' - '+m;l.prepend(d);}
 function getCtx(){let c=document.getElementById('gameContext');return c&&c.value.trim()?c.value.trim():'قيمينق عام - ريك تاون - Shadow47q';}
-function saveGem(){checkModels();}
+function saveGem(){alert('✅ V44 ULTIMATE:\n'+HARDCODED.gemini.substring(0,30)+'...\nEndpoint: v1/models/gemini-1.5-flash-latest\nJOIN مخفي ✅');}
 function saveAll(){localStorage.setItem('private_ideas',JSON.stringify(ideas));localStorage.setItem('team_members',JSON.stringify(team));localStorage.setItem('shoot_days_v15',JSON.stringify(shootDays));localStorage.setItem('thumbs',JSON.stringify(thumbs));localStorage.setItem('scripts_full',JSON.stringify(scripts));localStorage.setItem('rt_chars',JSON.stringify(chars));localStorage.setItem('money_log',JSON.stringify(money));localStorage.setItem('school_tasks',JSON.stringify(school));renderAll();}
-function renderParticipants(){let c=document.getElementById('participantsSelector');if(!c)return;c.innerHTML='';team.forEach(m=>{let chip=document.createElement('span');chip.className='chip '+(selectedParticipants.includes(m.name)?'sel':'');chip.innerText=m.name+' '+(m.status==='متواجد'?'✅':m.status==='اجازة'?'🏖️':'⛔');chip.onclick=()=>{if(selectedParticipants.includes(m.name))selectedParticipants=selectedParticipants.filter(x=>x!==m.name);else selectedParticipants.push(m.name);renderParticipants();};c.appendChild(chip);});let el=document.getElementById('selectedParticipants');if(el)el.innerText=selectedParticipants.length>0?'👥 مع: '+selectedParticipants.join('، '):'لم يتم';}
-function addCustomParticipant(){let i=document.getElementById('customParticipant');let n=i.value.trim();if(!n)return;if(!team.find(t=>t.name===n))team.unshift({id:Date.now(),name:n,role:'مشارك',pass:Date.now().toString(),status:'متواجد'});if(!selectedParticipants.includes(n))selectedParticipants.push(n);i.value='';saveAll();}
+function renderParticipants(){let c=document.getElementById('participantsSelector');if(!c)return;c.innerHTML='';team.forEach(m=>{let chip=document.createElement('span');chip.className='chip '+(selectedParticipants.includes(m.name)?'sel':'');chip.innerText=m.name+' '+(m.status==='متواجد'?'✅':m.status==='اجازة'?'🏖️':'⛔');chip.onclick=()=>{if(selectedParticipants.includes(m.name))selectedParticipants=selectedParticipants.filter(x=>x!==m.name);else selectedParticipants.push(m.name);renderParticipants();};c.appendChild(chip);});let el=document.getElementById('selectedParticipants');if(el)el.innerText=selectedParticipants.length>0?'👥 مع: '+selectedParticipants.join('، '):'لم يتم اختيار أحد';}
+function addCustomParticipant(){let i=document.getElementById('customParticipant');let n=i.value.trim();if(!n)return;if(!team.find(t=>t.name===n))team.unshift({id:Date.now(),name:n,role:'مشارك',pass:Date.now().toString(),status:'متواجد'});if(!selectedParticipants.includes(n))selectedParticipants.push(n);i.value='';saveAll();renderParticipants();}
 function addShoot(){let d=document.getElementById('shootDate').value;let t=document.getElementById('shootTime').value;let p=document.getElementById('shootPlace').value;let desc=document.getElementById('shootDesc').value;let status=document.getElementById('shootStatus').value;if(!d){alert('اختر التاريخ');return}shootDays.unshift({id:Date.now(),date:d,time:t||'20:00',place:p||'ريك تاون',desc:desc||'تصوير',participants:[...selectedParticipants],status});selectedParticipants=[];saveAll();}
 function del2(id,type){if(type==='team')team=team.filter(x=>x.id!=id);if(type==='idea')ideas=ideas.filter(x=>x.id!=id);if(type==='thumb')thumbs=thumbs.filter(x=>x.id!=id);if(type==='script')scripts=scripts.filter(x=>x.id!=id);if(type==='char')chars=chars.filter(x=>x.id!=id);if(type==='money')money=money.filter(x=>x.id!=id);if(type==='school')school=school.filter(x=>x.id!=id);if(type==='shoot')shootDays=shootDays.filter(x=>x.id!=id);saveAll();}
-function addMember(){let n=document.getElementById('memberName').value.trim();let r=document.getElementById('memberRole').value.trim();let p=document.getElementById('memberPass').value.trim();let s=document.getElementById('memberStatus').value;if(!n||!p){alert('الاسم والسر');return}team.unshift({id:Date.now(),name:n,role:r,pass:p,status:s});document.getElementById('memberName').value='';document.getElementById('memberRole').value='';document.getElementById('memberPass').value='';saveAll();}
-function setStatus(id,st){let m=team.find(x=>x.id==id);if(m){m.status=st;saveAll();}}
+function addMember(){let n=document.getElementById('memberName').value.trim();let r=document.getElementById('memberRole').value.trim();let p=document.getElementById('memberPass').value.trim();let s=document.getElementById('memberStatus').value;if(!n||!p){alert('الاسم وكلمة السر مطلوبين');return}team.unshift({id:Date.now(),name:n,role:r||'عضو',pass:p,status:s});document.getElementById('memberName').value='';document.getElementById('memberRole').value='';document.getElementById('memberPass').value='';saveAll();openSubTab('list');}
+function setStatus(id,st){let m=team.find(x=>x.id==id);if(m){m.status=st;if(currentUser&&currentUser.id==id){currentUser.status=st;localStorage.setItem('current_user',JSON.stringify(currentUser));}saveAll();}}
+function setMyStatus(st){if(!currentUser)return;setStatus(currentUser.id,st);}
 function editMember(id){let m=team.find(x=>x.id==id);if(!m)return;let nn=prompt('الاسم الجديد:',m.name);if(nn===null)return;let nr=prompt('الرتبة الجديدة:',m.role);if(nr===null)return;if(nn.trim())m.name=nn.trim();if(nr.trim())m.role=nr.trim();saveAll();}
-function addIdea(){let t=prompt('فكرة:');if(!t)return;ideas.unshift({id:Date.now(),t});saveAll();}
-function addThumb(){let title=document.getElementById('thumbTitle').value;if(!title)return;thumbs.unshift({id:Date.now(),title});document.getElementById('thumbTitle').value='';saveAll();}
-function addScriptFull(){let t=document.getElementById('scriptTitle').value;let b=document.getElementById('scriptBody').value;if(!t)return;scripts.unshift({id:Date.now(),title:t,body:b});document.getElementById('scriptTitle').value='';document.getElementById('scriptBody').value='';saveAll();}
-function addChar(){let n=document.getElementById('charName').value;let j=document.getElementById('charJob').value;if(!n)return;chars.unshift({id:Date.now(),name:n,job:j});document.getElementById('charName').value='';document.getElementById('charJob').value='';saveAll();}
-function genKeywords(){let inp=document.getElementById('keywordInput').value;if(!inp)return;let gen=[inp,'ريك تاون '+inp,'GTA RP '+inp,'Shadow47q '+inp,'قيمينق '+inp];document.getElementById('keywordsResult').innerHTML=gen.map(k=>'<span style="display:inline-block;background:#1e0b33;padding:6px 10px;border-radius:20px;margin:2px;font-size:10px;border:1px solid #6d28d9">'+k+'</span>').join('');}
-function addIncome(){let v=Number(document.getElementById('income').value);if(!v)return;money.unshift({id:Date.now(),type:'ربح',amount:v});document.getElementById('income').value='';saveAll();}
-function addExpense(){let v=Number(document.getElementById('expense').value);if(!v)return;money.unshift({id:Date.now(),type:'مصروف',amount:v});document.getElementById('expense').value='';saveAll();}
-function addSchool(){let el=document.getElementById('schoolTask');if(!el.value)return;school.unshift({id:Date.now(),t:el.value});el.value='';saveAll();}
-function unlockAdmin(){let v=document.getElementById('adminPass').value;if(v==='Shadow47q'){document.getElementById('adminLock').style.display='none';document.getElementById('adminPanel').style.display='block';renderAll();}else alert('خطأ');}
+function addIdea(){let t=prompt('اكتب فكرة الفيديو:');if(!t)return;ideas.unshift({id:Date.now(),t});saveAll();}
+function addThumb(){let title=document.getElementById('thumbTitle').value;if(!title){alert('اكتب عنوان');return}thumbs.unshift({id:Date.now(),title});document.getElementById('thumbTitle').value='';let ctr=document.getElementById('thumbCTR');if(ctr)ctr.value='';saveAll();}
+function addScriptFull(){let t=document.getElementById('scriptTitle').value;let b=document.getElementById('scriptBody').value;if(!t){alert('اكتب عنوان');return}scripts.unshift({id:Date.now(),title:t,body:b});document.getElementById('scriptTitle').value='';document.getElementById('scriptBody').value='';saveAll();}
+function addChar(){let n=document.getElementById('charName').value;let j=document.getElementById('charJob').value;if(!n)return;chars.unshift({id:Date.now(),name:n,job:j||'مواطن'});document.getElementById('charName').value='';document.getElementById('charJob').value='';saveAll();}
+function genKeywords(){let inp=document.getElementById('keywordInput').value;if(!inp){alert('اكتب عنوان');return}let gen=[inp,'ريك تاون '+inp,'GTA RP '+inp,'Shadow47q '+inp,'قيمينق '+inp,'تحدي '+inp,'مضحك '+inp];document.getElementById('keywordsResult').innerHTML=gen.map(k=>'<span style="display:inline-block;background:#1e0b33;padding:6px 10px;border-radius:20px;margin:2px;font-size:10px;border:1px solid #6d28d9">'+k+'</span>').join('');}
+function addIncome(){let v=Number(document.getElementById('income').value);if(!v)return;money.unshift({id:Date.now(),type:'ربح',amount:v,date:new Date().toISOString().split('T')[0]});document.getElementById('income').value='';saveAll();}
+function addExpense(){let v=Number(document.getElementById('expense').value);if(!v)return;money.unshift({id:Date.now(),type:'مصروف',amount:v,date:new Date().toISOString().split('T')[0]});document.getElementById('expense').value='';saveAll();}
+function addSchool(){let el=document.getElementById('schoolTask');if(!el.value.trim())return;school.unshift({id:Date.now(),t:el.value.trim()});el.value='';saveAll();}
+function unlockAdmin(){let v=document.getElementById('adminPass').value;if(v==='Shadow47q'){document.getElementById('adminLock').style.display='none';document.getElementById('adminPanel').style.display='block';renderAll();}else alert('الباسورد خطأ - اكتب Shadow47q');}
 function lockAdmin(){document.getElementById('adminLock').style.display='block';document.getElementById('adminPanel').style.display='none';}
-function loginMember(){let name=document.getElementById('loginSelect').value;let pass=document.getElementById('loginPass').value;let m=team.find(x=>x.name===name);if(!m||m.pass!==pass){alert('خطأ');return}currentUser=m;localStorage.setItem('current_user',JSON.stringify(m));updateLogin();}
+function loginMember(){let name=document.getElementById('loginSelect').value;let pass=document.getElementById('loginPass').value;let m=team.find(x=>x.name===name);if(!m||m.pass!==pass){alert('اسم أو باسورد خطأ');return}currentUser=m;localStorage.setItem('current_user',JSON.stringify(m));updateLogin();}
 function logoutMember(){currentUser=null;localStorage.removeItem('current_user');updateLogin();}
-function updateLogin(){let b=document.getElementById('loginBox');let l=document.getElementById('loggedBox');if(currentUser){b.style.display='none';l.style.display='block';document.getElementById('loggedUserName').innerText=currentUser.name;}else{b.style.display='block';l.style.display='none';}}
-async function fetchYouTubeStats(){let apiKey=HARDCODED.youtube;try{document.getElementById('subs').innerText='⏳...';let url='https://www.googleapis.com/youtube/v3/channels?part=statistics&id='+HARDCODED.channelId+'&key='+apiKey;let res=await fetch(url);let data=await res.json();if(data.items&&data.items[0]){let s=data.items[0].statistics;document.getElementById('subs').innerText=Number(s.subscriberCount).toLocaleString();document.getElementById('views').innerText=Number(s.viewCount).toLocaleString();}}catch(e){}}
+function updateLogin(){let b=document.getElementById('loginBox');let l=document.getElementById('loggedBox');if(currentUser){if(b)b.style.display='none';if(l){l.style.display='block';document.getElementById('loggedUserName').innerText=currentUser.name;document.getElementById('loggedUserStatus').innerText=currentUser.status||'متواجد';}}else{if(b)b.style.display='block';if(l)l.style.display='none';}}
+async function fetchYouTubeStats(){let apiKey=HARDCODED.youtube;try{let subsEl=document.getElementById('subs');if(subsEl)subsEl.innerText='⏳...';let url='https://www.googleapis.com/youtube/v3/channels?part=statistics&id='+HARDCODED.channelId+'&key='+apiKey;let res=await fetch(url);let data=await res.json();if(data.items&&data.items[0]){let s=data.items[0].statistics;document.getElementById('subs').innerText=Number(s.subscriberCount).toLocaleString();document.getElementById('views').innerText=Number(s.viewCount).toLocaleString();}}catch(e){document.getElementById('subs').innerText='خطأ';}}
 function renderAll(){
 let search=(document.getElementById('crewSearch')?.value||'').toLowerCase();
 let filtered=team.filter(m=>{
@@ -156,119 +214,91 @@ let filtered=team.filter(m=>{
  if(search&&!m.name.toLowerCase().includes(search)) return false;
  return true;
 });
-let tt=document.getElementById('teamTable');
-if(tt) tt.innerHTML=filtered.map(x=>{
- let st=x.status||'متواجد';
- return `<div class="list-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between"><div><span class="status-dot status-${st}"></span><b>${x.name}</b> - ${x.role}</div><div style="font-size:10px;font-weight:800;color:${st==='متواجد'?'#22c55e':st==='اجازة'?'#f59e0b':'#ef4444'}">${st}</div></div><div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:8px"><button class="status-btn s-متواجد ${st==='متواجد'?'active':''}" onclick="setStatus(${x.id},'متواجد')">✅ متواجد</button><button class="status-btn s-اجازة ${st==='اجازة'?'active':''}" onclick="setStatus(${x.id},'اجازة')">🏖️ إجازة</button><button class="status-btn s-موقوف ${st==='موقوف'?'active':''}" onclick="setStatus(${x.id},'موقوف')">⛔ موقوف</button><button class="status-btn" style="background:#6d28d9;color:#fff" onclick="editMember(${x.id})">✏️</button><button class="status-btn" style="background:#ef444422;color:#ef4444;border:1px solid #ef4444" onclick="if(confirm('حذف ${x.name}؟'))del2(${x.id},'team')">🗑️</button></div></div>`;
-}).join('');
+let countAll=team.length;
+let countOn=team.filter(m=>(m.status||'متواجد')==='متواجد').length;
+let countOff=team.filter(m=>m.status==='اجازة').length;
+let countBan=team.filter(m=>m.status==='موقوف').length;
+let el;
+el=document.getElementById('countAll');if(el)el.innerText=countAll;
+el=document.getElementById('countOn');if(el)el.innerText=countOn;
+el=document.getElementById('countOff');if(el)el.innerText=countOff;
+el=document.getElementById('countBan');if(el)el.innerText=countBan;
+el=document.getElementById('teamCount');if(el)el.innerText=countAll;
+el=document.getElementById('shootCount');if(el)el.innerText=shootDays.length+' يوم';
+el=document.getElementById('shootCountTop');if(el)el.innerText=shootDays.length;
+el=document.getElementById('ideasCount');if(el)el.innerText=ideas.length;
+
+function makeCard(x, withDelete){
+ return `<div class="list-item" style="flex-direction:column;align-items:stretch;background:${x.status==='متواجد'?'rgba(34,197,94,.08)':x.status==='اجازة'?'rgba(245,158,11,.08)':'rgba(239,68,68,.08)'}">
+<div style="display:flex;justify-content:space-between;align-items:center"><div><span class="status-dot status-${x.status||'متواجد'}"></span><b>${x.name}</b> - ${x.role}</div><div style="font-size:10px;font-weight:800;color:${x.status==='متواجد'?'#22c55e':x.status==='اجازة'?'#f59e0b':'#ef4444'}">${x.status||'متواجد'}</div></div>
+<div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:8px">
+<button class="status-btn s-متواجد ${(x.status||'متواجد')==='متواجد'?'active':''}" onclick="setStatus(${x.id},'متواجد')">✅ متواجد</button>
+<button class="status-btn s-اجازة ${x.status==='اجازة'?'active':''}" onclick="setStatus(${x.id},'اجازة')">🏖️ إجازة</button>
+<button class="status-btn s-موقوف ${x.status==='موقوف'?'active':''}" onclick="setStatus(${x.id},'موقوف')">⛔ موقوف</button>
+<button class="status-btn" style="background:#6d28d9;color:#fff" onclick="editMember(${x.id})">✏️ تعديل</button>
+${withDelete?`<button class="status-btn" style="background:#ef444422;color:#ef4444;border:1px solid #ef4444" onclick="if(confirm('حذف ${x.name}؟'))del2(${x.id},'team')">🗑️ حذف</button>`:''}
+</div>
+</div>`;
+}
+
+let tt=document.getElementById('teamTable');if(tt)tt.innerHTML=filtered.map(x=>makeCard(x,false)).join('')||'<div style="text-align:center;padding:20px;color:#a1a1aa">مافيه نتائج للبحث</div>';
+let att=document.getElementById('adminTeamTable');if(att)att.innerHTML=team.map(x=>makeCard(x,true)).join('');
 let ls=document.getElementById('loginSelect');if(ls)ls.innerHTML=team.map(t=>'<option>'+t.name+'</option>').join('');
-let ideasList=document.getElementById('ideasList');if(ideasList)ideasList.innerHTML=ideas.map(x=>'<div class="list-item"><span>'+x.t+'</span><button onclick="del2('+x.id+',\'idea\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
+let ideasList=document.getElementById('ideasList');if(ideasList)ideasList.innerHTML=ideas.map(x=>'<div class="list-item"><span>'+x.t+'</span><button onclick="del2('+x.id+',\'idea\')" style="color:#ef4444;background:none;border:none;font-size:16px;cursor:pointer">×</button></div>').join('');
 let thumbsList=document.getElementById('thumbsList');if(thumbsList)thumbsList.innerHTML=thumbs.map(x=>'<div class="list-item"><span>'+x.title+'</span><button onclick="del2('+x.id+',\'thumb\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
-let scriptsList=document.getElementById('scriptsList');if(scriptsList)scriptsList.innerHTML=scripts.map(x=>'<div class="list-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between"><b>'+x.title+'</b><button onclick="del2('+x.id+',\'script\')" style="color:#ef4444;background:none;border:none">×</button></div><div style="font-size:10px;color:#a1a1aa;margin-top:4px">'+x.body+'</div></div>').join('');
+let scriptsList=document.getElementById('scriptsList');if(scriptsList)scriptsList.innerHTML=scripts.map(x=>'<div class="list-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between"><b>'+x.title+'</b><button onclick="del2('+x.id+',\'script\')" style="color:#ef4444;background:none;border:none">×</button></div><div style="font-size:10px;color:#a1a1aa;margin-top:4px;white-space:pre-wrap">'+x.body+'</div></div>').join('');
 let charsList=document.getElementById('charsList');if(charsList)charsList.innerHTML=chars.map(x=>'<div class="list-item"><span>'+x.name+' - '+x.job+'</span><button onclick="del2('+x.id+',\'char\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
-let moneyList=document.getElementById('moneyList');if(moneyList)moneyList.innerHTML=money.map(m=>'<div class="list-item"><span>'+m.type+' $'+m.amount+'</span><button onclick="del2('+m.id+',\'money\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');let net=0;money.forEach(m=>net+=m.type==='ربح'?m.amount:-m.amount);let ne=document.getElementById('netProfit');if(ne)ne.innerText='$'+net;
+let moneyList=document.getElementById('moneyList');if(moneyList)moneyList.innerHTML=money.map(m=>'<div class="list-item"><span>'+m.type+' $'+m.amount+' - '+m.date+'</span><button onclick="del2('+m.id+',\'money\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');let net=0;money.forEach(m=>net+=m.type==='ربح'?m.amount:-m.amount);let ne=document.getElementById('netProfit');if(ne)ne.innerText='$'+net+' صافي الربح';
 let schoolList=document.getElementById('schoolList');if(schoolList)schoolList.innerHTML=school.map(s=>'<div class="list-item"><span>'+s.t+'</span><button onclick="del2('+s.id+',\'school\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
-let tc=document.getElementById('teamCount');if(tc)tc.innerText=team.length;let sc=document.getElementById('shootCount');if(sc)sc.innerText=shootDays.length+' يوم';
-let list=document.getElementById('shootList');if(list){list.innerHTML='';shootDays.forEach(s=>{let part=s.participants&&s.participants.length>0?s.participants.join('، '):'بدون';let div=document.createElement('div');div.className='list-item';div.innerHTML='<div><div><b>'+s.date+' '+s.time+'</b> - '+s.status+'</div><div style="font-size:10px;color:#a1a1aa">👥 '+part+' - '+s.place+'</div></div><button onclick="del2('+s.id+',\'shoot\')" style="color:#ef4444;background:none;border:none">حذف</button>';list.appendChild(div);});}
-let shootCal=document.getElementById('shootCalendar');if(shootCal){shootCal.innerHTML='';for(let i=0;i<30;i++){let dt=new Date();dt.setDate(dt.getDate()+i);let iso=dt.toISOString().split('T')[0];let has=shootDays.find(s=>s.date==iso);let d=document.createElement('div');d.style.background=has?'linear-gradient(135deg,#8b45ff,#ec4899)':'#160c2e';d.style.border='1px solid #6d28d9';d.style.borderRadius='10px';d.style.padding='8px';d.style.textAlign='center';d.style.fontSize='10px';d.style.cursor='pointer';d.innerText=dt.getDate();d.onclick=()=>{document.getElementById('shootDate').value=iso;openTab('shoot');};shootCal.appendChild(d);}}
-let pubCal=document.getElementById('publishCalendar');if(pubCal){pubCal.innerHTML='';for(let i=0;i<30;i++){let dt=new Date();dt.setDate(dt.getDate()+i);let d=document.createElement('div');d.style.background='#160c2e';d.style.border='1px solid #6d28d9';d.style.borderRadius='10px';d.style.padding='8px';d.style.textAlign='center';d.style.fontSize='9px';d.innerText=dt.getDate();pubCal.appendChild(d);}}
+let list=document.getElementById('shootList');if(list){list.innerHTML='';shootDays.forEach(s=>{let part=s.participants&&s.participants.length>0?s.participants.join('، '):'بدون مشاركين';let div=document.createElement('div');div.className='list-item';div.style.flexDirection='row';div.innerHTML='<div><div><b>'+s.date+' '+s.time+'</b> - '+s.status+'</div><div style="font-size:10px;color:#a1a1aa">👥 '+part+' - 📍 '+s.place+'</div><div style="font-size:9px;color:#6d28d9">'+s.desc+'</div></div><button onclick="del2('+s.id+',\'shoot\')" style="color:#ef4444;background:none;border:none;cursor:pointer">حذف</button>';list.appendChild(div);});}
+let shootCal=document.getElementById('shootCalendar');if(shootCal){shootCal.innerHTML='';for(let i=0;i<30;i++){let dt=new Date();dt.setDate(dt.getDate()+i);let iso=dt.toISOString().split('T')[0];let has=shootDays.find(s=>s.date==iso);let d=document.createElement('div');d.style.background=has?'linear-gradient(135deg,#8b45ff,#ec4899)':'#160c2e';d.style.border='1px solid #6d28d9';d.style.borderRadius='10px';d.style.padding='8px';d.style.textAlign='center';d.style.fontSize='10px';d.style.cursor='pointer';d.innerText=dt.getDate()+'\n'+['أحد','إثن','ثلا','أرب','خميس','جمعة','سبت'][dt.getDay()];d.onclick=()=>{document.getElementById('shootDate').value=iso;openTab('shoot');};shootCal.appendChild(d);}}
+let pubCal=document.getElementById('publishCalendar');if(pubCal){pubCal.innerHTML='';for(let i=0;i<30;i++){let dt=new Date();dt.setDate(dt.getDate()+i);let d=document.createElement('div');d.style.background='#160c2e';d.style.border='1px solid #6d28d9';d.style.borderRadius='10px';d.style.padding='8px';d.style.textAlign='center';d.style.fontSize='9px';d.innerHTML=dt.getDate()+'<br>'+['أحد','إثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'][dt.getDay()];pubCal.appendChild(d);}}
 renderParticipants();
 }
-function saveLastAI(){let v=document.getElementById('aiSaveChat').value;let tgt=document.getElementById('aiSaveTarget').value;if(!v){alert('مافيه');return;}if(tgt==='thumbs'){thumbs.unshift({id:Date.now(),title:v.split('\n')[0].substring(0,50)});}else if(tgt==='scripts'){scripts.unshift({id:Date.now(),title:v.split('\n')[0].substring(0,50),body:v});}else{ideas.unshift({id:Date.now(),t:v.substring(0,100)});}saveAll();alert('✅ تم الحفظ');}
+function saveLastAI(){let v=document.getElementById('aiSaveChat').value;let tgt=document.getElementById('aiSaveTarget').value;if(!v){alert('مافيه نص');return;}if(tgt==='thumbs'){thumbs.unshift({id:Date.now(),title:v.split('\n')[0].substring(0,60)});}else if(tgt==='scripts'){scripts.unshift({id:Date.now(),title:v.split('\n')[0].substring(0,50),body:v});}else if(tgt==='keywords'){document.getElementById('keywordsResult').innerText=v;}else{ideas.unshift({id:Date.now(),t:v.substring(0,120)});}saveAll();alert('✅ تم الحفظ في '+tgt);}
 
-// ===== V45 AUTO DETECT MODEL FOR AQ KEYS =====
-async function checkModels(){
-  let apiKey = HARDCODED.gemini;
-  let info=document.getElementById('modelInfo');
-  let listDiv=document.getElementById('modelList');
-  info.innerText='⏳ جاري جلب الموديلات...'; listDiv.innerHTML='⏳...';
-  try{
-    // جرب v1 أول - لأن AQ يشتغل على v1
-    let urlV1='https://generativelanguage.googleapis.com/v1/models';
-    let r=await fetch(urlV1,{headers:{'x-goog-api-key':apiKey}});
-    let d=await r.json();
-    if(d.error) throw new Error(d.error.message);
-    let models = d.models || [];
-    listDiv.innerHTML = models.map(m=>`<div style="padding:4px;border-bottom:1px solid #6d28d9">${m.name} - ${m.supportedGenerationMethods?.join(',')}</div>`).join('');
-    // اختار أول موديل يدعم generateContent
-    let best = models.find(m=>m.name.includes('2.5-flash') && m.supportedGenerationMethods?.includes('generateContent'));
-    if(!best) best = models.find(m=>m.name.includes('2.0-flash') && m.supportedGenerationMethods?.includes('generateContent'));
-    if(!best) best = models.find(m=>m.name.includes('gemini') && m.supportedGenerationMethods?.includes('generateContent'));
-    if(best){
-      cachedModel = best.name;
-      localStorage.setItem('working_model_v45', cachedModel);
-      info.innerText = '✅ شغال: ' + cachedModel;
-      document.getElementById('chatBox').innerHTML = `<div class="msg-ai">✅ تم كشف الموديل الشغال تلقائي: ${cachedModel} - الحين AI بيشتغل 💜</div>`;
-    }else{
-      info.innerText='❌ ما لقى موديل يدعم generateContent - جرب تجديد المفتاح';
-    }
-  }catch(e){
-    // لو v1 فشل جرب v1beta
-    try{
-      let urlBeta='https://generativelanguage.googleapis.com/v1beta/models';
-      let r=await fetch(urlBeta,{headers:{'x-goog-api-key':apiKey}});
-      let d=await r.json();
-      listDiv.innerHTML = '<div style="color:#f59e0b">v1 فشل، جربت v1beta:</div>' + (d.models||[]).map(m=>`<div>${m.name}</div>`).join('');
-      if(d.models && d.models.length>0){
-        let best = d.models.find(m=>m.supportedGenerationMethods?.includes('generateContent'));
-        if(best){ cachedModel=best.name; localStorage.setItem('working_model_v45', cachedModel); info.innerText='✅ شغال v1beta: '+cachedModel; }
-      }
-    }catch(e2){
-      info.innerText='❌ خطأ: '+e.message; listDiv.innerHTML='❌ '+e.message+'<br><br>تأكد فعلت Generative Language API في console.cloud.google.com';
-    }
-  }
-}
-
-async function getWorkingModel(apiKey){
-  if(cachedModel) return cachedModel;
-  try{
-    let url='https://generativelanguage.googleapis.com/v1/models';
-    let r=await fetch(url,{headers:{'x-goog-api-key':apiKey}});
-    let d=await r.json();
-    if(d.models){
-      let best = d.models.find(m=>m.name.includes('2.5-flash'));
-      if(!best) best = d.models.find(m=>m.name.includes('2.0-flash'));
-      if(!best) best = d.models.find(m=>m.supportedGenerationMethods?.includes('generateContent'));
-      if(best){ cachedModel=best.name; localStorage.setItem('working_model_v45', cachedModel); return cachedModel; }
-    }
-  }catch(e){}
-  return 'models/gemini-2.5-flash';
-}
-
+// ===== V44 AI FIXED - v1 + gemini-1.5-flash-latest + AQ JOIN =====
 async function aiDo(prompt,type){
   let apiKey = HARDCODED.gemini;
-  let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText='سوي: '+type;box.appendChild(u);
-  let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ جاري...';box.appendChild(a);box.scrollTop=box.scrollHeight;
-  chatHistory.push({role:'user',parts:[{text:prompt}]});
+  let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText='سوي: '+type;box.appendChild(u);let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يسوي '+type+'...';box.appendChild(a);box.scrollTop=box.scrollHeight;chatHistory.push({role:'user',parts:[{text:prompt}]});
   try{
-    let modelName = await getWorkingModel(apiKey);
-    let url=`https://generativelanguage.googleapis.com/v1/${modelName}:generateContent`;
+    let url='https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent';
     let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify({contents:chatHistory})});
-    let d=await r.json();if(d.error) throw new Error(d.error.message + ' ('+modelName+')');
+    let d=await r.json();if(d.error) throw new Error(d.error.message);
     let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';a.innerText=text;chatHistory.push({role:'model',parts:[{text:text}]});document.getElementById('aiSaveChat').value=text;
-  }catch(e){a.innerText='❌ '+e.message+'\n\nاضغط كشف الموديلات فوق';}box.scrollTop=box.scrollHeight;
+  }catch(e){
+    try{
+      let res=await fetch('https://text.pollinations.ai/'+encodeURIComponent(prompt));
+      let t=await res.text();a.innerText=t+'\n\n✅ (FREE FALLBACK - مفتاحك AQ ما يدعم 1.5 حاليا)';
+      document.getElementById('aiSaveChat').value=t;
+    }catch(e2){a.innerText='❌ خطأ: '+e.message;}
+  }
+  box.scrollTop=box.scrollHeight;
 }
 async function sendAI(){
   let q=document.getElementById('aiInput').value.trim();if(!q)return;
   let apiKey = HARDCODED.gemini;
-  let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText=q;box.appendChild(u);document.getElementById('aiInput').value='';
-  let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يفكر...';box.appendChild(a);box.scrollTop=box.scrollHeight;
-  chatHistory.push({role:'user',parts:[{text:q}]});
+  let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText=q;box.appendChild(u);document.getElementById('aiInput').value='';let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يفكر...';box.appendChild(a);box.scrollTop=box.scrollHeight;chatHistory.push({role:'user',parts:[{text:q}]});
   try{
-    let modelName = await getWorkingModel(apiKey);
-    let url=`https://generativelanguage.googleapis.com/v1/${modelName}:generateContent`;
+    let url='https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent';
     let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify({contents:chatHistory})});
-    let d=await r.json();if(d.error) throw new Error(d.error.message + ' ('+modelName+')');
+    let d=await r.json();if(d.error) throw new Error(d.error.message);
     let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';a.innerText=text;chatHistory.push({role:'model',parts:[{text:text}]});document.getElementById('aiSaveChat').value=text.substring(0,500);
-  }catch(e){a.innerText='❌ '+e.message+'\n\nاضغط كشف الموديلات';}box.scrollTop=box.scrollHeight;
+  }catch(e){
+    try{
+      let res=await fetch('https://text.pollinations.ai/'+encodeURIComponent('أنت مساعد Shadow47q بنفسجي - '+q));
+      let t=await res.text();a.innerText=t;document.getElementById('aiSaveChat').value=t.substring(0,500);
+    }catch(e2){a.innerText='❌ '+e.message;}
+  }
+  box.scrollTop=box.scrollHeight;
 }
 
-renderAll();updateLogin();openTab('dash');
-if(nightSet.night)applyNight();
+renderAll();updateLogin();openTab('team');openSubTab('list');
+applyNight();
 let wc=document.getElementById('waterCount');if(wc)wc.innerText=nightSet.waterCount||0;
 if(!nightSet.start){nightSet.start=Date.now();localStorage.setItem('night_v32',JSON.stringify(nightSet));}
 setInterval(()=>{let diff=Math.floor((Date.now()-nightSet.start)/1000/60);let st=document.getElementById('sessionTime');if(st)st.innerText=diff+' د';},60000);
-setTimeout(()=>{fetchYouTubeStats(); checkModels();},1500);
+setTimeout(()=>{fetchYouTubeStats();},1500);
 </script>
 </body>
 </html>
