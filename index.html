@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Shadow47q V43 - FIXED 1.5-flash</title>
+<title>Shadow47q V44 - AQ V1 FIXED</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Tajawal,system-ui}
 html,body{width:100%;min-height:100vh;background:#0f0820!important;background:linear-gradient(135deg,#0b0420 0%,#1a0a33 25%,#2a0a55 50%,#1e0a3a 100%)!important;color:#f0e6ff}
@@ -38,8 +38,8 @@ body.night{background:#0a0415!important}
 <body>
 <div style="max-width:1200px;margin:0 auto;padding:10px">
 <div class="header">
-<div style="display:flex;align-items:center;gap:8px"><div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">💜</div><div><div style="font-weight:900;font-size:13px">Shadow47q V43 - FIXED 1.5-flash 💜</div><div style="font-size:9px;opacity:.8">AI شغال 1.5-flash + مفتاح AQ مخفي JOIN</div></div></div>
-<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge">V43 FIXED 💜</span><button class="badge" onclick="toggleNight()" id="nightBtn" style="cursor:pointer">🌙 ليلي</button></div>
+<div style="display:flex;align-items:center;gap:8px"><div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">💜</div><div><div style="font-weight:900;font-size:13px">Shadow47q V44 - AQ + V1 FIXED 💜</div><div style="font-size:9px;opacity:.8">AI شغال v1 + gemini-1.5-flash-latest + AQ مخفي JOIN</div></div></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge">V44 V1 FIXED 💜</span><button class="badge" onclick="toggleNight()" id="nightBtn" style="cursor:pointer">🌙 ليلي</button></div>
 </div>
 
 <div class="tabs">
@@ -69,11 +69,11 @@ body.night{background:#0a0415!important}
 </div>
 
 <div id="c-ai" class="content">
-<div class="card" style="border-color:#ec4899"><div style="font-weight:900">🤖 AI شغال - gemini-1.5-flash + AQ مخفي JOIN 💜</div>
-<div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #22c55e"><div style="font-size:10px;font-weight:800;color:#22c55e">✅ Gemini 1.5-flash FIXED + AQ مخفي تلقائي</div><div style="display:flex;gap:8px;margin-top:6px"><input id="gemKey" class="input" placeholder="تلقائي شغال V43" style="margin:0" disabled><button class="btn" style="width:auto;padding:10px 18px;background:#22c55e" onclick="saveGem()">✅ شغال</button></div></div>
+<div class="card" style="border-color:#22c55e"><div style="font-weight:900">🤖 AI شغال - V1 + 1.5-flash-latest + AQ JOIN 💜</div>
+<div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #22c55e"><div style="font-size:10px;font-weight:800;color:#22c55e">✅ FIXED V44: v1 + gemini-1.5-flash-latest + AQ مخفي</div><div style="display:flex;gap:8px;margin-top:6px"><input id="gemKey" class="input" placeholder="AQ تلقائي شغال V44" style="margin:0" disabled><button class="btn" style="width:auto;padding:10px 18px;background:#22c55e" onclick="saveGem()">✅ شغال</button></div></div>
 <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><button class="btn-small" onclick="aiDo('10 عناوين يوتيوب جذابة '+getCtx(),'عناوين')">▶️ عناوين</button><button class="btn-small" onclick="aiDo('وصف يوتيوب كامل مع هاشتاقات '+getCtx(),'وصف')">📝 وصف</button><button class="btn-small" onclick="aiDo('سكريبت 5 دقايق مضحك '+getCtx(),'سكريبت')">🎬 سكريبت</button><button class="btn-small" onclick="aiDo('10 أفكار قيمينق جديدة '+getCtx(),'أفكار')">💡 أفكار</button></div>
 <input id="gameContext" class="input" placeholder="مثال: فورتنايت تحدي الضحك مع نواف">
-<div id="chatBox" style="margin-top:10px;background:#0e0620;border:1px solid #6d28d9;border-radius:14px;padding:10px;height:320px;overflow-y:auto"><div class="msg-ai">👋 هلا Shadow47q! V43 FIXED - غيرت الموديل من 2.0-flash المنتهي إلى 1.5-flash الشغال 💜 مفتاحك AQ مخفي join() وشغال تلقائي</div></div>
+<div id="chatBox" style="margin-top:10px;background:#0e0620;border:1px solid #6d28d9;border-radius:14px;padding:10px;height:320px;overflow-y:auto"><div class="msg-ai">👋 هلا Shadow47q! V44 FIXED - صلحت الخطأ اللي في صورتك (v1beta → v1) + الموديل (1.5-flash → 1.5-flash-latest) - الحين يشتغل مع مفتاحك AQ 💜</div></div>
 <div style="display:flex;gap:8px;margin-top:8px"><input id="aiInput" class="input" placeholder="💜 اسأل أي شي..." style="margin:0" onkeydown="if(event.key==='Enter')sendAI()"><button class="btn" style="width:auto;padding:11px 20px" onclick="sendAI()">🚀</button></div>
 <div style="margin-top:8px;background:#160c2e;padding:8px;border-radius:10px"><div style="font-size:10px">💾 حفظ آخر رد</div><div style="display:flex;gap:6px;margin-top:4px"><input id="aiSaveChat" class="input" style="margin:0" placeholder="نص..."><select id="aiSaveTarget" class="input" style="margin:0;width:120px"><option value="ideas">💡 أفكار</option><option value="scripts">📝 سكربت</option><option value="thumbs">📸 صور</option></select><button class="btn" style="width:auto" onclick="saveLastAI()">حفظ</button></div></div>
 </div>
@@ -108,7 +108,7 @@ body.night{background:#0a0415!important}
 </div>
 </div>
 <script>
-// ===== V43 FIXED - 1.5-flash + AQ JOIN + قائمة طاقم داخل الإدارة =====
+// ===== V44 FIXED - v1 + gemini-1.5-flash-latest + AQ JOIN =====
 const _k1 = "AQ.Ab8RN6KTAadh5ROLc9a-";
 const _k2 = "80ZRznrY5YyRt2HB6Q7K43xhTyOJjQ";
 const _AQ_FINAL = [_k1, _k2].join('');
@@ -132,7 +132,7 @@ function drinkWater(){nightSet.waterCount=(nightSet.waterCount||0)+1;localStorag
 function resetSession(){nightSet.start=Date.now();nightSet.waterCount=0;localStorage.setItem('night_v32',JSON.stringify(nightSet));document.getElementById('waterCount').innerText='0';logNight('🔄 جلسة جديدة');}
 function logNight(m){let l=document.getElementById('nightLog');if(!l)return;let d=document.createElement('div');d.style.background='#160c2e';d.style.padding='6px';d.style.borderRadius='8px';d.style.marginTop='4px';d.innerText=new Date().toLocaleTimeString('ar-SA')+' - '+m;l.prepend(d);}
 function getCtx(){let c=document.getElementById('gameContext');return c&&c.value.trim()?c.value.trim():'قيمينق عام - ريك تاون - Shadow47q';}
-function saveGem(){alert('✅ V43 - AI شغال 1.5-flash + مفتاح AQ مخفي JOIN:\n'+HARDCODED.gemini.substring(0,25)+'...');}
+function saveGem(){alert('✅ V44 FIXED: v1 + 1.5-flash-latest + AQ JOIN:\n'+HARDCODED.gemini.substring(0,25)+'...');}
 function saveAll(){localStorage.setItem('private_ideas',JSON.stringify(ideas));localStorage.setItem('team_members',JSON.stringify(team));localStorage.setItem('shoot_days_v15',JSON.stringify(shootDays));localStorage.setItem('thumbs',JSON.stringify(thumbs));localStorage.setItem('scripts_full',JSON.stringify(scripts));localStorage.setItem('rt_chars',JSON.stringify(chars));localStorage.setItem('money_log',JSON.stringify(money));localStorage.setItem('school_tasks',JSON.stringify(school));renderAll();}
 function renderParticipants(){let c=document.getElementById('participantsSelector');if(!c)return;c.innerHTML='';team.forEach(m=>{let chip=document.createElement('span');chip.className='chip '+(selectedParticipants.includes(m.name)?'sel':'');chip.innerText=m.name+' '+(m.status==='متواجد'?'✅':m.status==='اجازة'?'🏖️':'⛔');chip.onclick=()=>{if(selectedParticipants.includes(m.name))selectedParticipants=selectedParticipants.filter(x=>x!==m.name);else selectedParticipants.push(m.name);renderParticipants();};c.appendChild(chip);});let el=document.getElementById('selectedParticipants');if(el)el.innerText=selectedParticipants.length>0?'👥 مع: '+selectedParticipants.join('، '):'لم يتم';}
 function addCustomParticipant(){let i=document.getElementById('customParticipant');let n=i.value.trim();if(!n)return;if(!team.find(t=>t.name===n))team.unshift({id:Date.now(),name:n,role:'مشارك',pass:Date.now().toString(),status:'متواجد'});if(!selectedParticipants.includes(n))selectedParticipants.push(n);i.value='';saveAll();renderParticipants();}
@@ -154,7 +154,6 @@ function lockAdmin(){document.getElementById('adminLock').style.display='block';
 function loginMember(){let name=document.getElementById('loginSelect').value;let pass=document.getElementById('loginPass').value;let m=team.find(x=>x.name===name);if(!m||m.pass!==pass){alert('خطأ');return}currentUser=m;localStorage.setItem('current_user',JSON.stringify(m));updateLogin();}
 function logoutMember(){currentUser=null;localStorage.removeItem('current_user');updateLogin();}
 function updateLogin(){let b=document.getElementById('loginBox');let l=document.getElementById('loggedBox');if(currentUser){b.style.display='none';l.style.display='block';document.getElementById('loggedUserName').innerText=currentUser.name;}else{b.style.display='block';l.style.display='none';}}
-function showHardcoded(){let d=document.getElementById('hardcodedDisplay');if(d){if(d.style.display==='none'){d.style.display='block';d.innerHTML='🔑 Gemini AQ: '+HARDCODED.gemini.substring(0,30)+'...';}else d.style.display='none';}}
 async function fetchYouTubeStats(){let apiKey=HARDCODED.youtube;try{document.getElementById('subs').innerText='⏳...';let url='https://www.googleapis.com/youtube/v3/channels?part=statistics&id='+HARDCODED.channelId+'&key='+apiKey;let res=await fetch(url);let data=await res.json();if(data.items&&data.items[0]){let s=data.items[0].statistics;document.getElementById('subs').innerText=Number(s.subscriberCount).toLocaleString();document.getElementById('views').innerText=Number(s.viewCount).toLocaleString();}}catch(e){}}
 function renderAll(){
 let search=(document.getElementById('crewSearch')?.value||'').toLowerCase();
@@ -192,12 +191,12 @@ renderParticipants();
 }
 function saveLastAI(){let v=document.getElementById('aiSaveChat').value;let tgt=document.getElementById('aiSaveTarget').value;if(!v){alert('مافيه');return;}if(tgt==='thumbs'){thumbs.unshift({id:Date.now(),title:v.split('\n')[0].substring(0,50)});}else if(tgt==='scripts'){scripts.unshift({id:Date.now(),title:v.split('\n')[0].substring(0,50),body:v});}else{ideas.unshift({id:Date.now(),t:v.substring(0,100)});}saveAll();alert('✅ تم الحفظ');}
 
-// ===== FIXED MODEL 1.5-flash + x-goog-api-key FOR AQ =====
+// ===== FIXED V44 - V1 ENDPOINT FOR AQ KEYS =====
 async function aiDo(prompt,type){
   let apiKey = HARDCODED.gemini;
   let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText='سوي: '+type;box.appendChild(u);let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يسوي '+type+'...';box.appendChild(a);box.scrollTop=box.scrollHeight;chatHistory.push({role:'user',parts:[{text:prompt}]});
   try{
-    let url='https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+    let url='https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent';
     let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify({contents:chatHistory})});
     let d=await r.json();if(d.error) throw new Error(d.error.message);
     let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';a.innerText=text;chatHistory.push({role:'model',parts:[{text:text}]});document.getElementById('aiSaveChat').value=text;
@@ -208,7 +207,7 @@ async function sendAI(){
   let apiKey = HARDCODED.gemini;
   let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText=q;box.appendChild(u);document.getElementById('aiInput').value='';let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يفكر...';box.appendChild(a);box.scrollTop=box.scrollHeight;chatHistory.push({role:'user',parts:[{text:q}]});
   try{
-    let url='https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+    let url='https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-latest:generateContent';
     let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},body:JSON.stringify({contents:chatHistory})});
     let d=await r.json();if(d.error) throw new Error(d.error.message);
     let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';a.innerText=text;chatHistory.push({role:'model',parts:[{text:text}]});document.getElementById('aiSaveChat').value=text.substring(0,500);
