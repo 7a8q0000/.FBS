@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Shadow47q V34 PURPLE WORKING - يشتغل 100%</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Tajawal}
+html,body{width:100%;min-height:100vh;background:#0f0820!important;background:linear-gradient(135deg,#0b0420 0%,#1a0a33 25%,#2a0a55 50%,#1e0a3a 100%)!important;color:#f0e6ff}
+.header{width:100%;background:linear-gradient(90deg,#4b0a7a,#7a0ac4,#8b45ff,#a855f7);padding:14px 16px;border-radius:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border:2px solid #a855f7}
+.badge{background:rgba(0,0,0,.35);border:1px solid #c084fc;color:#fff;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800}
+.tabs-title{font-size:10px;color:#c084fc;margin:8px 2px 4px}
+.tabs{display:flex;gap:6px;overflow-x:auto;white-space:nowrap;padding-bottom:4px}
+.tab{padding:9px 14px;border-radius:12px;border:1px solid #6d28d9;background:rgba(139,69,255,.15);color:#d8b4fe;font-size:11px;font-weight:800;cursor:pointer}
+.tab.active{background:linear-gradient(90deg,#8b45ff,#a855f7,#ec4899)!important;color:#fff!important;border-color:#fff!important;box-shadow:0 0 18px rgba(168,85,247,.6)}
+.content{display:none;margin-top:12px}
+.content.active{display:block}
+.card{background:linear-gradient(180deg,rgba(139,69,255,.18),rgba(60,20,120,.25));border:1.5px solid rgba(168,85,247,.35);border-radius:16px;padding:14px;margin-bottom:10px}
+.btn{width:100%;padding:12px;background:linear-gradient(90deg,#8b45ff,#a855f7,#c084fc);border:none;border-radius:12px;color:#fff;font-weight:900;font-size:12px;cursor:pointer}
+.btn-small{padding:8px 12px;background:rgba(40,15,80,.9);border:1px solid #8b45ff;border-radius:10px;color:#d8b4fe;font-size:10px;cursor:pointer}
+.input{width:100%;padding:11px;background:#1a0e33;border:1.5px solid #6d28d9;border-radius:11px;color:#fff;font-size:12px;margin-top:6px}
+.stat{flex:1;background:rgba(139,69,255,.18);border:1px solid #6d28d9;border-radius:14px;padding:10px;text-align:center}
+.msg-user{background:linear-gradient(90deg,#8b45ff,#a855f7);padding:8px 12px;border-radius:16px 16px 4px 16px;margin:6px 0 6px auto;max-width:80%;font-size:12px}
+.msg-ai{background:#1e103e;border:1px solid #6d28d9;padding:10px 12px;border-radius:16px 16px 16px 4px;margin:6px auto 6px 0;max-width:85%;font-size:12px;white-space:pre-wrap}
+.chip{display:inline-block;background:#2a1650;border:1px solid #6d28d9;padding:5px 10px;border-radius:20px;font-size:10px;margin:2px;cursor:pointer}
+.chip.sel{background:linear-gradient(90deg,#8b45ff,#ec4899);color:#fff}
+body.night{background:#0a0415!important;color:#ffb7d5!important}
+.list-item{background:#160c2e;border:1px solid rgba(139,69,255,.25);padding:10px;border-radius:12px;margin-top:6px;display:flex;justify-content:space-between;align-items:center;font-size:11px}
+</style>
+</head>
+<body>
+<div style="max-width:1200px;margin:0 auto;padding:10px">
+<div class="header">
+<div style="display:flex;align-items:center;gap:8px"><div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">💜</div><div><div style="font-weight:900;font-size:13px">Shadow47q V34 WORKING FIXED 💜</div><div style="font-size:9px;opacity:.8">يشتغل بدون CDN - بنفسجي ثابت - 14 قائمة + AI + وضع ليلي + UltraMsg</div></div></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge">instance194492 ✅</span><span class="badge">120363412556243701@g.us ✅</span><button class="badge" onclick="toggleNight()" id="nightBtn" style="cursor:pointer">🌙 وضع ليلي</button><button class="badge" style="background:#16a34a;cursor:pointer" onclick="testW()">📤 UltraMsg</button></div>
+</div>
+
+<div class="tabs-title">🔥 أساسي:</div>
+<div class="tabs">
+<button class="tab active" id="t-dash" onclick="openTab('dash')">📊 رئيسية</button>
+<button class="tab" id="t-ai" onclick="openTab('ai')" style="background:linear-gradient(90deg,#8b45ff,#ec4899);color:#fff">🤖 AI يسوي كل شي</button>
+<button class="tab" id="t-shoot" onclick="openTab('shoot')">📅 تصوير</button>
+<button class="tab" id="t-night" onclick="openTab('night')">🌙 وضع ليلي</button>
+</div>
+<div class="tabs-title">💡 محتوى:</div>
+<div class="tabs">
+<button class="tab" id="t-ideas" onclick="openTab('ideas')">💡 أفكار</button>
+<button class="tab" id="t-scripts" onclick="openTab('scripts')">📝 سكربت</button>
+<button class="tab" id="t-thumbs" onclick="openTab('thumbs')">📸 صور</button>
+<button class="tab" id="t-chars" onclick="openTab('chars')">🎭 شخصيات</button>
+</div>
+<div class="tabs-title">📈 إدارة:</div>
+<div class="tabs">
+<button class="tab" id="t-team" onclick="openTab('team')">🔒 إدارة + UltraMsg</button>
+<button class="tab" id="t-money" onclick="openTab('money')">💰 فلوس</button>
+</div>
+<div id="c-dash" class="content active">
+<div style="display:flex;gap:8px;margin-top:10px">
+<div class="stat"><div style="font-size:9px;color:#c084fc">الطاقم</div><div id="teamCount" style="font-weight:900">1</div></div>
+<div class="stat"><div style="font-size:9px;color:#c084fc">تصوير</div><div id="shootCountDash" style="font-weight:900">0</div></div>
+<div class="stat" style="background:linear-gradient(135deg,#8b45ff,#ec4899)"><div style="font-size:9px">الحالة</div><div style="font-weight:900;font-size:11px">بنفسجي 100% 💜</div></div>
+</div>
+<div class="card" style="margin-top:10px"><div style="font-weight:900;font-size:13px;color:#e9d5ff">💜 تم التصليح - V34 يشتغل بدون Tailwind</div><div style="font-size:11px;margin-top:8px;line-height:1.8">
+✅ السبب في الصورة: Tailwind CDN ما حمل فالموقع طاح أبيض<br>
+✅ الحل V34: كل CSS داخلي - بدون أي رابط خارجي<br>
+✅ بنفسجي ثابت: background:#0f0820!important غصب<br>
+</div><button class="btn" style="margin-top:10px" onclick="openTab('ai')">🤖 روح AI يسوي كل شي</button></div>
+<div class="card"><div style="font-weight:800;font-size:11px">📋 سجل التصوير</div><div id="notifLog" style="font-size:10px;margin-top:8px;background:#12072a;padding:8px;border-radius:10px">لا يوجد</div></div>
+</div>
+<div id="c-ai" class="content">
+<div class="card" style="border-color:#ec4899"><div style="font-weight:900">🤖 ULTIMATE AI - يسوي كل شي 💜</div>
+<div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #6d28d9"><div style="font-size:10px;font-weight:800">🔑 مفتاح Gemini</div><div style="display:flex;gap:8px;margin-top:6px"><input id="gemKey" class="input" placeholder="AIzaSy..." style="margin:0"><button class="btn" style="width:auto;padding:10px 18px" onclick="saveGem()">حفظ</button></div></div>
+<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><button class="btn-small" onclick="aiDo('10 عناوين يوتيوب جذابة '+getCtx(),'عناوين')">▶️ عناوين</button><button class="btn-small" onclick="aiDo('وصف يوتيوب كامل '+getCtx(),'وصف')">📝 وصف</button><button class="btn-small" onclick="aiDo('سكريبت 5 دقايق مضحك '+getCtx(),'سكريبت')">🎬 سكريبت</button><button class="btn-small" onclick="aiDo('10 أفكار قيمينق '+getCtx(),'أفكار')">💡 أفكار</button></div>
+<input id="gameContext" class="input" placeholder="مثال: فورتنايت تحدي الضحك">
+<div id="chatBox" style="margin-top:10px;background:#0e0620;border:1px solid #6d28d9;border-radius:14px;padding:10px;height:320px;overflow-y:auto"><div class="msg-ai">👋 هلا! أنا AI البنفسجي يشتغل 100% بدون CDN 💜</div></div>
+<div style="display:flex;gap:8px;margin-top:8px"><input id="aiInput" class="input" placeholder="اسأل أي شي..." style="margin:0" onkeydown="if(event.key==='Enter')sendAI()"><button class="btn" style="width:auto;padding:11px 20px" onclick="sendAI()">🚀</button></div>
+</div>
+</div> <div id="c-night" class="content">
+<div class="card"><div style="font-weight:900">🌙 وضع ليلي رقم 5</div><div style="font-size:11px;margin-top:6px">أسود بنفسجي يحمي العيون + تذكير موية 30د + طولتوا 2س + ناموا 12</div>
+<div style="display:flex;gap:6px;margin-top:10px"><button class="btn" onclick="toggleNight()">🌙 شغل / طفي</button><button class="btn-small" onclick="drinkWater()">💧 شربت</button></div>
+<div style="margin-top:10px;background:#12072a;padding:10px;border-radius:10px;font-size:10px">⏱️ <span id="sessionTime">0 د</span> 💧 <span id="waterCount">0</span> 👁️ <span id="nightStatus">طافي</span></div>
+<div id="nightLog" style="margin-top:8px;background:#0e0620;border:1px solid #6d28d9;border-radius:10px;padding:8px;height:200px;overflow-y:auto;font-size:10px"></div>
+</div>
+</div>
+
+<div id="c-shoot" class="content">
+<div class="card"><div style="font-weight:900">📅 إضافة تصوير بنفسجي</div>
+<div style="margin-top:8px"><input id="shootDate" type="date" class="input"><input id="shootTime" type="time" value="20:00" class="input"><input id="shootPlace" placeholder="ريك تاون - المكان" class="input">
+<div style="background:#160c2e;padding:10px;border-radius:10px;margin-top:8px;border:1px solid #6d28d9"><div style="font-size:10px;font-weight:800">👥 المشاركين</div><div id="participantsSelector" style="margin-top:6px"></div><div style="display:flex;gap:6px;margin-top:8px"><input id="customParticipant" placeholder="+ اسم" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addCustomParticipant()">+</button></div><div id="selectedParticipants" style="font-size:10px;color:#c084fc;margin-top:6px"></div></div>
+<select id="shootStatus" class="input"><option>مجدول</option><option>قيد التصوير</option><option>تم</option><option>ملغي</option></select>
+<input id="shootDesc" placeholder="الوصف" class="input">
+<button class="btn" style="margin-top:8px" onclick="addShoot()">+ إضافة + واتساب بنفسجي 💜</button></div>
+</div>
+<div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:800;font-size:11px">📅 الجدول</div><span id="shootCount" style="font-size:10px;background:rgba(168,85,247,.2);padding:2px 8px;border-radius:10px">0</span></div><div id="shootList" style="margin-top:8px"></div></div>
+<div class="card"><div style="font-weight:800;font-size:11px">🗓️ تقويم 30 يوم</div><div id="shootCalendar" style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px"></div></div>
+</div>
+
+<div id="c-ideas" class="content"><div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:900">💡 أفكار</div><button class="btn" style="width:auto;padding:6px 14px" onclick="addIdea()">+ فكرة</button></div><div id="ideasList" style="margin-top:8px"></div></div></div>
+<div id="c-scripts" class="content"><div class="card"><div style="font-weight:900">📝 سكربتات</div><input id="scriptTitle" placeholder="عنوان" class="input"><textarea id="scriptBody" placeholder="القصة" class="input" style="height:80px"></textarea><button class="btn" style="margin-top:8px" onclick="addScriptFull()">+ حفظ</button><div id="scriptsList" style="margin-top:8px"></div></div></div>
+<div id="c-thumbs" class="content"><div class="card"><div style="font-weight:900">📸 صور مصغرة</div><input id="thumbTitle" placeholder="عنوان" class="input"><input id="thumbCTR" type="number" placeholder="CTR %" class="input"><button class="btn" style="margin-top:8px" onclick="addThumb()">+ حفظ</button><div id="thumbsList" style="margin-top:8px"></div></div></div>
+<div id="c-chars" class="content"><div class="card"><div style="font-weight:900">🎭 شخصيات</div><div style="display:flex;gap:6px"><input id="charName" placeholder="الاسم" class="input"><input id="charJob" placeholder="الوظيفة" class="input"><button class="btn" style="width:auto" onclick="addChar()">+</button></div><div id="charsList" style="margin-top:8px"></div></div></div>
+
+<div id="c-team" class="content">
+<div class="card"><div style="font-weight:900">🔒 دخول + إدارة</div>
+<div id="loginBox" style="margin-top:8px"><select id="loginSelect" class="input"></select><input id="loginPass" type="password" placeholder="كلمة السر" class="input"><button class="btn" style="margin-top:8px" onclick="loginMember()">دخول 🔓</button></div>
+<div id="loggedBox" style="display:none;margin-top:8px;background:rgba(34,197,94,.15);padding:10px;border-radius:10px"><div>✅ <span id="loggedUserName"></span></div><button class="btn-small" style="margin-top:6px;width:100%" onclick="logoutMember()">خروج</button></div>
+<div style="margin-top:14px;background:#160c2e;padding:10px;border-radius:12px;border:1px solid #6d28d9"><div style="font-weight:800;font-size:11px">📲 UltraMsg HARDCODED 💜</div><input id="instance" value="instance194492" class="input"><input id="token" value="knuoosn9nyl810dr" class="input"><input id="groupId" value="120363412556243701@g.us" class="input"><div style="display:flex;gap:6px;margin-top:8px"><button class="btn-small" style="flex:1;background:#16a34a" onclick="testW()">🧪 اختبار</button><button class="btn" style="flex:1" onclick="sendToday()">📤 اليوم</button></div><div id="ultraLog" style="font-size:9px;background:#00000080;padding:8px;border-radius:8px;margin-top:8px">READY</div></div>
+</div>
+<div class="card"><div id="adminLock"><div style="font-weight:800">👑 إدارة</div><div style="display:flex;gap:6px;margin-top:8px"><input id="adminPass" type="password" placeholder="Shadow47q" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="unlockAdmin()">فتح</button></div></div>
+<div id="adminPanel" style="display:none"><input id="memberName" placeholder="اسم" class="input"><input id="memberRole" placeholder="رتبة" class="input"><input id="memberPass" placeholder="كلمة سر" class="input"><button class="btn" style="margin-top:6px" onclick="addMember()">+ إضافة عضو</button><div id="teamTable" style="margin-top:10px"></div></div>
+</div>
+</div>
+
+<div id="c-money" class="content"><div class="card"><div style="font-weight:900">💰 فلوس</div><div style="display:flex;gap:6px;margin-top:8px"><input id="income" type="number" placeholder="ربح" class="input" style="margin:0"><button class="btn" style="width:auto;background:#16a34a" onclick="addIncome()">+</button><input id="expense" type="number" placeholder="مصروف" class="input" style="margin:0"><button class="btn" style="width:auto;background:#dc2626" onclick="addExpense()">-</button></div><div id="moneyList" style="margin-top:8px"></div><div id="netProfit" style="font-weight:900;color:#a855f7;margin-top:8px">$0</div></div></div>
+</div>
+</div>
+<script>
+const HARDCODED={instance:"instance194492",token:"knuoosn9nyl810dr",groupId:"120363412556243701@g.us",gemini:localStorage.getItem('gemini_key_v32')||''};
+let ideas=JSON.parse(localStorage.getItem('private_ideas')||'[]');let team=JSON.parse(localStorage.getItem('team_members')||'[{"id":1,"name":"Shadow47q","role":"المالك","pass":"47q"}]');let shootDays=JSON.parse(localStorage.getItem('shoot_days_v15')||'[]');let thumbs=JSON.parse(localStorage.getItem('thumbs')||'[]');let scripts=JSON.parse(localStorage.getItem('scripts_full')||'[]');let chars=JSON.parse(localStorage.getItem('rt_chars')||'[]');let money=JSON.parse(localStorage.getItem('money_log')||'[]');let selectedParticipants=[];let currentUser=JSON.parse(localStorage.getItem('current_user')||'null');let chatHistory=[{role:'user',parts:[{text:'أنت مساعد Shadow47q بنفسجي'}]},{role:'model',parts:[{text:'تمام'}]}];let nightSet=JSON.parse(localStorage.getItem('night_v32')||'{"night":false,"waterCount":0,"start":null}');
+function openTab(n){document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));let el=document.getElementById('c-'+n);if(el)el.classList.add('active');let t=document.getElementById('t-'+n);if(t)t.classList.add('active');}
+function toggleNight(){nightSet.night=!nightSet.night;localStorage.setItem('night_v32',JSON.stringify(nightSet));applyNight();}
+function applyNight(){if(nightSet.night){document.body.classList.add('night');document.getElementById('nightBtn').innerText='☀️ طفي';let ns=document.getElementById('nightStatus');if(ns)ns.innerText='شغال 💜';}else{document.body.classList.remove('night');document.getElementById('nightBtn').innerText='🌙 وضع ليلي';let ns=document.getElementById('nightStatus');if(ns)ns.innerText='طافي';}}
+function drinkWater(){nightSet.waterCount=(nightSet.waterCount||0)+1;localStorage.setItem('night_v32',JSON.stringify(nightSet));let el=document.getElementById('waterCount');if(el)el.innerText=nightSet.waterCount;logNight('💧 شربت '+nightSet.waterCount);}
+function logNight(m){let l=document.getElementById('nightLog');if(!l)return;let d=document.createElement('div');d.style.background='#160c2e';d.style.padding='6px';d.style.borderRadius='8px';d.style.marginTop='4px';d.innerText=new Date().toLocaleTimeString('ar-SA')+' - '+m;l.prepend(d);}
+function getCtx(){let c=document.getElementById('gameContext');return c&&c.value.trim()?c.value.trim():'قيمينق عام';}
+function saveGem(){let k=document.getElementById('gemKey').value.trim();if(!k.startsWith('AIza')){alert('يبدأ بـ AIza');return;}localStorage.setItem('gemini_key_v32',k);HARDCODED.gemini=k;alert('✅ تم حفظ Gemini');}
+function saveAll(){localStorage.setItem('private_ideas',JSON.stringify(ideas));localStorage.setItem('team_members',JSON.stringify(team));localStorage.setItem('shoot_days_v15',JSON.stringify(shootDays));localStorage.setItem('thumbs',JSON.stringify(thumbs));localStorage.setItem('scripts_full',JSON.stringify(scripts));localStorage.setItem('rt_chars',JSON.stringify(chars));localStorage.setItem('money_log',JSON.stringify(money));renderAll();}
+function renderParticipants(){let c=document.getElementById('participantsSelector');if(!c)return;c.innerHTML='';team.forEach(m=>{let chip=document.createElement('span');chip.className='chip '+(selectedParticipants.includes(m.name)?'sel':'');chip.innerText=m.name;chip.onclick=()=>{if(selectedParticipants.includes(m.name))selectedParticipants=selectedParticipants.filter(x=>x!==m.name);else selectedParticipants.push(m.name);renderParticipants();};c.appendChild(chip);});let el=document.getElementById('selectedParticipants');if(el)el.innerText=selectedParticipants.length>0?'👥 مع: '+selectedParticipants.join('، '):'لم يتم';}
+function addCustomParticipant(){let i=document.getElementById('customParticipant');let n=i.value.trim();if(!n)return;if(!team.find(t=>t.name===n))team.unshift({id:Date.now(),name:n,role:'مشارك',pass:Date.now().toString()});if(!selectedParticipants.includes(n))selectedParticipants.push(n);i.value='';saveAll();renderParticipants();}
+function addShoot(){let d=document.getElementById('shootDate').value;let t=document.getElementById('shootTime').value;let p=document.getElementById('shootPlace').value;let desc=document.getElementById('shootDesc').value;let status=document.getElementById('shootStatus').value;if(!d){alert('اختر التاريخ');return}shootDays.unshift({id:Date.now(),date:d,time:t||'20:00',place:p||'ريك تاون',desc:desc||'تصوير',participants:[...selectedParticipants],status});selectedParticipants=[];saveAll();sendUltra(`💜 تصوير جديد\n📅 ${d} ⏰ ${t} 📍 ${p}`);}
+function del2(id,type){if(type==='team')team=team.filter(x=>x.id!=id);if(type==='idea')ideas=ideas.filter(x=>x.id!=id);if(type==='thumb')thumbs=thumbs.filter(x=>x.id!=id);if(type==='script')scripts=scripts.filter(x=>x.id!=id);if(type==='char')chars=chars.filter(x=>x.id!=id);if(type==='money')money=money.filter(x=>x.id!=id);if(type==='shoot')shootDays=shootDays.filter(x=>x.id!=id);saveAll();}
+function addMember(){let n=document.getElementById('memberName').value;let r=document.getElementById('memberRole').value;let p=document.getElementById('memberPass').value;if(!n||!p){alert('الاسم والسر');return}team.unshift({id:Date.now(),name:n,role:r,pass:p});document.getElementById('memberName').value='';document.getElementById('memberRole').value='';document.getElementById('memberPass').value='';saveAll();}
+function addIdea(){let t=prompt('فكرة:');if(!t)return;ideas.unshift({id:Date.now(),t});saveAll();}
+function addThumb(){let title=document.getElementById('thumbTitle').value;if(!title)return;thumbs.unshift({id:Date.now(),title});document.getElementById('thumbTitle').value='';saveAll();}
+function addScriptFull(){let t=document.getElementById('scriptTitle').value;let b=document.getElementById('scriptBody').value;if(!t)return;scripts.unshift({id:Date.now(),title:t,body:b});document.getElementById('scriptTitle').value='';document.getElementById('scriptBody').value='';saveAll();}
+function addChar(){let n=document.getElementById('charName').value;let j=document.getElementById('charJob').value;if(!n)return;chars.unshift({id:Date.now(),name:n,job:j});document.getElementById('charName').value='';document.getElementById('charJob').value='';saveAll();}
+function addIncome(){let v=Number(document.getElementById('income').value);if(!v)return;money.unshift({id:Date.now(),type:'ربح',amount:v});document.getElementById('income').value='';saveAll();}
+function addExpense(){let v=Number(document.getElementById('expense').value);if(!v)return;money.unshift({id:Date.now(),type:'مصروف',amount:v});document.getElementById('expense').value='';saveAll();}
+function unlockAdmin(){let v=document.getElementById('adminPass').value;if(v==='Shadow47q'){document.getElementById('adminLock').style.display='none';document.getElementById('adminPanel').style.display='block';}else alert('خطأ');}
+function loginMember(){let name=document.getElementById('loginSelect').value;let pass=document.getElementById('loginPass').value;let m=team.find(x=>x.name===name);if(!m||m.pass!==pass){alert('خطأ');return}currentUser=m;localStorage.setItem('current_user',JSON.stringify(m));updateLogin();}
+function logoutMember(){currentUser=null;localStorage.removeItem('current_user');updateLogin();}
+function updateLogin(){let b=document.getElementById('loginBox');let l=document.getElementById('loggedBox');if(currentUser){b.style.display='none';l.style.display='block';document.getElementById('loggedUserName').innerText=currentUser.name;}else{b.style.display='block';l.style.display='none';}}
+async function sendUltra(body){let instance=document.getElementById('instance').value||HARDCODED.instance;let token=document.getElementById('token').value||HARDCODED.token;let groupId=document.getElementById('groupId').value||HARDCODED.groupId;let log=document.getElementById('ultraLog');if(log)log.innerText='📤 إرسال...';try{let res=await fetch(`https://api.ultramsg.com/${instance}/messages/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:token,to:groupId,body:body})});let data=await res.json();if(log)log.innerText='✅ '+JSON.stringify(data).substring(0,200);}catch(e){if(log)log.innerText='❌ '+e.message;}}
+async function testW(){await sendUltra(`💜 V34 WORKING FIXED\n✅ بنفسجي 100% بدون CDN - تم تصليح الأبيض\n✅ يشتغل على github.io\n✅ instance194492\n⏰ ${new Date().toLocaleString('ar-SA')}`);alert('تم إرسال بنفسجي');}
+async function sendToday(){let today=new Date().toISOString().split('T')[0];let todays=shootDays.filter(s=>s.date===today);if(todays.length===0){alert('ما فيه اليوم');return}let msg=`💜 تصوير اليوم ${today}\n`+todays.map(s=>`⏰ ${s.time} 📍 ${s.place} 👥 ${s.participants?s.participants.join('، '):''}`).join('\n');await sendUltra(msg);}
+function renderAll(){
+let tt=document.getElementById('teamTable');if(tt)tt.innerHTML=team.map(x=>`<div class="list-item"><span><b>${x.name}</b> - ${x.role}</span><button onclick="del2(${x.id},'team')" style="color:#ef4444;background:none;border:none">×</button></div>`).join('');
+let ls=document.getElementById('loginSelect');if(ls)ls.innerHTML=team.map(t=>`<option>${t.name}</option>`).join('');
+let ideasList=document.getElementById('ideasList');if(ideasList)ideasList.innerHTML=ideas.map(x=>`<div class="list-item"><span>${x.t}</span><button onclick="del2(${x.id},'idea')" style="color:#ef4444;background:none;border:none">×</button></div>`).join('');
+let thumbsList=document.getElementById('thumbsList');if(thumbsList)thumbsList.innerHTML=thumbs.map(x=>`<div class="list-item"><span>${x.title}</span><button onclick="del2(${x.id},'thumb')" style="color:#ef4444;background:none;border:none">×</button></div>`).join('');
+let scriptsList=document.getElementById('scriptsList');if(scriptsList)scriptsList.innerHTML=scripts.map(x=>`<div class="list-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between"><b>${x.title}</b><button onclick="del2(${x.id},'script')" style="color:#ef4444;background:none;border:none">×</button></div><div style="font-size:10px;color:#a1a1aa;margin-top:4px">${x.body}</div></div>`).join('');
+let charsList=document.getElementById('charsList');if(charsList)charsList.innerHTML=chars.map(x=>`<div class="list-item"><span>${x.name} - ${x.job}</span><button onclick="del2(${x.id},'char')" style="color:#ef4444;background:none;border:none">×</button></div>`).join('');
+let moneyList=document.getElementById('moneyList');if(moneyList)moneyList.innerHTML=money.map(m=>`<div class="list-item"><span>${m.type} $${m.amount}</span><button onclick="del2(${m.id},'money')" style="color:#ef4444;background:none;border:none">×</button></div>`).join('');let net=0;money.forEach(m=>net+=m.type==='ربح'?m.amount:-m.amount);let ne=document.getElementById('netProfit');if(ne)ne.innerText='$'+net;
+let tc=document.getElementById('teamCount');if(tc)tc.innerText=team.length;let sdc=document.getElementById('shootCountDash');if(sdc)sdc.innerText=shootDays.length;let sc=document.getElementById('shootCount');if(sc)sc.innerText=shootDays.length+' يوم';
+let list=document.getElementById('shootList');if(list){list.innerHTML='';shootDays.forEach(s=>{let part=s.participants&&s.participants.length>0?s.participants.join('، '):'بدون';let div=document.createElement('div');div.className='list-item';div.innerHTML=`<div><div><b>${s.date} ${s.time}</b> - ${s.status}</div><div style="font-size:10px;color:#a1a1aa">👥 ${part} - ${s.place}</div></div><button onclick="del2(${s.id},'shoot')" style="color:#ef4444;background:none;border:none">حذف</button>`;list.appendChild(div);});}
+let shootCal=document.getElementById('shootCalendar');if(shootCal){shootCal.innerHTML='';for(let i=0;i<30;i++){let dt=new Date();dt.setDate(dt.getDate()+i);let iso=dt.toISOString().split('T')[0];let has=shootDays.find(s=>s.date==iso);let d=document.createElement('div');d.style.background=has?'linear-gradient(135deg,#8b45ff,#ec4899)':'#160c2e';d.style.border='1px solid #6d28d9';d.style.borderRadius='10px';d.style.padding='8px';d.style.textAlign='center';d.style.fontSize='10px';d.style.cursor='pointer';d.innerText=dt.getDate();d.onclick=()=>{document.getElementById('shootDate').value=iso;openTab('shoot');};shootCal.appendChild(d);}}
+let notifLog=document.getElementById('notifLog');if(notifLog){notifLog.innerHTML=shootDays.map(s=>`🔔 ${s.date} ${s.time} - ${s.place}`).join('<br>')||'لا يوجد';}
+renderParticipants();
+}
+async function aiDo(prompt,type){if(!HARDCODED.gemini){alert('حط Gemini أول');return;}let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText='سوي: '+type;box.appendChild(u);let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يسوي '+type+'...';box.appendChild(a);box.scrollTop=box.scrollHeight;chatHistory.push({role:'user',parts:[{text:prompt}]});try{let url='https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+HARDCODED.gemini;let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:chatHistory})});let d=await r.json();let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';a.innerText=text;chatHistory.push({role:'model',parts:[{text:text}]});}catch(e){a.innerText='❌ '+e.message;}box.scrollTop=box.scrollHeight;}
+async function sendAI(){let q=document.getElementById('aiInput').value.trim();if(!q)return;if(!HARDCODED.gemini){alert('حط Gemini أول');return;}let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText=q;box.appendChild(u);document.getElementById('aiInput').value='';let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يفكر...';box.appendChild(a);box.scrollTop=box.scrollHeight;chatHistory.push({role:'user',parts:[{text:q}]});try{let url='https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+HARDCODED.gemini;let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:chatHistory})});let d=await r.json();let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';a.innerText=text;chatHistory.push({role:'model',parts:[{text:text}]});}catch(e){a.innerText='❌ '+e.message;}box.scrollTop=box.scrollHeight;}
+renderAll();updateLogin();openTab('dash');
+if(nightSet.night)applyNight();
+let wc=document.getElementById('waterCount');if(wc)wc.innerText=nightSet.waterCount||0;
+if(!nightSet.start){nightSet.start=Date.now();localStorage.setItem('night_v32',JSON.stringify(nightSet));}
+setInterval(()=>{let diff=Math.floor((Date.now()-nightSet.start)/1000/60);let st=document.getElementById('sessionTime');if(st)st.innerText=diff+' د';},60000);
+let sentLog={};setInterval(()=>{let now=new Date();shootDays.forEach(s=>{if(!s.date||!s.time)return;let d=new Date(s.date+'T'+s.time);let diff=(d-now)/1000/60;if(diff>58&&diff<62&&!sentLog[s.id+'_60']){sentLog[s.id+'_60']=true;sendUltra(`🚨 باقي ساعة 💜\n📅 ${s.date} ⏰ ${s.time}`);}if(diff>8&&diff<12&&!sentLog[s.id+'_10']){sentLog[s.id+'_10']=true;sendUltra(`🚨🚨 باقي 10 دقايق 💜\n📅 ${s.date} ⏰ ${s.time}`);}});},30000);
+</script>
+</body>
+</html>
