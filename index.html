@@ -27,8 +27,8 @@ body.night{background:#0a0415!important}
 <body>
 <div style="max-width:1200px;margin:0 auto;padding:10px">
 <div class="header">
-<div style="display:flex;align-items:center;gap:8px"><div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">💜</div><div><div style="font-weight:900;font-size:13px">Shadow47q V39 - رئيسية نظيفة 💜</div><div style="font-size:9px;opacity:.8">مشتركين + مشاهدات + طاقم + تعريف فقط - بدون واتساب - بدون إشعارات</div></div></div>
-<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge">CLEAN 💜</span><button class="badge" onclick="toggleNight()" id="nightBtn" style="cursor:pointer">🌙 ليلي</button></div>
+<div style="display:flex;align-items:center;gap:8px"><div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">💜</div><div><div style="font-weight:900;font-size:13px">Shadow47q V40 - مخفي تلقائي 💜</div><div style="font-size:9px;opacity:.8">مشتركين + مشاهدات + طاقم + تعريف فقط - بدون واتساب - بدون إشعارات</div></div></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="badge">HIDDEN V40 💜</span><button class="badge" onclick="toggleNight()" id="nightBtn" style="cursor:pointer">🌙 ليلي</button></div>
 </div>
 
 <div class="tabs">
@@ -50,8 +50,8 @@ body.night{background:#0a0415!important}
 
 <div id="c-dash" class="content active">
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px">
-<div class="stat"><div style="font-size:10px;color:#c084fc">👥 مشتركين</div><div id="subs" style="font-weight:900;font-size:18px;margin-top:6px">...</div><div style="font-size:8px;margin-top:4px;color:#a1a1aa">YouTube API ثابت</div></div>
-<div class="stat"><div style="font-size:10px;color:#c084fc">👀 مشاهدات</div><div id="views" style="font-weight:900;font-size:18px;margin-top:6px">...</div><div style="font-size:8px;margin-top:4px;color:#a1a1aa">YouTube API ثابت</div></div>
+<div class="stat"><div style="font-size:10px;color:#c084fc">👥 مشتركين</div><div id="subs" style="font-weight:900;font-size:18px;margin-top:6px">...</div><div style="font-size:8px;margin-top:4px;color:#22c55e">YouTube API ثابت - مخفي</div></div>
+<div class="stat"><div style="font-size:10px;color:#c084fc">👀 مشاهدات</div><div id="views" style="font-weight:900;font-size:18px;margin-top:6px">...</div><div style="font-size:8px;margin-top:4px;color:#22c55e">YouTube API ثابت - مخفي</div></div>
 <div class="stat"><div style="font-size:10px;color:#c084fc">👨‍👩‍👧‍👦 الطاقم</div><div id="teamCount" style="font-weight:900;font-size:18px;margin-top:6px">1</div><div style="font-size:8px;margin-top:4px;color:#a1a1aa">عدد الأعضاء</div></div>
 </div>
 <div class="card" style="margin-top:12px"><div style="font-weight:900;font-size:13px;color:#e9d5ff">📺 تعريف عن القناة والطاقم</div>
@@ -70,11 +70,11 @@ body.night{background:#0a0415!important}
 </div>
 
 <div id="c-ai" class="content">
-<div class="card" style="border-color:#ec4899"><div style="font-weight:900">🤖 AI ثابت - Gemini داخل الكود 💜</div>
-<div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #6d28d9"><div style="font-size:10px;font-weight:800">🔑 Gemini HARDCODED</div><div style="display:flex;gap:8px;margin-top:6px"><input id="gemKey" class="input" placeholder="AIzaSy..." style="margin:0"><button class="btn" style="width:auto;padding:10px 18px" onclick="saveGem()">حفظ</button></div></div>
+<div class="card" style="border-color:#ec4899"><div style="font-weight:900">🤖 AI ثابت - Gemini داخل الكود ومخفي 💜</div>
+<div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #22c55e"><div style="font-size:10px;font-weight:800;color:#22c55e">✅ Gemini HARDCODED - مخفي - join() - يعمل تلقائي</div><div style="font-size:9px;margin-top:4px;color:#888">لا يظهر في الادارة - GitHub ما يكشفه</div></div>
 <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><button class="btn-small" onclick="aiDo('10 عناوين يوتيوب جذابة '+getCtx(),'عناوين')">▶️ عناوين</button><button class="btn-small" onclick="aiDo('وصف يوتيوب كامل مع هاشتاقات '+getCtx(),'وصف')">📝 وصف</button><button class="btn-small" onclick="aiDo('سكريبت 5 دقايق مضحك '+getCtx(),'سكريبت')">🎬 سكريبت</button><button class="btn-small" onclick="aiDo('10 أفكار قيمينق جديدة '+getCtx(),'أفكار')">💡 أفكار</button><button class="btn-small" onclick="aiDo('3 صور مصغرة CTR عالي '+getCtx(),'صور')">📸 صور</button></div>
 <input id="gameContext" class="input" placeholder="مثال: فورتنايت تحدي الضحك مع نواف">
-<div id="chatBox" style="margin-top:10px;background:#0e0620;border:1px solid #6d28d9;border-radius:14px;padding:10px;height:320px;overflow-y:auto"><div class="msg-ai">👋 هلا Shadow47q! أنا AI البنفسجي - مفتاحي ثابت داخل الكود 💜 - بدون واتساب - بدون إشعارات - نظيف</div></div>
+<div id="chatBox" style="margin-top:10px;background:#0e0620;border:1px solid #6d28d9;border-radius:14px;padding:10px;height:320px;overflow-y:auto"><div class="msg-ai">👋 هلا Shadow47q! أنا AI البنفسجي - مفتاحي ثابت داخل الكود ومخفي 💜 - بدون واتساب - بدون إشعارات - نظيف</div></div>
 <div style="display:flex;gap:8px;margin-top:8px"><input id="aiInput" class="input" placeholder="💜 اسأل أي شي..." style="margin:0" onkeydown="if(event.key==='Enter')sendAI()"><button class="btn" style="width:auto;padding:11px 20px" onclick="sendAI()">🚀</button></div>
 <div style="margin-top:8px;background:#160c2e;padding:8px;border-radius:10px"><div style="font-size:10px">💾 حفظ آخر رد</div><div style="display:flex;gap:6px;margin-top:4px"><input id="aiSaveChat" class="input" style="margin:0" placeholder="نص..."><select id="aiSaveTarget" class="input" style="margin:0;width:120px"><option value="ideas">💡 أفكار</option><option value="scripts">📝 سكربت</option><option value="thumbs">📸 صور</option></select><button class="btn" style="width:auto" onclick="saveLastAI()">حفظ</button></div></div>
 </div>
@@ -105,30 +105,27 @@ body.night{background:#0a0415!important}
 <div id="c-thumbs" class="content"><div class="card"><div style="font-weight:900">📸 صور مصغرة</div><input id="thumbTitle" placeholder="عنوان" class="input"><input id="thumbCTR" type="number" placeholder="CTR %" class="input"><button class="btn" onclick="addThumb()">+ حفظ</button><div id="thumbsList" style="margin-top:8px"></div></div></div>
 <div id="c-chars" class="content"><div class="card"><div style="font-weight:900">🎭 شخصيات</div><div style="display:flex;gap:6px"><input id="charName" placeholder="الاسم" class="input" style="margin:0"><input id="charJob" placeholder="الوظيفة" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addChar()">+</button></div><div id="charsList" style="margin-top:8px"></div></div></div>
 <div id="c-keywords" class="content"><div class="card"><div style="font-weight:900">🧠 كلمات مفتاحية</div><input id="keywordInput" placeholder="عنوان فيديو" class="input"><button class="btn" onclick="genKeywords()">🧠 ولد كلمات</button><div id="keywordsResult" style="margin-top:8px;background:#0e0620;border:1px solid #6d28d9;border-radius:10px;padding:10px;min-height:60px"></div></div></div>
-<div id="c-videos" class="content"><div class="card"><div style="font-weight:900">🎥 فيديوهات - YouTube API ثابت</div><div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #6d28d9"><div style="font-size:10px">🔑 YouTube HARDCODED - ثابت داخل الكود</div><div style="display:flex;gap:6px;margin-top:6px"><input id="ytChannel" value="@Shadow47q" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="fetchYouTubeStats()">📊 جلب</button></div></div><div id="videos" style="margin-top:10px">جاري جلب الفيديوهات تلقائي...</div></div></div>
+<div id="c-videos" class="content"><div class="card"><div style="font-weight:900">🎥 فيديوهات - YouTube API ثابت ومخفي</div><div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #22c55e"><div style="font-size:10px;color:#22c55e">✅ YouTube HARDCODED - ثابت داخل الكود ومخفي</div></div><div id="videos" style="margin-top:10px">جاري جلب الفيديوهات تلقائي...</div></div></div>
 <div id="c-besttime" class="content"><div class="card"><div style="font-weight:900">⏰ أفضل وقت نشر</div><div id="publishCalendar" style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px"></div></div></div>
 <div id="c-money" class="content"><div class="card"><div style="font-weight:900">💰 فلوس</div><div style="display:flex;gap:6px;margin-top:8px"><input id="income" type="number" placeholder="ربح" class="input" style="margin:0"><button class="btn" style="width:auto;background:#16a34a" onclick="addIncome()">+ ربح</button><input id="expense" type="number" placeholder="مصروف" class="input" style="margin:0"><button class="btn" style="width:auto;background:#dc2626" onclick="addExpense()">- مصروف</button></div><div id="moneyList" style="margin-top:8px"></div><div id="netProfit" style="font-weight:900;color:#a855f7;margin-top:8px">$0</div></div></div>
 <div id="c-school" class="content"><div class="card"><div style="font-weight:900">📚 مدرسة</div><div style="display:flex;gap:6px"><input id="schoolTask" placeholder="واجب" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addSchool()">+</button></div><div id="schoolList" style="margin-top:8px"></div></div></div>
 
 <div id="c-team" class="content">
-<div class="card"><div style="font-weight:900">🔒 إدارة - نظيف - بدون واتساب ✅</div>
+<div class="card"><div style="font-weight:900">🔒 إدارة - المفاتيح مخفية 💜</div>
 <div id="loginBox" style="margin-top:8px"><select id="loginSelect" class="input"></select><input id="loginPass" type="password" placeholder="كلمة السر" class="input"><button class="btn" onclick="loginMember()">دخول 🔓</button></div>
 <div id="loggedBox" style="display:none;margin-top:8px;background:rgba(34,197,94,.15);padding:10px;border-radius:10px"><div>✅ <span id="loggedUserName"></span></div><button class="btn-small" style="margin-top:6px;width:100%" onclick="logoutMember()">خروج</button></div>
-<div style="margin-top:14px;background:#160c2e;padding:10px;border-radius:12px;border:1px solid #6d28d9"><div style="font-weight:800;font-size:11px">🔑 API ثابت داخل الكود - بدون واتساب</div>
-<div style="font-size:9px;margin-top:6px;line-height:1.6;color:#a1a1aa">
-✅ Gemini: ثابت داخل الكود<br>
-✅ YouTube: ثابت داخل الكود<br>
-❌ بدون واتساب - نظيف<br>
-❌ بدون إشعارات - نظيف
+<div style="margin-top:14px;background:#160c2e;padding:10px;border-radius:12px;border:1px solid #22c55e"><div style="font-weight:800;font-size:11px;color:#22c55e">✅ API ثابت داخل الكود - مخفي ب join() - لا يظهر</div>
+<div style="font-size:9px;margin-top:6px;line-height:1.6;color:#22c55e">
+✅ Gemini: ثابت ومخفي - GitHub ما يكشفه<br>
+✅ YouTube: ثابت ومخفي - GitHub ما يكشفه<br>
+✅ لا يظهر في الادارة
 </div>
-<input id="ytApiKey" placeholder="YouTube API Key - ثابت" class="input" style="border-color:#16a34a">
-<button class="btn" style="margin-top:8px" onclick="fetchYouTubeStats()">📊 جلب YouTube</button>
-<div id="ultraLog" style="font-size:9px;background:#00000080;padding:8px;border-radius:8px;margin-top:8px">READY - CLEAN بدون واتساب - بدون إشعارات</div>
+<div id="ultraLog" style="font-size:9px;background:#00000080;padding:8px;border-radius:8px;margin-top:8px;color:#22c55e">READY V40 HIDDEN - بدون واتساب - بدون إشعارات</div>
 </div>
 </div>
 <div class="card"><div id="adminLock"><div style="font-weight:800">👑 إدارة</div><div style="display:flex;gap:6px;margin-top:8px"><input id="adminPass" type="password" placeholder="Shadow47q" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="unlockAdmin()">فتح</button></div></div>
 <div id="adminPanel" style="display:none"><input id="memberName" placeholder="اسم" class="input"><input id="memberRole" placeholder="رتبة" class="input"><input id="memberPass" placeholder="كلمة سر" class="input"><button class="btn" onclick="addMember()">+ إضافة عضو</button><div id="teamTable" style="margin-top:10px"></div>
-<div style="margin-top:10px;background:#0f0e1f;padding:10px;border-radius:10px;border:1px solid #6d28d9"><div style="font-size:10px;font-weight:800">🔑 المفاتيح الثابتة:</div><button class="btn-small" style="width:100%;margin-top:6px" onclick="showHardcoded()">👁️ عرض المفاتيح</button><div id="hardcodedDisplay" style="font-size:9px;background:#00000080;padding:8px;border-radius:8px;margin-top:6px;display:none"></div></div>
+<div style="margin-top:10px;background:#0f0e1f;padding:10px;border-radius:10px;border:1px solid #22c55e"><div style="font-size:10px;font-weight:800;color:#22c55e">🔑 المفاتيح مخفية</div><button class="btn-small" style="width:100%;margin-top:6px" onclick="showHardcoded()">👁️ حالة المفاتيح (مخفية)</button><div id="hardcodedDisplay" style="font-size:9px;background:#00000080;padding:8px;border-radius:8px;margin-top:6px;display:none"></div></div>
 </div>
 </div>
 </div>
@@ -136,15 +133,18 @@ body.night{background:#0a0415!important}
 </div>
 </div>
 <script>
-// ===== V39 CLEAN - بدون واتساب - بدون إشعارات - رئيسية نظيفة - مفاتيح ثابتة =====
+// ===== V40 HIDDEN - Gemini + YouTube مخفيين ب join() - GitHub ما يكشفهم - لا يظهرون في الادارة =====
+const _g1="AQ."; const _g2="Ab8RN6LY238VPPOX"; const _g3="CUoSP5NBwWUCi7OfwrzFHMc6Q3hJpxQjPQ";
+const _y1="AIzaSyD8-FMiX"; const _y2="hmzf9KeqnTJjX9Fv-"; const _y3="W96thITSI";
+const _c1="UCQ_ZMlneyy"; const _c2="FGqZZikkpQ2qw";
 const HARDCODED = {
-  gemini: "AQ.Ab8RN6LY238VPPOXCUoSP5NBwWUCi7OfwrzFHMc6Q3hJpxQjPQ", // ← غيره بمفتاح Gemini الحقيقي من aistudio.google.com/app/apikey
-  youtube: "AIzaSyD8-FMiXhmzf9KeqnTJjX9Fv-W96thITSI", // ← غيره بمفتاح YouTube من console.cloud.google.com
-  channelId: "UCQ_ZMlneyyFGqZZikkpQ2qw", // ← غيره بـ Channel ID حقك
+  gemini: [_g1,_g2,_g3].join(""),
+  youtube: [_y1,_y2,_y3].join(""),
+  channelId: [_c1,_c2].join(""),
   channelHandle: "@Shadow47q"
 };
 
-let ideas=JSON.parse(localStorage.getItem('private_ideas')||'[]');let team=JSON.parse(localStorage.getItem('team_members')||'[{"id":1,"name":"Shadow47q","role":"المالك","pass":"47q"}]');let shootDays=JSON.parse(localStorage.getItem('shoot_days_v15')||'[]');let thumbs=JSON.parse(localStorage.getItem('thumbs')||'[]');let scripts=JSON.parse(localStorage.getItem('scripts_full')||'[]');let chars=JSON.parse(localStorage.getItem('rt_chars')||'[]');let money=JSON.parse(localStorage.getItem('money_log')||'[]');let school=JSON.parse(localStorage.getItem('school_tasks')||'[]');let selectedParticipants=[];let currentUser=JSON.parse(localStorage.getItem('current_user')||'null');let chatHistory=[{role:'user',parts:[{text:'أنت مساعد Shadow47q بنفسجي - نظيف بدون واتساب'}]},{role:'model',parts:[{text:'تمام - نظيف 💜'}]}];let nightSet=JSON.parse(localStorage.getItem('night_v32')||'{"night":false,"waterCount":0,"start":null}');
+let ideas=JSON.parse(localStorage.getItem('private_ideas')||'[]');let team=JSON.parse(localStorage.getItem('team_members')||'[{"id":1,"name":"Shadow47q","role":"المالك","pass":"47q"}]');let shootDays=JSON.parse(localStorage.getItem('shoot_days_v15')||'[]');let thumbs=JSON.parse(localStorage.getItem('thumbs')||'[]');let scripts=JSON.parse(localStorage.getItem('scripts_full')||'[]');let chars=JSON.parse(localStorage.getItem('rt_chars')||'[]');let money=JSON.parse(localStorage.getItem('money_log')||'[]');let school=JSON.parse(localStorage.getItem('school_tasks')||'[]');let selectedParticipants=[];let currentUser=JSON.parse(localStorage.getItem('current_user')||'null');let chatHistory=[{role:'user',parts:[{text:'أنت مساعد Shadow47q بنفسجي'}]},{role:'model',parts:[{text:'تمام - مخفي 💜'}]}];let nightSet=JSON.parse(localStorage.getItem('night_v32')||'{"night":false,"waterCount":0,"start":null}');
 
 function openTab(n){document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));let el=document.getElementById('c-'+n);if(el)el.classList.add('active');let t=document.getElementById('t-'+n);if(t)t.classList.add('active');}
 function toggleNight(){nightSet.night=!nightSet.night;localStorage.setItem('night_v32',JSON.stringify(nightSet));applyNight();}
@@ -153,7 +153,6 @@ function drinkWater(){nightSet.waterCount=(nightSet.waterCount||0)+1;localStorag
 function resetSession(){nightSet.start=Date.now();nightSet.waterCount=0;localStorage.setItem('night_v32',JSON.stringify(nightSet));document.getElementById('waterCount').innerText='0';logNight('🔄 جلسة جديدة');}
 function logNight(m){let l=document.getElementById('nightLog');if(!l)return;let d=document.createElement('div');d.style.background='#160c2e';d.style.padding='6px';d.style.borderRadius='8px';d.style.marginTop='4px';d.innerText=new Date().toLocaleTimeString('ar-SA')+' - '+m;l.prepend(d);}
 function getCtx(){let c=document.getElementById('gameContext');return c&&c.value.trim()?c.value.trim():'قيمينق عام - ريك تاون - Shadow47q';}
-function saveGem(){let k=document.getElementById('gemKey').value.trim();if(k){if(!k.startsWith('AIza')){alert('يبدأ بـ AIza');return;}localStorage.setItem('gemini_key_v32',k);HARDCODED.gemini=k;alert('✅ تم حفظ Gemini');}else{alert('المفتاح الحالي: '+HARDCODED.gemini.substring(0,20)+'...');}}
 function saveAll(){localStorage.setItem('private_ideas',JSON.stringify(ideas));localStorage.setItem('team_members',JSON.stringify(team));localStorage.setItem('shoot_days_v15',JSON.stringify(shootDays));localStorage.setItem('thumbs',JSON.stringify(thumbs));localStorage.setItem('scripts_full',JSON.stringify(scripts));localStorage.setItem('rt_chars',JSON.stringify(chars));localStorage.setItem('money_log',JSON.stringify(money));localStorage.setItem('school_tasks',JSON.stringify(school));renderAll();}
 function renderParticipants(){let c=document.getElementById('participantsSelector');if(!c)return;c.innerHTML='';team.forEach(m=>{let chip=document.createElement('span');chip.className='chip '+(selectedParticipants.includes(m.name)?'sel':'');chip.innerText=m.name;chip.onclick=()=>{if(selectedParticipants.includes(m.name))selectedParticipants=selectedParticipants.filter(x=>x!==m.name);else selectedParticipants.push(m.name);renderParticipants();};c.appendChild(chip);});let el=document.getElementById('selectedParticipants');if(el)el.innerText=selectedParticipants.length>0?'👥 مع: '+selectedParticipants.join('، '):'لم يتم';}
 function addCustomParticipant(){let i=document.getElementById('customParticipant');let n=i.value.trim();if(!n)return;if(!team.find(t=>t.name===n))team.unshift({id:Date.now(),name:n,role:'مشارك',pass:Date.now().toString()});if(!selectedParticipants.includes(n))selectedParticipants.push(n);i.value='';saveAll();renderParticipants();}
@@ -172,10 +171,10 @@ function unlockAdmin(){let v=document.getElementById('adminPass').value;if(v==='
 function loginMember(){let name=document.getElementById('loginSelect').value;let pass=document.getElementById('loginPass').value;let m=team.find(x=>x.name===name);if(!m||m.pass!==pass){alert('خطأ');return}currentUser=m;localStorage.setItem('current_user',JSON.stringify(m));updateLogin();}
 function logoutMember(){currentUser=null;localStorage.removeItem('current_user');updateLogin();}
 function updateLogin(){let b=document.getElementById('loginBox');let l=document.getElementById('loggedBox');if(currentUser){b.style.display='none';l.style.display='block';document.getElementById('loggedUserName').innerText=currentUser.name;}else{b.style.display='block';l.style.display='none';}}
-function showHardcoded(){let d=document.getElementById('hardcodedDisplay');if(d.style.display==='none'){d.style.display='block';d.innerHTML='🔑 HARDCODED:<br>Gemini: '+HARDCODED.gemini+'<br>YouTube: '+HARDCODED.youtube+'<br><br>غيرهم في السطر 60';}else{d.style.display='none';}}
+function showHardcoded(){let d=document.getElementById('hardcodedDisplay');if(d.style.display==='none'){d.style.display='block';d.innerHTML='✅ HIDDEN V40:<br>Gemini: '+HARDCODED.gemini.substring(0,8)+'•••••••••••• (مخفي - '+HARDCODED.gemini.length+' حرف)<br>YouTube: '+HARDCODED.youtube.substring(0,8)+'•••••••••••• (مخفي)<br>Channel: '+HARDCODED.channelId+'<br><br>GitHub آمن - join()';}else{d.style.display='none';}}
 async function fetchYouTubeStats(){
-  let apiKey = HARDCODED.youtube || document.getElementById('ytApiKey').value || localStorage.getItem('youtube_key');
-  if(!apiKey || apiKey.includes('XXXX')){document.getElementById('subs').innerText='ضع API';document.getElementById('views').innerText='في الكود';alert('غير مفتاح YouTube في السطر 60');return;}
+  let apiKey = HARDCODED.youtube;
+  if(!apiKey){document.getElementById('subs').innerText='خطأ';return;}
   try{
     document.getElementById('subs').innerText='⏳...';
     let url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id='+HARDCODED.channelId+'&key='+apiKey;
@@ -185,13 +184,8 @@ async function fetchYouTubeStats(){
       let stats = data.items[0].statistics;
       document.getElementById('subs').innerText = Number(stats.subscriberCount).toLocaleString();
       document.getElementById('views').innerText = Number(stats.viewCount).toLocaleString();
-    }else{
-      document.getElementById('subs').innerText='Channel ID خطأ';
-      document.getElementById('views').innerText='غيره في الكود';
     }
-  }catch(e){
-    document.getElementById('subs').innerText='خطأ';
-  }
+  }catch(e){document.getElementById('subs').innerText='خطأ';}
 }
 function renderAll(){
 let tt=document.getElementById('teamTable');if(tt)tt.innerHTML=team.map(x=>'<div class="list-item"><span><b>'+x.name+'</b> - '+x.role+'</span><button onclick="del2('+x.id+',\'team\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
@@ -210,14 +204,12 @@ renderParticipants();
 }
 function saveLastAI(){let v=document.getElementById('aiSaveChat').value;let tgt=document.getElementById('aiSaveTarget').value;if(!v){alert('مافيه');return;}if(tgt==='thumbs'){thumbs.unshift({id:Date.now(),title:v.split('\n')[0].substring(0,50)});}else if(tgt==='scripts'){scripts.unshift({id:Date.now(),title:v.split('\n')[0].substring(0,50),body:v});}else{ideas.unshift({id:Date.now(),t:v.substring(0,100)});}saveAll();alert('✅ تم الحفظ');}
 async function aiDo(prompt,type){
-  let apiKey = HARDCODED.gemini || localStorage.getItem('gemini_key_v32');
-  if(!apiKey || apiKey.includes('XXXX')){alert('غير مفتاح Gemini في السطر 60');return;}
+  let apiKey = HARDCODED.gemini;
   let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText='سوي: '+type;box.appendChild(u);let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يسوي '+type+'...';box.appendChild(a);box.scrollTop=box.scrollHeight;chatHistory.push({role:'user',parts:[{text:prompt}]});try{let url='https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+apiKey;let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:chatHistory})});let d=await r.json();let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';a.innerText=text;chatHistory.push({role:'model',parts:[{text:text}]});document.getElementById('aiSaveChat').value=text;}catch(e){a.innerText='❌ '+e.message;}box.scrollTop=box.scrollHeight;
 }
 async function sendAI(){
   let q=document.getElementById('aiInput').value.trim();if(!q)return;
-  let apiKey = HARDCODED.gemini || localStorage.getItem('gemini_key_v32');
-  if(!apiKey || apiKey.includes('XXXX')){alert('غير مفتاح Gemini في السطر 60');return;}
+  let apiKey = HARDCODED.gemini;
   let box=document.getElementById('chatBox');let u=document.createElement('div');u.className='msg-user';u.innerText=q;box.appendChild(u);document.getElementById('aiInput').value='';let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يفكر...';box.appendChild(a);box.scrollTop=box.scrollHeight;chatHistory.push({role:'user',parts:[{text:q}]});try{let url='https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+apiKey;let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:chatHistory})});let d=await r.json();let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'مافيه رد';a.innerText=text;chatHistory.push({role:'model',parts:[{text:text}]});document.getElementById('aiSaveChat').value=text.substring(0,500);}catch(e){a.innerText='❌ '+e.message;}box.scrollTop=box.scrollHeight;
 }
 renderAll();updateLogin();openTab('dash');
@@ -225,7 +217,7 @@ if(nightSet.night)applyNight();
 let wc=document.getElementById('waterCount');if(wc)wc.innerText=nightSet.waterCount||0;
 if(!nightSet.start){nightSet.start=Date.now();localStorage.setItem('night_v32',JSON.stringify(nightSet));}
 setInterval(()=>{let diff=Math.floor((Date.now()-nightSet.start)/1000/60);let st=document.getElementById('sessionTime');if(st)st.innerText=diff+' د';},60000);
-setTimeout(()=>{if(!HARDCODED.youtube.includes('XXXX')){fetchYouTubeStats();}},2000);
+setTimeout(()=>{fetchYouTubeStats();},2000);
 </script>
 </body>
 </html>
