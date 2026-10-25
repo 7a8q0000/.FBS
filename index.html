@@ -3,551 +3,331 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>SHADOW x WAEL // CREATOR APP</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Shadow47q // Creator App</title>
+<!-- إعدادات التطبيق للشاشات المحمولة -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f0820">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root {
-    --bg-app: #040408;
-    --card-bg: rgba(12, 12, 20, 0.85);
-    --neon-red: #ff003c;
-    --neon-purple: #9146ff;
-    --neon-gold: #ffd700;
-    --text-main: #f3f3f8;
-    --text-muted: #8c8c9e;
-}
-
-* { box-sizing: border-box; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-body { background: var(--bg-app); color: var(--text-main); min-height: 100vh; overflow-x: hidden; padding-bottom: 70px; }
-
-@media(min-width: 768px) { body { padding-bottom: 0; } }
-
-/* تأثيرات الخلفية */
-body::before {
-    content: ''; position: fixed; inset: 0;
-    background-image: radial-gradient(circle at 10% 10%, rgba(255,0,60,0.06) 0%, transparent 40%),
-                      radial-gradient(circle at 90% 90%, rgba(145,70,255,0.06) 0%, transparent 40%);
-    z-index: -2;
-}
-
-/* هيدر التطبيق للكمبيوتر */
-.app-header {
-    display: none; position: sticky; top: 0; z-index: 1000;
-    background: rgba(4, 4, 8, 0.92); backdrop-filter: blur(20px);
-    border-bottom: 2px solid var(--neon-red);
-    padding: 12px 30px; justify-content: space-between; align-items: center;
-}
-@media(min-width: 768px) { .app-header { display: flex; } }
-
-.app-brand { font-family: 'Orbitron'; font-size: 16px; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--neon-red); display:flex; align-items:center; gap:10px; }
-.app-live-dot { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 10px #00ff88; animation: pulse 1s infinite; }
-@keyframes pulse { 50% { opacity: 0.3; } }
-
-/* شريط التنقل السفلي للجوال (Native App Feel) */
-.app-bottom-nav {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(6, 6, 12, 0.95); backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    display: flex; justify-content: space-around; padding: 10px 0;
-}
-.nav-item {
-    background: none; border: none; color: var(--text-muted);
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-    font-size: 10px; cursor: pointer; transition: 0.3s;
-}
-.nav-item i { font-size: 18px; }
-.nav-item.active { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); }
-
-@media(min-width: 768px) {
-    .app-bottom-nav { display: none; }
-    .desktop-nav { display: flex; gap: 8px; }
-}
-
-.desk-tab {
-    background: transparent; border: none; color: var(--text-muted); padding: 8px 16px; border-radius: 10px;
-    font-weight: 700; font-size: 12px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px;
-}
-.desk-tab:hover { color: #fff; background: rgba(255,255,255,0.05); }
-.desk-tab.active { background: linear-gradient(135deg, var(--neon-red), #990024); color: #fff; box-shadow: 0 0 15px rgba(255,0,60,0.4); }
-
-.app-container { max-width: 1300px; margin: 0 auto; padding: 20px; }
-.app-pane { display: none; animation: fadeIn 0.3s ease forwards; }
-.app-pane.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-/* الكاردات */
-.app-card {
-    background: var(--card-bg); backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px;
-    padding: 22px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    margin-bottom: 16px;
-}
-.grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-@media(max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
-
-/* العناصر */
-.app-input { background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 10px; width: 100%; margin-top: 8px; font-size: 13px; outline: none; }
-.app-input:focus { border-color: var(--neon-red); box-shadow: 0 0 10px rgba(255,0,60,0.3); }
-
-.app-btn {
-    background: linear-gradient(135deg, var(--neon-red), #990024); color: #fff; border: none;
-    border-radius: 10px; padding: 12px; width: 100%; font-weight: 800; cursor: pointer; margin-top: 12px;
-    box-shadow: 0 4px 15px rgba(255,0,60,0.4); font-size: 13px; transition: 0.3s;
-}
-.app-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-/* نافذة الدخول */
-#authModalApp { display: none; position: fixed; inset: 0; background: rgba(2,2,6,0.92); z-index: 3000; backdrop-filter: blur(15px); align-items: center; justify-content: center; padding: 20px; }
-.auth-box-app { background: #0c0c14; border: 2px solid var(--neon-purple); border-radius: 24px; padding: 30px; width: 100%; max-width: 360px; text-align: center; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent;}
+html,body{width:100%;min-height:100vh;background:#0f0820;background:linear-gradient(135deg,#0b0420 0%,#1a0a33 25%,#2a0a55 50%,#1e0a3a 100%);color:#f0e6ff;overflow-x:hidden;}
+.header{width:100%;background:linear-gradient(90deg,#4b0a7a,#7a0ac4,#8b45ff,#a855f7);padding:14px 16px;border-radius:0 0 18px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:2px solid #a855f7;position:sticky;top:0;z-index:1000;box-shadow:0 4px 20px rgba(0,0,0,0.5);}
+.badge{background:rgba(0,0,0,.35);border:1px solid #c084fc;color:#fff;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800}
+.tabs{display:flex;gap:6px;overflow-x:auto;white-space:nowrap;padding:10px 10px 6px 10px;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{padding:9px 14px;border-radius:12px;border:1px solid #6d28d9;background:rgba(139,69,255,.15);color:#d8b4fe;font-size:11px;font-weight:800;cursor:pointer;flex-shrink:0;transition:0.3s;}
+.tab.active{background:linear-gradient(90deg,#8b45ff,#a855f7,#ec4899)!important;color:#fff!important;border-color:#fff!important;box-shadow:0 0 18px rgba(168,85,247,.6)}
+.content{display:none;margin-top:12px;padding:0 10px 80px 10px;}.content.active{display:block}
+.card{background:linear-gradient(180deg,rgba(139,69,255,.18),rgba(60,20,120,.25));border:1.5px solid rgba(168,85,247,.35);border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:0 8px 32px rgba(0,0,0,0.3);}
+.btn{width:100%;padding:12px;background:linear-gradient(90deg,#8b45ff,#a855f7,#c084fc);border:none;border-radius:12px;color:#fff;font-weight:900;font-size:12px;cursor:pointer;margin-top:6px;box-shadow:0 4px 15px rgba(139,69,255,0.4);transition:0.3s;}
+.btn:active{transform:scale(0.98);}
+.btn-small{padding:8px 12px;background:rgba(40,15,80,.9);border:1px solid #8b45ff;border-radius:10px;color:#d8b4fe;font-size:10px;cursor:pointer}
+.input{width:100%;padding:11px;background:#1a0e33;border:1.5px solid #6d28d9;border-radius:11px;color:#fff;font-size:12px;margin-top:6px;outline:none;}
+.input:focus{border-color:#ec4899;box-shadow:0 0 10px rgba(236,72,153,0.3);}
+.stat{flex:1;background:rgba(139,69,255,.18);border:1px solid #6d28d9;border-radius:14px;padding:14px;text-align:center}
+.msg-user{background:linear-gradient(90deg,#8b45ff,#a855f7);padding:8px 12px;border-radius:16px 16px 4px 16px;margin:6px 0 6px auto;max-width:80%;font-size:12px}
+.msg-ai{background:#1e103e;border:1px solid #6d28d9;padding:10px 12px;border-radius:16px 16px 16px 4px;margin:6px auto 6px 0;max-width:85%;font-size:12px;white-space:pre-wrap}
+.chip{display:inline-block;background:#2a1650;border:1px solid #6d28d9;padding:5px 10px;border-radius:20px;font-size:10px;margin:2px;cursor:pointer}.chip.sel{background:linear-gradient(90deg,#8b45ff,#ec4899);color:#fff}
+.list-item{background:#160c2e;border:1px solid rgba(139,69,255,.25);padding:10px;border-radius:12px;margin-top:6px;display:flex;justify-content:space-between;align-items:center;font-size:11px}
+body.night{background:#0a0415!important}
 </style>
 </head>
 <body>
-
-<!-- هيدر الكمبيوتر -->
-<header class="app-header">
-    <div class="app-brand"><span class="app-live-dot"></span> SHADOW x WAEL // STUDIO</div>
-    <div class="desktop-nav" id="desktopNav">
-        <button class="desk-tab active" onclick="switchAppTab('home', this)"><i class="fa-solid fa-fire"></i> الرئيسية</button>
-        <button class="desk-tab" onclick="switchAppTab('schedule', this)"><i class="fa-solid fa-calendar-days"></i> الجدول</button>
-        <button class="desk-tab" onclick="switchTabSafe('stream')"><i class="fa-brands fa-twitch"></i> تويتش</button>
-        <button class="desk-tab" onclick="switchAppTab('scenarios', this)"><i class="fa-solid fa-book-skull"></i> السيناريوهات</button>
-        <button class="desk-tab" onclick="switchAppTab('workspace', this)"><i class="fa-solid fa-toolbox"></i> مساحة العمل</button>
-        <button class="desk-tab" id="adminDeskBtn" style="display:none; background:linear-gradient(135deg,var(--neon-purple),#401080); color:#fff;" onclick="switchAppTab('admin-hq', this)"><i class="fa-solid fa-user-shield"></i> الإدارة</button>
-    </div>
-    <button onclick="openAuth()" style="background:linear-gradient(135deg,#181824,#0d0d14); border:1px solid var(--neon-purple); color:var(--neon-purple); padding:8px 16px; border-radius:10px; font-weight:900; cursor:pointer; font-size:11px;" id="authBtnLabel"><i class="fa-solid fa-lock"></i> دخول المسؤولين</button>
-</header>
-
-<!-- شريط التنقل السفلي للجوال -->
-<nav class="app-bottom-nav">
-    <button class="nav-item active" onclick="switchAppTab('home', this); playClick();"><i class="fa-solid fa-fire"></i><span>الرئيسية</span></button>
-    <button class="nav-item" onclick="switchAppTab('schedule', this); playClick();"><i class="fa-solid fa-calendar-days"></i><span>الجدول</span></button>
-    <button class="nav-item" onclick="switchAppTab('scenarios', this); playClick();"><i class="fa-solid fa-book-skull"></i><span>السيناريو</span></button>
-    <button class="nav-item" onclick="switchAppTab('workspace', this); playClick();"><i class="fa-solid fa-toolbox"></i><span>المهام</span></button>
-    <button class="nav-item" onclick="openAuth(); playClick();"><i class="fa-solid fa-user-shield"></i><span>الإدارة</span></button>
-</nav>
-
-<!-- مودال تسجيل الدخول -->
-<div id="authModalApp">
-    <div class="auth-box-app">
-        <div style="font-size: 32px; color: var(--neon-purple); margin-bottom: 10px;"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3 style="font-size: 18px; font-weight:900;">بوابة الدخول السرية</h3>
-        <p style="color: var(--text-muted); font-size: 11px; margin-top: 4px;">رمز شادو أو وائل</p>
-        <input id="appCodeInput" type="password" placeholder="••••••••" class="app-input" style="text-align: center; letter-spacing: 5px; font-size: 16px;">
-        <button class="app-btn" style="background:linear-gradient(135deg,var(--neon-purple),#401080);" onclick="verifyAppLogin()">فتح النظام</button>
-        <button style="background:transparent; color:var(--text-muted); border:none; padding:8px; width:100%; margin-top:6px; cursor:pointer; font-size:12px;" onclick="closeAuth()">إلغاء</button>
-        <p id="appAuthErr" style="color:var(--neon-red); font-size:11px; display:none; margin-top:6px;">الرمز غير صحيح!</p>
-    </div>
+<div style="max-width:1200px;margin:0 auto;">
+<div class="header">
+<div style="display:flex;align-items:center;gap:8px">
+  <div style="width:36px;height:36px;background:linear-gradient(135deg,#a855f7,#ec4899);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900">💜</div>
+  <div>
+    <div style="font-weight:900;font-size:13px">Shadow47q // App</div>
+    <div style="font-size:9px;opacity:.8">تطبيق صناعة المحتوى الرسمي</div>
+  </div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+  <span class="badge">NATIVE APP</span>
+  <button class="badge" onclick="toggleNight()" id="nightBtn" style="cursor:pointer">🌙 ليلي</button>
+</div>
 </div>
 
-<main class="app-container">
+<div class="tabs">
+<button class="tab active" id="t-dash" onclick="openTab('dash')">📊 رئيسية</button>
+<button class="tab" id="t-ai" onclick="openTab('ai')" style="background:linear-gradient(90deg,#8b45ff,#ec4899);color:#fff">🤖 AI</button>
+<button class="tab" id="t-shoot" onclick="openTab('shoot')">📅 تصوير</button>
+<button class="tab" id="t-night" onclick="openTab('night')">🌙 جلسة</button>
+<button class="tab" id="t-videos" onclick="openTab('videos')">🎥 فيديو</button>
+<button class="tab" id="t-ideas" onclick="openTab('ideas')">💡 أفكار</button>
+<button class="tab" id="t-scripts" onclick="openTab('scripts')">📝 سكربت</button>
+<button class="tab" id="t-thumbs" onclick="openTab('thumbs')">📸 صور</button>
+<button class="tab" id="t-chars" onclick="openTab('chars')">🎭 شخصيات</button>
+<button class="tab" id="t-keywords" onclick="openTab('keywords')">🧠 كلمات</button>
+<button class="tab" id="t-money" onclick="openTab('money')">💰 فلوس</button>
+<button class="tab" id="t-team" onclick="openTab('team')">🔒 إدارة</button>
+</div>
 
-    <!-- 1. الرئيسية -->
-    <div id="home" class="app-pane active space-y-4">
-        <div class="app-card" style="background:linear-gradient(135deg, rgba(255,0,60,0.12), rgba(145,70,255,0.12)); border-color:rgba(255,0,60,0.3);">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                <div>
-                    <span style="color:var(--neon-gold); font-size:11px; font-weight:900;"><i class="fa-solid fa-bolt"></i> وضع الشغف والانطلاق</span>
-                    <h2 style="font-size: 18px; font-weight:900; margin-top:2px;" id="quoteBox">"كل فيديو ترفعه هو خطوة نحو القمة!"</h2>
-                </div>
-                <div style="background:rgba(0,0,0,0.5); padding:10px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); text-align:center;">
-                    <div style="font-size:9px; color:var(--text-muted);">مستوى الفريق</div>
-                    <div style="font-size:16px; font-weight:900; color:#00ff88; font-family:'Orbitron';">LVL 1 // DUO STAR</div>
-                </div>
-            </div>
-        </div>
+<div class="content active" id="c-dash">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px">
+<div class="stat"><div style="font-size:10px;color:#c084fc">👥 مشتركين</div><div id="subs" style="font-weight:900;font-size:18px;margin-top:6px">...</div><div style="font-size:8px;margin-top:4px;color:#a1a1aa">مباشر</div></div>
+<div class="stat"><div style="font-size:10px;color:#c084fc">👀 مشاهدات</div><div id="views" style="font-weight:900;font-size:18px;margin-top:6px">...</div><div style="font-size:8px;margin-top:4px;color:#a1a1aa">مباشر</div></div>
+<div class="stat"><div style="font-size:10px;color:#c084fc">👨‍👩‍👧‍👦 الطاقم</div><div id="teamCount" style="font-weight:900;font-size:18px;margin-top:6px">1</div><div style="font-size:8px;margin-top:4px;color:#a1a1aa">أعضاء</div></div>
+</div>
+<div class="card" style="margin-top:12px"><div style="font-weight:900;font-size:13px;color:#e9d5ff">📺 تعريف عن التطبيق والقناة</div>
+<div style="font-size:11px;margin-top:10px;line-height:2;color:#d8b4fe">
+<b style="color:#fff">Shadow47q</b> - قناة قيمينق GTA RP - ريك تاون 🔥<br><br>
+<b style="color:#a855f7">🎬 المحتوى:</b> قيمينق، تحديات، قصص رول بلاي<br><br>
+<b style="color:#a855f7">🎯 الهدف:</b> 1M مشترك ومحتوى يومي منظم عبر هذا التطبيق الاحترافي.<br>
+</div>
+<div style="display:flex;gap:6px;margin-top:12px"><button class="btn" style="flex:1" onclick="openTab('shoot')">📅 جدول التصوير</button><button class="btn" style="flex:1;background:linear-gradient(90deg,#4b0a7a,#6d28d9)" onclick="openTab('team')">👥 الطاقم</button></div>
+</div>
+</div>
 
-        <div class="grid-3">
-            <div class="app-card">
-                <span style="color: var(--text-muted); font-size: 11px;"><i class="fa-brands fa-youtube" style="color:#ff0000"></i> يوتيوب (@shadow47q)</span>
-                <div id="appSubs" style="font-size: 28px; font-weight: 900; margin: 8px 0; font-family:'Orbitron';">--</div>
-                <div style="color: #00ff88; font-size: 11px;">مربوط بنجاح بالمنصة</div>
-            </div>
-            <div class="app-card" style="border-color: rgba(145,70,255,0.3);">
-                <span style="color: var(--neon-purple); font-size: 11px;"><i class="fa-brands fa-twitch"></i> تويتش (w6_xl)</span>
-                <div style="font-size: 22px; font-weight: 900; margin: 8px 0; color: #00ff88; display:flex; align-items:center; gap:6px; font-family:'Orbitron';">
-                    <span style="width:8px; height:8px; background:#00ff88; border-radius:50%; box-shadow:0 0 8px #00ff88;"></span> جاهز للبث
-                </div>
-                <div style="color: var(--text-muted); font-size: 11px;">انتقل لتبويب تويتش للمشاهدة</div>
-            </div>
-        </div>
+<div class="content" id="c-ai">
+<div class="card" style="border-color:#ec4899"><div style="font-weight:900">🤖 المساعد الذكي (Gemini API)</div>
+<div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #6d28d9">
+  <div style="font-size:10px;font-weight:800">🔑 مفتاح الذكاء الاصطناعي</div>
+  <div style="display:flex;gap:8px;margin-top:6px">
+    <input id="gemKey" class="input" placeholder="AIzaSy..." style="margin:0">
+    <button class="btn" style="width:auto;padding:10px 18px" onclick="saveGem()">حفظ</button>
+  </div>
+</div>
+<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+  <button class="btn-small" onclick="aiDo('10 عناوين يوتيوب جذابة '+getCtx(),'عناوين')">▶️ عناوين</button>
+  <button class="btn-small" onclick="aiDo('وصف يوتيوب كامل مع هاشتاقات '+getCtx(),'وصف')">📝 وصف</button>
+  <button class="btn-small" onclick="aiDo('سكريبت 5 دقايق مضحك '+getCtx(),'سكريبت')">🎬 سكريبت</button>
+  <button class="btn-small" onclick="aiDo('10 أفكار قيمينق جديدة '+getCtx(),'أفكار')">💡 أفكار</button>
+</div>
+<input id="gameContext" class="input" placeholder="مثال: فورتنايت تحدي الضحك">
+<div id="chatBox" style="margin-top:10px;background:#0e0620;border:1px solid #6d28d9;border-radius:14px;padding:10px;height:300px;overflow-y:auto">
+  <div class="msg-ai">👋 هلا Shadow47q! أنا مساعدك الذكي داخل التطبيق 💜</div>
+</div>
+<div style="display:flex;gap:8px;margin-top:8px">
+  <input id="aiInput" class="input" placeholder="💜 اسأل أي شي..." style="margin:0" onkeydown="if(event.key==='Enter')sendAI()">
+  <button class="btn" style="width:auto;padding:11px 20px" onclick="sendAI()">🚀</button>
+</div>
+</div>
+</div>
 
-        <!-- بث تويتش مدمج في الرئيسية لسهولة الاستخدام -->
-        <div class="app-card">
-            <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--neon-purple);"><i class="fa-brands fa-twitch"></i> بث وائل المباشر السريع</h3>
-            <div style="width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid rgba(145,70,255,0.3);">
-                <iframe src="https://player.twitch.tv/?channel=w6_xl&parent=localhost&parent=github.io" height="100%" width="100%" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
+<div class="content" id="c-night">
+<div class="card"><div style="font-weight:900">🌙 وضع الجلسة الطويلة</div><div style="font-size:11px;margin-top:6px">تنظيم وقت اللعب، تنبيهات الماء، ومدة الجلسة.</div>
+<div style="display:flex;gap:6px;margin-top:10px"><button class="btn" onclick="toggleNight()">🌙 تفعيل الوضع</button><button class="btn-small" onclick="drinkWater()">💧 شربت</button><button class="btn-small" onclick="resetSession()">🔄 تصفير</button></div>
+<div style="display:flex;gap:6px;margin-top:8px">
+  <div class="stat"><div style="font-size:9px">⏱️ جلسة</div><div id="sessionTime">0 د</div></div>
+  <div class="stat"><div style="font-size:9px">💧 موية</div><div id="waterCount">0</div></div>
+  <div class="stat"><div style="font-size:9px">👁️ حالة</div><div id="nightStatus">طافي</div></div>
+</div>
+<div id="nightLog" style="margin-top:8px;background:#0e0620;border:1px solid #6d28d9;border-radius:10px;padding:8px;height:180px;overflow-y:auto;font-size:10px"></div>
+</div>
+</div>
 
-    <!-- 2. الجدول -->
-    <div id="schedule" class="app-pane space-y-4">
-        <div class="app-card">
-            <h3 style="font-size: 18px; margin-bottom: 16px; color: #fff;"><i class="fa-solid fa-calendar-days" style="color: var(--neon-red);"></i> جدول البثوث والحلقات الأسبوعي</h3>
-            <div id="appScheduleList" style="display: flex; flex-direction: column; gap: 10px;"></div>
-        </div>
-    </div>
+<div class="content" id="c-shoot">
+<div class="card"><div style="font-weight:900">📅 جدولة تصوير جديدة</div>
+<div style="margin-top:8px">
+  <input id="shootDate" type="date" class="input">
+  <input id="shootTime" type="time" value="20:00" class="input">
+  <input id="shootPlace" placeholder="مكان التصوير (ريك تاون)" class="input">
+  <div style="background:#160c2e;padding:10px;border-radius:10px;margin-top:8px;border:1px solid #6d28d9">
+    <div style="font-size:10px;font-weight:800">👥 المشاركين</div>
+    <div id="participantsSelector" style="margin-top:6px"></div>
+    <div style="display:flex;gap:6px;margin-top:8px"><input id="customParticipant" placeholder="+ اسم جديد" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addCustomParticipant()">+ إضافة</button></div>
+    <div id="selectedParticipants" style="font-size:10px;color:#c084fc;margin-top:6px"></div>
+  </div>
+  <select id="shootStatus" class="input"><option>مجدول</option><option>قيد التصوير</option><option>تم</option><option>ملغي</option></select>
+  <input id="shootDesc" placeholder="تفاصيل التصوير" class="input">
+  <button class="btn" style="margin-top:8px" onclick="addShoot()">+ إضافة جدول 💜</button>
+</div>
+</div>
+<div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:800;font-size:11px">📅 الجدول الحالي</div><span id="shootCount" style="font-size:10px;background:rgba(168,85,247,.2);padding:2px 8px;border-radius:10px">0</span></div><div id="shootList" style="margin-top:8px"></div></div>
+</div>
 
-    <!-- 3. السيناريوهات -->
-    <div id="scenarios" class="app-pane space-y-4">
-        <div class="app-card">
-            <h3 style="font-size: 18px; margin-bottom: 16px; color: #fff;"><i class="fa-solid fa-book-skull" style="color: var(--neon-red);"></i> أرشيف السيناريوهات المشتركة</h3>
-            <div id="appScenariosGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </div>
-    </div>
+<div class="content" id="c-ideas"><div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:900">💡 أفكار الحلقات</div><button class="btn" style="width:auto;padding:6px 14px" onclick="addIdea()">+ فكرة</button></div><div id="ideasList" style="margin-top:8px"></div></div></div>
+<div class="content" id="c-scripts"><div class="card"><div style="font-weight:900">📝 السكربتات والقصص</div><input id="scriptTitle" placeholder="عنوان الحلقة" class="input"><textarea id="scriptBody" placeholder="تفاصيل السكربت..." class="input" style="height:80px"></textarea><button class="btn" onclick="addScriptFull()">+ حفظ السكربت</button><div id="scriptsList" style="margin-top:8px"></div></div></div>
+<div class="content" id="c-thumbs"><div class="card"><div style="font-weight:900">📸 أفكار الصور المصغرة</div><input id="thumbTitle" placeholder="وصف الصورة المصغرة" class="input"><button class="btn" onclick="addThumb()">+ حفظ</button><div id="thumbsList" style="margin-top:8px"></div></div></div>
+<div class="content" id="c-chars"><div class="card"><div style="font-weight:900">🎭 شخصيات السيرفر</div><div style="display:flex;gap:6px"><input id="charName" placeholder="الاسم" class="input" style="margin:0"><input id="charJob" placeholder="الوظيفة" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="addChar()">+</button></div><div id="charsList" style="margin-top:8px"></div></div></div>
+<div class="content" id="c-keywords"><div class="card"><div style="font-weight:900">🧠 توليد كلمات مفتاحية</div><input id="keywordInput" placeholder="عنوان الفيديو الأساسي" class="input"><button class="btn" onclick="genKeywords()">🧠 توليد</button><div id="keywordsResult" style="margin-top:8px;background:#0e0620;border:1px solid #6d28d9;border-radius:10px;padding:10px;min-height:60px"></div></div></div>
+<div class="content" id="c-videos"><div class="card"><div style="font-weight:900">🎥 ربط يوتيوب API</div><div style="margin-top:10px;background:#1a0e33;padding:10px;border-radius:10px;border:1px solid #6d28d9"><input id="ytApiKeyInput" placeholder="YouTube API Key" class="input" style="margin:0"><button class="btn" style="margin-top:6px" onclick="saveAndFetchYT()">حفظ وجلب الإحصائيات</button></div></div></div>
+<div class="content" id="c-money"><div class="card"><div style="font-weight:900">💰 الأرباح والمصاريف</div><div style="display:flex;gap:6px;margin-top:8px"><input id="income" type="number" placeholder="ربح" class="input" style="margin:0"><button class="btn" style="width:auto;background:#16a34a" onclick="addIncome()">+ ربح</button><input id="expense" type="number" placeholder="مصروف" class="input" style="margin:0"><button class="btn" style="width:auto;background:#dc2626" onclick="addExpense()">- مصروف</button></div><div id="moneyList" style="margin-top:8px"></div><div id="netProfit" style="font-weight:900;color:#a855f7;margin-top:8px">$0</div></div></div>
 
-    <!-- 4. مساحة العمل -->
-    <div id="workspace" class="app-pane space-y-4">
-        <div class="grid-2">
-            <div class="app-card space-y-3">
-                <h3 style="font-size: 16px; color: var(--neon-red);"><i class="fa-solid fa-list-check"></i> قائمة المهام المشتركة</h3>
-                <div id="appTasksList" style="display: flex; flex-direction: column; gap: 8px;"></div>
-                <div style="margin-top: 10px;">
-                    <input id="appTaskInput" class="app-input" placeholder="مهمة جديدة...">
-                    <button class="app-btn" onclick="appAddTask(); playClick();">إضافة مهمة</button>
-                </div>
-            </div>
-            <div class="app-card space-y-3">
-                <h3 style="font-size: 16px; color: var(--neon-gold);"><i class="fa-solid fa-lightbulb"></i> مفكرة الأفكار</h3>
-                <div id="appIdeaslist" style="display: flex; flex-direction: column; gap: 8px;"></div>
-                <div style="margin-top: 10px;">
-                    <input id="appIdeaInput" class="app-input" placeholder="فكرة سيناريو سريعة...">
-                    <button class="app-btn" style="background:linear-gradient(135deg,#b8860b,#ffd700); color:#000;" onclick="appAddIdea(); playClick();">حفظ فكرة</button>
-                </div>
-            </div>
-        </div>
+<div class="content" id="c-team">
+<div class="card"><div style="font-weight:900">🔒 تسجيل دخول الطاقم</div>
+<div id="loginBox" style="margin-top:8px"><select id="loginSelect" class="input"></select><input id="loginPass" type="password" placeholder="كلمة السر" class="input"><button class="btn" onclick="loginMember()">دخول 🔓</button></div>
+<div id="loggedBox" style="display:none;margin-top:8px;background:rgba(34,197,94,.15);padding:10px;border-radius:10px"><div>✅ مرحباً <span id="loggedUserName"></span></div><button class="btn-small" style="margin-top:6px;width:100%" onclick="logoutMember()">خروج</button></div>
+</div>
+<div class="card"><div id="adminLock"><div style="font-weight:800">👑 لوحة المدير</div><div style="display:flex;gap:6px;margin-top:8px"><input id="adminPass" type="password" placeholder="كلمة المرور (Shadow47q)" class="input" style="margin:0"><button class="btn" style="width:auto" onclick="unlockAdmin()">فتح</button></div></div>
+<div id="adminPanel" style="display:none"><input id="memberName" placeholder="اسم العضو" class="input"><input id="memberRole" placeholder="الرتبة" class="input"><input id="memberPass" placeholder="كلمة السر" class="input"><button class="btn" onclick="addMember()">+ إضافة عضو</button><div id="teamTable" style="margin-top:10px"></div></div>
+</div>
+</div>
 
-        <!-- زر النسخ الاحتياطي (ميزة التطبيق الكامل) -->
-        <div class="app-card" style="text-align: center; padding: 16px;">
-            <h4 style="font-size: 14px; margin-bottom: 8px; color: var(--text-muted);">إدارة بيانات التطبيق</h4>
-            <div style="display:flex; gap:10px; justify-content:center;">
-                <button onclick="exportAppData()" style="background:#222; color:#fff; border:1px solid #444; padding:8px 16px; border-radius:8px; cursor:pointer; font-size:12px;"><i class="fa-solid fa-download"></i> تصدير البيانات (Backup)</button>
-                <button onclick="importAppData()" style="background:#222; color:#fff; border:1px solid #444; padding:8px 16px; border-radius:8px; cursor:pointer; font-size:12px;"><i class="fa-solid fa-upload"></i> استيراد البيانات</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5. مركز القيادة الإداري -->
-    <div id="admin-hq" class="app-pane space-y-4">
-        <div class="app-card" style="border-color: var(--neon-purple);">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px; margin-bottom: 16px;">
-                <h2 style="font-size: 18px; color: var(--neon-purple); font-family:'Orbitron';"><i class="fa-solid fa-user-shield"></i> مركز الإدارة المطلق</h2>
-                <button onclick="appLogout()" style="background: #500; color: #fff; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: 700;">تسجيل خروج</button>
-            </div>
-
-            <div class="grid-2">
-                <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 14px;">
-                    <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--neon-red);">📅 إضافة موعد للجدول</h3>
-                    <input id="admSDay" class="app-input" placeholder="اليوم (مثال: الجمعة)">
-                    <input id="admSTime" class="app-input" placeholder="الوقت (مثال: 9 مساءً)">
-                    <input id="admSDesc" class="app-input" placeholder="الفعالية">
-                    <button class="app-btn" onclick="appAddSchedule(); playClick();">اعتماد الموعد</button>
-                </div>
-                <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 14px;">
-                    <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--neon-purple);">📖 نشر سيناريو جديد</h3>
-                    <input id="admScTitle" class="app-input" placeholder="العنوان">
-                    <input id="admScDesc" class="app-input" placeholder="التفاصيل...">
-                    <button class="app-btn" style="background:linear-gradient(135deg,var(--neon-purple),#401080);" onclick="appAddScenario(); playClick();">حفظ السيناريو</button>
-                </div>
-            </div>
-
-            <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 14px; margin-top: 16px;">
-                <h3 style="font-size: 14px; margin-bottom: 10px; color: #00ff88;"><i class="fa-solid fa-sliders"></i> مفتاح يوتيوب API</h3>
-                <input id="appApiKeyInput" class="app-input" placeholder="YouTube API Key">
-                <button class="app-btn" style="background:#008855;" onclick="appSaveApiKey(); playClick();">تفعيل الربط</button>
-                <p id="appApiStatus" style="color:#00ff88; font-size:11px; margin-top:6px;"></p>
-            </div>
-        </div>
-    </div>
-
-</main>
+</div>
 
 <script>
-// محاكي الأصوات التفاعلية (Web Audio API Sound Effects)
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-function playClick() {
-    try {
-        if(audioCtx.state === 'suspended') audioCtx.resume();
-        let osc = audioCtx.createOscillator();
-        let gain = audioCtx.createGain();
-        osc.connect(gain); gain.connect(audioCtx.destination);
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.05);
-        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-        osc.start(); osc.stop(audioCtx.currentTime + 0.05);
-    } catch(e){}
+let ideas=JSON.parse(localStorage.getItem('app_ideas')||'[]');
+let team=JSON.parse(localStorage.getItem('app_team')||'[{"id":1,"name":"Shadow47q","role":"المالك","pass":"47q"}]');
+let shootDays=JSON.parse(localStorage.getItem('app_shoot')||'[]');
+let thumbs=JSON.parse(localStorage.getItem('app_thumbs')||'[]');
+let scripts=JSON.parse(localStorage.getItem('app_scripts')||'[]');
+let chars=JSON.parse(localStorage.getItem('app_chars')||'[]');
+let money=JSON.parse(localStorage.getItem('app_money')||'[]');
+let selectedParticipants=[];
+let currentUser=JSON.parse(localStorage.getItem('app_current_user')||'null');
+let chatHistory=[{role:'user',parts:[{text:'أنت مساعد ذكي لتطبيق صناعة المحتوى'}]},{role:'model',parts:[{text:'تمام جاهز 💜'}]}];
+let nightSet=JSON.parse(localStorage.getItem('app_night')||'{"night":false,"waterCount":0,"start":null}');
+
+function openTab(n){document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));let el=document.getElementById('c-'+n);if(el)el.classList.add('active');let t=document.getElementById('t-'+n);if(t)t.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+
+function toggleNight(){nightSet.night=!nightSet.night;localStorage.setItem('app_night',JSON.stringify(nightSet));applyNight();}
+function applyNight(){if(nightSet.night){document.body.classList.add('night');document.getElementById('nightBtn').innerText='☀️ طفي';let ns=document.getElementById('nightStatus');if(ns)ns.innerText='شغال 💜';}else{document.body.classList.remove('night');document.getElementById('nightBtn').innerText='🌙 ليلي';let ns=document.getElementById('nightStatus');if(ns)ns.innerText='طافي';}}
+function drinkWater(){nightSet.waterCount=(nightSet.waterCount||0)+1;localStorage.setItem('app_night',JSON.stringify(nightSet));document.getElementById('waterCount').innerText=nightSet.waterCount;logNight('💧 شربت '+nightSet.waterCount);}
+function resetSession(){nightSet.start=Date.now();nightSet.waterCount=0;localStorage.setItem('app_night',JSON.stringify(nightSet));document.getElementById('waterCount').innerText='0';logNight('🔄 جلسة جديدة');}
+function logNight(m){let l=document.getElementById('nightLog');if(!l)return;let d=document.createElement('div');d.style.background='#160c2e';d.style.padding='6px';d.style.borderRadius='8px';d.style.marginTop='4px';d.innerText=new Date().toLocaleTimeString('ar-SA')+' - '+m;l.prepend(d);}
+
+function getCtx(){let c=document.getElementById('gameContext');return c&&c.value.trim()?c.value.trim():'قيمينق GTA RP';}
+function saveGem(){let k=document.getElementById('gemKey').value.trim();if(k){localStorage.setItem('app_gem_key',k);alert('✅ تم حفظ مفتاح الذكاء الاصطناعي بنجاح');}}
+function saveAll(){
+  localStorage.setItem('app_ideas',JSON.stringify(ideas));
+  localStorage.setItem('app_team',JSON.stringify(team));
+  localStorage.setItem('app_shoot',JSON.stringify(shootDays));
+  localStorage.setItem('app_thumbs',JSON.stringify(thumbs));
+  localStorage.setItem('app_scripts',JSON.stringify(scripts));
+  localStorage.setItem('app_chars',JSON.stringify(chars));
+  localStorage.setItem('app_money',JSON.stringify(money));
+  renderAll();
 }
 
-const USERS = { "SHADOW_RED": "شادو (Shadow)", "WAEL_BLUE": "وائل (Wael)" };
+function renderParticipants(){
+  let c=document.getElementById('participantsSelector');if(!c)return;c.innerHTML='';
+  team.forEach(m=>{
+    let chip=document.createElement('span');chip.className='chip '+(selectedParticipants.includes(m.name)?'sel':'');
+    chip.innerText=m.name;chip.onclick=()=>{if(selectedParticipants.includes(m.name))selectedParticipants=selectedParticipants.filter(x=>x!==m.name);else selectedParticipants.push(m.name);renderParticipants();};
+    c.appendChild(chip);
+  });
+  let el=document.getElementById('selectedParticipants');if(el)el.innerText=selectedParticipants.length>0?'👥 مع: '+selectedParticipants.join('، '):'لم يتم اختيار مشاركين';
+}
+function addCustomParticipant(){let i=document.getElementById('customParticipant');let n=i.value.trim();if(!n)return;if(!team.find(t=>t.name===n))team.unshift({id:Date.now(),name:n,role:'مشارك',pass:Date.now().toString()});if(!selectedParticipants.includes(n))selectedParticipants.push(n);i.value='';saveAll();renderParticipants();}
 
-let appConfig = JSON.parse(localStorage.getItem('app_cfg') || '{}');
-let schedules = JSON.parse(localStorage.getItem('app_sched') || JSON.stringify([
-    { day: "السبت", time: "8:00 مساءً", desc: "بث تجميعي وتحديات يوتيوب" },
-    { day: "الأربعاء", time: "10:00 مساءً", desc: "تصوير سيناريو روبلاي" }
-]));
-let scenarios = JSON.parse(localStorage.getItem('app_scen') || JSON.stringify([
-    { title: "سيناريو السطو الكبرى", desc: "التخطيط لسرقة البنك بمشاركة المافيا بطريقة احترافية." }
-]));
-let tasks = JSON.parse(localStorage.getItem('app_tasks') || JSON.stringify([
-    { text: "مونتاج أول حلقة يوتيوب", done: false }
-]));
-let ideas = JSON.parse(localStorage.getItem('app_ideas') || JSON.stringify([
-    { text: "تحدي 24 ساعة في السيرفر" }
-]));
+function addShoot(){
+  let d=document.getElementById('shootDate').value;let t=document.getElementById('shootTime').value;let p=document.getElementById('shootPlace').value;let desc=document.getElementById('shootDesc').value;let status=document.getElementById('shootStatus').value;
+  if(!d){alert('اختر التاريخ');return}
+  shootDays.unshift({id:Date.now(),date:d,time:t||'20:00',place:p||'ريك تاون',desc:desc||'تصوير',participants:[...selectedParticipants],status});
+  selectedParticipants=[];saveAll();
+}
+function del2(id,type){
+  if(type==='team')team=team.filter(x=>x.id!=id);
+  if(type==='idea')ideas=ideas.filter(x=>x.id!=id);
+  if(type==='thumb')thumbs=thumbs.filter(x=>x.id!=id);
+  if(type==='script')scripts=scripts.filter(x=>x.id!=id);
+  if(type==='char')chars=chars.filter(x=>x.id!=id);
+  if(type==='money')money=money.filter(x=>x.id!=id);
+  if(type==='shoot')shootDays=shootDays.filter(x=>x.id!=id);
+  saveAll();
+}
+function addMember(){let n=document.getElementById('memberName').value;let r=document.getElementById('memberRole').value;let p=document.getElementById('memberPass').value;if(!n||!p){alert('الاسم والسر');return}team.unshift({id:Date.now(),name:n,role:r,pass:p});document.getElementById('memberName').value='';document.getElementById('memberRole').value='';document.getElementById('memberPass').value='';saveAll();}
+function addIdea(){let t=prompt('اكتب فكرة الحلقة:');if(!t)return;ideas.unshift({id:Date.now(),t});saveAll();}
+function addThumb(){let title=document.getElementById('thumbTitle').value;if(!title)return;thumbs.unshift({id:Date.now(),title});document.getElementById('thumbTitle').value='';saveAll();}
+function addScriptFull(){let t=document.getElementById('scriptTitle').value;let b=document.getElementById('scriptBody').value;if(!t)return;scripts.unshift({id:Date.now(),title:t,body:b});document.getElementById('scriptTitle').value='';document.getElementById('scriptBody').value='';saveAll();}
+function addChar(){let n=document.getElementById('charName').value;let j=document.getElementById('charJob').value;if(!n)return;chars.unshift({id:Date.now(),name:n,job:j});document.getElementById('charName').value='';document.getElementById('charJob').value='';saveAll();}
+function genKeywords(){let inp=document.getElementById('keywordInput').value;if(!inp)return;let gen=[inp,'ريك تاون '+inp,'GTA RP '+inp,'Shadow47q '+inp];document.getElementById('keywordsResult').innerHTML=gen.map(k=>'<span style="display:inline-block;background:#1e0b33;padding:6px 10px;border-radius:20px;margin:2px;font-size:10px;border:1px solid #6d28d9">'+k+'</span>').join('');}
+function addIncome(){let v=Number(document.getElementById('income').value);if(!v)return;money.unshift({id:Date.now(),type:'ربح',amount:v});document.getElementById('income').value='';saveAll();}
+function addExpense(){let v=Number(document.getElementById('expense').value);if(!v)return;money.unshift({id:Date.now(),type:'مصروف',amount:v});document.getElementById('expense').value='';saveAll();}
 
-function switchAppTab(tabId, el) {
-    document.querySelectorAll('.app-pane').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.desk-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    
-    document.getElementById(tabId).classList.add('active');
-    if(el) el.classList.add('active');
+function unlockAdmin(){let v=document.getElementById('adminPass').value;if(v==='Shadow47q'){document.getElementById('adminLock').style.display='none';document.getElementById('adminPanel').style.display='block';}else alert('كلمة السر غير صحيحة');}
+function loginMember(){let name=document.getElementById('loginSelect').value;let pass=document.getElementById('loginPass').value;let m=team.find(x=>x.name===name);if(!m||m.pass!==pass){alert('خطأ في البيانات');return}currentUser=m;localStorage.setItem('app_current_user',JSON.stringify(m));updateLogin();}
+function logoutMember(){currentUser=null;localStorage.removeItem('app_current_user');updateLogin();}
+function updateLogin(){let b=document.getElementById('loginBox');let l=document.getElementById('loggedBox');if(currentUser){b.style.display='none';l.style.display='block';document.getElementById('loggedUserName').innerText=currentUser.name;}else{b.style.display='block';l.style.display='none';}}
+
+async function saveAndFetchYT(){
+  let k=document.getElementById('ytApiKeyInput').value.trim();
+  if(k) localStorage.setItem('app_yt_key',k);
+  fetchYouTubeStats();
 }
 
-function switchTabSafe(tabName) {
-    if(tabName === 'stream') {
-        // الانتقال للرئيسية حيث يتواجد البث المباشر
-        switchAppTab('home', document.querySelector('.desk-tab'));
-        window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'});
+async function fetchYouTubeStats(){
+  let apiKey = localStorage.getItem('app_yt_key');
+  if(!apiKey) return;
+  try{
+    let url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCQ_ZMlneyyFGqZZikkpQ2qw&key='+apiKey;
+    let res = await fetch(url);
+    let data = await res.json();
+    if(data.items && data.items[0]){
+      let stats = data.items[0].statistics;
+      document.getElementById('subs').innerText = Number(stats.subscriberCount).toLocaleString();
+      document.getElementById('views').innerText = Number(stats.viewCount).toLocaleString();
     }
+  }catch(e){console.log(e);}
 }
 
-function openAuth() { document.getElementById('authModalApp').style.display = 'flex'; }
-function closeAuth() { document.getElementById('authModalApp').style.display = 'none'; }
-
-function verifyAppLogin() {
-    let v = document.getElementById('appCodeInput').value;
-    if(USERS[v]) {
-        localStorage.setItem('app_logged', v);
-        closeAuth();
-        applySession();
-        switchAppTab('admin-hq', document.getElementById('adminDeskBtn'));
-        alert('✅ أهلاً بك يا ' + USERS[v]);
-    } else {
-        document.getElementById('appAuthErr').style.display = 'block';
-    }
+async function aiDo(prompt,type){
+  let apiKey = localStorage.getItem('app_gem_key');
+  if(!apiKey){alert('أدخل مفتاح Gemini أولاً في قسم AI');return;}
+  let box=document.getElementById('chatBox');
+  let u=document.createElement('div');u.className='msg-user';u.innerText='طلب: '+type;box.appendChild(u);
+  let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ جاري المعالجة...';box.appendChild(a);box.scrollTop=box.scrollHeight;
+  
+  try{
+    let url='https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+apiKey;
+    let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{role:'user',parts:[{text:prompt}]}]})});
+    let d=await r.json();
+    let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'لم يتم استقبال رد';
+    a.innerText=text;
+  }catch(e){a.innerText='❌ خطأ: '+e.message;}
+  box.scrollTop=box.scrollHeight;
 }
 
-function appLogout() {
-    localStorage.removeItem('app_logged');
-    location.reload();
+async function sendAI(){
+  let q=document.getElementById('aiInput').value.trim();if(!q)return;
+  let apiKey = localStorage.getItem('app_gem_key');
+  if(!apiKey){alert('أدخل مفتاح Gemini أولاً في قسم AI');return;}
+  let box=document.getElementById('chatBox');
+  let u=document.createElement('div');u.className='msg-user';u.innerText=q;box.appendChild(u);
+  document.getElementById('aiInput').value='';
+  let a=document.createElement('div');a.className='msg-ai';a.innerText='⏳ يفكر...';box.appendChild(a);box.scrollTop=box.scrollHeight;
+  
+  try{
+    chatHistory.push({role:'user',parts:[{text:q}]});
+    let url='https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+apiKey;
+    let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:chatHistory})});
+    let d=await r.json();
+    let text=d.candidates?.[0]?.content?.parts?.[0]?.text||'لا يوجد رد';
+    a.innerText=text;
+    chatHistory.push({role:'model',parts:[{text:text}]});
+  }catch(e){a.innerText='❌ خطأ: '+e.message;}
+  box.scrollTop=box.scrollHeight;
 }
 
-function applySession() {
-    let c = localStorage.getItem('app_logged');
-    if(c && USERS[c]) {
-        document.getElementById('adminDeskBtn').style.display = 'flex';
-        document.getElementById('authBtnLabel').innerHTML = `<i class="fa-solid fa-user-check" style="color:#00ff88"></i> ${USERS[c]}`;
-    }
-}
-
-// عرض الجدول
-function renderSched() {
-    let logged = localStorage.getItem('app_logged');
-    let h = '';
-    schedules.forEach((s, i) => {
-        h += `
-            <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; font-size:13px;">
-                <div>
-                    <span style="color:var(--neon-red); font-weight:700;">${s.day} — ${s.time}</span>
-                    <div style="margin-top:2px; font-weight:600;">${s.desc}</div>
-                </div>
-                ${logged ? `<button onclick="delSched(${i})" style="background:#500; color:#fff; border:none; padding:4px 8px; border-radius:6px; cursor:pointer; font-size:11px;"><i class="fa-solid fa-trash"></i></button>` : ''}
-            </div>
-        `;
+function renderAll(){
+  let tt=document.getElementById('teamTable');if(tt)tt.innerHTML=team.map(x=>'<div class="list-item"><span><b>'+x.name+'</b> - '+x.role+'</span><button onclick="del2('+x.id+',\'team\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
+  let ls=document.getElementById('loginSelect');if(ls)ls.innerHTML=team.map(t=>'<option>'+t.name+'</option>').join('');
+  let ideasList=document.getElementById('ideasList');if(ideasList)ideasList.innerHTML=ideas.map(x=>'<div class="list-item"><span>'+x.t+'</span><button onclick="del2('+x.id+',\'idea\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
+  let thumbsList=document.getElementById('thumbsList');if(thumbsList)thumbsList.innerHTML=thumbs.map(x=>'<div class="list-item"><span>'+x.title+'</span><button onclick="del2('+x.id+',\'thumb\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
+  let scriptsList=document.getElementById('scriptsList');if(scriptsList)scriptsList.innerHTML=scripts.map(x=>'<div class="list-item" style="flex-direction:column;align-items:stretch"><div style="display:flex;justify-content:space-between"><b>'+x.title+'</b><button onclick="del2('+x.id+',\'script\')" style="color:#ef4444;background:none;border:none">×</button></div><div style="font-size:10px;color:#a1a1aa;margin-top:4px">'+x.body+'</div></div>').join('');
+  let charsList=document.getElementById('charsList');if(charsList)charsList.innerHTML=chars.map(x=>'<div class="list-item"><span>'+x.name+' - '+x.job+'</span><button onclick="del2('+x.id+',\'char\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
+  let moneyList=document.getElementById('moneyList');if(moneyList)moneyList.innerHTML=money.map(m=>'<div class="list-item"><span>'+m.type+' $'+m.amount+'</span><button onclick="del2('+m.id+',\'money\')" style="color:#ef4444;background:none;border:none">×</button></div>').join('');
+  let net=0;money.forEach(m=>net+=m.type==='ربح'?m.amount:-m.amount);let ne=document.getElementById('netProfit');if(ne)ne.innerText='$'+net;
+  let tc=document.getElementById('teamCount');if(tc)tc.innerText=team.length;let sc=document.getElementById('shootCount');if(sc)sc.innerText=shootDays.length+' يوم';
+  
+  let list=document.getElementById('shootList');
+  if(list){
+    list.innerHTML='';
+    shootDays.forEach(s=>{
+      let part=s.participants&&s.participants.length>0?s.participants.join('، '):'بدون';
+      let div=document.createElement('div');div.className='list-item';
+      div.innerHTML='<div><div><b>'+s.date+' '+s.time+'</b> - '+s.status+'</div><div style="font-size:10px;color:#a1a1aa">👥 '+part+' - '+s.place+'</div></div><button onclick="del2('+s.id+',\'shoot\')" style="color:#ef4444;background:none;border:none">حذف</button>';
+      list.appendChild(div);
     });
-    document.getElementById('appScheduleList').innerHTML = h;
+  }
+  renderParticipants();
 }
 
-function appAddSchedule() {
-    let day = document.getElementById('admSDay').value;
-    let time = document.getElementById('admSTime').value;
-    let desc = document.getElementById('admSDesc').value;
-    if(!day || !time || !desc) return alert('املأ الحقول!');
-    schedules.push({ day, time, desc });
-    localStorage.setItem('app_sched', JSON.stringify(schedules));
-    document.getElementById('admSDay').value = '';
-    document.getElementById('admSTime').value = '';
-    document.getElementById('admSDesc').value = '';
-    renderSched();
-    alert('✅ تمت الإضافة');
+renderAll();updateLogin();openTab('dash');
+if(nightSet.night)applyNight();
+let wc=document.getElementById('waterCount');if(wc)wc.innerText=nightSet.waterCount||0;
+if(!nightSet.start){nightSet.start=Date.now();localStorage.setItem('app_night',JSON.stringify(nightSet));}
+setInterval(()=>{let diff=Math.floor((Date.now()-nightSet.start)/1000/60);let st=document.getElementById('sessionTime');if(st)st.innerText=diff+' د';},60000);
+
+if(localStorage.getItem('app_yt_key')){
+  document.getElementById('ytApiKeyInput').value = localStorage.getItem('app_yt_key');
+  fetchYouTubeStats();
 }
-
-function delSched(i) {
-    schedules.splice(i, 1);
-    localStorage.setItem('app_sched', JSON.stringify(schedules));
-    renderSched();
-}
-
-// عرض السيناريوهات
-function renderScen() {
-    let logged = localStorage.getItem('app_logged');
-    let h = '';
-    scenarios.forEach((s, i) => {
-        h += `
-            <div class="app-card" style="margin-bottom:0; position:relative;">
-                <h4 style="font-size:15px; color:var(--neon-purple); margin-bottom:4px; font-family:'Orbitron';">${s.title}</h4>
-                <p style="color:var(--text-muted); font-size:12px; line-height:1.5;">${s.desc}</p>
-                ${logged ? `<button onclick="delScen(${i})" style="position:absolute; top:12px; left:12px; background:#500; color:#fff; border:none; padding:3px 8px; border-radius:6px; cursor:pointer; font-size:10px;"><i class="fa-solid fa-trash"></i></button>` : ''}
-            </div>
-        `;
-    });
-    document.getElementById('appScenariosGrid').innerHTML = h;
-}
-
-function appAddScenario() {
-    let title = document.getElementById('admScTitle').value;
-    let desc = document.getElementById('admScDesc').value;
-    if(!title || !desc) return alert('املأ الحقول!');
-    scenarios.push({ title, desc });
-    localStorage.setItem('app_scen', JSON.stringify(scenarios));
-    document.getElementById('admScTitle').value = '';
-    document.getElementById('admScDesc').value = '';
-    renderScen();
-    alert('✅ تم حفظ السيناريو');
-}
-
-function delScen(i) {
-    scenarios.splice(i, 1);
-    localStorage.setItem('app_scen', JSON.stringify(scenarios));
-    renderScen();
-}
-
-// مساحة العمل والمهام
-function renderWorkspace() {
-    let logged = localStorage.getItem('app_logged');
-    let tH = '';
-    tasks.forEach((t, i) => {
-        tH += `
-            <div style="background:rgba(0,0,0,0.4); padding:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
-                <span style="${t.done ? 'text-decoration:line-through; color:var(--text-muted);' : ''}">${t.text}</span>
-                <div style="display:flex; gap:4px;">
-                    <button onclick="toggleT(${i}); playClick();" style="background:${t.done?'#00ff88':'#333'}; color:#000; border:none; padding:3px 6px; border-radius:4px; font-size:10px; font-weight:700; cursor:pointer;">${t.done?'منجز':'إنجاز'}</button>
-                    ${logged ? `<button onclick="delT(${i})" style="background:#500; color:#fff; border:none; padding:3px 6px; border-radius:4px; font-size:10px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>` : ''}
-                </div>
-            </div>
-        `;
-    });
-    document.getElementById('appTasksList').innerHTML = tH;
-
-    let iH = '';
-    ideas.forEach((id, i) => {
-        iH += `
-            <div style="background:rgba(0,0,0,0.4); padding:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
-                <span>💡 ${id.text}</span>
-                ${logged ? `<button onclick="delI(${i})" style="background:#500; color:#fff; border:none; padding:3px 6px; border-radius:4px; font-size:10px; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>` : ''}
-            </div>
-        `;
-    });
-    document.getElementById('appIdeaslist').innerHTML = iH;
-}
-
-function appAddTask() {
-    let val = document.getElementById('appTaskInput').value;
-    if(!val) return;
-    tasks.push({ text: val, done: false });
-    localStorage.setItem('app_tasks', JSON.stringify(tasks));
-    document.getElementById('appTaskInput').value = '';
-    renderWorkspace();
-}
-
-function toggleT(i) {
-    tasks[i].done = !tasks[i].done;
-    localStorage.setItem('app_tasks', JSON.stringify(tasks));
-    renderWorkspace();
-}
-
-function delT(i) {
-    tasks.splice(i, 1);
-    localStorage.setItem('app_tasks', JSON.stringify(tasks));
-    renderWorkspace();
-}
-
-function appAddIdea() {
-    let val = document.getElementById('appIdeaInput').value;
-    if(!val) return;
-    ideas.push({ text: val });
-    localStorage.setItem('app_ideas', JSON.stringify(ideas));
-    document.getElementById('appIdeaInput').value = '';
-    renderWorkspace();
-}
-
-function delI(i) {
-    ideas.splice(i, 1);
-    localStorage.setItem('app_ideas', JSON.stringify(ideas));
-    renderWorkspace();
-}
-
-// تصدار واستيراد بيانات التطبيق (Backup)
-function exportAppData() {
-    let data = { schedules, scenarios, tasks, ideas };
-    let blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-    let url = URL.createObjectURL(blob);
-    let a = document.createElement('a');
-    a.href = url; a.download = 'shadow-wael-backup.json';
-    a.click();
-}
-
-function importAppData() {
-    let inp = document.createElement('input');
-    inp.type = 'file'; inp.accept = '.json';
-    inp.onchange = e => {
-        let file = e.target.files[0];
-        let reader = new FileReader();
-        reader.onload = event => {
-            try {
-                let d = JSON.parse(event.target.result);
-                if(d.schedules) localStorage.setItem('app_sched', JSON.stringify(d.schedules));
-                if(d.scenarios) localStorage.setItem('app_scen', JSON.stringify(d.scenarios));
-                if(d.tasks) localStorage.setItem('app_tasks', JSON.stringify(d.tasks));
-                if(d.ideas) localStorage.setItem('app_ideas', JSON.stringify(d.ideas));
-                alert('✅ تم استعادة البيانات بنجاح، جاري تحديث التطبيق...');
-                location.reload();
-            } catch(err) { alert('ملف غير صالح!'); }
-        };
-        reader.readAsText(file);
-    };
-    inp.click();
-}
-
-// يوتيوب
-async function loadYTData() {
-    let k = appConfig.apiKey || localStorage.getItem('app_yt_key');
-    if(!k) {
-        document.getElementById('appSubs').innerText = "0 المشتركين";
-        return;
-    }
-    try {
-        let r = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&forHandle=shadow47q&key=${k}`);
-        let d = await r.json();
-        if(d.items && d.items[0]) {
-            document.getElementById('appSubs').innerText = Number(d.items[0].statistics.subscriberCount).toLocaleString();
-        }
-    } catch(e){}
-}
-
-function appSaveApiKey() {
-    let k = document.getElementById('appApiKeyInput').value;
-    if(k) {
-        appConfig.apiKey = k;
-        localStorage.setItem('app_cfg', JSON.stringify(appConfig));
-        localStorage.setItem('app_yt_key', k);
-        document.getElementById('appApiStatus').innerText = '✅ تم حفظ المفتاح وتفعيل الربط';
-        loadYTData();
-    }
-}
-
-// تشغيل التطبيق
-applySession();
-renderSched();
-renderScen();
-renderWorkspace();
-if(localStorage.getItem('app_yt_key')) {
-    document.getElementById('appApiKeyInput').value = localStorage.getItem('app_yt_key');
-    loadYTData();
+if(localStorage.getItem('app_gem_key')){
+  document.getElementById('gemKey').value = localStorage.getItem('app_gem_key');
 }
 </script>
 </body>
