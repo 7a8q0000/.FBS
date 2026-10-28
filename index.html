@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>SHADOW47Q // MDC & CREATOR COMMAND</title>
+<title>SHADOW47Q // INTELLIGENCE & TACTICAL COMMAND</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root {
-    --bg-core: #03050b;
-    --card-bg: rgba(10, 16, 28, 0.85);
-    --police-blue: #0055ff;
-    --forensic-cyan: #00f0ff;
-    --neon-purple: #9146ff;
-    --neon-red: #ff1a3c;
-    --gold-warn: #ffb700;
+    --bg-core: #020408;
+    --card-bg: rgba(8, 14, 24, 0.88);
+    --tactical-red: #ff1a3c;
+    --intel-cyan: #00f0ff;
+    --armory-gold: #ffb700;
+    --emerald-green: #00ff88;
     --text-main: #e2e8f0;
     --text-muted: #64748b;
 }
@@ -24,42 +23,42 @@ body { background: var(--bg-core); color: var(--text-main); min-height: 100vh; o
 
 @media(min-width: 768px) { body { padding-bottom: 0; } }
 
-/* تأثيرات خلفية أمنية سيبرانية */
+/* تأثيرات خلفية استخباراتي راداريه */
 body::before {
     content: ''; position: fixed; inset: 0;
-    background-image: radial-gradient(circle at 10% 10%, rgba(0,85,255,0.07) 0%, transparent 40%),
-                      radial-gradient(circle at 90% 90%, rgba(145,70,255,0.05) 0%, transparent 40%);
+    background-image: radial-gradient(circle at 15% 15%, rgba(0,240,255,0.05) 0%, transparent 40%),
+                      radial-gradient(circle at 85% 85%, rgba(255,26,60,0.05) 0%, transparent 40%);
     z-index: -2;
 }
 
-/* هيدر النظام الفردي */
-.mdc-header {
+/* الهيدر العسكري */
+.cmd-header {
     display: flex; position: sticky; top: 0; z-index: 1000;
-    background: rgba(3, 5, 11, 0.92); backdrop-filter: blur(20px);
-    border-bottom: 2px solid var(--forensic-cyan);
+    background: rgba(2, 4, 8, 0.95); backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--intel-cyan);
     padding: 12px 25px; justify-content: space-between; align-items: center;
     box-shadow: 0 4px 25px rgba(0,240,255,0.2);
 }
-.mdc-brand { font-family: 'Orbitron'; font-size: 15px; font-weight: 900; color: #fff; text-shadow: 0 0 12px var(--forensic-cyan); display:flex; align-items:center; gap:10px; }
-.mdc-live-dot { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 10px #00ff88; animation: pulse 1s infinite; }
+.cmd-brand { font-family: 'Orbitron'; font-size: 14px; font-weight: 900; color: #fff; text-shadow: 0 0 12px var(--intel-cyan); display:flex; align-items:center; gap:10px; }
+.radar-dot { width: 8px; height: 8px; background: var(--emerald-green); border-radius: 50%; box-shadow: 0 0 10px var(--emerald-green); animation: pulse 1s infinite; }
 @keyframes pulse { 50% { opacity: 0.3; } }
 
-/* شريط التنقل العلوي */
-.mdc-nav { display: none; gap: 6px; }
-@media(min-width: 768px) { .mdc-nav { display: flex; } }
+/* التبويبات العلوية */
+.cmd-nav { display: none; gap: 6px; }
+@media(min-width: 768px) { .cmd-nav { display: flex; } }
 
 .nav-tab {
     background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: var(--text-muted);
     padding: 8px 14px; border-radius: 10px; font-weight: 700; font-size: 11px; cursor: pointer; transition: 0.3s;
     display: flex; align-items: center; gap: 6px;
 }
-.nav-tab:hover { color: #fff; background: rgba(0,240,255,0.15); border-color: var(--forensic-cyan); }
-.nav-tab.active { background: linear-gradient(135deg, var(--police-blue), var(--forensic-cyan)); color: #000; border-color: #fff; box-shadow: 0 0 15px rgba(0,240,255,0.5); font-weight: 900; }
+.nav-tab:hover { color: #fff; background: rgba(0,240,255,0.15); border-color: var(--intel-cyan); }
+.nav-tab.active { background: linear-gradient(135deg, var(--intel-cyan), #0077aa); color: #000; border-color: #fff; box-shadow: 0 0 15px rgba(0,240,255,0.5); font-weight: 900; }
 
-/* شريط الجوال السفلي */
+/* شريط التنقل السفلي للجوال */
 .mobile-bottom-nav {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 2000;
-    background: rgba(3, 5, 11, 0.95); backdrop-filter: blur(20px);
+    background: rgba(2, 4, 8, 0.98); backdrop-filter: blur(20px);
     border-top: 1px solid rgba(0,240,255,0.3);
     display: flex; justify-content: space-around; padding: 8px 0;
 }
@@ -71,182 +70,171 @@ body::before {
     font-size: 9px; cursor: pointer; transition: 0.3s;
 }
 .m-nav-item i { font-size: 16px; }
-.m-nav-item.active { color: var(--forensic-cyan); text-shadow: 0 0 10px var(--forensic-cyan); }
+.m-nav-item.active { color: var(--intel-cyan); text-shadow: 0 0 10px var(--intel-cyan); }
 
 .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
 .pane { display: none; animation: fadeIn 0.3s ease forwards; }
 .pane.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-/* الكاردات */
-.sec-card {
+/* الكاردات الأمنية التكتيكية */
+.tactical-card {
     background: var(--card-bg); backdrop-filter: blur(20px);
     border: 1px solid rgba(0,240,255,0.2); border-radius: 16px;
-    padding: 20px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 20px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     margin-bottom: 14px;
 }
-.sec-card::before {
+.tactical-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--forensic-cyan), transparent);
+    background: linear-gradient(90deg, transparent, var(--intel-cyan), transparent);
 }
 .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
 @media(max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
 
 /* الحقول والأزرار */
-.sec-input { background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 11px 14px; border-radius: 10px; width: 100%; margin-top: 6px; font-size: 13px; outline: none; transition: 0.3s; }
-.sec-input:focus { border-color: var(--forensic-cyan); box-shadow: 0 0 12px rgba(0,240,255,0.3); }
+.tac-input { background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 11px 14px; border-radius: 10px; width: 100%; margin-top: 6px; font-size: 13px; outline: none; transition: 0.3s; }
+.tac-input:focus { border-color: var(--intel-cyan); box-shadow: 0 0 12px rgba(0,240,255,0.3); }
 
-.sec-btn {
-    background: linear-gradient(135deg, var(--police-blue), var(--forensic-cyan)); color: #000; border: none;
+.tac-btn {
+    background: linear-gradient(135deg, var(--intel-cyan), #0077aa); color: #000; border: none;
     border-radius: 10px; padding: 12px; width: 100%; font-weight: 900; cursor: pointer; margin-top: 10px;
     box-shadow: 0 4px 15px rgba(0,240,255,0.4); font-size: 13px; transition: 0.3s;
 }
-.sec-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,240,255,0.6); }
+.tac-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,240,255,0.6); }
 
 /* نافذة الدخول */
 #authModal { display: none; position: fixed; inset: 0; background: rgba(2,4,8,0.92); z-index: 3000; backdrop-filter: blur(15px); align-items: center; justify-content: center; padding: 20px; }
-.auth-box { background: #070e1a; border: 2px solid var(--forensic-cyan); border-radius: 22px; padding: 30px; width: 100%; max-width: 360px; text-align: center; box-shadow: 0 0 40px rgba(0,240,255,0.3); }
+.auth-box { background: #070e1a; border: 2px solid var(--intel-cyan); border-radius: 22px; padding: 30px; width: 100%; max-width: 360px; text-align: center; box-shadow: 0 0 40px rgba(0,240,255,0.3); }
 </style>
 </head>
 <body>
 
-<!-- هيدر النظام -->
-<header class="mdc-header">
-    <div class="mdc-brand"><span class="mdc-live-dot"></span> SHADOW47Q // COMMAND</div>
+<!-- الهيدر التكتيكي -->
+<header class="cmd-header">
+    <div class="cmd-brand"><span class="radar-dot"></span> SHADOW47Q // INTEL & TACTICAL</div>
     
-    <!-- القائمة العلوية -->
-    <div class="mdc-nav">
-        <button class="nav-tab active" onclick="switchPane('overview', this)"><i class="fa-solid fa-chart-pie"></i> الرئيسية</button>
-        <button class="nav-tab" onclick="switchPane('forensics', this)"><i class="fa-solid fa-fingerprint"></i> الأدلة الجنائية</button>
-        <button class="nav-tab" onclick="switchPane('records', this)"><i class="fa-solid fa-id-card"></i> السجلات</button>
-        <button class="nav-tab" onclick="switchPane('warrants', this)"><i class="fa-solid fa-gavel"></i> المذكرات</button>
-        <button class="nav-tab" onclick="switchPane('creator', this)"><i class="fa-solid fa-video"></i> أفكار اليوتيوب</button>
-        <button class="nav-tab" id="adminTabBtn" style="display:none; background:linear-gradient(135deg,var(--neon-red),#880022); color:#fff;" onclick="switchPane('admin-panel', this)"><i class="fa-solid fa-shield-halved"></i> الإدارة والتحكم</button>
+    <!-- التبويبات العلوية -->
+    <div class="cmd-nav">
+        <button class="nav-tab active" onclick="switchPane('overview', this)"><i class="fa-solid fa-satellite"></i> لوحة العمليات</button>
+        <button class="nav-tab" onclick="switchPane('intel', this)"><i class="fa-solid fa-user-secret"></i> الاستخبارات والملفات</button>
+        <button class="nav-tab" onclick="switchPane('forensics', this)"><i class="fa-solid fa-fingerprint"></i> العدالة والأدلة الجنائية</button>
+        <button class="nav-tab" onclick="switchPane('armory', this)"><i class="fa-solid fa-gun"></i> ترسانة الأسلحة</button>
+        <button class="nav-tab" id="adminTabBtn" style="display:none; background:linear-gradient(135deg,var(--tactical-red),#880022); color:#fff;" onclick="switchPane('admin-panel', this)"><i class="fa-solid fa-shield-halved"></i> غرفة القيادة السرية</button>
     </div>
 
-    <button onclick="openAuthModal()" style="background:rgba(0,240,255,0.15); border:1px solid var(--forensic-cyan); color:var(--forensic-cyan); padding:8px 14px; border-radius:10px; font-weight:900; cursor:pointer; font-size:11px;" id="authBtnLabel"><i class="fa-solid fa-lock"></i> دخول المسؤول</button>
+    <button onclick="openAuthModal()" style="background:rgba(0,240,255,0.15); border:1px solid var(--intel-cyan); color:var(--intel-cyan); padding:8px 14px; border-radius:10px; font-weight:900; cursor:pointer; font-size:11px;" id="authBtnLabel"><i class="fa-solid fa-lock"></i> دخول القيادة</button>
 </header>
 
 <!-- شريط التنقل السفلي للجوال -->
 <nav class="mobile-bottom-nav">
-    <button class="m-nav-item active" onclick="switchPane('overview', this)"><i class="fa-solid fa-chart-pie"></i><span>الرئيسية</span></button>
+    <button class="m-nav-item active" onclick="switchPane('overview', this)"><i class="fa-solid fa-satellite"></i><span>العمليات</span></button>
+    <button class="m-nav-item" onclick="switchPane('intel', this)"><i class="fa-solid fa-user-secret"></i><span>الاستخبارات</span></button>
     <button class="m-nav-item" onclick="switchPane('forensics', this)"><i class="fa-solid fa-fingerprint"></i><span>الأدلة</span></button>
-    <button class="m-nav-item" onclick="switchPane('records', this)"><i class="fa-solid fa-id-card"></i><span>السجلات</span></button>
-    <button class="m-nav-item" onclick="switchPane('creator', this)"><i class="fa-solid fa-video"></i><span>يوتيوب</span></button>
-    <button class="m-nav-item" onclick="openAuthModal()"><i class="fa-solid fa-shield-halved"></i><span>الإدارة</span></button>
+    <button class="m-nav-item" onclick="switchPane('armory', this)"><i class="fa-solid fa-gun"></i><span>الأسلحة</span></button>
+    <button class="m-nav-item" onclick="openAuthModal()"><i class="fa-solid fa-shield-halved"></i><span>القيادة</span></button>
 </nav>
 
-<!-- مودال تسجيل دخول المسؤول -->
+<!-- مودال تسجيل دخول المسؤول العسكري -->
 <div id="authModal">
     <div class="auth-box">
-        <div style="font-size: 32px; color: var(--forensic-cyan); margin-bottom: 10px;"><i class="fa-solid fa-user-shield"></i></div>
-        <h3 style="font-size: 18px; font-weight:900; font-family:'Orbitron';">بوابة شادو الخاصة</h3>
+        <div style="font-size: 32px; color: var(--intel-cyan); margin-bottom: 10px;"><i class="fa-solid fa-fingerprint"></i></div>
+        <h3 style="font-size: 18px; font-weight:900; font-family:'Orbitron';">التحقق من الهوية العسكرية</h3>
         <p style="color: var(--text-muted); font-size: 11px; margin-top: 4px;">أدخل رمز الدخول السري (الافتراضي: 47q)</p>
-        <input id="adminCodeInput" type="password" placeholder="••••" class="sec-input" style="text-align: center; letter-spacing: 5px; font-size: 18px;">
-        <button class="sec-btn" onclick="verifyAdminLogin()">فتح لوحة التحكم</button>
+        <input id="adminCodeInput" type="password" placeholder="••••" class="tac-input" style="text-align: center; letter-spacing: 5px; font-size: 18px;">
+        <button class="tac-btn" onclick="verifyAdminLogin()">فك قفل غرفة العمليات</button>
         <button style="background:transparent; color:var(--text-muted); border:none; padding:8px; width:100%; margin-top:6px; cursor:pointer; font-size:12px;" onclick="closeAuthModal()">إلغاء</button>
-        <p id="authErr" style="color:var(--neon-red); font-size:11px; display:none; margin-top:6px;">الرمز غير صحيح!</p>
+        <p id="authErr" style="color:var(--tactical-red); font-size:11px; display:none; margin-top:6px;">الرمز غير صحيح!</p>
     </div>
 </div>
 
 <main class="container">
 
-    <!-- 1. الرئيسية -->
+    <!-- 1. لوحة العمليات المركزية -->
     <div id="overview" class="pane active space-y-4">
         <div class="grid-3" style="margin-bottom: 14px;">
-            <div class="sec-card">
-                <span style="color: var(--text-muted); font-size: 11px;"><i class="fa-brands fa-youtube" style="color:#ff0000"></i> المشتركون في قناتك (@shadow47q)</span>
-                <div id="statSubs" style="font-size: 28px; font-weight: 900; margin: 8px 0; font-family:'Orbitron'; color:#fff;">--</div>
-                <div style="color: #00ff88; font-size: 11px;">مربوط بنجاح مع يوتيوب API</div>
+            <div class="tactical-card">
+                <span style="color: var(--text-muted); font-size: 11px;"><i class="fa-solid fa-user-secret" style="color:var(--intel-cyan)"></i> ملفات الاستخبارات المرصودة</span>
+                <div id="statIntel" style="font-size: 28px; font-weight: 900; margin: 8px 0; font-family:'Orbitron'; color:var(--intel-cyan);">0</div>
+                <div style="color: var(--emerald-green); font-size: 11px;">مراقبة الأهداف جارية</div>
             </div>
-            <div class="sec-card" style="border-color: rgba(0,240,255,0.3);">
-                <span style="color: var(--forensic-cyan); font-size: 11px;"><i class="fa-solid fa-fingerprint"></i> الأدلة الجنائية المسجلة</span>
-                <div id="statForensics" style="font-size: 28px; font-weight: 900; margin: 8px 0; font-family:'Orbitron'; color:var(--forensic-cyan);">0</div>
-                <div style="color: var(--text-muted); font-size: 11px;">أرشيف مسرح الجريمة</div>
+            <div class="tactical-card" style="border-color: rgba(255,183,0,0.3);">
+                <span style="color: var(--armory-gold); font-size: 11px;"><i class="fa-solid fa-fingerprint"></i> مسارح الجريمة والأدلة</span>
+                <div id="statForensics" style="font-size: 28px; font-weight: 900; margin: 8px 0; font-family:'Orbitron'; color:var(--armory-gold);">0</div>
+                <div style="color: var(--text-muted); font-size: 11px;">أدلة جنائية ومخبرية مسجلة</div>
             </div>
-            <div class="sec-card" style="border-color: rgba(255,183,0,0.3);">
-                <span style="color: var(--gold-warn); font-size: 11px;"><i class="fa-solid fa-gavel"></i> مذكرات التوقيف النشطة</span>
-                <div id="statWarrants" style="font-size: 28px; font-weight: 900; margin: 8px 0; font-family:'Orbitron'; color:var(--gold-warn);">0</div>
-                <div style="color: var(--text-muted); font-size: 11px;">المطلوبون في ريك تاون</div>
+            <div class="tactical-card" style="border-color: rgba(255,26,60,0.3);">
+                <span style="color: var(--tactical-red); font-size: 11px;"><i class="fa-solid fa-gun"></i> معدات وتراخيص الأسلحة</span>
+                <div id="statArmory" style="font-size: 28px; font-weight: 900; margin: 8px 0; font-family:'Orbitron'; color:var(--tactical-red);">0</div>
+                <div style="color: var(--text-muted); font-size: 11px;">الترسانة العسكرية والتكتيكية</div>
             </div>
         </div>
 
-        <div class="sec-card" style="background: linear-gradient(135deg, rgba(0,85,255,0.1), rgba(0,240,255,0.1));">
-            <h3 style="font-size: 16px; margin-bottom: 8px; color: var(--forensic-cyan);"><i class="fa-solid fa-shield-halved"></i> مرحباً بك يا شادو في نظامك المستقل</h3>
-            <p style="font-size: 12px; color: var(--text-main); line-height: 1.6;">هذا التطبيق يجمع بين طموحك في العدالة الجنائية والأدلة، وبين إدارتك لقناتك ومحتواك بكل احترافية. يمكنك توثيق الأدلة، إدارة السجلات، وكتابة أفكار حلقاتك من مكان واحد.</p>
+        <div class="tactical-card" style="background: linear-gradient(135deg, rgba(0,240,255,0.08), rgba(255,26,60,0.08));">
+            <h3 style="font-size: 16px; margin-bottom: 8px; color: var(--intel-cyan);"><i class="fa-solid fa-radar"></i> حالة النظام الاستخباراتي العسكري</h3>
+            <p style="font-size: 12px; color: var(--text-main); line-height: 1.6;">تم تفعيل نظام القيادة والاستخبارات الميدانية الخاص بك. يتيح لك هذا التطبيق رصد الأهداف الاستخباراتية، جمع الأدلة الجنائية بدقة عالية، وتتبع ترسانة الأسلحة والتصاريح العسكرية بشكل كامل.</p>
         </div>
     </div>
 
-    <!-- 2. الأدلة الجنائية -->
+    <!-- 2. الاستخبارات والملفات السرية -->
+    <div id="intel" class="pane space-y-4">
+        <div class="tactical-card">
+            <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--intel-cyan);"><i class="fa-solid fa-user-secret"></i> أرشيف الاستخبارات وملفات الأهداف</h3>
+            <div id="intelList" style="display:flex; flex-direction:column; gap:10px;"></div>
+        </div>
+    </div>
+
+    <!-- 3. العدالة والأدلة الجنائية -->
     <div id="forensics" class="pane space-y-4">
-        <div class="sec-card">
-            <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--forensic-cyan);"><i class="fa-solid fa-fingerprint"></i> سجل أدلة مسرح الجريمة</h3>
+        <div class="tactical-card">
+            <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--armory-gold);"><i class="fa-solid fa-fingerprint"></i> الأدلة الجنائية ومسرح الجريمة</h3>
             <div id="forensicsList" style="display:flex; flex-direction:column; gap:10px;"></div>
         </div>
     </div>
 
-    <!-- 3. السجلات الجنائية -->
-    <div id="records" class="pane space-y-4">
-        <div class="sec-card">
-            <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--gold-warn);"><i class="fa-solid fa-id-card"></i> قاعدة بيانات السجلات</h3>
-            <div id="recordsList" style="display:flex; flex-direction:column; gap:10px;"></div>
+    <!-- 4. ترسانة الأسلحة والتكتيكات -->
+    <div id="armory" class="pane space-y-4">
+        <div class="tactical-card">
+            <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--tactical-red);"><i class="fa-solid fa-gun"></i> ترسانة الأسلحة والتراخيص الأمنية</h3>
+            <div id="armoryList" style="display:flex; flex-direction:column; gap:10px;"></div>
         </div>
     </div>
 
-    <!-- 4. مذكرات التوقيف -->
-    <div id="warrants" class="pane space-y-4">
-        <div class="sec-card">
-            <h3 style="font-size: 16px; margin-bottom: 12px; color: var(--neon-red);"><i class="fa-solid fa-gavel"></i> مذكرات التوقيف والقبض</h3>
-            <div id="warrantsList" style="display:flex; flex-direction:column; gap:10px;"></div>
-        </div>
-    </div>
-
-    <!-- 5. أفكار اليوتيوب ومحتوى القناة -->
-    <div id="creator" class="pane space-y-4">
-        <div class="sec-card">
-            <h3 style="font-size: 16px; margin-bottom: 12px; color: #ff0055;"><i class="fa-solid fa-video"></i> أفكار وفيديوهات القناة</h3>
-            <div id="ideasContainer" style="display:flex; flex-direction:column; gap:10px; margin-bottom:12px;"></div>
-            <div style="display:flex; gap:6px;">
-                <input id="ideaInput" class="sec-input" placeholder="فكرة فيديو جديدة..." style="margin:0">
-                <button class="sec-btn" style="width:auto; margin:0;" onclick="addIdea()">إضافة فكرة</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 6. لوحة الإدارة والتحكم (مخفية ولا تظهر إلا برمزك) -->
+    <!-- 5. غرفة القيادة والتحكم السرية (مخفية ولا تظهر إلا برمزك) -->
     <div id="admin-panel" class="pane space-y-4">
-        <div class="sec-card" style="border-color: var(--neon-red);">
+        <div class="tactical-card" style="border-color: var(--tactical-red);">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 16px;">
-                <h2 style="font-size: 18px; color: var(--neon-red); font-family:'Orbitron';"><i class="fa-solid fa-user-shield"></i> لوحة تحكم شادو المطلقة</h2>
-                <button onclick="adminLogout()" style="background: #500; color: #fff; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: 700;">تسجيل خروج 🔒</button>
+                <h2 style="font-size: 18px; color: var(--tactical-red); font-family:'Orbitron';"><i class="fa-solid fa-shield-halved"></i> غرفة عمليات القيادة العسكرية</h2>
+                <button onclick="adminLogout()" style="background: #500; color: #fff; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: 700;">إغلاق الغرفة 🔒</button>
             </div>
 
             <div class="grid-2">
-                <!-- رفع دليل -->
+                <!-- إضافة هدف استخباراتي -->
                 <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 14px;">
-                    <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--forensic-cyan);">🔍 تسجيل دليل جنائي</h3>
-                    <input id="fScene" class="sec-input" placeholder="مسرح الجريمة">
-                    <input id="fType" class="sec-input" placeholder="نوع الدليل (بصمة، DNA، مقذوف)">
-                    <input id="fSuspect" class="sec-input" placeholder="المشتبه به">
-                    <button class="sec-btn" onclick="addForensic()">حفظ الدليل</button>
+                    <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--intel-cyan);">📡 رصد هدف استخباراتي جديد</h3>
+                    <input id="iName" class="tac-input" placeholder="اسم الهدف أو المنظمة">
+                    <input id="iThreat" class="tac-input" placeholder="مستوى الخطورة (منخفض، عالي، خطير جداً)">
+                    <input id="iNotes" class="tac-input" placeholder="ملاحظات المراقبة الميدانية">
+                    <button class="tac-btn" onclick="addIntelTarget()">إضافة لسجل الاستخبارات</button>
                 </div>
 
-                <!-- إصدار مذكرة -->
+                <!-- إضافة سلاح للترسانة -->
                 <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 14px;">
-                    <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--neon-red);">⚖️ إصدار مذكرة توقيف</h3>
-                    <input id="wName" class="sec-input" placeholder="اسم المطلوب">
-                    <input id="wCrime" class="sec-input" placeholder="التهمة">
-                    <input id="wBounty" class="sec-input" placeholder="الغرامة / العقوبة">
-                    <button class="sec-btn" style="background:linear-gradient(135deg,var(--neon-red),#880022);" onclick="addWarrant()">إصدار مذكرة</button>
+                    <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--tactical-red);">🔫 تسجيل سلاح في الترسانة</h3>
+                    <input id="aName" class="tac-input" placeholder="اسم السلاح (مثال: M4A1 / Combat Pistol)">
+                    <input id="aSerial" class="tac-input" placeholder="الرقم التسلسلي / الترخيص">
+                    <input id="aStatus" class="tac-input" placeholder="الحالة (مصرح، عسكري، محظور)">
+                    <button class="tac-btn" style="background:linear-gradient(135deg,var(--tactical-red),#880022);" onclick="addArmoryWeapon()">إضافة للترسانة</button>
                 </div>
             </div>
 
-            <!-- إعدادات يوتيوب API -->
+            <!-- إضافة دليل جنائي -->
             <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 14px; margin-top: 16px;">
-                <h3 style="font-size: 14px; margin-bottom: 10px; color: #00ff88;"><i class="fa-solid fa-sliders"></i> ربط يوتيوب API</h3>
-                <input id="apiKeyInput" class="sec-input" placeholder="أدخل YouTube API Key">
-                <button class="sec-btn" style="background:#008855; color:#fff;" onclick="saveApiKey()">حفظ وجلب المشتركين</button>
+                <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--armory-gold);"><i class="fa-solid fa-fingerprint"></i> توثيق دليل جنائي جديد</h3>
+                <input id="fScene" class="tac-input" placeholder="موقع مسرح الجريمة">
+                <input id="fType" class="tac-input" placeholder="نوع الدليل (بصمة، عيار ناري، حمض نووي)">
+                <input id="fDetails" class="tac-input" placeholder="تفاصيل التحليل المخبري">
+                <button class="tac-btn" style="background:linear-gradient(135deg,var(--armory-gold),#aa7700); color:#000;" onclick="addForensicEvidence()">حفظ في أرشيف العدالة</button>
             </div>
         </div>
     </div>
@@ -254,20 +242,17 @@ body::before {
 </main>
 
 <script>
-let forensicsData = JSON.parse(localStorage.getItem('solo_forensics') || JSON.stringify([
-    { id: 1, scene: "البنك المركزي - ريك تاون", type: "بصمة إصبع مطابقة", suspect: "مجهول #1", date: "اليوم" }
+// البيانات الأولية للنظام التكتيكي والاستخباراتي
+let intelData = JSON.parse(localStorage.getItem('tac_intel') || JSON.stringify([
+    { id: 1, name: "منظمة مجهولة الهوية", threat: "خطير جداً", notes: "نشاط مشبوه في المنطقة الصناعية الشمالية", date: "اليوم" }
 ]));
 
-let recordsData = JSON.parse(localStorage.getItem('solo_records') || JSON.stringify([
-    { id: 1, name: "مواطن (سجل نظيف)", history: "رخصة قيادة سارية" }
+let forensicsData = JSON.parse(localStorage.getItem('tac_forensics') || JSON.stringify([
+    { id: 1, scene: "المصرف المركزي", type: "بصمة إصبع مطابقة", details: "تم مطابقة البصمة مع أرشيف المشتبه بهم", date: "اليوم" }
 ]));
 
-let warrantsData = JSON.parse(localStorage.getItem('solo_warrants') || JSON.stringify([
-    { id: 1, name: "مطلوب أمني", crime: "هروب من الدوريات", bounty: "$20,000" }
-]));
-
-let ideasData = JSON.parse(localStorage.getItem('solo_ideas') || JSON.stringify([
-    { id: 1, text: "تصوير حلقة تحقيق جنائي وسيناريو شرطة في ريك تاون" }
+let armoryData = JSON.parse(localStorage.getItem('tac_armory') || JSON.stringify([
+    { id: 1, name: "Carbine Rifle (تكتيكي)", serial: "SN-99482-TX", status: "عسكري / معتمد" }
 ]));
 
 function switchPane(paneId, el) {
@@ -286,131 +271,113 @@ function closeAuthModal() { document.getElementById('authModal').style.display =
 function verifyAdminLogin() {
     let code = document.getElementById('adminCodeInput').value;
     if(code === '47q' || code === 'SHADOW') {
-        localStorage.setItem('solo_logged', 'true');
+        localStorage.setItem('tac_logged', 'true');
         closeAuthModal();
         applyAdminSession();
         switchPane('admin-panel', document.getElementById('adminTabBtn'));
-        alert('✅ أهلاً بك يا شادو. تم فتح لوحة التحكم المطلق.');
+        alert('✅ تم التحقق العسكري. أهلاً بك في غرفة القيادة والسيطرة.');
     } else {
         document.getElementById('authErr').style.display = 'block';
     }
 }
 
 function adminLogout() {
-    localStorage.removeItem('solo_logged');
+    localStorage.removeItem('tac_logged');
     location.reload();
 }
 
 function applyAdminSession() {
-    if(localStorage.getItem('solo_logged') === 'true') {
+    if(localStorage.getItem('tac_logged') === 'true') {
         document.getElementById('adminTabBtn').style.display = 'flex';
-        document.getElementById('authBtnLabel').innerHTML = `<i class="fa-solid fa-user-check" style="color:#00ff88"></i> مسجل دخول`;
+        document.getElementById('authBtnLabel').innerHTML = `<i class="fa-solid fa-user-check" style="color:#00ff88"></i> قيد القيادة`;
     }
 }
 
-// إضافة الأدلة
-function addForensic() {
+// إضافة هدف استخباراتي
+function addIntelTarget() {
+    let name = document.getElementById('iName').value;
+    let threat = document.getElementById('iThreat').value;
+    let notes = document.getElementById('iNotes').value;
+    if(!name) return alert('أدخل اسم الهدف الاستخباراتي!');
+    intelData.unshift({ id: Date.now(), name, threat: threat || 'عالي', notes: notes || 'تحت المراقبة المستمرة', date: new Date().toLocaleDateString('ar-SA') });
+    localStorage.setItem('tac_intel', JSON.stringify(intelData));
+    document.getElementById('iName').value = ''; document.getElementById('iThreat').value = ''; document.getElementById('iNotes').value = '';
+    renderTacticalSystem();
+    alert('✅ تم تسجيل الهدف في ملفات الاستخبارات');
+}
+
+// إضافة سلاح للترسانة
+function addArmoryWeapon() {
+    let name = document.getElementById('aName').value;
+    let serial = document.getElementById('aSerial').value;
+    let status = document.getElementById('aStatus').value;
+    if(!name) return alert('أدخل اسم السلاح!');
+    armoryData.unshift({ id: Date.now(), name, serial: serial || 'غير مخصص', status: status || 'مصرح' });
+    localStorage.setItem('tac_armory', JSON.stringify(armoryData));
+    document.getElementById('aName').value = ''; document.getElementById('aSerial').value = ''; document.getElementById('aStatus').value = '';
+    renderTacticalSystem();
+    alert('🔫 تم إضافة السلاح للترسانة الأمنية');
+}
+
+// إضافة دليل جنائي
+function addForensicEvidence() {
     let scene = document.getElementById('fScene').value;
     let type = document.getElementById('fType').value;
-    let suspect = document.getElementById('fSuspect').value;
-    if(!scene || !type) return alert('أدخل المكان ونوع الدليل!');
-    forensicsData.unshift({ id: Date.now(), scene, type, suspect: suspect || 'غير محدد', date: new Date().toLocaleDateString('ar-SA') });
-    localStorage.setItem('solo_forensics', JSON.stringify(forensicsData));
-    document.getElementById('fScene').value = ''; document.getElementById('fType').value = ''; document.getElementById('fSuspect').value = '';
-    renderApp();
-    alert('✅ تم حفظ الدليل');
+    let details = document.getElementById('fDetails').value;
+    if(!scene || !type) return alert('أدخل مكان الجريمة ونوع الدليل!');
+    forensicsData.unshift({ id: Date.now(), scene, type, details: details || 'تحت الفحص المخبري', date: new Date().toLocaleDateString('ar-SA') });
+    localStorage.setItem('tac_forensics', JSON.stringify(forensicsData));
+    document.getElementById('fScene').value = ''; document.getElementById('fType').value = ''; document.getElementById('fDetails').value = '';
+    renderTacticalSystem();
+    alert('🔍 تم توثيق الدليل الجنائي');
 }
 
-// إضافة مذكرات
-function addWarrant() {
-    let name = document.getElementById('wName').value;
-    let crime = document.getElementById('wCrime').value;
-    let bounty = document.getElementById('wBounty').value;
-    if(!name || !crime) return alert('أدخل الاسم والتهمة!');
-    warrantsData.unshift({ id: Date.now(), name, crime, bounty: bounty || '$10,000' });
-    localStorage.setItem('solo_warrants', JSON.stringify(warrantsData));
-    document.getElementById('wName').value = ''; document.getElementById('wCrime').value = ''; document.getElementById('wBounty').value = '';
-    renderApp();
-    alert('⚖️ تم إصدار المذكرة');
+function deleteTacticalItem(id, type) {
+    if(type === 'i') intelData = intelData.filter(x => x.id !== id), localStorage.setItem('tac_intel', JSON.stringify(intelData));
+    if(type === 'f') forensicsData = forensicsData.filter(x => x.id !== id), localStorage.setItem('tac_forensics', JSON.stringify(forensicsData));
+    if(type === 'a') armoryData = armoryData.filter(x => x.id !== id), localStorage.setItem('tac_armory', JSON.stringify(armoryData));
+    renderTacticalSystem();
 }
 
-// إضافة أفكار
-function addIdea() {
-    let val = document.getElementById('ideaInput').value;
-    if(!val) return;
-    ideasData.unshift({ id: Date.now(), text: val });
-    localStorage.setItem('solo_ideas', JSON.stringify(ideasData));
-    document.getElementById('ideaInput').value = '';
-    renderApp();
-}
-
-function deleteItem(id, type) {
-    if(type === 'f') forensicsData = forensicsData.filter(x => x.id !== id), localStorage.setItem('solo_forensics', JSON.stringify(forensicsData));
-    if(type === 'w') warrantsData = warrantsData.filter(x => x.id !== id), localStorage.setItem('solo_warrants', JSON.stringify(warrantsData));
-    if(type === 'i') ideasData = ideasData.filter(x => x.id !== id), localStorage.setItem('solo_ideas', JSON.stringify(ideasData));
-    renderApp();
-}
-
-// جلب يوتيوب
-async function fetchYT() {
-    let key = localStorage.getItem('solo_yt_key');
-    if(!key) { document.getElementById('statSubs').innerText = "اضبط API Key"; return; }
-    try {
-        let r = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&forHandle=shadow47q&key=${key}`);
-        let d = await r.json();
-        if(d.items && d.items[0]) {
-            document.getElementById('statSubs').innerText = Number(d.items[0].statistics.subscriberCount).toLocaleString() + ' مشترك';
-        }
-    } catch(e) { console.log(e); }
-}
-
-function saveApiKey() {
-    let k = document.getElementById('apiKeyInput').value;
-    if(k) { localStorage.setItem('solo_yt_key', k); alert('✅ تم حفظ مفتاح يوتيوب'); fetchYT(); }
-}
-
-function renderApp() {
+function renderTacticalSystem() {
+    document.getElementById('statIntel').innerText = intelData.length;
     document.getElementById('statForensics').innerText = forensicsData.length;
-    document.getElementById('statWarrants').innerText = warrantsData.length;
-    let logged = localStorage.getItem('solo_logged') === 'true';
+    document.getElementById('statArmory').innerText = armoryData.length;
+    let logged = localStorage.getItem('tac_logged') === 'true';
 
-    // الأدلة
+    // الاستخبارات
+    let iH = '';
+    intelData.forEach(i => {
+        iH += `<div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
+            <div><b style="color:var(--intel-cyan);">${i.name}</b> — مستوى الخطورة: <span style="color:var(--tactical-red);">${i.threat}</span><br><small style="color:var(--text-muted);">ملاحظات: ${i.notes} | التاريخ: ${i.date}</small></div>
+            ${logged ? `<button onclick="deleteTacticalItem(${i.id}, 'i')" style="background:#500; color:#fff; border:none; padding:4px 8px; border-radius:6px; cursor:pointer;">حذف</button>` : ''}
+        </div>`;
+    });
+    document.getElementById('intelList').innerHTML = iH || '<p style="color:var(--text-muted); font-size:12px; text-align:center;">لا توجد ملفات استخباراتية نشطة.</p>';
+
+    // الأدلة الجنائية
     let fH = '';
     forensicsData.forEach(f => {
         fH += `<div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
-            <div><b style="color:var(--forensic-cyan);">${f.type}</b> — الموقع: ${f.scene}<br><small style="color:var(--text-muted);">المشتبه: ${f.suspect}</small></div>
-            ${logged ? `<button onclick="deleteItem(${f.id}, 'f')" style="background:#500; color:#fff; border:none; padding:4px 8px; border-radius:6px; cursor:pointer;">حذف</button>` : ''}
+            <div><b style="color:var(--armory-gold);">${f.type}</b> — الموقع: ${f.scene}<br><small style="color:var(--text-muted);">التفاصيل: ${f.details}</small></div>
+            ${logged ? `<button onclick="deleteTacticalItem(${f.id}, 'f')" style="background:#500; color:#fff; border:none; padding:4px 8px; border-radius:6px; cursor:pointer;">حذف</button>` : ''}
         </div>`;
     });
-    document.getElementById('forensicsList').innerHTML = fH || '<p style="color:var(--text-muted); font-size:12px; text-align:center;">لا توجد أدلة.</p>';
+    document.getElementById('forensicsList').innerHTML = fH || '<p style="color:var(--text-muted); font-size:12px; text-align:center;">لا توجد أدلة مسجلة.</p>';
 
-    // المذكرات
-    let wH = '';
-    warrantsData.forEach(w => {
-        wH += `<div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
-            <div><b style="color:var(--neon-red);">${w.name}</b> — التهمة: ${w.crime}<br><small style="color:var(--gold-warn);">الغرامة: ${w.bounty}</small></div>
-            ${logged ? `<button onclick="deleteItem(${w.id}, 'w')" style="background:#500; color:#fff; border:none; padding:4px 8px; border-radius:6px; cursor:pointer;">حذف</button>` : ''}
+    // الترسانة
+    let aH = '';
+    armoryData.forEach(a => {
+        aH += `<div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
+            <div><b style="color:var(--tactical-red);">${a.name}</b> — السريال: ${a.serial}<br><small style="color:var(--emerald-green);">الحالة: ${a.status}</small></div>
+            ${logged ? `<button onclick="deleteTacticalItem(${a.id}, 'a')" style="background:#500; color:#fff; border:none; padding:4px 8px; border-radius:6px; cursor:pointer;">حذف</button>` : ''}
         </div>`;
     });
-    document.getElementById('warrantsList').innerHTML = wH || '<p style="color:var(--text-muted); font-size:12px; text-align:center;">لا توجد مذكرات.</p>';
-
-    // الأفكار
-    let iH = '';
-    ideasData.forEach(i => {
-        iH += `<div style="background:rgba(0,0,0,0.5); padding:12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
-            <span>💡 ${i.text}</span>
-            <button onclick="deleteItem(${i.id}, 'i')" style="background:#500; color:#fff; border:none; padding:4px 8px; border-radius:6px; cursor:pointer;">حذف</button>
-        </div>`;
-    });
-    document.getElementById('ideasContainer').innerHTML = iH || '<p style="color:var(--text-muted); font-size:12px; text-align:center;">لا توجد أفكار مسجلة.</p>';
+    document.getElementById('armoryList').innerHTML = aH || '<p style="color:var(--text-muted); font-size:12px; text-align:center;">الترسانة فارغة.</p>';
 }
 
 applyAdminSession();
-renderApp();
-if(localStorage.getItem('solo_yt_key')) {
-    document.getElementById('apiKeyInput').value = localStorage.getItem('solo_yt_key');
-    fetchYT();
-}
+renderTacticalSystem();
 </script>
 </body>
 </html>
