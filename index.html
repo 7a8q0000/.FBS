@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>SHADOW47Q // ULTIMATE DETECTIVE DOSSIER</title>
+<title>SHADOW47Q // HARDCORE FORENSIC & CASE SIMULATOR</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root {
     --bg-core: #020408;
-    --card-bg: rgba(8, 14, 24, 0.92);
+    --card-bg: rgba(6, 11, 20, 0.95);
     --tactical-red: #ff1a3c;
     --intel-cyan: #00f0ff;
     --armory-gold: #ffb700;
@@ -99,10 +99,12 @@ body::before {
 }
 .tac-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,240,255,0.6); }
 
-/* أسلوب بطاقات الأدلة المرئية */
-.evidence-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin: 10px 0; }
-.evidence-item { background: rgba(0,0,0,0.5); border: 1px solid rgba(0,240,255,0.2); border-radius: 8px; padding: 8px; text-align: center; }
-.evidence-item img { width: 100%; height: 75px; object-fit: cover; border-radius: 6px; margin-bottom: 5px; border: 1px solid rgba(255,255,255,0.1); }
+/* نافذة ملف القضية العميق (Modal / Detail View) */
+#caseModal { display: none; position: fixed; inset: 0; background: rgba(2,4,8,0.94); z-index: 4000; backdrop-filter: blur(18px); overflow-y: auto; padding: 15px; }
+.case-dossier-box { background: #070e1a; border: 2px solid var(--intel-cyan); border-radius: 16px; padding: 20px; max-width: 900px; margin: 20px auto; box-shadow: 0 0 50px rgba(0,240,255,0.25); position: relative; }
+
+.dossier-section { background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px; margin-bottom: 12px; font-size: 11px; line-height: 1.6; }
+.dossier-title { font-family: 'Orbitron'; font-size: 13px; color: var(--intel-cyan); margin-bottom: 6px; border-bottom: 1px solid rgba(0,240,255,0.2); padding-bottom: 4px; display:flex; justify-content:space-between; align-items:center; }
 
 #authModal { display: none; position: fixed; inset: 0; background: rgba(2,4,8,0.92); z-index: 3000; backdrop-filter: blur(15px); align-items: center; justify-content: center; padding: 20px; }
 .auth-box { background: #070e1a; border: 2px solid var(--intel-cyan); border-radius: 18px; padding: 22px; width: 100%; max-width: 320px; text-align: center; box-shadow: 0 0 40px rgba(0,240,255,0.3); }
@@ -110,19 +112,28 @@ body::before {
 </head>
 <body>
 
+<!-- نافذة عرض ملف القضية المتقدم (يفتح عند اختيار قضية) -->
+<div id="caseModal">
+    <div class="case-dossier-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid var(--intel-cyan); padding-bottom:10px; margin-bottom:15px;">
+            <h2 id="modalCaseTitle" style="font-family:'Orbitron'; font-size:16px; color:var(--intel-cyan);"></h2>
+            <button onclick="closeCaseModal()" style="background:var(--tactical-red); color:#fff; border:none; padding:6px 12px; border-radius:7px; cursor:pointer; font-size:11px; font-weight:700;">إغلاق الملف ✕</button>
+        </div>
+
+        <!-- محتوى الملف المتقدم -->
+        <div id="modalCaseContent"></div>
+    </div>
+</div>
+
 <header class="cmd-header">
-    <div class="cmd-brand"><span class="radar-dot"></span> SHADOW47Q // CASE DOSSIER</div>
+    <div class="cmd-brand"><span class="radar-dot"></span> SHADOW47Q // HARDCORE DOSSIER</div>
     
     <div class="cmd-nav" id="topNav">
         <button class="nav-tab active" onclick="switchPane('overview', this)"><i class="fa-solid fa-satellite"></i> العمليات</button>
-        <button class="nav-tab" onclick="switchPane('detective-cases', this)"><i class="fa-solid fa-folder-open"></i> قضايا التحقيق 🔍</button>
-        <button class="nav-tab" onclick="switchPane('intel', this)"><i class="fa-solid fa-user-secret"></i> الاستخبارات</button>
+        <button class="nav-tab" onclick="switchPane('detective-cases', this)"><i class="fa-solid fa-folder-open"></i> قضايا معقدة 🕵️‍♂️</button>
+        <button class="nav-tab" onclick="switchPane('intel', this)"><i class="fa-solid fa-user-secret"></i> استخبارات</button>
         <button class="nav-tab" onclick="switchPane('forensics', this)"><i class="fa-solid fa-fingerprint"></i> الأدلة</button>
         <button class="nav-tab" onclick="switchPane('armory', this)"><i class="fa-solid fa-gun"></i> الأسلحة</button>
-        <button class="nav-tab" onclick="switchPane('interrogations', this)"><i class="fa-solid fa-comments"></i> الاستجواب</button>
-        <button class="nav-tab" onclick="switchPane('raids', this)"><i class="fa-solid fa-crosshairs"></i> المداهمات</button>
-        <button class="nav-tab" onclick="switchPane('wanted', this)"><i class="fa-solid fa-skull"></i> المطلوبين</button>
-        <button class="nav-tab" onclick="switchPane('reports', this)"><i class="fa-solid fa-file-shield"></i> التقارير</button>
         <button class="nav-tab" id="adminTabBtn" style="display:none; background:linear-gradient(135deg,var(--tactical-red),#880022); color:#fff;" onclick="switchPane('admin-panel', this)"><i class="fa-solid fa-shield-halved"></i> القيادة</button>
     </div>
 
@@ -131,13 +142,9 @@ body::before {
 
 <nav class="mobile-bottom-nav">
     <button class="m-nav-item active" onclick="switchPane('overview', this)"><i class="fa-solid fa-satellite"></i><span>العمليات</span></button>
-    <button class="m-nav-item" onclick="switchPane('detective-cases', this)"><i class="fa-solid fa-folder-open"></i><span>القضايا 🔍</span></button>
+    <button class="m-nav-item" onclick="switchPane('detective-cases', this)"><i class="fa-solid fa-folder-open"></i><span>قضايا 🕵️‍♂️</span></button>
     <button class="m-nav-item" onclick="switchPane('intel', this)"><i class="fa-solid fa-user-secret"></i><span>استخبارات</span></button>
     <button class="m-nav-item" onclick="switchPane('forensics', this)"><i class="fa-solid fa-fingerprint"></i><span>الأدلة</span></button>
-    <button class="m-nav-item" onclick="switchPane('armory', this)"><i class="fa-solid fa-gun"></i><span>الأسلحة</span></button>
-    <button class="m-nav-item" onclick="switchPane('interrogations', this)"><i class="fa-solid fa-comments"></i><span>الاستجواب</span></button>
-    <button class="m-nav-item" onclick="switchPane('raids', this)"><i class="fa-solid fa-crosshairs"></i><span>المداهمات</span></button>
-    <button class="m-nav-item" onclick="switchPane('wanted', this)"><i class="fa-solid fa-skull"></i><span>المطلوبين</span></button>
     <button class="m-nav-item" onclick="openAuthModal()"><i class="fa-solid fa-shield-halved"></i><span>القيادة</span></button>
 </nav>
 
@@ -158,80 +165,48 @@ body::before {
     <div id="overview" class="pane active space-y-4">
         <div class="grid-3" style="margin-bottom: 12px;">
             <div class="tactical-card">
-                <span style="color: var(--text-muted); font-size: 10px;"><i class="fa-solid fa-folder-open" style="color:var(--intel-cyan)"></i> القضايا المتاحة</span>
+                <span style="color: var(--text-muted); font-size: 10px;"><i class="fa-solid fa-folder-open" style="color:var(--intel-cyan)"></i> قضايا معقدة</span>
                 <div id="statCases" style="font-size: 22px; font-weight: 900; margin: 5px 0; font-family:'Orbitron'; color:var(--intel-cyan);">0</div>
             </div>
             <div class="tactical-card" style="border-color: rgba(255,183,0,0.3);">
-                <span style="color: var(--armory-gold); font-size: 10px;"><i class="fa-solid fa-fingerprint"></i> مسارح الجريمة</span>
-                <div id="statForensics" style="font-size: 22px; font-weight: 900; margin: 5px 0; font-family:'Orbitron'; color:var(--armory-gold);">0</div>
-            </div>
-            <div class="tactical-card" style="border-color: rgba(255,26,60,0.3);">
-                <span style="color: var(--tactical-red); font-size: 10px;"><i class="fa-solid fa-skull"></i> المطلوبين</span>
-                <div id="statWanted" style="font-size: 22px; font-weight: 900; margin: 5px 0; font-family:'Orbitron'; color:var(--tactical-red);">0</div>
+                <span style="color: var(--armory-gold); font-size: 10px;"><i class="fa-solid fa-fingerprint"></i> أدلة ومقذوفات</span>
+                <div style="font-size: 22px; font-weight: 900; margin: 5px 0; font-family:'Orbitron'; color:var(--armory-gold);">نشط</div>
             </div>
         </div>
 
         <div class="tactical-card" style="background: linear-gradient(135deg, rgba(0,240,255,0.06), rgba(255,26,60,0.06));">
-            <h3 style="font-size: 14px; margin-bottom: 6px; color: var(--intel-cyan);"><i class="fa-solid fa-radar"></i> نظام ملفات القضايا المرئية</h3>
-            <p style="font-size: 11px; color: var(--text-main); line-height: 1.5;">افتح تبويب **"قضايا التحقيق 🔍"** لعرض ملفات القضايا كاملة مع صور الأدلة ومسرح الجريمة وأقوال المشتبه بهم، وحل الألغاز كأفضل محقق استخباراتي!</p>
+            <h3 style="font-size: 14px; margin-bottom: 6px; color: var(--intel-cyan);"><i class="fa-solid fa-radar"></i> نظام القضايا التحقيقية المعقدة (Hardcore Mode)</h3>
+            <p style="font-size: 11px; color: var(--text-main); line-height: 1.5;">انتقل إلى تبويب **"قضايا معقدة 🕵️‍♂️"**، افتح ملف القضية لدراسة **الجدول الزمني، تقارير المقذوفات والأسلحة، بصمات الأصابع، وأقوال المشتبه بهم**. جهز ورقة وقلم خارجي لربط الخيوط ولن تتمكن من حلها إلا بالتحليل الدقيق!</p>
         </div>
     </div>
 
-    <!-- قسم قضايا التحقيق مع صور الأدلة -->
+    <!-- قسم القضايا المعقدة -->
     <div id="detective-cases" class="pane space-y-4">
         <div class="tactical-card" style="border-color: var(--intel-cyan);">
-            <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--intel-cyan);"><i class="fa-solid fa-folder-open"></i> أرشيف قضايا الغموض والتحقيق</h3>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">افحص صور مسرح الجريمة والأدلة المادية، ثم اتخذ قرارك باتهام الجاني.</p>
-            <div id="detectiveCasesList" style="display:flex; flex-direction:column; gap:12px;"></div>
+            <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--intel-cyan);"><i class="fa-solid fa-folder-open"></i> أرشيف القضايا الجنائية السيبرانية (Hardcore Dossiers)</h3>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">انقر على زر "فتح ملف القضية" لدراسة التقارير الجنائية والمقذوفات بدقة.</p>
+            <div id="hardcoreCasesList" style="display:flex; flex-direction:column; gap:10px;"></div>
         </div>
     </div>
 
     <div id="intel" class="pane space-y-4">
         <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--intel-cyan);"><i class="fa-solid fa-user-secret"></i> الأهداف الاستخباراتية</h3>
-            <div id="intelList" style="display:flex; flex-direction:column; gap:8px;"></div>
+            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--intel-cyan);"><i class="fa-solid fa-user-secret"></i> الاستخبارات</h3>
+            <div id="intelList" style="font-size:11px; color:var(--text-muted);">أرشيف استخباراتي تكتيكي.</div>
         </div>
     </div>
 
     <div id="forensics" class="pane space-y-4">
         <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--armory-gold);"><i class="fa-solid fa-fingerprint"></i> مسرح الجريمة والأدلة</h3>
-            <div id="forensicsList" style="display:flex; flex-direction:column; gap:8px;"></div>
+            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--armory-gold);"><i class="fa-solid fa-fingerprint"></i> المختبر الجنائي</h3>
+            <div id="forensicsList" style="font-size:11px; color:var(--text-muted);">تقارير البصمات والمقذوفات وال-DNA.</div>
         </div>
     </div>
 
     <div id="armory" class="pane space-y-4">
         <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--tactical-red);"><i class="fa-solid fa-gun"></i> الترسانة العسكرية</h3>
-            <div id="armoryList" style="display:flex; flex-direction:column; gap:8px;"></div>
-        </div>
-    </div>
-
-    <div id="interrogations" class="pane space-y-4">
-        <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--intel-cyan);"><i class="fa-solid fa-comments"></i> سجل الاستجوابات</h3>
-            <div id="interrogationList" style="display:flex; flex-direction:column; gap:8px;"></div>
-        </div>
-    </div>
-
-    <div id="raids" class="pane space-y-4">
-        <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--emerald-green);"><i class="fa-solid fa-crosshairs"></i> مخطط المداهمات</h3>
-            <div id="raidsList" style="display:flex; flex-direction:column; gap:8px;"></div>
-        </div>
-    </div>
-
-    <div id="wanted" class="pane space-y-4">
-        <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--tactical-red);"><i class="fa-solid fa-skull"></i> لوحة المطلوبين</h3>
-            <div id="wantedList" style="display:flex; flex-direction:column; gap:8px;"></div>
-        </div>
-    </div>
-
-    <div id="reports" class="pane space-y-4">
-        <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--armory-gold);"><i class="fa-solid fa-file-shield"></i> التقارير الميدانية</h3>
-            <div id="reportsList" style="display:flex; flex-direction:column; gap:8px;"></div>
+            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--tactical-red);"><i class="fa-solid fa-gun"></i> الترسانة والأسلحة</h3>
+            <div id="armoryList" style="font-size:11px; color:var(--text-muted);">سجلات الأسلحة النارية والمسدسات المصرحة.</div>
         </div>
     </div>
 
@@ -242,61 +217,40 @@ body::before {
                 <h2 style="font-size: 15px; color: var(--tactical-red); font-family:'Orbitron';"><i class="fa-solid fa-shield-halved"></i> غرفة القيادة</h2>
                 <button onclick="adminLogout()" style="background: #500; color: #fff; border: none; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 700;">إغلاق 🔒</button>
             </div>
-
-            <div class="grid-2">
-                <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 10px; grid-column: span 2;">
-                    <h3 style="font-size: 12px; margin-bottom: 6px; color: var(--intel-cyan);">📁 إضافة قضية تحقيق مرئية جديدة</h3>
-                    <input id="cTitle" class="tac-input" placeholder="عنوان القضية (مثال: قضية رقم 03)">
-                    <input id="cSceneImg" class="tac-input" placeholder="رابط صورة مسرح الجريمة (صورة من الإنترنت)">
-                    <textarea id="cDesc" class="tac-input" placeholder="تفاصيل جريمة القتل أو الغموض..." style="height:50px; resize:none;"></textarea>
-                    <input id="cSuspects" class="tac-input" placeholder="المشتبه بهم (افصل بينهم بفاصلة: رامي, ماجد, خالد)">
-                    <input id="cSolution" class="tac-input" placeholder="المجرم الحقيقي (القاتل)">
-                    <button class="tac-btn" onclick="addDetectiveCase()">نشر القضية في النظام</button>
-                </div>
-            </div>
+            <p style="font-size: 11px; color: var(--text-muted);">أنت في وضع القيادة والتحكم العسكري.</p>
         </div>
     </div>
 
 </main>
 
 <script>
-// القضايا مع صور مسرح الجريمة والأدلة المرئية
-let detectiveCases = JSON.parse(localStorage.getItem('tc_det_cases') || JSON.stringify([
+// قاعدة بيانات القضايا المعقدة جداً (Hardcore Cases)
+let hardcoreCases = JSON.parse(localStorage.getItem('tc_hardcore_cases') || JSON.stringify([
     {
         id: 1,
-        title: "قضية رقم 01: لغز المعمل المغلق",
-        sceneImg: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80",
-        desc: "عُثر على الباحث د. سامي متوفياً بسم بطيء داخل معمله المغلق بإحكام من الداخل. لا توجد بصمات على زجاجة السم سوى بصماته وحده!",
-        evidence: [
-            { name: "زجاجة السم المسمومة", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=300&q=80", note: "بصمات د. سامي وحده" },
-            { name: "سجل بوابات الدخول", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80", note: "بطاقة رامي استخدمت قبل الحادثة" }
+        title: "قضية رقم 404: اغتيال في الجناح المعزول",
+        codename: "Operation Nightfall",
+        overview: "عُثر على رجل الأعمال 'خالد المالك' مقتولاً بطلقة نارية في صدره داخل غرفته الفندقية المحصنة. الباب مغلق من الداخل بمزلاج أمني، ولا يوجد أي مخرج سوى نافذة مطلة على الشارع.",
+        timeline: [
+            "00:15 - الضحية يطلب وجبة عشاء عبر خدمة الغرف.",
+            "00:45 - عامل الخدمة 'سعيد' يغادر الجناح بعد تسليم الطلب.",
+            "01:30 - صوت طعنة أو طلقة خافتة رصدها الحارس الإلكتروني.",
+            "03:00 - اقتحام الغرفة بعد بلاغ عن عدم استجابة الضحية."
         ],
-        suspects: ["رامي المساعد الشخصي", "ماجد مدير الحسابات", "خالد حارس البناية"],
-        solution: "رامي المساعد الشخصي",
-        solved: false
-    },
-    {
-        id: 2,
-        title: "قضية رقم 02: سرقة الخزنة المركزية",
-        sceneImg: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80",
-        desc: "تمت سرقة خزنة المصرف ليلاً. كاميرات المراقبة التقطت شخصاً ملثماً، وبصمات على الطاولة تعود لعمر المالي، وبطاقة مدير الفروع سلطان.",
-        evidence: [
-            { name: "البصمة على الطاولة", img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=300&q=80", note: "بصمة عمر المالي" },
-            { name: "القناع الأسود", img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=300&q=80", note: "طول الملثم يطابق فهد" }
+        ballistics: "المقذوف المستخرج: عيار 9 ملم من مسدس كاتم صوت طراز (Glock-19). تبين أن السلاح له رقم تسلسلي ممحاة جزئياً، ولكن وُجدت آثار زيت تنظيف أسلحة من نوع نادر (Vortex-X).",
+        fingerprints: "البصمات على مقبض النافذة: مطابقة لـ 'زياد' (شريك الضحية). البصمات على كأس الماء: مطابقة لـ 'سعيد' (عامل الخدمة). لا توجد بصمات على السلاح لأنه وُقف بقطعة قماش.",
+        suspects: [
+            { name: "زياد (شريك الضحية)", alibi: "يزعم أنه كان نائماً في جناحه بالطابق العلوي طوال الليل.", contradiction: "سجلات بطاقة بابه تظهر أنه نزل إلى الطابق الأرضي الساعة 01:25 ليلاً." },
+            { name: "سعيد (عامل الخدمة)", alibi: "يقول إنه سلم العشاء وغادر الفندق فوراً الساعة 00:50.", contradiction: "كاميرات المراقبة توضح أنه دخل غرفة الصيانة وبحوزته حقيبة أدوات تنظيف تحتوي على زيت (Vortex-X)." },
+            { name: "منى (زوجة الضحية السابقية)", alibi: "كانت خارج المدينة في رحلة عمل.", contradiction: "تم رصد سيارتها مركونة في مرآب الفندق السري وقت الجريمة." }
         ],
-        suspects: ["عمر المسؤول المالي", "فهد فني الصيانة", "سلطان مدير الفروع"],
-        solution: "فهد فني الصيانة",
+        solution: {
+            killer: "سعيد (عامل الخدمة)",
+            weaponProof: "زيت Vortex-X ومسدس Glock-19 في غرفة الصيانة"
+        },
         solved: false
     }
 ]));
-
-let intelData = JSON.parse(localStorage.getItem('tc_intel') || JSON.stringify([{id:1, name:"منظمة مشبوهة", threat:"خطير"}]));
-let forensicsData = JSON.parse(localStorage.getItem('tc_forensics') || JSON.stringify([{id:1, scene:"المصرف", type:"بصمة إصبع"}]));
-let armoryData = JSON.parse(localStorage.getItem('tc_armory') || JSON.stringify([{id:1, name:"Carbine Rifle", serial:"SN-9948"}]));
-let interrogationsData = JSON.parse(localStorage.getItem('tc_interrogations') || JSON.stringify([{id:1, suspect:"مشتبه #1", caseTitle:"سطو"}]));
-let raidsData = JSON.parse(localStorage.getItem('tc_raids') || JSON.stringify([{id:1, name:"مداهمة المستودع", location:"الميناء"}]));
-let wantedData = JSON.parse(localStorage.getItem('tc_wanted') || JSON.stringify([{id:1, name:"الزعيم الهارب", crime:"هروب"}]));
-let reportsData = JSON.parse(localStorage.getItem('tc_reports') || JSON.stringify([{id:1, title:"تأمين البنك", type:"بلاغ"}]));
 
 function switchPane(paneId, el) {
     document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
@@ -318,7 +272,7 @@ function verifyAdminLogin() {
         closeAuthModal();
         applyAdminSession();
         switchPane('admin-panel', document.getElementById('adminTabBtn'));
-        alert('✅ تم التحقق. أهلاً بك في غرفة القيادة.');
+        alert('✅ أهلاً بك يا شادو في القيادة.');
     } else {
         document.getElementById('authErr').style.display = 'block';
     }
@@ -336,107 +290,115 @@ function applyAdminSession() {
     }
 }
 
-function solveCase(caseId) {
-    let selectEl = document.getElementById('suspectSelect_' + caseId);
-    let chosen = selectEl.value;
-    let c = detectiveCases.find(x => x.id === caseId);
+// فتح ملف القضية المعقد
+function openCaseDossier(caseId) {
+    let c = hardcoreCases.find(x => x.id === caseId);
     if(!c) return;
+
+    document.getElementById('modalCaseTitle').innerText = c.title + " [" + c.codename + "]";
     
-    if(chosen === c.solution) {
+    let suspectsOptions = c.suspects.map(s => `<option value="${s.name}">${s.name}</option>`).join('');
+    let suspectsHtml = c.suspects.map(s => `
+        <div style="background:rgba(0,0,0,0.4); padding:8px; border-radius:6px; margin-bottom:6px;">
+            <b style="color:var(--tactical-red);">${s.name}</b><br>
+            <span style="color:var(--text-muted);">ادعاء المشتبه به:</span> ${s.alibi}<br>
+            <span style="color:var(--armory-gold);">ثغرة التحقيق / التناقض:</span> <b style="color:#fff;">${s.contradiction}</b>
+        </div>
+    `).join('');
+
+    let timelineHtml = c.timeline.map(t => `<li style="margin-bottom:4px; color:var(--intel-cyan);">${t}</li>`).join('');
+
+    let htmlContent = `
+        <div class="dossier-section">
+            <div class="dossier-title"><i class="fa-solid fa-file-lines"></i> ملخص مسرح الجريمة</div>
+            <p style="color:var(--text-main);">${c.overview}</p>
+        </div>
+
+        <div class="dossier-section">
+            <div class="dossier-title"><i class="fa-solid fa-clock"></i> الجدول الزمني الدقيق (Timeline) - سجل الورقة الخارجية</div>
+            <ul style="padding-right:15px; margin-top:5px;">${timelineHtml}</ul>
+        </div>
+
+        <div class="dossier-section">
+            <div class="dossier-title"><i class="fa-solid fa-gun"></i> تقرير المختبر الجنائي (المقذوفات والأسلحة)</div>
+            <p style="color:var(--armory-gold);">${c.ballistics}</p>
+        </div>
+
+        <div class="dossier-section">
+            <div class="dossier-title"><i class="fa-solid fa-fingerprint"></i> تقرير البصمات والأدلة البيولوجية</div>
+            <p style="color:var(--emerald-green);">${c.fingerprints}</p>
+        </div>
+
+        <div class="dossier-section">
+            <div class="dossier-title"><i class="fa-solid fa-comments"></i> محاضر استجواب المشتبه بهم</div>
+            <div style="margin-top:6px;">${suspectsHtml}</div>
+        </div>
+
+        <!-- منصة الاتهام النهائية -->
+        <div class="dossier-section" style="border-color:var(--tactical-red); background:rgba(255,26,60,0.05);">
+            <div class="dossier-title" style="color:var(--tactical-red);"><i class="fa-solid fa-gavel"></i> منصة توجيه الاتهام الرسمية (الإغلاق النهائي)</div>
+            ${!c.solved ? `
+                <p style="margin-bottom:8px; color:var(--text-main);">بعد مطابقة الأدلة، السلاح، والجدول الزمني.. من هو الجاني الحقيقي؟</p>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                    <select id="accusedName_${c.id}" class="tac-input" style="margin:0;">
+                        <option value="">-- حدد اسم المتهم الحقيقي --</option>
+                        ${suspectsOptions}
+                    </select>
+                    <input id="accusedProof_${c.id}" class="tac-input" placeholder="اكتب الدليل القاطع أو السلاح المطابق باختصار..." style="margin:0;">
+                    <button class="tac-btn" style="background:var(--tactical-red); color:#fff;" onclick="submitHardcoreAccusation(${c.id})">إصدار مذكرة إدانة وإغلاق القضية ⚖️</button>
+                </div>
+            ` : '<div style="color:var(--emerald-green); font-weight:700; font-size:12px;"><i class="fa-solid fa-check-circle"></i> تم حل هذه القضية المعقدة وإدانة الجاني بنجاح!</div>'}
+        </div>
+    `;
+
+    document.getElementById('modalCaseContent').innerHTML = htmlContent;
+    document.getElementById('caseModal').style.display = 'block';
+}
+
+function closeCaseModal() {
+    document.getElementById('caseModal').style.display = 'none';
+}
+
+function submitHardcoreAccusation(caseId) {
+    let c = hardcoreCases.find(x => x.id === caseId);
+    let chosenName = document.getElementById('accusedName_' + caseId).value;
+    let chosenProof = document.getElementById('accusedProof_' + caseId).value.trim();
+
+    if(!chosenName || !chosenProof) {
+        alert('⚠️ يجب تحديد اسم المتهم وكتابة الدليل أو السلاح المطابق!');
+        return;
+    }
+
+    // التحقق من صحة الاتهام
+    if(chosenName === c.solution.killer) {
         c.solved = true;
-        localStorage.setItem('tc_det_cases', JSON.stringify(detectiveCases));
+        localStorage.setItem('tc_hardcore_cases', JSON.stringify(hardcoreCases));
+        alert('🏆 عظمة على عظمة يا شادو! تحليل خرافى وربط هندسي سليم 100%. تم إدانة الجاني وإغلاق القضية المعقدة بنجاح!');
+        closeCaseModal();
         renderAll();
-        alert('🎉 بطل يا شادو! تم كشف المجرم الحقيقي وإغلاق الملف بنجاح!');
     } else {
-        alert('❌ إجابة خاطئة! افحص صور مسرح الجريمة والأدلة مرة أخرى.');
+        alert('❌ اتهام خاطئ! راجع الجدول الزمني وثغرات أقوال المشتبه بهم مرة أخرى على ورقتك الخارجية.');
     }
 }
 
-function addDetectiveCase() {
-    let title = document.getElementById('cTitle').value;
-    let sceneImg = document.getElementById('cSceneImg').value;
-    let desc = document.getElementById('cDesc').value;
-    let suspectsStr = document.getElementById('cSuspects').value;
-    let solution = document.getElementById('cSolution').value;
-    if(!title || !suspectsStr || !solution) return alert('أدخل بيانات القضية الأساسية!');
-    
-    let suspects = suspectsStr.split(',').map(s => s.trim());
-    detectiveCases.unshift({
-        id: Date.now(),
-        title,
-        sceneImg: sceneImg || 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80',
-        desc: desc || 'تفاصيل مسرح الجريمة...',
-        evidence: [
-            { name: "دليل مسرح الجريمة", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=300&q=80", note: "تم تحريزه للمختبر" }
-        ],
-        suspects,
-        solution: solution.trim(),
-        solved: false
-    });
-    localStorage.setItem('tc_det_cases', JSON.stringify(detectiveCases));
-    document.getElementById('cTitle').value=''; document.getElementById('cSceneImg').value=''; document.getElementById('cDesc').value=''; document.getElementById('cSuspects').value=''; document.getElementById('cSolution').value='';
-    renderAll();
-    alert('📁 تمت إضافة القضية بنجاح');
-}
-
 function renderAll() {
-    document.getElementById('statCases').innerText = detectiveCases.length;
-    document.getElementById('statForensics').innerText = forensicsData.length;
-    document.getElementById('statWanted').innerText = wantedData.length;
+    document.getElementById('statCases').innerText = hardcoreCases.length;
 
-    let dHtml = '';
-    detectiveCases.forEach(c => {
-        let options = c.suspects.map(s => `<option value="${s}">${s}</option>`).join('');
-        let evidenceHtml = c.evidence.map(e => `
-            <div class="evidence-item">
-                <img src="${e.img}" alt="${e.name}">
-                <div style="font-weight:700; color:var(--armory-gold);">${e.name}</div>
-                <div style="color:var(--text-muted); font-size:9px;">${e.note}</div>
-            </div>
-        `).join('');
-
-        dHtml += `<div style="background:rgba(0,0,0,0.6); padding:14px; border-radius:12px; border:1px solid ${c.solved ? 'var(--emerald-green)' : 'rgba(0,240,255,0.2)'}; margin-bottom:12px;">
+    let html = '';
+    hardcoreCases.forEach(c => {
+        html += `<div style="background:rgba(0,0,0,0.5); padding:14px; border-radius:12px; border:1px solid ${c.solved ? 'var(--emerald-green)' : 'rgba(0,240,255,0.3)'}; margin-bottom:10px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
                 <b style="color:var(--intel-cyan); font-size:13px;">${c.title}</b>
-                <span style="font-size:10px; padding:3px 8px; border-radius:6px; background:${c.solved ? 'rgba(0,255,136,0.2); color:var(--emerald-green)' : 'rgba(255,183,0,0.2); color:var(--armory-gold)'}">${c.solved ? 'تم حل القضية ✔️' : 'قضية مفتوحة 🔍'}</span>
+                <span style="font-size:10px; padding:3px 8px; border-radius:6px; background:${c.solved ? 'rgba(0,255,136,0.2); color:var(--emerald-green)' : 'rgba(255,183,0,0.2); color:var(--armory-gold)'}">${c.solved ? 'مغلقة (تم الحل) ✔️' : 'قضية معقدة مفتوحة 🔍'}</span>
             </div>
-            
-            <!-- صورة مسرح الجريمة -->
-            <img src="${c.sceneImg}" alt="مسرح الجريمة" style="width:100%; height:140px; object-fit:cover; border-radius:8px; margin-bottom:8px; border:1px solid rgba(0,240,255,0.3);">
-            
-            <p style="font-size:11px; color:var(--text-main); line-height:1.5; margin-bottom:8px;">${c.desc}</p>
-            
-            <div style="font-size:11px; font-weight:800; color:var(--armory-gold); margin-bottom:4px;">🔍 الأدلة ومسرح الجريمة المحرزة:</div>
-            <div class="evidence-grid">${evidenceHtml}</div>
-
-            ${!c.solved ? `
-                <div style="display:flex; gap:8px; align-items:center; margin-top:10px;">
-                    <select id="suspectSelect_${c.id}" class="tac-input" style="margin:0; flex:1;">
-                        <option value="">-- اختر المتهم الحقيقي (القاتل) --</option>
-                        ${options}
-                    </select>
-                    <button class="tac-btn" style="width:auto; margin:0; padding:9px 12px;" onclick="solveCase(${c.id})">اتهام ⚖️</button>
-                </div>
-            ` : '<div style="color:var(--emerald-green); font-size:11px; font-weight:700; margin-top:6px;"><i class="fa-solid fa-check-circle"></i> تم إدانة الجاني الحقيقي وإغلاق القضية.</div>'}
+            <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">${c.overview.substring(0, 90)}...</p>
+            <button class="tac-btn" style="margin:0; width:auto; padding:7px 14px;" onclick="openCaseDossier(${c.id})"><i class="fa-solid fa-folder-open"></i> فتح ملف القضية والتحليل المخبري 🔬</button>
         </div>`;
     });
-    document.getElementById('detectiveCasesList').innerHTML = dHtml || '<p style="color:var(--text-muted); font-size:11px; text-align:center;">لا توجد قضايا.</p>';
 
-    const makeHtml = (arr, color, titleFn, subFn) => {
-        if(!arr.length) return '<p style="color:var(--text-muted); font-size:11px; text-align:center;">لا توجد سجلات.</p>';
-        return arr.map(x => `<div style="background:rgba(0,0,0,0.5); padding:10px; border-radius:8px; font-size:11px;"><b style="color:${color};">${titleFn(x)}</b><br><small style="color:var(--text-muted);">${subFn(x)}</small></div>`).join('');
-    };
-
-    document.getElementById('intelList').innerHTML = makeHtml(intelData, 'var(--intel-cyan)', x => x.name, x => `الخطورة: ${x.threat}`);
-    document.getElementById('forensicsList').innerHTML = makeHtml(forensicsData, 'var(--armory-gold)', x => x.type, x => `الموقع: ${x.scene}`);
-    document.getElementById('armoryList').innerHTML = makeHtml(armoryData, 'var(--tactical-red)', x => x.name, x => `السريال: ${x.serial}`);
-    document.getElementById('interrogationList').innerHTML = makeHtml(interrogationsData, 'var(--intel-cyan)', x => x.suspect, x => `القضية: ${x.caseTitle}`);
-    document.getElementById('raidsList').innerHTML = makeHtml(raidsData, 'var(--emerald-green)', x => x.name, x => `الموقع: ${x.location}`);
-    document.getElementById('wantedList').innerHTML = makeHtml(wantedData, 'var(--tactical-red)', x => x.name, x => `التهمة: ${x.crime}`);
-    document.getElementById('reportsList').innerHTML = makeHtml(reportsData, 'var(--armory-gold)', x => x.title, x => `النوع: ${x.type}`);
+    document.getElementById('hardcoreCasesList').innerHTML = html;
 }
 
-applyAdminSession();
 renderAll();
 </script>
 </body>
