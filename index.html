@@ -3,458 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>SHADOW47Q // 20 HARDCORE DETECTIVE CASES</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Shadow47q - مقر قيادة رزدنت إيفل 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root {
-    --bg-core: #020408;
-    --card-bg: rgba(6, 11, 20, 0.95);
-    --tactical-red: #ff1a3c;
-    --intel-cyan: #00f0ff;
-    --armory-gold: #ffb700;
-    --emerald-green: #00ff88;
-    --text-main: #e2e8f0;
-    --text-muted: #64748b;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent;}
+html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#040208 0%,#0e0514 50%,#1f0514 100%)!important;color:#f3e8ff;}
+.app-container{max-width:480px;margin:0 auto;min-height:100vh;padding:14px;padding-bottom:90px;}
 
-* { box-sizing: border-box; font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-body { background: var(--bg-core); color: var(--text-main); min-height: 100vh; overflow-x: hidden; padding-bottom: 80px; }
+/* الهيدر */
+.header{background:linear-gradient(90deg,#581c87,#b91c1c,#991b1b);padding:16px;border-radius:20px;display:flex;justify-content:space-between;align-items:center;border:2px solid #ef4444;box-shadow:0 8px 25px rgba(239,68,68,0.3);}
+.badge{background:rgba(0,0,0,.5);border:1px solid #fca5a5;color:#fff;padding:5px 12px;border-radius:20px;font-size:10px;font-weight:900;}
 
-@media(min-width: 768px) { body { padding-bottom: 0; } }
+/* شريط التنقل السفلي */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#09030e;border-top:1.5px solid #7f1d1d;display:flex;justify-content:space-around;padding:10px 0;z-index:1000;box-shadow:0 -5px 20px rgba(0,0,0,0.9);max-width:480px;margin:0 auto;}
+.nav-item{background:none;border:none;color:#9ca3af;font-size:10px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;}
+.nav-item span{font-size:16px;}
+.nav-item.active{color:#ef4444;text-shadow:0 0 10px rgba(239,68,68,0.6);}
 
-body::before {
-    content: ''; position: fixed; inset: 0;
-    background-image: radial-gradient(circle at 15% 15%, rgba(0,240,255,0.04) 0%, transparent 40%),
-                      radial-gradient(circle at 85% 85%, rgba(255,26,60,0.04) 0%, transparent 40%);
-    z-index: -2;
-}
+/* المحتوى والتبويبات */
+.content{display:none;margin-top:14px;}
+.content.active{display:block;animation:fadeIn 0.25s ease-in-out;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
-.cmd-header {
-    display: flex; position: sticky; top: 0; z-index: 1000;
-    background: rgba(2, 4, 8, 0.95); backdrop-filter: blur(20px);
-    border-bottom: 2px solid var(--intel-cyan);
-    padding: 10px 15px; justify-content: space-between; align-items: center;
-    box-shadow: 0 4px 25px rgba(0,240,255,0.2);
-}
-.cmd-brand { font-family: 'Orbitron'; font-size: 12px; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--intel-cyan); display:flex; align-items:center; gap:6px; }
-.radar-dot { width: 7px; height: 7px; background: var(--emerald-green); border-radius: 50%; box-shadow: 0 0 10px var(--emerald-green); animation: pulse 1s infinite; }
-@keyframes pulse { 50% { opacity: 0.3; } }
+.card{background:linear-gradient(180deg,rgba(127,29,29,0.15),rgba(20,5,20,0.4));border:1.5px solid rgba(239,68,68,0.3);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 4px 15px rgba(0,0,0,0.4);}
+.btn{width:100%;padding:12px;background:linear-gradient(90deg,#7f1d1d,#dc2626);border:none;border-radius:12px;color:#fff;font-weight:900;font-size:13px;cursor:pointer;margin-top:8px;box-shadow:0 4px 12px rgba(220,38,38,0.4);}
+.input{width:100%;padding:11px;background:#120512;border:1.5px solid #7f1d1d;border-radius:12px;color:#fff;font-size:12px;margin-top:6px;outline:none;}
+.input:focus{border-color:#ef4444;}
+.stat{flex:1;background:rgba(127,29,29,0.2);border:1px solid #7f1d1d;border-radius:14px;padding:12px;text-align:center;}
 
-.cmd-nav { display: none; gap: 4px; overflow-x: auto; white-space: nowrap; max-width: 72%; scrollbar-width: none; }
-.cmd-nav::-webkit-scrollbar { display: none; }
-@media(min-width: 768px) { .cmd-nav { display: flex; } }
+.list-item{background:#110414;border:1px solid rgba(239,68,68,0.25);padding:12px;border-radius:14px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:11px;position:relative;overflow:hidden;}
+.list-item::before{content:'';position:absolute;right:0;top:0;bottom:0;width:4px;}
+.list-item.جاهز::before{background:#22c55e;}
+.list-item.قيد_التصوير::before{background:#f59e0b;}
+.list-item.منشور::before{background:#8b5cf6;}
 
-.nav-tab {
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: var(--text-muted);
-    padding: 6px 10px; border-radius: 8px; font-weight: 700; font-size: 10px; cursor: pointer; transition: 0.3s;
-    display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0;
-}
-.nav-tab:hover { color: #fff; background: rgba(0,240,255,0.15); border-color: var(--intel-cyan); }
-.nav-tab.active { background: linear-gradient(135deg, var(--intel-cyan), #0077aa); color: #000; border-color: #fff; box-shadow: 0 0 10px rgba(0,240,255,0.5); font-weight: 900; }
-
-.mobile-bottom-nav {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 2000;
-    background: rgba(2, 4, 8, 0.98); backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(0,240,255,0.3);
-    display: flex; overflow-x: auto; gap: 3px; padding: 5px 8px; scrollbar-width: none;
-}
-.mobile-bottom-nav::-webkit-scrollbar { display: none; }
-@media(min-width: 768px) { .mobile-bottom-nav { display: none; } }
-
-.m-nav-item {
-    background: none; border: none; color: var(--text-muted);
-    display: flex; flex-direction: column; align-items: center; gap: 2px;
-    font-size: 8px; cursor: pointer; transition: 0.3s; flex-shrink: 0; padding: 3px 6px;
-}
-.m-nav-item i { font-size: 14px; }
-.m-nav-item.active { color: var(--intel-cyan); text-shadow: 0 0 8px var(--intel-cyan); }
-
-.container { max-width: 1400px; margin: 0 auto; padding: 16px; }
-.pane { display: none; animation: fadeIn 0.3s ease forwards; }
-.pane.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
-.tactical-card {
-    background: var(--card-bg); backdrop-filter: blur(20px);
-    border: 1px solid rgba(0,240,255,0.2); border-radius: 14px;
-    padding: 16px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    margin-bottom: 12px;
-}
-.tactical-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--intel-cyan), transparent);
-}
-.grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-@media(max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
-
-.tac-input { background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 9px 11px; border-radius: 8px; width: 100%; margin-top: 5px; font-size: 12px; outline: none; transition: 0.3s; }
-.tac-input:focus { border-color: var(--intel-cyan); box-shadow: 0 0 10px rgba(0,240,255,0.3); }
-
-.tac-btn {
-    background: linear-gradient(135deg, var(--intel-cyan), #0077aa); color: #000; border: none;
-    border-radius: 8px; padding: 10px; width: 100%; font-weight: 900; cursor: pointer; margin-top: 8px;
-    box-shadow: 0 4px 12px rgba(0,240,255,0.4); font-size: 11px; transition: 0.3s;
-}
-.tac-btn:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,240,255,0.6); }
-
-/* نافذة ملف القضية المتقدم */
-#caseModal { display: none; position: fixed; inset: 0; background: rgba(2,4,8,0.94); z-index: 4000; backdrop-filter: blur(18px); overflow-y: auto; padding: 15px; }
-.case-dossier-box { background: #070e1a; border: 2px solid var(--intel-cyan); border-radius: 16px; padding: 20px; max-width: 900px; margin: 20px auto; box-shadow: 0 0 50px rgba(0,240,255,0.25); position: relative; }
-
-.dossier-section { background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 12px; margin-bottom: 12px; font-size: 11px; line-height: 1.6; }
-.dossier-title { font-family: 'Orbitron'; font-size: 13px; color: var(--intel-cyan); margin-bottom: 6px; border-bottom: 1px solid rgba(0,240,255,0.2); padding-bottom: 4px; display:flex; justify-content:space-between; align-items:center; }
-
-.evidence-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin: 8px 0; }
-.evidence-item { background: rgba(0,0,0,0.5); border: 1px solid rgba(0,240,255,0.2); border-radius: 8px; padding: 8px; text-align: center; }
-.evidence-item img { width: 100%; height: 75px; object-fit: cover; border-radius: 6px; margin-bottom: 5px; border: 1px solid rgba(255,255,255,0.1); }
-
-#authModal { display: none; position: fixed; inset: 0; background: rgba(2,4,8,0.92); z-index: 3000; backdrop-filter: blur(15px); align-items: center; justify-content: center; padding: 20px; }
-.auth-box { background: #070e1a; border: 2px solid var(--intel-cyan); border-radius: 18px; padding: 22px; width: 100%; max-width: 320px; text-align: center; box-shadow: 0 0 40px rgba(0,240,255,0.3); }
+.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px;}
+.chap-box{background:#1a051d;border:1px solid #7f1d1d;border-radius:10px;padding:8px;text-align:center;font-size:11px;font-weight:900;cursor:pointer;}
+.chap-box.done{background:#14532d;border-color:#22c55e;color:#86efac;}
 </style>
 </head>
 <body>
 
-<div id="caseModal">
-    <div class="case-dossier-box">
-        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid var(--intel-cyan); padding-bottom:10px; margin-bottom:15px;">
-            <h2 id="modalCaseTitle" style="font-family:'Orbitron'; font-size:16px; color:var(--intel-cyan);"></h2>
-            <button onclick="closeCaseModal()" style="background:var(--tactical-red); color:#fff; border:none; padding:6px 12px; border-radius:7px; cursor:pointer; font-size:11px; font-weight:700;">إغلاق الملف ✕</button>
+<div class="app-container">
+    <!-- الهيدر -->
+    <div class="header">
+        <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:36px;height:36px;background:linear-gradient(135deg,#dc2626,#581c87);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px">🧟‍♂️</div>
+            <div>
+                <div style="font-weight:900;font-size:13px">Shadow47q - RE4 Hub</div>
+                <div style="font-size:8px;opacity:.8">سلسلة رزدنت إيفل 4 (16 فصل)</div>
+            </div>
         </div>
-        <div id="modalCaseContent"></div>
+        <span class="badge">PROD 🎬</span>
     </div>
+
+    <!-- تبويب الرئيسية -->
+    <div id="c-dash" class="content active">
+        <div class="card" style="border-color:#dc2626">
+            <div style="font-weight:900;font-size:13px;color:#fca5a5">🎮 حالة الختمة (Resident Evil 4 Remake)</div>
+            <div style="font-size:11px;color:#a1a1aa;margin-top:4px">اضغط على الفصل لتحديث حالته إذا صورته ونزلته:</div>
+            <div class="chapter-grid" id="chaptersGrid"></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px">
+            <div class="stat"><div style="font-size:8px">🎬 الفصول المصورة</div><div id="doneChapters" style="font-weight:900;font-size:16px;color:#22c55e">0 / 16</div></div>
+            <div class="stat"><div style="font-size:8px">📹 الحلقات المسجلة</div><div id="totalEps" style="font-weight:900;font-size:16px;color:#fca5a5">0</div></div>
+            <div class="stat"><div style="font-size:8px">⚡ شورتس جاهزة</div><div id="totalShorts" style="font-weight:900;font-size:16px;color:#c084fc">0</div></div>
+        </div>
+    </div>
+
+    <!-- تبويب جدول الحلقات والشورتس -->
+    <div id="c-schedule" class="content">
+        <div class="card" style="border-color:#22c55e">
+            <div style="font-weight:900;font-size:13px">➕ إضافة حلقة أو شورت جديد</div>
+            <input id="vidTitle" placeholder="عنوان الحلقة - مثال: رزدنت إيفل 4 [الفصل الأول]" class="input">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                <select id="vidType" class="input">
+                    <option value="حلقة رئيسية (50 دقيقة)">📺 حلقة رئيسية (50 دقيقة)</option>
+                    <option value="Shorts لقطة مرعبة/مضحكة">📱 Shorts (لقطة سريعة)</option>
+                </select>
+                <select id="vidStatus" class="input">
+                    <option value="قيد_التصوير">🟡 قيد التصوير</option>
+                    <option value="جاهز">🟢 جاهز للنشر</option>
+                    <option value="منشور">🟣 تم النشر</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addVideo()">+ حفظ في الجدول 💜</button>
+        </div>
+
+        <div class="card">
+            <div style="font-weight:900;font-size:12px">📋 جدول المحتوى الحالي</div>
+            <div id="videosList" style="margin-top:6px"></div>
+        </div>
+    </div>
+
+    <!-- تبويب أدوات العناوين السريعة -->
+    <div id="c-tools" class="content">
+        <div class="card">
+            <div style="font-weight:900;font-size:13px">🛠️ مولّد عناوين رزدنت إيفل 4 الحماسية</div>
+            <button class="btn" style="background:linear-gradient(90deg,#991b1b,#dc2626)" onclick="genRETitle()">🎲 اعطني عنوان يكسر المشاهدات</button>
+            <div id="genBox" style="background:#0b0412;border:1px solid #7f1d1d;padding:12px;border-radius:10px;font-size:12px;font-weight:700;color:#fca5a5;margin-top:8px">
+                اضغط الزر فوق عشان تطلع لك فكرة عنوان مشوق للحلقة!
+            </div>
+        </div>
+    </div>
+
+    <!-- تبويب بنك الأفكار -->
+    <div id="c-ideas" class="content">
+        <div class="card">
+            <div style="font-weight:900;font-size:13px">💡 بنك الأفكار واللقطات للشورتس</div>
+            <input id="ideaInp" placeholder="فكرة لقطة للشورتس (مثلاً: موتتي المضحكة عند الزعيم)..." class="input">
+            <button class="btn" onclick="addIdea()">+ حفظ الفكرة</button>
+            <div id="ideasList" style="margin-top:8px"></div>
+        </div>
+    </div>
+
+    <!-- شريط التنقل السفلي -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="openTab('dash', this)"><span>📊</span>الختمة</button>
+        <button class="nav-item" onclick="openTab('schedule', this)"><span>📅</span>الجدول</button>
+        <button class="nav-item" onclick="openTab('tools', this)"><span>🛠️</span>العناوين</button>
+        <button class="nav-item" onclick="openTab('ideas', this)"><span>💡</span>الأفكار</button>
+    </nav>
 </div>
-
-<header class="cmd-header">
-    <div class="cmd-brand"><span class="radar-dot"></span> SHADOW47Q // 20 CASES ARCHIVE</div>
-    
-    <div class="cmd-nav" id="topNav">
-        <button class="nav-tab active" onclick="switchPane('overview', this)"><i class="fa-solid fa-satellite"></i> العمليات</button>
-        <button class="nav-tab" onclick="switchPane('detective-cases', this)"><i class="fa-solid fa-folder-open"></i> قضايا الأرشيف (20) 🕵️‍♂️</button>
-        <button class="nav-tab" onclick="switchPane('intel', this)"><i class="fa-solid fa-user-secret"></i> استخبارات</button>
-        <button class="nav-tab" onclick="switchPane('forensics', this)"><i class="fa-solid fa-fingerprint"></i> الأدلة</button>
-        <button class="nav-tab" id="adminTabBtn" style="display:none; background:linear-gradient(135deg,var(--tactical-red),#880022); color:#fff;" onclick="switchPane('admin-panel', this)"><i class="fa-solid fa-shield-halved"></i> القيادة</button>
-    </div>
-
-    <button onclick="openAuthModal()" style="background:rgba(0,240,255,0.15); border:1px solid var(--intel-cyan); color:var(--intel-cyan); padding:6px 10px; border-radius:8px; font-weight:900; cursor:pointer; font-size:10px;" id="authBtnLabel"><i class="fa-solid fa-lock"></i> دخول</button>
-</header>
-
-<nav class="mobile-bottom-nav">
-    <button class="m-nav-item active" onclick="switchPane('overview', this)"><i class="fa-solid fa-satellite"></i><span>العمليات</span></button>
-    <button class="m-nav-item" onclick="switchPane('detective-cases', this)"><i class="fa-solid fa-folder-open"></i><span>قضايا (20)</span></button>
-    <button class="m-nav-item" onclick="switchPane('intel', this)"><i class="fa-solid fa-user-secret"></i><span>استخبارات</span></button>
-    <button class="m-nav-item" onclick="switchPane('forensics', this)"><i class="fa-solid fa-fingerprint"></i><span>الأدلة</span></button>
-    <button class="m-nav-item" onclick="openAuthModal()"><i class="fa-solid fa-shield-halved"></i><span>القيادة</span></button>
-</nav>
-
-<div id="authModal">
-    <div class="auth-box">
-        <div style="font-size: 26px; color: var(--intel-cyan); margin-bottom: 6px;"><i class="fa-solid fa-fingerprint"></i></div>
-        <h3 style="font-size: 15px; font-weight:900; font-family:'Orbitron';">التحقق العسكري</h3>
-        <p style="color: var(--text-muted); font-size: 10px; margin-top: 4px;">الرمز السري (الافتراضي: 47q)</p>
-        <input id="adminCodeInput" type="password" placeholder="••••" class="tac-input" style="text-align: center; letter-spacing: 4px; font-size: 15px;">
-        <button class="tac-btn" onclick="verifyAdminLogin()">فتح غرفة العمليات</button>
-        <button style="background:transparent; color:var(--text-muted); border:none; padding:5px; width:100%; margin-top:4px; cursor:pointer; font-size:11px;" onclick="closeAuthModal()">إلغاء</button>
-        <p id="authErr" style="color:var(--tactical-red); font-size:10px; display:none; margin-top:4px;">الرمز غير صحيح!</p>
-    </div>
-</div>
-
-<main class="container">
-
-    <div id="overview" class="pane active space-y-4">
-        <div class="grid-3" style="margin-bottom: 12px;">
-            <div class="tactical-card">
-                <span style="color: var(--text-muted); font-size: 10px;"><i class="fa-solid fa-folder-open" style="color:var(--intel-cyan)"></i> قضايا الأرشيف المُولّدة</span>
-                <div id="statCases" style="font-size: 22px; font-weight: 900; margin: 5px 0; font-family:'Orbitron'; color:var(--intel-cyan);">0 / 20</div>
-            </div>
-            <div class="tactical-card" style="border-color: rgba(255,183,0,0.3);">
-                <span style="color: var(--armory-gold); font-size: 10px;"><i class="fa-solid fa-microchip"></i> حالة الأرشيف</span>
-                <div id="statStatus" style="font-size: 18px; font-weight: 900; margin: 5px 0; font-family:'Orbitron'; color:var(--armory-gold);">جاهز للعمل</div>
-            </div>
-        </div>
-
-        <div class="tactical-card" style="background: linear-gradient(135deg, rgba(0,240,255,0.06), rgba(255,26,60,0.06));">
-            <h3 style="font-size: 14px; margin-bottom: 6px; color: var(--intel-cyan);"><i class="fa-solid fa-radar"></i> أرشيف التحقيق (20 قضية معقدة)</h3>
-            <p style="font-size: 11px; color: var(--text-main); line-height: 1.5;">انتقل إلى تبويب **"قضايا الأرشيف (20) 🕵️‍♂️"** واضغط على زر **"توليد القضية التالية 🎲"**. سيقوم النظام بسحب القضايا قضية تلو الأخرى حتى تصل القضية رقم 20، وعندها سينتهي الأرشيف بالكامل!</p>
-        </div>
-    </div>
-
-    <!-- قسم قضايا الأرشيف الـ 20 -->
-    <div id="detective-cases" class="pane space-y-4">
-        <div class="tactical-card" style="border-color: var(--intel-cyan);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
-                <div>
-                    <h3 style="font-size: 14px; color: var(--intel-cyan);"><i class="fa-solid fa-folder-open"></i> سجل القضايا المعقدة المتاحة</h3>
-                    <div id="progressText" style="font-size: 10px; color: var(--armory-gold); margin-top: 2px;">تم توليد 0 من أصل 20 قضية</div>
-                </div>
-                <button id="generateBtn" class="tac-btn" style="margin:0; width:auto; padding:6px 12px; background:linear-gradient(135deg,var(--emerald-green),#00aa55); color:#000;" onclick="generateNextCase()"><i class="fa-solid fa-wand-magic-sparkles"></i> توليد القضية التالية 🎲</button>
-            </div>
-            
-            <div id="completionNotice" style="display:none; background:rgba(255,183,0,0.1); border:1px solid var(--armory-gold); padding:10px; border-radius:8px; text-align:center; font-weight:700; color:var(--armory-gold); font-size:12px; margin-bottom:10px;">
-                🏆 تم انتهاء جميع قضايا الأرشيف (20/20)! أداء استخباراتي أسطوري.
-            </div>
-
-            <div id="activeCasesList" style="display:flex; flex-direction:column; gap:10px;"></div>
-        </div>
-    </div>
-
-    <div id="intel" class="pane space-y-4">
-        <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--intel-cyan);"><i class="fa-solid fa-user-secret"></i> الاستخبارات</h3>
-            <div style="font-size:11px; color:var(--text-muted);">أرشيف استخباراتي تكتيكي مدمج.</div>
-        </div>
-    </div>
-
-    <div id="forensics" class="pane space-y-4">
-        <div class="tactical-card">
-            <h3 style="font-size: 14px; margin-bottom: 10px; color: var(--armory-gold);"><i class="fa-solid fa-fingerprint"></i> المختبر الجنائي</h3>
-            <div style="font-size:11px; color:var(--text-muted);">تحليلات البصمات والمقذوفات.</div>
-        </div>
-    </div>
-
-    <div id="admin-panel" class="pane space-y-4">
-        <div class="tactical-card" style="border-color: var(--tactical-red);">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 12px;">
-                <h2 style="font-size: 15px; color: var(--tactical-red); font-family:'Orbitron';"><i class="fa-solid fa-shield-halved"></i> غرفة القيادة</h2>
-                <button onclick="adminLogout()" style="background: #500; color: #fff; border: none; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 700;">إغلاق 🔒</button>
-            </div>
-            <button class="tac-btn" style="background:var(--tactical-red); color:#fff;" onclick="localStorage.clear(); location.reload();">إعادة تعيين الأرشيف بالكامل من الصفر 🗑️</button>
-        </div>
-    </div>
-
-</main>
 
 <script>
-// قاعدة بيانات كاملة ومجهزة مسبقاً بـ 20 قضية معقدة فريدة
-const master20CasesPool = [
-    { id: 1, title: "قضية رقم 01: اغتيال الجناح المعزول", codename: "Nightfall", sceneImg: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80", overview: "عُثر على رجل الأعمال خالد المالك مقتولاً بطلقة صدرية داخل غرفته الفندقية المغلقة من الداخل تماماً بمزلاج أمني.", timeline: ["00:15 - الضحية يطلب وجبة عشاء.", "00:45 - عامل الخدمة يغادر الغرفة.", "01:30 - رصد صوت خافت."], ballistics: "مستخرج عيار 9 ملم مع زيت تنظيف نوع Vortex-X.", fingerprints: "بصمات الشريك زياد على النافذة وبصمات العامل على الكأس.", suspects: [{name: "زياد (الشريك)", alibi: "كنت نائماً طوال الليل.", contradiction: "بطاقة بابه توضح نزوله للطابق الأرضي الساعة 01:25."}, {name: "سعيد (عامل الخدمة)", alibi: "غادر الفندق فوراً.", contradiction: "رصدته الكاميرات داخل غرفة الصيانة وبحوزته زيت Vortex-X."}], solution: "سعيد (عامل الخدمة)" },
-    
-    { id: 2, title: "قضية رقم 02: سرقة اللوحة النادرة", codename: "Art Thief", sceneImg: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80", overview: "اختفت لوحة 'فجر ريك تاون' الأثرية من المتحف الوطني دون تفعيل أي إنذار لليزر.", timeline: ["22:00 - إغلاق المتحف.", "23:30 - فصل الكاميرات لمدة دقيقتين.", "02:00 - اكتشاف السرقة."], ballistics: "استخدام أداة قطع ليزر دقيقة ذات تردد خاص بالمؤسسة العسكرية.", fingerprints: "بصمات حارس النوبة الليلية على لوحة التحكم الكهربائية.", suspects: [{name: "سلطان (حارس النوبة)", alibi: "كنت في الجناح الشرقي للتفتيش.", contradiction: "سجل بوابته يثبت وجوده في غرفة التحكم وقت تعطيل النظام."}, {name: "منى (أمينة المتحف)", alibi: "كانت في منزلها.", contradiction: "عُثر على مفتاح غرفة التحكم الرئيسي بحوزتها."}], solution: "سلطان (حارس النوبة)" },
+let chapters = JSON.parse(localStorage.getItem('re_chapters') || JSON.stringify(Array.from({length: 16}, (_, i) => ({id: i+1, done: false}))));
+let videos = JSON.parse(localStorage.getItem('re_videos') || '[]');
+let ideas = JSON.parse(localStorage.getItem('re_ideas') || '[]');
 
-    { id: 3, title: "قضية رقم 03: جريمة المختبر السري", codename: "Biohazard", sceneImg: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80", overview: "تسمم د. سامي بمادة كيميائية لا تظهر إلا بعد ساعة في معمله المحصن.", timeline: ["12:00 - استلام العينة الكيميائية.", "13:00 - وفاة الباحث على مكتبه.", "13:15 - دخول المساعد بعد البلاغ."], ballistics: "وجود آثار السم على زجاجة الماء الشخصية للضحية.", fingerprints: "البصمات الوحيدة على الزجاجة تعود للضحية نفسه.", suspects: [{name: "رامي (المساعد الشخصي)", alibi: "كنت في المقهى الخارجي.", contradiction: "بطاقته استخدمت لفتح الباب الخارجي للمبنى قبل الحادث بساعة."}, {name: "ماجد (المدير المالي)", alibi: "لم أقترب من المعمل أبداً.", contradiction: "كاميرات المراقبة رصدته أمام باب المعمل تماماً."}], solution: "رامي (المساعد الشخصي)" },
-
-    { id: 4, title: "قضية رقم 04: لغز اليخت الغامض", codename: "Ocean Blue", sceneImg: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=600&q=80", overview: "عُثر على القبطان غارقاً في مقصورة القيادة لمتوسط اليخت في عرض البحر.", timeline: ["20:00 - بدء الإبحار.", "22:00 - عاصفة واهتزاز خفيف.", "23:30 - الطاقم يكتشف الغرق."], ballistics: "وجود ضربة خلف الرأس قبل السقوط في الماء.", fingerprints: "بصمات المساعد الثاني على مقود القيادة.", suspects: [{name: "عمر (المساعد الأول)", alibi: "كنت أراقب الطقس بالأعلى.", contradiction: "أقواله تخالف سجلات رادار الطقس."}, {name: "فهد (مهندس المحركات)", alibi: "كنت أصلح المولد بالأسفل.", contradiction: "شاهدوه صاعداً لغرفة القيادة وقت وقوع الضربة."}], solution: "فهد (مهندس المحركات)" },
-
-    { id: 5, title: "قضية رقم 05: السقوط من البرج العالي", codename: "High Rise", sceneImg: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80", overview: "سقوط مهندس البرمجيات 'بدر' من الطابق الـ 40 لشركة التقنية الكبرى.", timeline: ["14:00 - اجتماع سري للمطورين.", "14:45 - صراخ وسقوط الضحية.", "15:00 - وصول الشرطة."], ballistics: "آثار عراك على درابزين النافذة مع خيوط قماشية غريبة.", fingerprints: "بصمات رئيس القسم على حافة الشرفة.", suspects: [{name: "فيصل (رئيس القسم)", alibi: "لم أكن في المكتب وقت السقوط.", contradiction: "أقوال الشهود تؤكد سماع شجار بصوته مع الضحية قبل بدقائق."}, {name: "ناصر (مدير الموارد)", alibi: "كنت في اجتماع إداري بالدور الأول.", contradiction: "بصمات حذائه تطابق آثار الأقدام المكتشفة بالمكتب."}], solution: "فيصل (رئيس القسم)" },
-
-    { id: 6, title: "قضية رقم 06: جريمة قطار الشحن السريع", codename: "Express Train", sceneImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", overview: "طعن تاجر الذهب داخل العربة الخاصة للقطار أثناء سيره بين المدن.", timeline: ["03:00 - انطلاق القطار.", "04:15 - صراخ في العربة الرابعة.", "05:00 - توقف طارئ للقطار."], ballistics: "سلاح التصفية سكين حاد صغير ملقى خارج نافذة العربة.", fingerprints: "بصمات واضحة على حقيبة الذهب المفتوحة.", suspects: [{name: "سالم (مرافق السفر)", alibi: "كنت نائماً في مقصورتي.", contradiction: "سجل مفتاح مقصورته يظهر فتحها وإغلاقها وقت الجريمة."}, {name: "راشد (محصل التذاكر)", alibi: "كنت أتحقق من العربة الأولى.", contradiction: "كاميرات الممر رصدته يخرج من عربة الضحية ملثماً."}], solution: "راشد (محصل التذاكر)" },
-
-    { id: 7, title: "قضية رقم 07: اغتيال السفير في السفارة", codename: "Diplomat", sceneImg: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80", overview: "تسمم الدبلوماسي في مكتبه الحصين بمادة أرسنيك داخل كوب الشاي.", timeline: ["10:00 - تقديم الشاي من المساعد.", "11:00 - بدء ظهور الإعياء الشديد.", "11:30 - إعلان الوفاة."], ballistics: "فحص الكوب يثبت وضع السم قبل سكب الشاي بدقائق.", fingerprints: "بصمات سكرتير المكتب ومساعد القنصل.", suspects: [{name: "عدنان (السكرتير الخاص)", alibi: "أنا حضرت الشاي وسلمته بنفسي.", contradiction: "تخلص من القفازات المستخدمة في سلة المهملات الخلفية."}, {name: "جهاد (المستشار السياسي)", alibi: "كنت مجتمعاً مع وفد أجنبي.", contradiction: "الوفد الأجنبي أنكر وجود اجتماع في ذلك الوقت."}], solution: "عدنان (السكرتير الخاص)" },
-
-    { id: 8, title: "قضية رقم 08: لغز كازينو ريك تاون", codename: "Casino Royal", sceneImg: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80", overview: "عُثر على مدير الكازينو مقتولاً خلف طاولة الألعاب الكبرى بعد إغلاق الأبواب.", timeline: ["02:00 - مغادرة آخر زبون.", "02:30 - إطلاق النار.", "03:00 - تدخل الأمن الداخلي."], ballistics: "مقذوف من مسدس عيار 38 مم غير مرخص.", fingerprints: "بصمات موزع الورق على الخزنة المفتوحة.", suspects: [{name: "مازن (موزع الورق)", alibi: "كنت أعد الأموال في الغرفة المجاورة.", contradiction: "رصدته كاميرات الممر يحمل كيس أموال ويهرب نحو الباب الخلفي."}, {name: "صقر (حارس البوابة)", alibi: "لم يمر أي شخص من الباب الرئيسي.", contradiction: "الباب الخلفي كان مفتوحاً طوال الليل بلا تأمين."}], solution: "مازن (موزع الورق)" },
-
-    { id: 9, title: "قضية رقم 09: سطو المصرف المركزي", codename: "Central Bank", sceneImg: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80", overview: "سرقة خزنة المصرف الكبرى ليلاً وقتل حارس الأمن بضربة على الرأس.", timeline: ["01:00 - تعطيل إنذار الخزنة.", "02:00 - دخول الملثمين.", "03:00 - مغادرة الموقع."], ballistics: "استخدام قاطع حراري هيدروليكي صناعي.", fingerprints: "بصمات موظف الشؤون المالية على طاولة الحارس.", suspects: [{name: "عمر (المسؤول المالي)", alibi: "بصمتي على الطاولة بسبب مراجعة سابقة.", contradiction: "سجلات دخوله للمصرف ليلاً غير مصرحة."}, {name: "فهد (فني الصيانة)", alibi: "كنت أصلح كاميرات الطابق العلوي.", contradiction: "طول الملثم بكاميرات المراقبة يتطابق تماماً معه."}], solution: "فهد (فني الصيانة)" },
-
-    { id: 10, title: "قضية رقم 10: جريمة استوديو التصوير", codename: "Flashback", sceneImg: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=600&q=80", overview: "مقتل المصور المشهور داخل استوديو العزل الضوئي بصعقة كهربائية متعمدة.", timeline: ["21:00 - جلسة تصوير خاصة.", "22:15 - انقطاع مفاجئ للتيار الكهربائي.", "23:00 - العثور على الجثة."], ballistics: "التلاعب بمحول التيار الكهربائي العالي.", fingerprints: "بصمات المساعد الفني على لوحة المفاتيح الرئيسية.", suspects: [{name: "باسم (المساعد الفني)", alibi: "غادرت قبل انقطاع التيار بدقائق.", contradiction: "كاميرات الشارع رصدت سيارته مركونة للخلف حتى منتصف الليل."}, {name: "رغد (عارضة الأزياء)", alibi: "كنت أبدل ملابسي في غرفة القياس.", contradiction: "حقيبتها تحتوي على مفتاح لوحة الكهرباء الرئيسية."}], solution: "باسم (المساعد الفني)" },
-
-    { id: 11, title: "قضية رقم 11: محطة الأبحاث البحرية الأعماق", codename: "Deep Sea", sceneImg: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80", overview: "قطع الأكسجين عن غرفة الغواص الرئيسي بمحطة الأبحاث تحت الماء.", timeline: ["18:00 - بدء مناوبة الغوص.", "19:30 - انخفاض ضغط الأكسجين.", "20:00 - إعلان الطوارئ والوفاة."], ballistics: "العبث بصمام الأسطوانة الرئيسي يدوياً.", fingerprints: "بصمات مهندس الدعم الفني على الخزان.", suspects: [{name: "صالح (مهندس الدعم)", alibi: "كنت أفحص مضخات المياه العذبة.", contradiction: "سجل صمامات الأكسجين يثبت تعديلها من محطته الشخصية."}, {name: "سارة (باحثة الأحياء)", alibi: "كنت أحلل عينات القاع.", contradiction: "كان بينها وبين الضحية خلاف علني حاد حول الأبحاث."}], solution: "ص صالح (مهندس الدعم)" },
-
-    { id: 12, title: "قضية رقم 12: غرفة الآثار المفقودة", codename: "Ancient Relic", sceneImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", overview: "سرقة تمثال ذهبي أثري وقتل خبير الصيانة بالمتحف التاريخي.", timeline: ["12:00 - استلام الشحنة.", "13:30 - الجريمة واختفاء التماثيل.", "14:00 - قفل المعرض."], ballistics: "ضربة بآلة حادة ثقيلة (مطرقة أثرية).", fingerprints: "بصمات مساعد أمين المتحف على صندوق العرض.", suspects: [{name: "هاني (المساعد)", alibi: "كنت في المستودع السفلي.", contradiction: "أقواله تخالف حركة بطاقته الإلكترونية بالدور العلوي."}, {name: "د. طارق (خبير الآثار)", alibi: "كنت أوقع عقود المعرض بمكتبي.", contradiction: "عُثر على جزء من التمثال المسروق بحوزته في السيارة."}], solution: "هاني (المساعد)" },
-
-    { id: 13, title: "قضية رقم 13: الطائرة الخاصة في الأجواء", codename: "Private Jet", sceneImg: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80", overview: "وفاة رجل الأعمال الغامضة داخل طائرته الخاصة أثناء التحليق على ارتفاع 30 ألف قدم.", timeline: ["01:00 - الإقلاع.", "02:30 - تقديم القهوة للضحية.", "03:15 - هبوط اضطراري."], ballistics: "تسمم سريع بمركب السيانيد في كوب القهوة.", fingerprints: "بصمات المضيف الجوي وحده على الكوب.", suspects: [{name: "زياد (المضيف الجوي)", alibi: "قدمت القهوة بناء على طلبه الفردي.", contradiction: "زجاجة السم وُجدت مخبأة داخل حقيبته الشخصية بالطائرة."}, {name: "حسام (الحارس الشخصي)", alibi: "كنت مرافقاً له بمقصورة الركاب.", contradiction: "كانت لديه صلافة واضحة في منع المسعفين من التدخل السريع."}], solution: "زياد (المضيف الجوي)" },
-
-    { id: 14, title: "قضية رقم 14: المنشأة الحساسة للتقنية النووية", codename: "Nuclear Lab", sceneImg: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80", overview: "تسريب ملفات مشفرة وتصفية الحارس المسؤول عند البوابة الرابعة.", timeline: ["23:00 - تفعيل وضع الطوارئ.", "23:45 - إطلاق نار عند البوابة.", "00:15 - تأمين الموقع."], ballistics: "مقذوف ناري من بندقية هجومية خاصة بالحراسة.", fingerprints: "بصمات فني الشبكات على محطة التنزيل.", suspects: [{name: "لؤي (فني الشبكات)", alibi: "كنت أصلح الخوادم الرئيسية.", contradiction: "تم تنزيل الملفات السرية باستخدام كلمة المرور الخاصة به."}, {name: "ثامر (رئيس الحراس)", alibi: "كنت أقود دورية التفقد الخارجية.", contradiction: "سلاح الميري الخاص به أُطلق منه رصاصة حديثاً."}], solution: "لؤي (فني الشبكات)" },
-
-    { id: 15, title: "قضية رقم 15: مستودع الميناء المهجور", codename: "Port Raid", sceneImg: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80", overview: "عُثر على مهرب مشبوه مقتولاً داخل حاوية شحن حديدية مغلقة بميناء الشحن.", timeline: ["19:00 - دخول الشحنة.", "21:00 - سماع طلقات نارية.", "22:30 - اقتحام الحاوية."], ballistics: "إطلاق نار كثيف من مسافة قريبة بمسدس عيار 9 ملم.", fingerprints: "بصمات زعيم عصابة الميناء على قفل الحاوية من الخارج.", suspects: [{name: "جابر (تاجر الميناء)", alibi: "لم أكن بالموقع طوال اليوم.", contradiction: "رصدت كاميرات المراقبة شاحنته متوقفة أمام الحاوية."}, {name: "مروان (المساعد)", alibi: "كنت أتابع تفريغ البضائع بالرصيف الآخر.", contradiction: "ملابسه عليها آثار دماء تطابق فصيلة دم الضحية."}], solution: "مروان (المساعد)" },
-
-    { id: 16, title: "قضية رقم 16: عيادة الكاتب المغلقة", codename: "Writer's Room", sceneImg: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=600&q=80", overview: "مقتل الروائي الشهير طعناً بمكتبه المنزلي والباب مقفل بمزلاج داخلي.", timeline: ["16:00 - وصول آخر زائر.", "18:00 - اكتشاف الجريمة من النافذة.", "18:30 - تدخل الشرطة."], ballistics: "سكين مكتب نقش عليه شعار خاص بالناشر.", fingerprints: "بصمات الناشر الشخصية على المقبض.", suspects: [{name: "نواف (الناشر الأدبي)", alibi: "سلمت الدجاج وناقشنا العقد وغادرت.", contradiction: "نسيان ساعته اليدوية داخل مكتب الضحية قرب الجثة."}, {name: "سناء (المساعدة الشخصية)", alibi: "كنت في مكتب الطابق العلوي أطبع الرواية.", contradiction: "أقوالها تخالف زمن طبع الصفحات الأخير."}], solution: "نواف (الناشر الأدبي)" },
-
-    { id: 17, title: "قضية رقم 17: مهرجان الابتكار التكنولوجي", codename: "Tech Fest", sceneImg: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80", overview: "اختراق الشاشة الرئيسية واغتيال رئيس الشركة المبتكرة أمام الجمهور بصدمة سيبرانية.", timeline: ["10:00 - بدء المؤتمر.", "10:30 - العرض الحي والانهيار.", "11:00 - إخلاء القاعة."], ballistics: "ربط خبيث بجهاز تحكم عن بعد عبر الشبكة.", fingerprints: "بصمات مهندس البرمجة على لوحة التحكم.", suspects: [{name: "يزيد (مهندس البرمجة)", alibi: "كنت أدير الشاشات من الكواليس.", contradiction: "أكواد الاختراق صدرت مباشرة من جهازه الشخصي."}, {name: "بندر (المنافس التجاري)", alibi: "كنت جالساً بالصف الأول للمشاهدة.", contradiction: "كاميرات القاعة رصدته يرسل إشارة لاسلكية مشبوهة."}], solution: "يزيد (مهندس البرمجة)" },
-
-    { id: 18, title: "قضية رقم 18: قصر الماس الملكي", codename: "Royal Diamond", sceneImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", overview: "سرقة قلادة الماس الملكية وقتل رئيس الحرس الخاص في قاعة الاحتفالات الكبرى.", timeline: ["22:00 - بدء الحفل.", "23:15 - انطفاء الأضواء المؤقت.", "00:00 - اكتشاف الاختفاء."], ballistics: "استخدام غاز منوم خفيف وسلاح أبيض صامت.", fingerprints: "بصمات منظّمة الحفلات على صندوق العرض الفاخر.", suspects: [{name: "لمياء (منظّمة الحفلات)", alibi: "كنت أتابع خدمة الضيافة بالخارج.", contradiction: "مفتاح صندوق العرض كان معلقاً بحزامها الخاص."}, {name: "راكان (الحارس البديل)", alibi: "كنت أؤمن الباب الشمالي.", contradiction: "تخلى عن مركزه قبل انطفاء الأضواء بثلاث دقائق."}], solution: "لمياء (منظّمة الحفلات)" },
-
-    { id: 19, title: "قضية رقم 19: برج المراقبة الجوية الدولي", codename: "Air Traffic", sceneImg: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80", overview: "مقتل المراقب الجوي المناوب داخل برج المراقبة والتحكم متوقف.", timeline: ["04:00 - بدء المناوبة الليلية.", "05:00 - توقف الشاشات الرئيسية.", "06:00 - العثور على الجثة."], ballistics: "ضربة قوية بآلة حادة على الرأس.", fingerprints: "بصمات مساعد المراقب على لوحة التوجيه.", suspects: [{name: "ماهر (المساعد المناوب)", alibi: "ذهبت لشراء القهوة بالطابق السفلي.", contradiction: "ماكينة القهوة كانت معطلة طوال تلك الليلة."}, {name: "عادل (فني الاتصالات)", alibi: "كنت أفحص أبراج الإرسال الخارجية.", contradiction: "سجل بوابته الإلكترونية يثبت وجوده داخل البرج."}], solution: "ماهر (المساعد المناوب)" },
-
-    { id: 20, title: "قضية رقم 20: مصنع الأغذية الكبرى (الغرفة الباردة)", codename: "Cold Storage", sceneImg: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80", overview: "عُثر على مدير الجودة مقتولاً داخل ثلاجة التجميد الكبرى بمصنع الأغذية.", timeline: ["22:00 - جولة تفقدية للمصنع.", "23:00 - إغلاق الثلاجة آلياً.", "02:00 - العثور على الجثة متجمدة."], ballistics: "قفل الباب الخارجي تم تفعيله يدوياً من الخارج.", fingerprints: "بصمات مشرف التخزين على مقبض الثلاجة.", suspects: [{name: "باسل (مشرف التخزين)", alibi: "كنت أراجع شحنات الصباح.", contradiction: "كاميرات المصور وثقت إغلاقه للباب ومغادرته عمداً."}, {name: "سعد (عامل خط الإنتاج)", alibi: "غادرت المصنع مع نهاية ورديتي.", contradiction: "سيارته رُصدت مركونة بجانب بوابات الشحن الخلفية."}], solution: "باسل (مشرف التخزين)" }
-];
-
-// حالة الأرشيف النشطة للمستخدم
-let activeUserCases = JSON.parse(localStorage.getItem('tc_20_active_cases') || '[]');
-
-function generateNextCase() {
-    if (activeUserCases.length >= master20CasesPool.length) {
-        alert('⚠️ تم توليد جميع القضايا الـ 20 بالفعل! لا توجد قضايا إضافية في الأرشيف.');
-        return;
-    }
-
-    let nextIndex = activeUserCases.length;
-    let nextCaseToUnlock = master20CasesPool[nextIndex];
-    
-    // نسخ القضية وتعيين أنها غير محلولة
-    let newCaseInstance = JSON.parse(JSON.stringify(nextCaseToUnlock));
-    newCaseInstance.solved = false;
-
-    activeUserCases.push(newCaseInstance);
-    localStorage.setItem('tc_20_active_cases', JSON.stringify(activeUserCases));
+function openTab(n, el) {
+    document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    document.getElementById('c-' + n)?.classList.add('active');
+    el.classList.add('active');
     renderAll();
-    
-    alert(`🎲 تم توليد القضية التالية بنجاح: [${newCaseInstance.title}]!`);
 }
 
-function switchPane(paneId, el) {
-    document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.m-nav-item').forEach(m => m.classList.remove('active'));
-    
-    document.getElementById(paneId).classList.add('active');
-    if(el && el.classList.contains('nav-tab')) el.classList.add('active');
-    window.scrollTo({top: 0, behavior: 'smooth'});
+function save() {
+    localStorage.setItem('re_chapters', JSON.stringify(chapters));
+    localStorage.setItem('re_videos', JSON.stringify(videos));
+    localStorage.setItem('re_ideas', JSON.stringify(ideas));
+    renderAll();
 }
 
-function openAuthModal() { document.getElementById('authModal').style.display = 'flex'; }
-function closeAuthModal() { document.getElementById('authModal').style.display = 'none'; }
-
-function verifyAdminLogin() {
-    let code = document.getElementById('adminCodeInput').value;
-    if(code === '47q' || code === 'SHADOW') {
-        localStorage.setItem('tc_logged', 'true');
-        closeAuthModal();
-        applyAdminSession();
-        switchPane('admin-panel', document.getElementById('adminTabBtn'));
-        alert('✅ أهلاً بك يا شادو في القيادة.');
-    } else {
-        document.getElementById('authErr').style.display = 'block';
-    }
+function toggleChapter(id) {
+    let ch = chapters.find(c => c.id === id);
+    if(ch) ch.done = !ch.done;
+    save();
 }
 
-function adminLogout() {
-    localStorage.removeItem('tc_logged');
-    location.reload();
+function addVideo() {
+    let title = document.getElementById('vidTitle').value.trim();
+    let type = document.getElementById('vidType').value;
+    let status = document.getElementById('vidStatus').value;
+    if(!title) { alert('اكتب عنوان الحلقة'); return; }
+    videos.unshift({ id: Date.now(), title, type, status });
+    document.getElementById('vidTitle').value = '';
+    save();
 }
 
-function applyAdminSession() {
-    if(localStorage.getItem('tc_logged') === 'true') {
-        document.getElementById('adminTabBtn').style.display = 'inline-flex';
-        document.getElementById('authBtnLabel').innerHTML = `<i class="fa-solid fa-user-check" style="color:#00ff88"></i> قيادة`;
-    }
+function addIdea() {
+    let t = document.getElementById('ideaInp').value.trim();
+    if(!t) return;
+    ideas.unshift({ id: Date.now(), t });
+    document.getElementById('ideaInp').value = '';
+    save();
 }
 
-function openCaseDossier(caseId) {
-    let c = activeUserCases.find(x => x.id === caseId);
-    if(!c) return;
-
-    document.getElementById('modalCaseTitle').innerText = c.title + " [" + c.codename + "]";
-    
-    let suspectsOptions = c.suspects.map(s => `<option value="${s.name}">${s.name}</option>`).join('');
-    let suspectsHtml = c.suspects.map(s => `
-        <div style="background:rgba(0,0,0,0.4); padding:8px; border-radius:6px; margin-bottom:6px;">
-            <b style="color:var(--tactical-red);">${s.name}</b><br>
-            <span style="color:var(--text-muted);">ادعاء المشتبه به:</span> ${s.alibi}<br>
-            <span style="color:var(--armory-gold);">ثغرة التحقيق / التناقض:</span> <b style="color:#fff;">${s.contradiction}</b>
-        </div>
-    `).join('');
-
-    let timelineHtml = c.timeline.map(t => `<li style="margin-bottom:4px; color:var(--intel-cyan);">${t}</li>`).join('');
-
-    let htmlContent = `
-        <div class="dossier-section">
-            <div class="dossier-title"><i class="fa-solid fa-file-lines"></i> ملخص مسرح الجريمة</div>
-            <img src="${c.sceneImg}" alt="مسرح الجريمة" style="width:100%; height:130px; object-fit:cover; border-radius:8px; margin-bottom:8px; border:1px solid rgba(0,240,255,0.3);">
-            <p style="color:var(--text-main);">${c.overview}</p>
-        </div>
-
-        <div class="dossier-section">
-            <div class="dossier-title"><i class="fa-solid fa-clock"></i> الجدول الزمني الدقيق (Timeline)</div>
-            <ul style="padding-right:15px; margin-top:5px;">${timelineHtml}</ul>
-        </div>
-
-        <div class="dossier-section">
-            <div class="dossier-title"><i class="fa-solid fa-microscope"></i> أدلة المختبر والتقارير الجنائية</div>
-            <p style="color:var(--armory-gold);"><b>المقذوفات والأسلحة:</b> ${c.ballistics}</p>
-            <p style="color:var(--emerald-green); margin-top:6px;"><b>البصمات والأدلة البيولوجية:</b> ${c.fingerprints}</p>
-        </div>
-
-        <div class="dossier-section">
-            <div class="dossier-title"><i class="fa-solid fa-comments"></i> محاضر استجواب المشتبه بهم</div>
-            <div style="margin-top:6px;">${suspectsHtml}</div>
-        </div>
-
-        <div class="dossier-section" style="border-color:var(--tactical-red); background:rgba(255,26,60,0.05);">
-            <div class="dossier-title" style="color:var(--tactical-red);"><i class="fa-solid fa-gavel"></i> منصة توجيه الاتهام الرسمية</div>
-            ${!c.solved ? `
-                <p style="margin-bottom:8px; color:var(--text-main);">حدد الجاني الحقيقي بناءً على الأدلة والجدول الزمني:</p>
-                <div style="display:flex; flex-direction:column; gap:8px;">
-                    <select id="accusedName_${c.id}" class="tac-input" style="margin:0;">
-                        <option value="">-- حدد اسم المتهم الحقيقي --</option>
-                        ${suspectsOptions}
-                    </select>
-                    <button class="tac-btn" style="background:var(--tactical-red); color:#fff;" onclick="submitAccusation(${c.id})">إصدار مذكرة إدانة وإغلاق القضية ⚖️</button>
-                </div>
-            ` : '<div style="color:var(--emerald-green); font-weight:700; font-size:12px;"><i class="fa-solid fa-check-circle"></i> تم إدانة الجاني وإغلاق هذا الملف بنجاح!</div>'}
-        </div>
-    `;
-
-    document.getElementById('modalCaseContent').innerHTML = htmlContent;
-    document.getElementById('caseModal').style.display = 'block';
-}
-
-function closeCaseModal() {
-    document.getElementById('caseModal').style.display = 'none';
-}
-
-function submitAccusation(caseId) {
-    let c = activeUserCases.find(x => x.id === caseId);
-    let chosenName = document.getElementById('accusedName_' + caseId).value;
-
-    if(!chosenName) {
-        alert('⚠️ يجب تحديد اسم المتهم أولاً!');
-        return;
-    }
-
-    if(chosenName === c.solution) {
-        c.solved = true;
-        localStorage.setItem('tc_20_active_cases', JSON.stringify(activeUserCases));
-        alert('🏆 عظمة على عظمة يا شادو! تم كشف الجاني وإغلاق القضية بنجاح!');
-        closeCaseModal();
-        renderAll();
-    } else {
-        alert('❌ اتهام خاطئ! راجع الجدول الزمني وأقوال المشتبه بهم وثغراتهم مرة أخرى.');
-    }
+function genRETitle() {
+    let list = [
+        "ختم رزدنت إيفل 4 (الفصل الأول) - بداية الكابوس المرعب! 🧟‍♂️🔥",
+        "ليه القرية هجمت علي كذا؟! | رزدنت إيفل 4 (الفصل الثاني) 😱",
+        "أقوى مواجهة ضد الكشّات والمرعب بالمنشار! | رزدنت إيفل 4 🪚💀",
+        "الهروب من البيت المرعب وضياع ليون في الغابة! 🌲👀"
+    ];
+    document.getElementById('genBox').innerText = "📌 عنوان مقترح: " + list[Math.floor(Math.random() * list.length)];
 }
 
 function renderAll() {
-    let totalGenerated = activeUserCases.length;
-    document.getElementById('statCases').innerText = totalGenerated + " / 20";
-    document.getElementById('progressText').innerText = `تم توليد ${totalGenerated} من أصل 20 قضية`;
-
-    let solvedCount = activeUserCases.filter(x => x.solved).length;
-
-    if (totalGenerated >= 20) {
-        document.getElementById('generateBtn').style.display = 'none';
-        if (solvedCount >= 20) {
-            document.getElementById('completionNotice').style.display = 'block';
-            document.getElementById('statStatus').innerText = 'تم إنهاء الـ 20 قضية 🏆';
-            document.getElementById('statStatus').style.color = 'var(--emerald-green)';
-        } else {
-            document.getElementById('statStatus').innerText = 'اكتمل توليد الأرشيف 🔍';
-        }
-    } else {
-        document.getElementById('generateBtn').style.display = 'inline-flex';
-        document.getElementById('completionNotice').style.display = 'none';
-        document.getElementById('statStatus').innerText = 'جاهز للتوليد';
+    // رسم الفصول الـ 16
+    let grid = document.getElementById('chaptersGrid');
+    if(grid) {
+        grid.innerHTML = chapters.map(c => `
+            <div class="chap-box ${c.done ? 'done' : ''}" onclick="toggleChapter(${c.id})">
+                فصل ${c.id}
+                <div style="font-size:8px;margin-top:2px">${c.done ? '✅ منتهي' : '⏳ قادم'}</div>
+            </div>
+        `).join('');
     }
 
-    let html = '';
-    if (activeUserCases.length === 0) {
-        html = '<p style="color:var(--text-muted); font-size:11px; text-align:center; padding:15px;">لم تقم بتوليد أي قضية بعد. اضغط على زر "توليد القضية التالية 🎲" للبدء!</p>';
-    } else {
-        activeUserCases.forEach(c => {
-            html += `<div style="background:rgba(0,0,0,0.5); padding:14px; border-radius:12px; border:1px solid ${c.solved ? 'var(--emerald-green)' : 'rgba(0,240,255,0.3)'}; margin-bottom:10px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <b style="color:var(--intel-cyan); font-size:13px;">${c.title}</b>
-                    <span style="font-size:10px; padding:3px 8px; border-radius:6px; background:${c.solved ? 'rgba(0,255,136,0.2); color:var(--emerald-green)' : 'rgba(255,183,0,0.2); color:var(--armory-gold)'}">${c.solved ? 'مغلقة (تم الحل) ✔️' : 'قضية مفتوحة 🔍'}</span>
-                </div>
-                <p style="font-size:11px; color:var(--text-muted); margin-bottom:10px;">${c.overview}</p>
-                <button class="tac-btn" style="margin:0; width:auto; padding:7px 14px;" onclick="openCaseDossier(${c.id})"><i class="fa-solid fa-folder-open"></i> فتح ملف القضية الكامل 🔬</button>
-            </div>`;
-        });
-    }
+    let doneCount = chapters.filter(c => c.done).length;
+    document.getElementById('doneChapters').innerText = `${doneCount} / 16`;
+    document.getElementById('totalEps').innerText = videos.filter(v => v.type.includes('حلقة')).length;
+    document.getElementById('totalShorts').innerText = videos.filter(v => v.type.includes('Shorts')).length;
 
-    document.getElementById('activeCasesList').innerHTML = html;
+    document.getElementById('videosList').innerHTML = videos.map(v => `
+        <div class="list-item ${v.status}">
+            <div>
+                <div style="font-weight:900">${v.title}</div>
+                <div style="font-size:10px;color:#a1a1aa;margin-top:2px">${v.type} | الحالة: <b>${v.status}</b></div>
+            </div>
+            <button onclick="videos=videos.filter(x=>x.id!==${v.id});save()" style="color:#ef4444;background:none;border:none;font-size:14px;cursor:pointer">×</button>
+        </div>
+    `).join('') || '<div style="text-align:center;color:#a1a1aa;padding:10px">ما بعد ضفت حلقات في الجدول</div>';
+
+    document.getElementById('ideasList').innerHTML = ideas.map(i => `
+        <div class="list-item">
+            <span>💡 ${i.t}</span>
+            <button onclick="ideas=ideas.filter(x=>x.id!==${i.id});save()" style="color:#ef4444;background:none;border:none;cursor:pointer">×</button>
+        </div>
+    `).join('') || '<div style="text-align:center;color:#a1a1aa;padding:10px">بنك الأفكار فارغ</div>';
 }
 
-applyAdminSession();
 renderAll();
 </script>
 </body>
