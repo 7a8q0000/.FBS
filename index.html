@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Shadow47q - استوديو القناة الشامل</title>
+<title>Shadow47q Pro Studio - لوحة تحكم القناة الشاملة</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-    --bg-main: #050308;
+    --bg-main: #040208;
     --bg-card: rgba(18, 8, 30, 0.85);
     --border-color: rgba(168, 85, 247, 0.35);
     --accent-purple: #9333ea;
@@ -17,7 +17,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent;}
 html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#030106 0%,#0e0417 50%,#1f0514 100%)!important;color:var(--text-main);}
-.app-container{max-width:480px;margin:0 auto;min-height:100vh;padding:14px;padding-bottom:100px;}
+.app-container{max-width:480px;margin:0 auto;min-height:100vh;padding:14px;padding-bottom:110px;}
 
 /* الهيدر */
 .header{background:linear-gradient(90deg,#581c87,#9333ea,#e74c3c);padding:18px;border-radius:22px;display:flex;justify-content:space-between;align-items:center;border:2px solid #c084fc;box-shadow:0 10px 30px rgba(147,51,234,0.4);}
@@ -36,18 +36,26 @@ html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#030106 
 
 /* البطاقات */
 .card{background:var(--bg-card);backdrop-filter:blur(8px);border:1.5px solid var(--border-color);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 6px 20px rgba(0,0,0,0.5);}
-.btn{width:100%;padding:13px;background:linear-gradient(90deg,#7c3aed,#e74c3c);border:none;border-radius:14px;color:#fff;font-weight:900;font-size:13px;cursor:pointer;margin-top:10px;box-shadow:0 4px 15px rgba(124,58,237,0.4);}
-.input{width:100%;padding:12px;background:#0d0412;border:1.5px solid #7c3aed;border-radius:14px;color:#fff;font-size:12px;margin-top:8px;outline:none;}
+.btn{width:100%;padding:12px;background:linear-gradient(90deg,#7c3aed,#e74c3c);border:none;border-radius:14px;color:#fff;font-weight:900;font-size:13px;cursor:pointer;margin-top:8px;box-shadow:0 4px 15px rgba(124,58,237,0.4);}
+.input{width:100%;padding:11px;background:#0d0412;border:1.5px solid #7c3aed;border-radius:14px;color:#fff;font-size:12px;margin-top:6px;outline:none;}
 .input:focus{border-color:#e74c3c;}
-.stat{flex:1;background:rgba(124,58,237,0.15);border:1px solid rgba(168,85,247,0.3);border-radius:16px;padding:12px;text-align:center;}
 
-/* إحصائيات يوتيوب الحية */
-.yt-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
-.yt-box{background:rgba(15,5,25,0.9);border:1.5px solid #9333ea;border-radius:16px;padding:14px;text-align:center;}
+/* خريطة الختمات */
+.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px;}
+.chap-box{background:#15041a;border:1px solid #7f1d1d;border-radius:10px;padding:8px 4px;text-align:center;font-size:10px;font-weight:900;cursor:pointer;}
+.chap-box.done{background:#14532d;border-color:#22c55e;color:#86efac;}
+.progress-bar{width:100%;background:#11041a;height:8px;border-radius:8px;overflow:hidden;margin-top:8px;border:1px solid #7f1d1d;}
+.progress-fill{background:linear-gradient(90deg,#22c55e,#10b981);height:100%;width:0%;transition:width 0.4s ease;}
 
-/* آخر المقاطع */
-.video-card{background:#11041d;border:1px solid rgba(168,85,247,0.3);border-radius:14px;padding:10px;margin-top:8px;display:flex;gap:10px;align-items:center;}
-.video-thumb{width:80px;height:45px;background:#222;border-radius:8px;object-fit:cover;}
+/* مهام المونتاج */
+.task-item{display:flex;align-items:center;gap:10px;background:#0d0414;border:1px solid rgba(168,85,247,0.3);padding:10px;border-radius:12px;margin-top:6px;font-size:11px;}
+.task-item input[type="checkbox"]{width:16px;height:16px;accent-color:#9333ea;cursor:pointer;}
+
+/* طاقم القناة */
+.crew-card{background:rgba(20,5,30,0.9);border:1px solid rgba(168,85,247,0.4);border-radius:14px;padding:12px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;}
+.crew-role{font-size:9px;background:#7c3aed;padding:3px 8px;border-radius:8px;font-weight:900;}
+
+.list-item{background:#11041d;border:1px solid rgba(168,85,247,0.3);padding:10px;border-radius:12px;margin-top:6px;display:flex;justify-content:space-between;align-items:center;font-size:11px;}
 </style>
 </head>
 <body>
@@ -56,104 +64,115 @@ html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#030106 
     <!-- الهيدر -->
     <div class="header">
         <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:40px;height:40px;background:linear-gradient(135deg,#e74c3c,#9333ea);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px">📺</div>
+            <div style="width:40px;height:40px;background:linear-gradient(135deg,#e74c3c,#9333ea);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px">👑</div>
             <div>
-                <div style="font-weight:900;font-size:14px">Shadow47q Channel</div>
-                <div style="font-size:9px;opacity:.8">موقع إدارة القناة الشامل</div>
+                <div style="font-weight:900;font-size:14px">Shadow47q Studio</div>
+                <div style="font-size:9px;opacity:.8">إدارة القناة المتكاملة</div>
             </div>
         </div>
-        <span class="badge">LIVE HUB</span>
+        <span class="badge">PRO</span>
     </div>
 
-    <!-- تبويب الرئيسية وإحصائيات يوتيوب -->
+    <!-- 1. تبويب الرئيسية والختمات والأهداف -->
     <div id="c-dash" class="content active">
-        <!-- إعدادات ربط يوتيوب -->
+        <!-- أهداف القناة (رقم 5) -->
+        <div class="card" style="border-color:#e74c3c">
+            <div style="font-weight:900;font-size:13px;color:#fca5a5">🎯 أهداف القناة الحالية</div>
+            <div style="font-size:11px;margin-top:6px">هدفنا القادم: الوصول إلى **1,000 مشترك** وختم رزدنت إيفل 4 كاملة! 🔥</div>
+            <div class="progress-bar"><div class="progress-fill" id="goalFill" style="width:45%"></div></div>
+        </div>
+
+        <!-- خريطة الختمات (رقم 1) -->
         <div class="card" style="border-color:#9333ea">
-            <div style="font-weight:900;font-size:13px;color:#c084fc">⚙️ ربط قناة يوتيوب الحية</div>
-            <div style="font-size:10px;color:var(--text-muted);margin-top:4px">حط يوزرك أو معرف قناتك عشان تسحب الأرقام مباشرة:</div>
-            <input id="ytHandle" placeholder="مثال: @Shadow47q" class="input">
-            <button class="btn" onclick="saveYTChannel()">🔄 تحديث وعرض إحصائيات القناة</button>
-        </div>
-
-        <!-- إحصائيات القناة الحية -->
-        <div class="card">
-            <div style="font-weight:900;font-size:13px">📊 أرقام القناة المباشرة</div>
-            <div class="yt-stats-grid">
-                <div class="yt-box">
-                    <div style="font-size:9px;color:var(--text-muted)">👥 المشتركين</div>
-                    <div id="subCount" style="font-weight:900;font-size:18px;color:#22c55e;margin-top:4px">جارِ الجلب...</div>
-                </div>
-                <div class="yt-box">
-                    <div style="font-size:9px;color:var(--text-muted)">👁️ إجمالي المشاهدات</div>
-                    <div id="viewCount" style="font-weight:900;font-size:18px;color:#38bdf8;margin-top:4px">جارِ الجلب...</div>
-                </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-weight:900;font-size:13px;color:#c084fc">🧟‍♂️ ختمة رزدنت إيفل 4 (16 فصل)</div>
+                <span id="pctText" style="font-size:11px;font-weight:900;color:#22c55e">0%</span>
             </div>
-        </div>
-
-        <!-- آخر 3 مقاطع في القناة -->
-        <div class="card">
-            <div style="font-weight:900;font-size:13px">🎬 آخر 3 مقاطع نزلت في القناة</div>
-            <div id="latestVideosList" style="margin-top:8px">
-                <div class="video-card">
-                    <div class="video-thumb" style="display:flex;align-items:center;justify-content:center;font-size:16px">▶️</div>
-                    <div>
-                        <div style="font-weight:900;font-size:11px">حلقة صيد الضبان / رزدنت إيفل القادمة</div>
-                        <div style="font-size:9px;color:var(--text-muted);margin-top:2px">يتم ربطها بـ يوتيوب تلقائياً...</div>
-                    </div>
-                </div>
-            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+            <div style="font-size:10px;color:var(--text-muted);margin-top:6px">اضغط على الفصل لتغيير حالته:</div>
+            <div class="chapter-grid" id="chaptersGrid"></div>
         </div>
     </div>
 
-    <!-- تبويب جدول القناة العام -->
-    <div id="c-schedule" class="content">
+    <!-- 2. تبويب سير عمل المونتاج (رقم 2) -->
+    <div id="c-workflow" class="content">
         <div class="card" style="border-color:#22c55e">
-            <div style="font-weight:900;font-size:13px">📅 جدول القناة العام (لكل الألعاب)</div>
-            <input id="schTitle" placeholder="اسم الحلقة أو المقطع الجديد..." class="input">
-            <select id="schGame" class="input">
-                <option value="رزدنت إيفل 4">🧟‍♂️ رزدنت إيفل 4</option>
-                <option value="روبلوكس / صيد الضبان">🦎 روبلوكس (صيد الضبان)</option>
-                <option value="لعبة أخرى / منوعة">🎮 لعبة أخرى / منوعة</option>
-            </select>
-            <select id="schStatus" class="input">
-                <option value="مجدول">📅 مجدول</option>
-                <option value="قيد_التصوير">🟡 قيد التصوير</option>
-                <option value="جاهز">🟢 جاهز</option>
-                <option value="منشور">🟣 منشور</option>
-            </select>
-            <button class="btn" onclick="addSchedule()">+ إضافة للجدول العام</button>
-        </div>
-
-        <div class="card">
-            <div style="font-weight:900;font-size:12px">📋 جدول المحتويات الحالي</div>
-            <div id="scheduleList" style="margin-top:8px"></div>
+            <div style="font-weight:900;font-size:13px">⚡ مسار مهام المونتاج (لكل حلقة جديدة)</div>
+            <div style="font-size:10px;color:var(--text-muted);margin-top:2px">تأكد من إنجاز هذه الخطوات قبل النشر:</div>
+            
+            <div id="tasksContainer" style="margin-top:8px">
+                <label class="task-item"><input type="checkbox" data-id="1"> 1. تصوير الفصل (50 دقيقة) بدقة عالية</label>
+                <label class="task-item"><input type="checkbox" data-id="2"> 2. سحب اللقطات الحماسية لأجل الـ Shorts</label>
+                <label class="task-item"><input type="checkbox" data-id="3"> 3. تنظيف الفراغات وحذف اللقطات الزائدة بـ CapCut</label>
+                <label class="task-item"><input type="checkbox" data-id="4"> 4. إضافة الترجمة التلقائية (Auto Captions)</label>
+                <label class="task-item"><input type="checkbox" data-id="5"> 5. تصميم الصورة المصغرة (Thumbnail) بـ Canva</label>
+                <label class="task-item"><input type="checkbox" data-id="6"> 6. رفع الحلقة على يوتيوب وجدولة النشر 🚀</label>
+            </div>
         </div>
     </div>
 
-    <!-- تبويب بنك الأفكار والأدوات -->
+    <!-- 3. تبويب لوحة طاقم القناة -->
+    <div id="c-crew" class="content">
+        <div class="card">
+            <div style="font-weight:900;font-size:13px">👥 طاقم وإدارة القناة</div>
+            <div style="font-size:10px;color:var(--text-muted);margin-top:2px">فريق العمل والمسؤولين عن القناة:</div>
+            
+            <div class="crew-card">
+                <div>
+                    <div style="font-weight:900;font-size:12px">Shadow47q</div>
+                    <div style="font-size:10px;color:var(--text-muted)">المؤسس واللاعب الأساسي والمقدم</div>
+                </div>
+                <span class="crew-role" style="background:#e74c3c">المدير العام</span>
+            </div>
+
+            <div class="crew-card">
+                <div>
+                    <div style="font-weight:900;font-size:12px">فريق المونتاج والقص</div>
+                    <div style="font-size:10px;color:var(--text-muted)">مسؤول قص الحلقات وتركيب الشورتس</div>
+                </div>
+                <span class="crew-role">ممنتج رئيسي</span>
+            </div>
+
+            <div class="crew-card">
+                <div>
+                    <div style="font-weight:900;font-size:12px">مصمم الصور المصغرة</div>
+                    <div style="font-size:10px;color:var(--text-muted)">تصميم الأغلفة الجذابة (Canva)</div>
+                </div>
+                <span class="crew-role" style="background:#3b82f6">مُصمم</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. تبويب بنك الأفكار السريع (رقم 3) -->
     <div id="c-ideas" class="content">
         <div class="card">
-            <div style="font-weight:900;font-size:13px">💡 بنك الأفكار العام للقناة</div>
-            <input id="ideaInp" placeholder="فكرة مقطع جديدة لأي لعبة..." class="input">
-            <button class="btn" onclick="addIdea()">+ حفظ الفكرة</button>
+            <div style="font-weight:900;font-size:13px">💡 بنك الأفكار والملاحظات السريعة</div>
+            <input id="ideaInp" placeholder="اكتب فكرة مقطع، نكتة، أو لقطة للشورتس..." class="input">
+            <button class="btn" onclick="addIdea()">+ حفظ الفكرة فوراً</button>
             <div id="ideasList" style="margin-top:8px"></div>
+        </div>
+
+        <div class="card">
+            <div style="font-weight:900;font-size:13px">🔗 روابط سريعة لاستوديو القناة</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+                <a href="https://studio.youtube.com" target="_blank" style="text-decoration:none;text-align:center;padding:10px;background:#15041a;border:1px solid #7f1d1d;border-radius:12px;color:#fff;font-size:11px;font-weight:900;display:block">📺 يوتيوب استوديو</a>
+                <a href="https://www.canva.com" target="_blank" style="text-decoration:none;text-align:center;padding:10px;background:#15041a;border:1px solid #7f1d1d;border-radius:12px;color:#fff;font-size:11px;font-weight:900;display:block">🎨 Canva للتصميم</a>
+            </div>
         </div>
     </div>
 
     <!-- شريط التنقل السفلي -->
     <nav class="bottom-nav">
         <button class="nav-item active" onclick="openTab('dash', this)"><span>📊</span>الرئيسية</button>
-        <button class="nav-item" onclick="openTab('schedule', this)"><span>📅</span>الجدول العام</button>
+        <button class="nav-item" onclick="openTab('workflow', this)"><span>⚡</span>المونتاج</button>
+        <button class="nav-item" onclick="openTab('crew', this)"><span>👥</span>الطاقم</button>
         <button class="nav-item" onclick="openTab('ideas', this)"><span>💡</span>الأفكار</button>
     </nav>
 </div>
 
 <script>
-let schedule = JSON.parse(localStorage.getItem('channel_schedule') || '[]');
-let ideas = JSON.parse(localStorage.getItem('channel_ideas') || '[]');
-let ytHandle = localStorage.getItem('yt_handle') || '@Shadow47q';
-
-document.getElementById('ytHandle').value = ytHandle;
+let chapters = JSON.parse(localStorage.getItem('pro_chapters') || JSON.stringify(Array.from({length: 16}, (_, i) => ({id: i+1, done: false}))));
+let ideas = JSON.parse(localStorage.getItem('pro_ideas') || '[]');
 
 function openTab(n, el) {
     document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
@@ -163,23 +182,11 @@ function openTab(n, el) {
     renderAll();
 }
 
-function saveYTChannel() {
-    let val = document.getElementById('ytHandle').value.trim();
-    if(!val) return;
-    localStorage.setItem('yt_handle', val);
-    ytHandle = val;
-    alert('تم حفظ يوزر القناة بنجاح! سيتم جلب البيانات الحية.');
-    fetchYouTubeData();
-}
-
-function addSchedule() {
-    let title = document.getElementById('schTitle').value.trim();
-    let game = document.getElementById('schGame').value;
-    let status = document.getElementById('schStatus').value;
-    if(!title) { alert('اكتب عنوان المقطع'); return; }
-    schedule.unshift({ id: Date.now(), title, game, status });
-    document.getElementById('schTitle').value = '';
-    saveData();
+function toggleChapter(id) {
+    let ch = chapters.find(c => c.id === id);
+    if(ch) ch.done = !ch.done;
+    localStorage.setItem('pro_chapters', JSON.stringify(chapters));
+    renderAll();
 }
 
 function addIdea() {
@@ -187,42 +194,37 @@ function addIdea() {
     if(!t) return;
     ideas.unshift({ id: Date.now(), t });
     document.getElementById('ideaInp').value = '';
-    saveData();
-}
-
-function saveData() {
-    localStorage.setItem('channel_schedule', JSON.stringify(schedule));
-    localStorage.setItem('channel_ideas', JSON.stringify(ideas));
+    localStorage.setItem('pro_ideas', JSON.stringify(ideas));
     renderAll();
 }
 
-// دالة محاكاة جلب بيانات يوتيوب الحية (تستطيع ربطها بـ API مفتاح يوتيوب الفعلي لاحقاً)
-function fetchYouTubeData() {
-    // هنا يتم جلب الإحصائيات الحقيقية من يوتيوب API
-    document.getElementById('subCount').innerText = "متصل بـ " + ytHandle;
-    document.getElementById('viewCount').innerText = "قيد التحديث المباشر";
-}
-
 function renderAll() {
-    document.getElementById('scheduleList').innerHTML = schedule.map(s => `
-        <div class="video-card" style="justify-content:space-between">
-            <div>
-                <div style="font-weight:900">${s.title}</div>
-                <div style="font-size:9px;color:var(--text-muted);margin-top:2px">لعبة: <b>${s.game}</b> | الحالة: <b>${s.status}</b></div>
+    // رسم الفصول الـ 16
+    let grid = document.getElementById('chaptersGrid');
+    if(grid) {
+        grid.innerHTML = chapters.map(c => `
+            <div class="chap-box ${c.done ? 'done' : ''}" onclick="toggleChapter(${c.id})">
+                فصل ${c.id}
+                <div style="font-size:7px;margin-top:2px">${c.done ? '✅ تم' : '⏳ قادم'}</div>
             </div>
-            <button onclick="schedule=schedule.filter(x=>x.id!==${s.id});saveData()" style="color:#ef4444;background:none;border:none;font-size:16px;cursor:pointer">×</button>
-        </div>
-    `).join('') || '<div style="text-align:center;color:var(--text-muted);padding:10px">الجدول فارغ</div>';
+        `).join('');
+    }
 
+    let doneCount = chapters.filter(c => c.done).length;
+    let pct = Math.round((doneCount / 16) * 100);
+    document.getElementById('pctText').innerText = pct + '%';
+    document.getElementById('progFill').style.width = pct + '%';
+    document.getElementById('goalFill').style.width = (pct > 0 ? pct : 15) + '%';
+
+    // بنك الأفكار
     document.getElementById('ideasList').innerHTML = ideas.map(i => `
-        <div class="video-card" style="justify-content:space-between">
+        <div class="list-item">
             <span>💡 ${i.t}</span>
-            <button onclick="ideas=ideas.filter(x=>x.id!==${i.id});saveData()" style="color:#ef4444;background:none;border:none;cursor:pointer">×</button>
+            <button onclick="ideas=ideas.filter(x=>x.id!==${i.id});localStorage.setItem('pro_ideas', JSON.stringify(ideas));renderAll();" style="color:#ef4444;background:none;border:none;cursor:pointer">×</button>
         </div>
-    `).join('') || '<div style="text-align:center;color:var(--text-muted);padding:10px">لا توجد أفكار</div>';
+    `).join('') || '<div style="text-align:center;color:var(--text-muted);padding:8px;font-size:10px">لا توجد أفكار محفوظة حالياً</div>';
 }
 
-fetchYouTubeData();
 renderAll();
 </script>
 </body>
