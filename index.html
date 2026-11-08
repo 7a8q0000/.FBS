@@ -3,107 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Shadow47q - مقر قيادة رزدنت إيفل 4</title>
+<title>Shadow47q Studio - منظومة القناة المركزية</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
+:root{
+    --bg-main: #05030a;
+    --bg-card: rgba(18, 8, 30, 0.7);
+    --border-color: rgba(220, 38, 38, 0.35);
+    --accent-red: #dc2626;
+    --accent-purple: #7c3aed;
+    --text-main: #f3e8ff;
+    --text-muted: #9ca3af;
+}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent;}
-html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#040208 0%,#0e0514 50%,#1f0514 100%)!important;color:#f3e8ff;}
-.app-container{max-width:480px;margin:0 auto;min-height:100vh;padding:14px;padding-bottom:90px;}
+html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#030106 0%,#0c0414 50%,#18020e 100%)!important;color:var(--text-main);}
+.app-container{max-width:480px;margin:0 auto;min-height:100vh;padding:14px;padding-bottom:100px;}
 
-/* الهيدر */
-.header{background:linear-gradient(90deg,#581c87,#b91c1c,#991b1b);padding:16px;border-radius:20px;display:flex;justify-content:space-between;align-items:center;border:2px solid #ef4444;box-shadow:0 8px 25px rgba(239,68,68,0.3);}
-.badge{background:rgba(0,0,0,.5);border:1px solid #fca5a5;color:#fff;padding:5px 12px;border-radius:20px;font-size:10px;font-weight:900;}
+/* الهيدر الفخم */
+.header{background:linear-gradient(90deg,#4c1d95,#991b1b,#dc2626);padding:18px;border-radius:22px;display:flex;justify-content:space-between;align-items:center;border:2px solid #ef4444;box-shadow:0 10px 30px rgba(239,68,68,0.4);}
+.badge{background:rgba(0,0,0,.6);border:1px solid #fca5a5;color:#fff;padding:5px 12px;border-radius:20px;font-size:10px;font-weight:900;letter-spacing:1px;}
 
-/* شريط التنقل السفلي */
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#09030e;border-top:1.5px solid #7f1d1d;display:flex;justify-content:space-around;padding:10px 0;z-index:1000;box-shadow:0 -5px 20px rgba(0,0,0,0.9);max-width:480px;margin:0 auto;}
-.nav-item{background:none;border:none;color:#9ca3af;font-size:10px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;}
-.nav-item span{font-size:16px;}
-.nav-item.active{color:#ef4444;text-shadow:0 0 10px rgba(239,68,68,0.6);}
+/* شريط التنقل السفلي الاحترافي */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(8, 3, 15, 0.95);backdrop-filter:blur(10px);border-top:1.5px solid rgba(220, 38, 38, 0.4);display:flex;justify-content:space-around;padding:10px 0;z-index:1000;box-shadow:0 -5px 25px rgba(0,0,0,0.9);max-width:480px;margin:0 auto;}
+.nav-item{background:none;border:none;color:var(--text-muted);font-size:10px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;transition:all 0.2s;}
+.nav-item span{font-size:18px;}
+.nav-item.active{color:#ef4444;text-shadow:0 0 12px rgba(239,68,68,0.8);transform:translateY(-2px);}
 
-/* المحتوى والتبويبات */
+/* التبويبات والمحتوى */
 .content{display:none;margin-top:14px;}
-.content.active{display:block;animation:fadeIn 0.25s ease-in-out;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.content.active{display:block;animation:fadeIn 0.3s ease-in-out;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 
-.card{background:linear-gradient(180deg,rgba(127,29,29,0.15),rgba(20,5,20,0.4));border:1.5px solid rgba(239,68,68,0.3);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:0 4px 15px rgba(0,0,0,0.4);}
-.btn{width:100%;padding:12px;background:linear-gradient(90deg,#7f1d1d,#dc2626);border:none;border-radius:12px;color:#fff;font-weight:900;font-size:13px;cursor:pointer;margin-top:8px;box-shadow:0 4px 12px rgba(220,38,38,0.4);}
-.input{width:100%;padding:11px;background:#120512;border:1.5px solid #7f1d1d;border-radius:12px;color:#fff;font-size:12px;margin-top:6px;outline:none;}
+/* البطاقات المتقدمة */
+.card{background:var(--bg-card);backdrop-filter:blur(8px);border:1.5px solid var(--border-color);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 6px 20px rgba(0,0,0,0.5);}
+.btn{width:100%;padding:13px;background:linear-gradient(90deg,#991b1b,#dc2626);border:none;border-radius:14px;color:#fff;font-weight:900;font-size:13px;cursor:pointer;margin-top:10px;box-shadow:0 4px 15px rgba(220,38,38,0.4);transition:opacity 0.2s;}
+.btn:active{opacity:0.8;}
+.input{width:100%;padding:12px;background:#0d0412;border:1.5px solid #7f1d1d;border-radius:14px;color:#fff;font-size:12px;margin-top:8px;outline:none;transition:border-color 0.2s;}
 .input:focus{border-color:#ef4444;}
-.stat{flex:1;background:rgba(127,29,29,0.2);border:1px solid #7f1d1d;border-radius:14px;padding:12px;text-align:center;}
+.stat{flex:1;background:rgba(127,29,29,0.15);border:1px solid rgba(220,38,38,0.3);border-radius:16px;padding:12px;text-align:center;}
 
-.list-item{background:#110414;border:1px solid rgba(239,68,68,0.25);padding:12px;border-radius:14px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:11px;position:relative;overflow:hidden;}
+/* القوائم والعناصر */
+.list-item{background:#0d0414;border:1px solid rgba(220,38,38,0.3);padding:14px;border-radius:16px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px;position:relative;overflow:hidden;}
 .list-item::before{content:'';position:absolute;right:0;top:0;bottom:0;width:4px;}
 .list-item.جاهز::before{background:#22c55e;}
 .list-item.قيد_التصوير::before{background:#f59e0b;}
-.list-item.منشور::before{background:#8b5cf6;}
+.list-item.منشور::before{background:#7c3aed;}
 
-.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px;}
-.chap-box{background:#1a051d;border:1px solid #7f1d1d;border-radius:10px;padding:8px;text-align:center;font-size:11px;font-weight:900;cursor:pointer;}
-.chap-box.done{background:#14532d;border-color:#22c55e;color:#86efac;}
+/* خريطة فصول رزدنت إيفل */
+.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px;}
+.chap-box{background:#15041a;border:1px solid #7f1d1d;border-radius:12px;padding:10px 6px;text-align:center;font-size:11px;font-weight:900;cursor:pointer;transition:all 0.2s;}
+.chap-box.done{background:#14532d;border-color:#22c55e;color:#86efac;box-shadow:0 0 10px rgba(34,197,94,0.3);}
+
+/* شريط التقدم */
+.progress-bar{width:100%;background:#11041a;height:10px;border-radius:10px;overflow:hidden;margin-top:10px;border:1px solid #7f1d1d;}
+.progress-fill{background:linear-gradient(90deg,#22c55e,#10b981);height:100%;width:0%;transition:width 0.4s ease;}
 </style>
 </head>
 <body>
 
 <div class="app-container">
-    <!-- الهيدر -->
+    <!-- الهيدر الرئيسي -->
     <div class="header">
-        <div style="display:flex;align-items:center;gap:8px">
-            <div style="width:36px;height:36px;background:linear-gradient(135deg,#dc2626,#581c87);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px">🧟‍♂️</div>
+        <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;background:linear-gradient(135deg,#dc2626,#4c1d95);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px">💀</div>
             <div>
-                <div style="font-weight:900;font-size:13px">Shadow47q - RE4 Hub</div>
-                <div style="font-size:8px;opacity:.8">سلسلة رزدنت إيفل 4 (16 فصل)</div>
+                <div style="font-weight:900;font-size:14px">Shadow47q Hub</div>
+                <div style="font-size:9px;opacity:.8">منصة إدارة القناة والمحتوى</div>
             </div>
         </div>
-        <span class="badge">PROD 🎬</span>
+        <span class="badge">PRO 2026</span>
     </div>
 
-    <!-- تبويب الرئيسية -->
+    <!-- تبويب لوحة القيادة والختمة -->
     <div id="c-dash" class="content active">
         <div class="card" style="border-color:#dc2626">
-            <div style="font-weight:900;font-size:13px;color:#fca5a5">🎮 حالة الختمة (Resident Evil 4 Remake)</div>
-            <div style="font-size:11px;color:#a1a1aa;margin-top:4px">اضغط على الفصل لتحديث حالته إذا صورته ونزلته:</div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-weight:900;font-size:13px;color:#fca5a5">🧟‍♂️ ختـمة رزدنت إيفل 4 (16 فصل)</div>
+                <span id="pctText" style="font-size:11px;font-weight:900;color:#22c55e">0%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+            <div style="font-size:10px;color:var(--text-muted);margin-top:8px">اضغط على الفصل لتغيير حالته إلى (منتهي):</div>
             <div class="chapter-grid" id="chaptersGrid"></div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px">
-            <div class="stat"><div style="font-size:8px">🎬 الفصول المصورة</div><div id="doneChapters" style="font-weight:900;font-size:16px;color:#22c55e">0 / 16</div></div>
-            <div class="stat"><div style="font-size:8px">📹 الحلقات المسجلة</div><div id="totalEps" style="font-weight:900;font-size:16px;color:#fca5a5">0</div></div>
-            <div class="stat"><div style="font-size:8px">⚡ شورتس جاهزة</div><div id="totalShorts" style="font-weight:900;font-size:16px;color:#c084fc">0</div></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px">
+            <div class="stat"><div style="font-size:9px;color:var(--text-muted)">🎬 الحلقات</div><div id="statEps" style="font-weight:900;font-size:18px;color:#fca5a5">0</div></div>
+            <div class="stat"><div style="font-size:9px;color:var(--text-muted)">📱 شورتس</div><div id="statShorts" style="font-weight:900;font-size:18px;color:#c084fc">0</div></div>
+            <div class="stat"><div style="font-size:9px;color:var(--text-muted)">💡 أفكار</div><div id="statIdeas" style="font-weight:900;font-size:18px;color:#38bdf8">0</div></div>
         </div>
     </div>
 
-    <!-- تبويب جدول الحلقات والشورتس -->
+    <!-- تبويب جدول القناة -->
     <div id="c-schedule" class="content">
         <div class="card" style="border-color:#22c55e">
-            <div style="font-weight:900;font-size:13px">➕ إضافة حلقة أو شورت جديد</div>
-            <input id="vidTitle" placeholder="عنوان الحلقة - مثال: رزدنت إيفل 4 [الفصل الأول]" class="input">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-                <select id="vidType" class="input">
+            <div style="font-weight:900;font-size:13px">📅 إضافة محتوى جديد للجدول</div>
+            <input id="itemTitle" placeholder="العنوان - مثال: رزدنت إيفل 4 (الفصل الأول)" class="input">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <select id="itemType" class="input">
                     <option value="حلقة رئيسية (50 دقيقة)">📺 حلقة رئيسية (50 دقيقة)</option>
-                    <option value="Shorts لقطة مرعبة/مضحكة">📱 Shorts (لقطة سريعة)</option>
+                    <option value="Shorts لقطة حماسية">📱 Shorts (لقطة سريعة)</option>
                 </select>
-                <select id="vidStatus" class="input">
+                <select id="itemStatus" class="input">
                     <option value="قيد_التصوير">🟡 قيد التصوير</option>
                     <option value="جاهز">🟢 جاهز للنشر</option>
                     <option value="منشور">🟣 تم النشر</option>
                 </select>
             </div>
-            <button class="btn" onclick="addVideo()">+ حفظ في الجدول 💜</button>
+            <button class="btn" onclick="addItem()">+ إضافة للجدول المرتبط 🚀</button>
         </div>
 
         <div class="card">
-            <div style="font-weight:900;font-size:12px">📋 جدول المحتوى الحالي</div>
-            <div id="videosList" style="margin-top:6px"></div>
+            <div style="font-weight:900;font-size:12px">📋 جدول القناة المباشر</div>
+            <div id="scheduleList" style="margin-top:8px"></div>
         </div>
     </div>
 
-    <!-- تبويب أدوات العناوين السريعة -->
+    <!-- تبويب أدوات ومولد العناوين -->
     <div id="c-tools" class="content">
         <div class="card">
-            <div style="font-weight:900;font-size:13px">🛠️ مولّد عناوين رزدنت إيفل 4 الحماسية</div>
-            <button class="btn" style="background:linear-gradient(90deg,#991b1b,#dc2626)" onclick="genRETitle()">🎲 اعطني عنوان يكسر المشاهدات</button>
-            <div id="genBox" style="background:#0b0412;border:1px solid #7f1d1d;padding:12px;border-radius:10px;font-size:12px;font-weight:700;color:#fca5a5;margin-top:8px">
-                اضغط الزر فوق عشان تطلع لك فكرة عنوان مشوق للحلقة!
+            <div style="font-weight:900;font-size:13px">🛠️ مولّد عناوين رزدنت إيفل 4</div>
+            <button class="btn" style="background:linear-gradient(90deg,#7c3aed,#dc2626)" onclick="genTitle()">🎲 توليد عنوان يكسر المشاهدات</button>
+            <div id="genBox" style="background:#0b0416;border:1px solid #7f1d1d;padding:14px;border-radius:12px;font-size:12px;font-weight:700;color:#fca5a5;margin-top:10px;text-align:center">
+                اضغط الزر لاقتراح عنوان فخم لحلقتك القادمة!
+            </div>
+        </div>
+        <div class="card">
+            <div style="font-weight:900;font-size:13px">🔗 روابط سريعة لإدارة القناة</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+                <a href="https://studio.youtube.com" target="_blank" style="text-decoration:none" class="btn" style="text-align:center;margin:0;padding:12px;background:#14041a;border:1px solid #7f1d1d;display:block">📺 استوديو يوتيوب</a>
+                <a href="https://www.canva.com" target="_blank" style="text-decoration:none" class="btn" style="text-align:center;margin:0;padding:12px;background:#14041a;border:1px solid #7f1d1d;display:block">🎨 Canva للصصور</a>
             </div>
         </div>
     </div>
@@ -111,26 +139,26 @@ html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#040208 
     <!-- تبويب بنك الأفكار -->
     <div id="c-ideas" class="content">
         <div class="card">
-            <div style="font-weight:900;font-size:13px">💡 بنك الأفكار واللقطات للشورتس</div>
-            <input id="ideaInp" placeholder="فكرة لقطة للشورتس (مثلاً: موتتي المضحكة عند الزعيم)..." class="input">
+            <div style="font-weight:900;font-size:13px">💡 بنك الأفكار واللقطات</div>
+            <input id="ideaInp" placeholder="اكتب فكرة حلقة أو لقطة للشورتس..." class="input">
             <button class="btn" onclick="addIdea()">+ حفظ الفكرة</button>
             <div id="ideasList" style="margin-top:8px"></div>
         </div>
     </div>
 
-    <!-- شريط التنقل السفلي -->
+    <!-- شريط التنقل السفلي المتطور -->
     <nav class="bottom-nav">
         <button class="nav-item active" onclick="openTab('dash', this)"><span>📊</span>الختمة</button>
         <button class="nav-item" onclick="openTab('schedule', this)"><span>📅</span>الجدول</button>
-        <button class="nav-item" onclick="openTab('tools', this)"><span>🛠️</span>العناوين</button>
+        <button class="nav-item" onclick="openTab('tools', this)"><span>🛠️</span>الأدوات</button>
         <button class="nav-item" onclick="openTab('ideas', this)"><span>💡</span>الأفكار</button>
     </nav>
 </div>
 
 <script>
-let chapters = JSON.parse(localStorage.getItem('re_chapters') || JSON.stringify(Array.from({length: 16}, (_, i) => ({id: i+1, done: false}))));
-let videos = JSON.parse(localStorage.getItem('re_videos') || '[]');
-let ideas = JSON.parse(localStorage.getItem('re_ideas') || '[]');
+let chapters = JSON.parse(localStorage.getItem('sys_chapters') || JSON.stringify(Array.from({length: 16}, (_, i) => ({id: i+1, done: false}))));
+let schedule = JSON.parse(localStorage.getItem('sys_schedule') || '[]');
+let ideas = JSON.parse(localStorage.getItem('sys_ideas') || '[]');
 
 function openTab(n, el) {
     document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
@@ -140,27 +168,27 @@ function openTab(n, el) {
     renderAll();
 }
 
-function save() {
-    localStorage.setItem('re_chapters', JSON.stringify(chapters));
-    localStorage.setItem('re_videos', JSON.stringify(videos));
-    localStorage.setItem('re_ideas', JSON.stringify(ideas));
+function saveSys() {
+    localStorage.setItem('sys_chapters', JSON.stringify(chapters));
+    localStorage.setItem('sys_schedule', JSON.stringify(schedule));
+    localStorage.setItem('sys_ideas', JSON.stringify(ideas));
     renderAll();
 }
 
 function toggleChapter(id) {
     let ch = chapters.find(c => c.id === id);
     if(ch) ch.done = !ch.done;
-    save();
+    saveSys();
 }
 
-function addVideo() {
-    let title = document.getElementById('vidTitle').value.trim();
-    let type = document.getElementById('vidType').value;
-    let status = document.getElementById('vidStatus').value;
-    if(!title) { alert('اكتب عنوان الحلقة'); return; }
-    videos.unshift({ id: Date.now(), title, type, status });
-    document.getElementById('vidTitle').value = '';
-    save();
+function addItem() {
+    let title = document.getElementById('itemTitle').value.trim();
+    let type = document.getElementById('itemType').value;
+    let status = document.getElementById('itemStatus').value;
+    if(!title) { alert('اكتب عنوان المحتوى'); return; }
+    schedule.unshift({ id: Date.now(), title, type, status });
+    document.getElementById('itemTitle').value = '';
+    saveSys();
 }
 
 function addIdea() {
@@ -168,52 +196,56 @@ function addIdea() {
     if(!t) return;
     ideas.unshift({ id: Date.now(), t });
     document.getElementById('ideaInp').value = '';
-    save();
+    saveSys();
 }
 
-function genRETitle() {
+function genTitle() {
     let list = [
-        "ختم رزدنت إيفل 4 (الفصل الأول) - بداية الكابوس المرعب! 🧟‍♂️🔥",
-        "ليه القرية هجمت علي كذا؟! | رزدنت إيفل 4 (الفصل الثاني) 😱",
-        "أقوى مواجهة ضد الكشّات والمرعب بالمنشار! | رزدنت إيفل 4 🪚💀",
-        "الهروب من البيت المرعب وضياع ليون في الغابة! 🌲👀"
+        "ختمت الفصل الـ [رقم] بدون ما أنقص ولا دمج! 🧟‍♂️🔥",
+        "ليون طاح في أصعب فخ بـ رزدنت إيفل 4! 💀😱",
+        "مواجهة الزعيم الأسطوري في رزدنت إيفل 4 (نهاية مرعبة) 🪚🩸",
+        "أقوى لقطات الرعب والضحك في قرية الموتى 🎮😂"
     ];
-    document.getElementById('genBox').innerText = "📌 عنوان مقترح: " + list[Math.floor(Math.random() * list.length)];
+    document.getElementById('genBox').innerText = "📌 مقترح: " + list[Math.floor(Math.random() * list.length)];
 }
 
 function renderAll() {
-    // رسم الفصول الـ 16
+    // رسم شبكة الـ 16 فصل
     let grid = document.getElementById('chaptersGrid');
     if(grid) {
         grid.innerHTML = chapters.map(c => `
             <div class="chap-box ${c.done ? 'done' : ''}" onclick="toggleChapter(${c.id})">
                 فصل ${c.id}
-                <div style="font-size:8px;margin-top:2px">${c.done ? '✅ منتهي' : '⏳ قادم'}</div>
+                <div style="font-size:7px;margin-top:2px">${c.done ? '✅ تم' : '⏳ قادم'}</div>
             </div>
         `).join('');
     }
 
     let doneCount = chapters.filter(c => c.done).length;
-    document.getElementById('doneChapters').innerText = `${doneCount} / 16`;
-    document.getElementById('totalEps').innerText = videos.filter(v => v.type.includes('حلقة')).length;
-    document.getElementById('totalShorts').innerText = videos.filter(v => v.type.includes('Shorts')).length;
+    let pct = Math.round((doneCount / 16) * 100);
+    document.getElementById('pctText').innerText = pct + '%';
+    document.getElementById('progFill').style.width = pct + '%';
 
-    document.getElementById('videosList').innerHTML = videos.map(v => `
-        <div class="list-item ${v.status}">
+    document.getElementById('statEps').innerText = schedule.filter(s => s.type.includes('حلقة')).length;
+    document.getElementById('statShorts').innerText = schedule.filter(s => s.type.includes('Shorts')).length;
+    document.getElementById('statIdeas').innerText = ideas.length;
+
+    document.getElementById('scheduleList').innerHTML = schedule.map(s => `
+        <div class="list-item ${s.status}">
             <div>
-                <div style="font-weight:900">${v.title}</div>
-                <div style="font-size:10px;color:#a1a1aa;margin-top:2px">${v.type} | الحالة: <b>${v.status}</b></div>
+                <div style="font-weight:900">${s.title}</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:3px">${s.type} | الحالة: <b>${s.status}</b></div>
             </div>
-            <button onclick="videos=videos.filter(x=>x.id!==${v.id});save()" style="color:#ef4444;background:none;border:none;font-size:14px;cursor:pointer">×</button>
+            <button onclick="schedule=schedule.filter(x=>x.id!==${s.id});saveSys()" style="color:#ef4444;background:none;border:none;font-size:16px;cursor:pointer">×</button>
         </div>
-    `).join('') || '<div style="text-align:center;color:#a1a1aa;padding:10px">ما بعد ضفت حلقات في الجدول</div>';
+    `).join('') || '<div style="text-align:center;color:var(--text-muted);padding:12px">الجدول فارغ حالياً</div>';
 
     document.getElementById('ideasList').innerHTML = ideas.map(i => `
         <div class="list-item">
             <span>💡 ${i.t}</span>
-            <button onclick="ideas=ideas.filter(x=>x.id!==${i.id});save()" style="color:#ef4444;background:none;border:none;cursor:pointer">×</button>
+            <button onclick="ideas=ideas.filter(x=>x.id!==${i.id});saveSys()" style="color:#ef4444;background:none;border:none;cursor:pointer">×</button>
         </div>
-    `).join('') || '<div style="text-align:center;color:#a1a1aa;padding:10px">بنك الأفكار فارغ</div>';
+    `).join('') || '<div style="text-align:center;color:var(--text-muted);padding:12px">لا توجد أفكار محفوظة</div>';
 }
 
 renderAll();
