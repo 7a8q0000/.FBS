@@ -1,231 +1,56 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Shadow47q Pro Studio - لوحة تحكم القناة الشاملة</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-<style>
-:root{
-    --bg-main: #040208;
-    --bg-card: rgba(18, 8, 30, 0.85);
-    --border-color: rgba(168, 85, 247, 0.35);
-    --accent-purple: #9333ea;
-    --accent-red: #e74c3c;
-    --text-main: #f3e8ff;
-    --text-muted: #9ca3af;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent;}
-html,body{width:100%;min-height:100vh;background:linear-gradient(135deg,#030106 0%,#0e0417 50%,#1f0514 100%)!important;color:var(--text-main);}
-.app-container{max-width:480px;margin:0 auto;min-height:100vh;padding:14px;padding-bottom:110px;}
-
-/* الهيدر */
-.header{background:linear-gradient(90deg,#581c87,#9333ea,#e74c3c);padding:18px;border-radius:22px;display:flex;justify-content:space-between;align-items:center;border:2px solid #c084fc;box-shadow:0 10px 30px rgba(147,51,234,0.4);}
-.badge{background:rgba(0,0,0,.6);border:1px solid #fca5a5;color:#fff;padding:5px 12px;border-radius:20px;font-size:10px;font-weight:900;}
-
-/* شريط التنقل السفلي */
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(8, 3, 15, 0.95);backdrop-filter:blur(10px);border-top:1.5px solid rgba(147, 51, 234, 0.4);display:flex;justify-content:space-around;padding:10px 0;z-index:1000;box-shadow:0 -5px 25px rgba(0,0,0,0.9);max-width:480px;margin:0 auto;}
-.nav-item{background:none;border:none;color:var(--text-muted);font-size:10px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;transition:all 0.2s;}
-.nav-item span{font-size:18px;}
-.nav-item.active{color:#c084fc;text-shadow:0 0 12px rgba(192,132,252,0.8);transform:translateY(-2px);}
-
-/* التبويبات */
-.content{display:none;margin-top:14px;}
-.content.active{display:block;animation:fadeIn 0.3s ease-in-out;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-
-/* البطاقات */
-.card{background:var(--bg-card);backdrop-filter:blur(8px);border:1.5px solid var(--border-color);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 6px 20px rgba(0,0,0,0.5);}
-.btn{width:100%;padding:12px;background:linear-gradient(90deg,#7c3aed,#e74c3c);border:none;border-radius:14px;color:#fff;font-weight:900;font-size:13px;cursor:pointer;margin-top:8px;box-shadow:0 4px 15px rgba(124,58,237,0.4);}
-.input{width:100%;padding:11px;background:#0d0412;border:1.5px solid #7c3aed;border-radius:14px;color:#fff;font-size:12px;margin-top:6px;outline:none;}
-.input:focus{border-color:#e74c3c;}
-
-/* خريطة الختمات */
-.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px;}
-.chap-box{background:#15041a;border:1px solid #7f1d1d;border-radius:10px;padding:8px 4px;text-align:center;font-size:10px;font-weight:900;cursor:pointer;}
-.chap-box.done{background:#14532d;border-color:#22c55e;color:#86efac;}
-.progress-bar{width:100%;background:#11041a;height:8px;border-radius:8px;overflow:hidden;margin-top:8px;border:1px solid #7f1d1d;}
-.progress-fill{background:linear-gradient(90deg,#22c55e,#10b981);height:100%;width:0%;transition:width 0.4s ease;}
-
-/* مهام المونتاج */
-.task-item{display:flex;align-items:center;gap:10px;background:#0d0414;border:1px solid rgba(168,85,247,0.3);padding:10px;border-radius:12px;margin-top:6px;font-size:11px;}
-.task-item input[type="checkbox"]{width:16px;height:16px;accent-color:#9333ea;cursor:pointer;}
-
-/* طاقم القناة */
-.crew-card{background:rgba(20,5,30,0.9);border:1px solid rgba(168,85,247,0.4);border-radius:14px;padding:12px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;}
-.crew-role{font-size:9px;background:#7c3aed;padding:3px 8px;border-radius:8px;font-weight:900;}
-
-.list-item{background:#11041d;border:1px solid rgba(168,85,247,0.3);padding:10px;border-radius:12px;margin-top:6px;display:flex;justify-content:space-between;align-items:center;font-size:11px;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة العدالة الجنائية</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="app-container">
-    <!-- الهيدر -->
-    <div class="header">
-        <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:40px;height:40px;background:linear-gradient(135deg,#e74c3c,#9333ea);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px">👑</div>
-            <div>
-                <div style="font-weight:900;font-size:14px">Shadow47q Studio</div>
-                <div style="font-size:9px;opacity:.8">إدارة القناة المتكاملة</div>
+    <!-- الهيدر أو القائمة العلوية -->
+    <header>
+        <div class="logo">العدالة الجنائية</div>
+        <nav>
+            <a href="#about">عن الموقع</a>
+            <a href="#fields">المجالات</a>
+            <a href="#resources">المراجع</a>
+        </nav>
+    </header>
+
+    <!-- الواجهة الرئيسية -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>بوابة علوم العدالة الجنائية والتحقيق</h1>
+            <p>وجهتك الشاملة لاستكشاف أنظمة القانون، الأدلة الرقمية، وعلم الإجرام بطريقة احترافية.</p>
+            <a href="#fields" class="btn">استكشف الأقسام</a>
+        </div>
+    </section>
+
+    <!-- أقسام الموقع -->
+    <section id="fields" class="container">
+        <h2>أقسام التخصص</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>القانون الجنائي</h3>
+                <p>دراسة النصوص القانونية، الحقوق، والإجراءات القضائية المتبعة في المحاكم.</p>
+            </div>
+            <div class="card">
+                <h3>الأدلة الجنائية والتحقيق</h3>
+                <p>طرق جمع الأدلة من مسرح الجريمة، التحليل المخبري، والأدلة الرقمية.</p>
+            </div>
+            <div class="card">
+                <h3>علم الإجرام</h3>
+                <p>تحليل الدوافع والظواهر السلوكية وتطوير وسائل الوقاية من الجريمة.</p>
             </div>
         </div>
-        <span class="badge">PRO</span>
-    </div>
+    </section>
 
-    <!-- 1. تبويب الرئيسية والختمات والأهداف -->
-    <div id="c-dash" class="content active">
-        <!-- أهداف القناة (رقم 5) -->
-        <div class="card" style="border-color:#e74c3c">
-            <div style="font-weight:900;font-size:13px;color:#fca5a5">🎯 أهداف القناة الحالية</div>
-            <div style="font-size:11px;margin-top:6px">هدفنا القادم: الوصول إلى **1,000 مشترك** وختم رزدنت إيفل 4 كاملة! 🔥</div>
-            <div class="progress-bar"><div class="progress-fill" id="goalFill" style="width:45%"></div></div>
-        </div>
+    <!-- التذييل -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 | منصة العدالة الجنائية</p>
+    </footer>
 
-        <!-- خريطة الختمات (رقم 1) -->
-        <div class="card" style="border-color:#9333ea">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-                <div style="font-weight:900;font-size:13px;color:#c084fc">🧟‍♂️ ختمة رزدنت إيفل 4 (16 فصل)</div>
-                <span id="pctText" style="font-size:11px;font-weight:900;color:#22c55e">0%</span>
-            </div>
-            <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
-            <div style="font-size:10px;color:var(--text-muted);margin-top:6px">اضغط على الفصل لتغيير حالته:</div>
-            <div class="chapter-grid" id="chaptersGrid"></div>
-        </div>
-    </div>
-
-    <!-- 2. تبويب سير عمل المونتاج (رقم 2) -->
-    <div id="c-workflow" class="content">
-        <div class="card" style="border-color:#22c55e">
-            <div style="font-weight:900;font-size:13px">⚡ مسار مهام المونتاج (لكل حلقة جديدة)</div>
-            <div style="font-size:10px;color:var(--text-muted);margin-top:2px">تأكد من إنجاز هذه الخطوات قبل النشر:</div>
-            
-            <div id="tasksContainer" style="margin-top:8px">
-                <label class="task-item"><input type="checkbox" data-id="1"> 1. تصوير الفصل (50 دقيقة) بدقة عالية</label>
-                <label class="task-item"><input type="checkbox" data-id="2"> 2. سحب اللقطات الحماسية لأجل الـ Shorts</label>
-                <label class="task-item"><input type="checkbox" data-id="3"> 3. تنظيف الفراغات وحذف اللقطات الزائدة بـ CapCut</label>
-                <label class="task-item"><input type="checkbox" data-id="4"> 4. إضافة الترجمة التلقائية (Auto Captions)</label>
-                <label class="task-item"><input type="checkbox" data-id="5"> 5. تصميم الصورة المصغرة (Thumbnail) بـ Canva</label>
-                <label class="task-item"><input type="checkbox" data-id="6"> 6. رفع الحلقة على يوتيوب وجدولة النشر 🚀</label>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3. تبويب لوحة طاقم القناة -->
-    <div id="c-crew" class="content">
-        <div class="card">
-            <div style="font-weight:900;font-size:13px">👥 طاقم وإدارة القناة</div>
-            <div style="font-size:10px;color:var(--text-muted);margin-top:2px">فريق العمل والمسؤولين عن القناة:</div>
-            
-            <div class="crew-card">
-                <div>
-                    <div style="font-weight:900;font-size:12px">Shadow47q</div>
-                    <div style="font-size:10px;color:var(--text-muted)">المؤسس واللاعب الأساسي والمقدم</div>
-                </div>
-                <span class="crew-role" style="background:#e74c3c">المدير العام</span>
-            </div>
-
-            <div class="crew-card">
-                <div>
-                    <div style="font-weight:900;font-size:12px">فريق المونتاج والقص</div>
-                    <div style="font-size:10px;color:var(--text-muted)">مسؤول قص الحلقات وتركيب الشورتس</div>
-                </div>
-                <span class="crew-role">ممنتج رئيسي</span>
-            </div>
-
-            <div class="crew-card">
-                <div>
-                    <div style="font-weight:900;font-size:12px">مصمم الصور المصغرة</div>
-                    <div style="font-size:10px;color:var(--text-muted)">تصميم الأغلفة الجذابة (Canva)</div>
-                </div>
-                <span class="crew-role" style="background:#3b82f6">مُصمم</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- 4. تبويب بنك الأفكار السريع (رقم 3) -->
-    <div id="c-ideas" class="content">
-        <div class="card">
-            <div style="font-weight:900;font-size:13px">💡 بنك الأفكار والملاحظات السريعة</div>
-            <input id="ideaInp" placeholder="اكتب فكرة مقطع، نكتة، أو لقطة للشورتس..." class="input">
-            <button class="btn" onclick="addIdea()">+ حفظ الفكرة فوراً</button>
-            <div id="ideasList" style="margin-top:8px"></div>
-        </div>
-
-        <div class="card">
-            <div style="font-weight:900;font-size:13px">🔗 روابط سريعة لاستوديو القناة</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
-                <a href="https://studio.youtube.com" target="_blank" style="text-decoration:none;text-align:center;padding:10px;background:#15041a;border:1px solid #7f1d1d;border-radius:12px;color:#fff;font-size:11px;font-weight:900;display:block">📺 يوتيوب استوديو</a>
-                <a href="https://www.canva.com" target="_blank" style="text-decoration:none;text-align:center;padding:10px;background:#15041a;border:1px solid #7f1d1d;border-radius:12px;color:#fff;font-size:11px;font-weight:900;display:block">🎨 Canva للتصميم</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- شريط التنقل السفلي -->
-    <nav class="bottom-nav">
-        <button class="nav-item active" onclick="openTab('dash', this)"><span>📊</span>الرئيسية</button>
-        <button class="nav-item" onclick="openTab('workflow', this)"><span>⚡</span>المونتاج</button>
-        <button class="nav-item" onclick="openTab('crew', this)"><span>👥</span>الطاقم</button>
-        <button class="nav-item" onclick="openTab('ideas', this)"><span>💡</span>الأفكار</button>
-    </nav>
-</div>
-
-<script>
-let chapters = JSON.parse(localStorage.getItem('pro_chapters') || JSON.stringify(Array.from({length: 16}, (_, i) => ({id: i+1, done: false}))));
-let ideas = JSON.parse(localStorage.getItem('pro_ideas') || '[]');
-
-function openTab(n, el) {
-    document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-    document.getElementById('c-' + n)?.classList.add('active');
-    el.classList.add('active');
-    renderAll();
-}
-
-function toggleChapter(id) {
-    let ch = chapters.find(c => c.id === id);
-    if(ch) ch.done = !ch.done;
-    localStorage.setItem('pro_chapters', JSON.stringify(chapters));
-    renderAll();
-}
-
-function addIdea() {
-    let t = document.getElementById('ideaInp').value.trim();
-    if(!t) return;
-    ideas.unshift({ id: Date.now(), t });
-    document.getElementById('ideaInp').value = '';
-    localStorage.setItem('pro_ideas', JSON.stringify(ideas));
-    renderAll();
-}
-
-function renderAll() {
-    // رسم الفصول الـ 16
-    let grid = document.getElementById('chaptersGrid');
-    if(grid) {
-        grid.innerHTML = chapters.map(c => `
-            <div class="chap-box ${c.done ? 'done' : ''}" onclick="toggleChapter(${c.id})">
-                فصل ${c.id}
-                <div style="font-size:7px;margin-top:2px">${c.done ? '✅ تم' : '⏳ قادم'}</div>
-            </div>
-        `).join('');
-    }
-
-    let doneCount = chapters.filter(c => c.done).length;
-    let pct = Math.round((doneCount / 16) * 100);
-    document.getElementById('pctText').innerText = pct + '%';
-    document.getElementById('progFill').style.width = pct + '%';
-    document.getElementById('goalFill').style.width = (pct > 0 ? pct : 15) + '%';
-
-    // بنك الأفكار
-    document.getElementById('ideasList').innerHTML = ideas.map(i => `
-        <div class="list-item">
-            <span>💡 ${i.t}</span>
-            <button onclick="ideas=ideas.filter(x=>x.id!==${i.id});localStorage.setItem('pro_ideas', JSON.stringify(ideas));renderAll();" style="color:#ef4444;background:none;border:none;cursor:pointer">×</button>
-        </div>
-    `).join('') || '<div style="text-align:center;color:var(--text-muted);padding:8px;font-size:10px">لا توجد أفكار محفوظة حالياً</div>';
-}
-
-renderAll();
-</script>
 </body>
 </html>
